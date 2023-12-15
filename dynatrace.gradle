@@ -1,0 +1,14 @@
+apply plugin: 'com.dynatrace.instrumentation'
+dynatrace {
+    configurations {
+        sampleConfig {
+            autoStart {
+                applicationId '3b998a4c-cd02-4118-ad39-14317db2854a'
+                beaconUrl 'https://bf87900iwm.bf.dynatrace.com/mbeacon'
+            }
+            userOptIn true
+            agentBehavior.startupLoadBalancing true
+            sessionReplay.enabled true
+        }
+    }
+}

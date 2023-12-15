@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Elnur Hajiyev on on 7/15/22, 6:07 PM
+  ~ Copyright (c) 2021 . All rights reserved to vpn
+  ~ This code is copyrighted and using this code without agreement from authors is forbidden
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting_page_nav_graph"
+    app:startDestination="@id/settingPageFragment">
+
+    <fragment
+        android:id="@+id/settingPageFragment"
+        android:name="loan.exchange.setting.view.SettingPageFragment"
+        tools:layout="@layout/fragment_setting_page">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="exchange://setting" />
+        <action
+            android:id="@+id/action_settingPageFragment_to_convertUnitDetailPageFragment"
+            app:destination="@id/convertUnitDetailPageFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/convertUnitDetailPageFragment"
+        android:name="loan.exchange.setting.view.ConvertUnitDetailPageFragment"
+        tools:layout="@layout/fragment_convert_unit_detail_page">
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="exchange://convertunit" />
+
+        <argument
+            android:name="unitType"
+            app:argType="loan.exchange.domain.entity.enums.UNIT_TYPE"
+            android:defaultValue="WEIGHT"/>
+
+    </fragment>
+
+</navigation>

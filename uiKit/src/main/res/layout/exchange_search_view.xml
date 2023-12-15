@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/search_icon"
+        android:layout_width="@dimen/_26sdp"
+        android:layout_height="@dimen/_26sdp"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginVertical="@dimen/_15sdp"
+        android:src="@drawable/ic_search_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search_message"
+        android:theme="@style/Exchange_Cursor_Edit_Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        style="@style/light_caption5"
+        android:maxLines="1"
+        android:textCursorDrawable="@drawable/input_text_cursor_color"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:textColor="@color/color_pure_black"
+        android:textColorHint="@color/color_labels_secondary"
+        app:layout_constraintBottom_toBottomOf="@+id/search_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/search_icon"
+        app:layout_constraintTop_toTopOf="@+id/search_icon" />
+
+    <ImageView
+        android:id="@+id/search_action"
+        android:layout_width="@dimen/_16sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_13sdp"
+        android:visibility="gone"
+        android:src="@drawable/ic_close_square"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

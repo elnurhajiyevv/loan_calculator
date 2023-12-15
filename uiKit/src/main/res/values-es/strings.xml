@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="admodIdTest">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admodId">ca-app-pub-5232085807124057/4634571584</string>
+    <string name="loan_amount_left">%1$s $</string>
+    <string name="loan_amount_right">%1$s $</string>
+    <string name="loan_rate_left">%1$s</string>
+    <string name="loan_rate_right">%1$s</string>
+
+    <string name="default_channel_description">Exchange default notification</string>
+    <string name="bottom_menu_currency">Moneda</string>
+    <string name="bottom_menu_loan">Préstamo</string>
+    <string name="loan_period_left">%1$s mes</string>
+    <string name="loan_period_right">%1$s meses</string>
+    <string name="bottom_header">Cuotas mensuales estimadas</string>
+    <string name="bottom_description">Las cuotas a plazos pueden cambiar según los resultados de la verificación del estado físico en la sucursal. Utilice esta calculadora para cálculos básicos de tipos de préstamos comunes, como hipotecas, préstamos para automóviles, préstamos para estudiantes o préstamos personales.</string>
+
+    <string name="summary">Resumen</string>
+    <string name="back">Atrás</string>
+    <string name="select">Seleccionar</string>
+    <string name="search">Buscar un código de moneda</string>
+    <string name="choose">Elegir</string>
+    <string name="header_title">Calculadora de préstamos de intercambio</string>
+    <string name="header_setting">Configuración</string>
+    <string name="bottom_menu_home">Inicio</string>
+    <string name="bottom_menu_setting">Convertidor de unidades</string>
+    <string name="app_name">Calculadora de ELU</string>
+    <string name="close">Cerrar</string>
+    <string name="no_internet_title">Sin conexión a Internet</string>
+    <string name="no_internet_error_text">No hay conexión a Internet o es deficiente en su dispositivo</string>
+    <string name="loading_dialog_title">Espere por favor</string>
+    <string name="loading_dialog_description">Estamos cargando detalles…</string>
+    <string name="default_channel_name">Mensajes</string>
+    <string name="currency_header">Convertidor de moneda</string>
+    <string name="currency_description">Consulte tarifas en vivo, establezca alertas de tarifas, reciba notificaciones y más.</string>
+    <string name="amount_text">Cantidad</string>
+    <string name="converted_amount_text">Cantidad convertida</string>
+    <string name="indicative_header">Tipo de cambio indicativo</string>
+    <string name="loan_header">Calculadora de préstamos</string>
+    <string name="funding_header">Financiamiento máximo</string>
+    <string name="funding_text">1</string>
+    <string name="funding_text_header">500 000.00 $</string>
+    <string name="funding_source">Elija el tipo de carga y el filtro</string>
+    <string name="funding_source_year">2023</string>
+    <string name="loan_amount_header">Monto del préstamo</string>
+    <string name="loan_period_header">Período de préstamo</string>
+    <string name="loan_rate_header">Tasa de préstamo</string>
+    <string name="loan_period_text">1</string>
+    <string name="converter_text">1 %1$s = %2$s %3$s</string>
+    <string name="setting_header">Configuración</string>
+    <string name="apply">Aplicar</string>
+    <string name="interest_rate">Tasa de interés</string>
+    <string name="interest_rate_text">1</string>
+    <string name="see_monthly">Ver lista mensual</string>
+    <string name="loan_result_header">Pago cada mes</string>
+    <string name="loan_result_total_header">Total de %1$s pagos</string>
+    <string name="loan_result_interest_header">Interés total</string>
+    <string name="loan_result_interest_graph">Resultado</string>
+    <string name="usd">USD</string>
+    <string name="euro">EUR</string>
+
+    <string name="weight">Weight/Mass</string>
+    <string name="volume">Volume</string>
+    <string name="temperature">Temperature</string>
+    <string name="length">Length</string>
+    <string name="speed">Speed</string>
+    <string name="area">Area</string>
+    <string name="time">Time</string>
+    <string name="pressure">Pressure</string>
+    <string name="storage">Storage</string>
+    <string name="formula">Display Formula:</string>
+
+    <string name="from">From</string>
+    <string name="to">To</string>
+
+    <string name="kilogram">Kilogram</string>
+    <string name="gram">Gram</string>
+    <string name="milligram">Milligram</string>
+    <string name="microgram">Microgram</string>
+    <string name="imperial_ton">Imperial ton</string>
+    <string name="us_tom">Us ton</string>
+    <string name="stone">Stone</string>
+    <string name="pound">Pound</string>
+    <string name="ounce">Ounce</string>
+</resources>

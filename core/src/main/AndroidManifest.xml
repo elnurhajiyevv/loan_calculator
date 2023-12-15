@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Elnur Hajiyev on 05/02/22, 1:22 PM
+  ~ Copyright (c) 2021 . All rights reserved to vpn
+  ~ This code is copyrighted and using this code without agreement from authors is forbidden
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="loan.exchange.core"/>

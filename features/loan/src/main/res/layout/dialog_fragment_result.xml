@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_20sdp"
+    android:paddingHorizontal="@dimen/_16sdp">
+
+    <View
+        android:id="@+id/indicator"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="4dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/bottom_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_vector"
+        android:paddingHorizontal="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicator">
+
+        <TextView
+            android:id="@+id/header"
+            style="@style/bold_caption3"
+            android:layout_width="0dp"
+            android:textColor="@color/color_pure_white"
+            android:layout_height="wrap_content"
+            android:text="@string/summary"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/seperator"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_dotted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+        <TextView
+            android:id="@+id/loan_title"
+            style="@style/light_caption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_result_header"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColor="@color/color_secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seperator" />
+
+        <TextView
+            android:id="@+id/loan_amount"
+            style="@style/bold_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1 110.21 $"
+            android:gravity="end"
+            android:textColor="@color/color_pure_white"
+            app:layout_constraintBottom_toBottomOf="@+id/loan_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/loan_title"
+            app:layout_constraintTop_toTopOf="@+id/loan_title" />
+
+        <TextView
+            android:id="@+id/loan_total_title"
+            style="@style/light_caption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_result_total_header"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/color_secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_title" />
+
+        <TextView
+            android:id="@+id/loan_total_amount"
+            style="@style/bold_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:maxLines="1"
+            android:text="133 110.21 $"
+            android:textColor="@color/color_pure_white"
+            app:layout_constraintBottom_toBottomOf="@+id/loan_total_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/loan_total_title"
+            app:layout_constraintTop_toTopOf="@+id/loan_total_title" />
+
+        <TextView
+            android:id="@+id/loan_interest_rate_title"
+            style="@style/light_caption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interest_rate"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/color_secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_total_title" />
+
+        <TextView
+            android:id="@+id/loan_interest_rate_amount"
+            style="@style/bold_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:maxLines="1"
+            tools:text="12.5%"
+            android:textColor="@color/color_pure_white"
+            app:layout_constraintBottom_toBottomOf="@+id/loan_interest_rate_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/loan_interest_title"
+            app:layout_constraintTop_toTopOf="@+id/loan_interest_rate_title" />
+
+
+
+        <TextView
+            android:id="@+id/loan_interest_title"
+            style="@style/light_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/loan_result_interest_header"
+            android:textColor="@color/color_secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_interest_rate_title" />
+
+        <TextView
+            android:id="@+id/loan_total_interest"
+            style="@style/bold_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="33 456.21 $"
+            android:gravity="end"
+            android:textColor="@color/color_pure_white"
+            app:layout_constraintBottom_toBottomOf="@+id/loan_interest_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/loan_interest_title"
+            app:layout_constraintTop_toTopOf="@+id/loan_interest_title" />
+
+
+        <TextView
+            android:id="@+id/loan_chart_title"
+            style="@style/light_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/loan_result_interest_graph"
+            android:textColor="@color/color_secondary"
+            app:layout_constraintBottom_toBottomOf="@+id/chart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loan_interest_title" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_150sdp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/loan_chart_title"
+            app:layout_constraintTop_toBottomOf="@+id/loan_total_interest" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/close_button"
+        style="@style/medium_caption1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/radius_button"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/close"
+        android:textColor="@color/color_pure_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

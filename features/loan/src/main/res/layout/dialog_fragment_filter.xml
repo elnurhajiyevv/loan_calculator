@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_20sdp"
+    android:paddingHorizontal="@dimen/_16sdp">
+
+    <View
+        android:id="@+id/indicator"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="4dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/bottom_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loan_amount_filter_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_10_blue"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:padding="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicator">
+
+        <TextView
+            android:id="@+id/loan_amount_header"
+            style="@style/light_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_amount_header"
+            android:textColor="@color/color_pure_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <org.florescu.android.rangeseekbar.RangeSeekBar
+        android:id="@+id/loan_amount_seekbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/loan_amount_header"
+        app:layout_constraintStart_toStartOf="@+id/loan_amount_header"
+        app:layout_constraintTop_toBottomOf="@+id/loan_amount_header"
+        rsb:absoluteMaxValue="1"
+        rsb:valuesAboveThumbs="true"
+        rsb:textAboveThumbsColor="@color/color_pure_black"
+        rsb:absoluteMinValue="500000" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loan_rate_filter_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_10_blue"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:padding="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loan_amount_filter_container">
+
+        <TextView
+            android:id="@+id/loan_rate_filter_header"
+            style="@style/light_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_rate_header"
+            android:textColor="@color/color_pure_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <org.florescu.android.rangeseekbar.RangeSeekBar
+            android:id="@+id/loan_rate_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/loan_rate_filter_header"
+            app:layout_constraintStart_toStartOf="@+id/loan_rate_filter_header"
+            app:layout_constraintTop_toBottomOf="@+id/loan_rate_filter_header"
+            rsb:valuesAboveThumbs="true"
+            rsb:textAboveThumbsColor="@color/color_pure_black"
+            rsb:absoluteMaxValue="1"
+            rsb:absoluteMinValue="300" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loan_period_filter_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_10_blue"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:padding="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loan_rate_filter_container">
+
+        <TextView
+            android:id="@+id/loan_period_filter_header"
+            style="@style/light_caption1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/loan_period_header"
+            android:textColor="@color/color_pure_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <org.florescu.android.rangeseekbar.RangeSeekBar
+            android:id="@+id/loan_period_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/loan_period_filter_header"
+            app:layout_constraintStart_toStartOf="@+id/loan_period_filter_header"
+            app:layout_constraintTop_toBottomOf="@+id/loan_period_filter_header"
+            rsb:absoluteMaxValue="1"
+            rsb:absoluteMinValue="360"
+            rsb:valuesAboveThumbs="true"
+            rsb:textAboveThumbsColor="@color/color_pure_black"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/apply_button"
+        style="@style/medium_caption1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/radius_button"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/apply"
+        android:textColor="@color/color_pure_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loan_period_filter_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_page_nav_graph"
+        android:icon="@drawable/ic_currency_icon"
+        android:title="@string/bottom_menu_currency" />
+    <item
+        android:id="@+id/loan_page_nav_graph"
+        android:icon="@drawable/ic_loan_icon"
+        android:title="@string/bottom_menu_loan" />
+    <item
+        android:id="@+id/setting_page_nav_graph"
+        android:icon="@drawable/ic_setting_icon"
+        android:title="@string/bottom_menu_setting" />
+</menu>

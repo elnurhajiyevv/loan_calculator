@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "997887180930",
+    "project_id": "sunflower-lab-tech",
+    "storage_bucket": "sunflower-lab-tech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997887180930:android:ad0391ae3f42848162349b",
+        "android_client_info": {
+          "package_name": "loan.exchange.currency"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2mIIFQcAlzYbK-rq_8jqu4MNEpUSo5a4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

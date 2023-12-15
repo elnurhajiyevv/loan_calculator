@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Elnur Hajiyev on on 7/15/22, 6:07 PM
+  ~ Copyright (c) 2021 . All rights reserved to vpn
+  ~ This code is copyrighted and using this code without agreement from authors is forbidden
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loan_page_nav_graph"
+    app:startDestination="@id/loanPageFragment">
+
+    <fragment
+        android:id="@+id/loanPageFragment"
+        android:name="loan.exchange.loan.view.LoanPageFragment"
+        tools:layout="@layout/fragment_loan_page">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="vpn://home" />
+
+    </fragment>
+
+</navigation>
