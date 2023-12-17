@@ -71,7 +71,7 @@ dependencies {
     implementation(project(ApplicationModules.domainModule))
     implementation(project(ApplicationModules.dataModule))
     implementation(project(ApplicationModules.commonModule))
-    implementation(project(ApplicationModules.homeModule))
+    implementation(project(ApplicationModules.saveModule))
     implementation(project(ApplicationModules.loanModule))
     implementation(project(ApplicationModules.settingModule))
     implementation(project(ApplicationModules.uiKit))

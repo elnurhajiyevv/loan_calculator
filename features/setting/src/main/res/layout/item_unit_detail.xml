@@ -13,7 +13,7 @@
         style="@style/regular_caption6"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:textColor="@color/solid_blue"
+        android:textColor="@color/light_blue_100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageViewDirection"
         app:layout_constraintStart_toStartOf="parent"

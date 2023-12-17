@@ -9,7 +9,7 @@
     <string name="loan_rate_right">%1$s</string>
 
     <string name="default_channel_description">Exchange default notification</string>
-    <string name="bottom_menu_currency">Moneda</string>
+    <string name="bottom_menu_save">Moneda</string>
     <string name="bottom_menu_loan">Préstamo</string>
     <string name="loan_period_left">%1$s mes</string>
     <string name="loan_period_right">%1$s meses</string>
@@ -83,4 +83,9 @@
     <string name="stone">Stone</string>
     <string name="pound">Pound</string>
     <string name="ounce">Ounce</string>
+
+
+    <string name="unknown_error_title">Something went wrong</string>
+    <string name="unknown_error_text">Sorry, unexpected error has happened. Please try again later</string>
+
 </resources>

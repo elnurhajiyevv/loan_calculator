@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <loan.exchange.uikit.EditableSeekbarEdittext
+    <loan.calculator.uikit.EditableSeekbarEdittext
         android:id="@+id/loan_edittext"
         style="@style/bold_caption4"
         android:layout_marginTop="@dimen/_10sdp"

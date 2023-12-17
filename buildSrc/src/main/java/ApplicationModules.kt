@@ -12,7 +12,7 @@ object ApplicationModules {
     const val dataModule = ":data"
     const val uiKit = ":uiKit"
     const val commonModule = ":common"
-    const val homeModule = ":features:home"
+    const val saveModule = ":features:save"
     const val loanModule = ":features:loan"
     const val settingModule = ":features:setting"
 }

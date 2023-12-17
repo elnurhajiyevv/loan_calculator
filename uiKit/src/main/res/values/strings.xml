@@ -9,7 +9,7 @@
     <string name="loan_rate_right">%1$s</string>
 
     <string name="default_channel_description">Exchange default notification</string>
-    <string name="bottom_menu_currency">Currency</string>
+    <string name="bottom_menu_save">Saved</string>
     <string name="bottom_menu_loan">Loan</string>
     <string name="loan_period_left">%1$s month</string>
     <string name="loan_period_right">%1$s months</string>
@@ -21,10 +21,9 @@
     <string name="select">Select</string>
     <string name="search">Search for a currency code</string>
     <string name="choose">Choose</string>
-    <string name="header_title">Exchange Loan Calculator</string>
     <string name="header_setting">Settings</string>
     <string name="bottom_menu_home">Home</string>
-    <string name="bottom_menu_setting">Unit Convert</string>
+    <string name="bottom_menu_setting">Setting</string>
     <string name="app_name">ELU Calculator</string>
     <string name="close">Close</string>
     <string name="no_internet_title">No internet connection</string>
@@ -84,6 +83,15 @@
     <string name="stone">Stone</string>
     <string name="pound">Pound</string>
     <string name="ounce">Ounce</string>
+
+
+
+    <string name="header_title">Loan Calculator</string>
+
+
+    <string name="unknown_error_title">Something went wrong</string>
+    <string name="unknown_error_text">Sorry, unexpected error has happened. Please try again later</string>
+
 
 
 </resources>

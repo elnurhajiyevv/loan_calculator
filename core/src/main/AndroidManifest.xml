@@ -6,4 +6,4 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="loan.exchange.core"/>
+    package="loan.calculator.core"/>

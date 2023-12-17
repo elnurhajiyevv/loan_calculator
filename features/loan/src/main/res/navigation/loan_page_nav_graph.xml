@@ -12,11 +12,11 @@
 
     <fragment
         android:id="@+id/loanPageFragment"
-        android:name="loan.exchange.loan.view.LoanPageFragment"
+        android:name="loan.calculator.loan.view.LoanPageFragment"
         tools:layout="@layout/fragment_loan_page">
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="vpn://home" />
+            app:uri="loan://home" />
 
     </fragment>
 

@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class loan.exchange.domain.entity.** { *; }
+-keep class loan.calculator.domain.entity.** { *; }

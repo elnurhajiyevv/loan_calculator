@@ -50,6 +50,8 @@ dependencies {
     // Lifecycle extensions
     implementation(ApplicationDependencies.lifecycleExtensions)
 
+    implementation(project(ApplicationModules.uiKit))
+
     //Constraint
     implementation(ApplicationDependencies.appLibraries)
 

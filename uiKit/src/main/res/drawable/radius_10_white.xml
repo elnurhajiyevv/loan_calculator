@@ -9,7 +9,7 @@
                 android:right="1dp"
                 android:top="1dp" />
             <solid android:color="#00000000" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
     <item>
@@ -20,7 +20,7 @@
                 android:right="1dp"
                 android:top="1dp" />
             <solid android:color="#01000000" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
     <item>
@@ -31,7 +31,7 @@
                 android:right="1dp"
                 android:top="1dp" />
             <solid android:color="#02000000" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
     <item>
@@ -42,7 +42,7 @@
                 android:right="1dp"
                 android:top="1dp" />
             <solid android:color="#03000000" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
     <item>
@@ -53,7 +53,7 @@
                 android:right="1dp"
                 android:top="1dp" />
             <solid android:color="#04000000" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
     <item>
@@ -64,7 +64,7 @@
                 android:right="1dp"
                 android:top="1dp" />
             <solid android:color="#05000000" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
 
@@ -74,7 +74,7 @@
             <stroke android:color="@color/color_pure_white"
                 android:width="@dimen/_1sdp"/>
             <solid android:color="@color/color_pure_white" />
-            <corners android:radius="@dimen/_8sdp" />
+            <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>
 </layer-list>

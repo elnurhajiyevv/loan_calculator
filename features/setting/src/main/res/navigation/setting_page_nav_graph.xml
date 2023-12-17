@@ -12,31 +12,12 @@
 
     <fragment
         android:id="@+id/settingPageFragment"
-        android:name="loan.exchange.setting.view.SettingPageFragment"
+        android:name="loan.calculator.setting.view.SettingPageFragment"
         tools:layout="@layout/fragment_setting_page">
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="exchange://setting" />
-        <action
-            android:id="@+id/action_settingPageFragment_to_convertUnitDetailPageFragment"
-            app:destination="@id/convertUnitDetailPageFragment" />
+            app:uri="loan://setting" />
     </fragment>
 
-
-    <fragment
-        android:id="@+id/convertUnitDetailPageFragment"
-        android:name="loan.exchange.setting.view.ConvertUnitDetailPageFragment"
-        tools:layout="@layout/fragment_convert_unit_detail_page">
-
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="exchange://convertunit" />
-
-        <argument
-            android:name="unitType"
-            app:argType="loan.exchange.domain.entity.enums.UNIT_TYPE"
-            android:defaultValue="WEIGHT"/>
-
-    </fragment>
 
 </navigation>

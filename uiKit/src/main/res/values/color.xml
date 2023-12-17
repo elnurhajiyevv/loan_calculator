@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray">#989898</color>
+    <color name="light_blue_100">#00B2FF</color>
+    <color name="red">#FF3B30</color>
+    <color name="color_error">#EA2227</color>
+    <color name="color_acid_green">#BAF400</color>
+
+
+
+    <!-- UI Color Kit -->
+    <color name="color_gray_one">#33C2CDDC</color>
+    <color name="color_gray_two">#4DC2CDDC</color>
+    <color name="color_gray_three">#C7C7CC</color>
+    <color name="color_gray_four">#B2C1DB</color>
+    <color name="color_gray_five">#2A3038</color>
+    <color name="color_gray_six">#F2F2F7</color>
+
+    <color name="color_tint_acid_green">#AEE400</color>
+    <color name="color_neon_green">#34C759</color>
+    <color name="color_midnight_green">#004852</color>
+    <color name="color_midnight_blue">#222246</color>
+    <color name="color_neon_red">#FF3B30</color>
+    <color name="color_bright_yellow">#FFCC00</color>
+    <color name="color_pure_black">#000000</color>
+    <color name="color_pure_white">#FFFFFF</color>
+    <color name="color_primary">#FFFFFF</color>
+    <color name="color_secondary">#F2F2F7</color>
+    <color name="color_tertiary">#05000000</color>
+    <color name="color_fills_primary">#FFFFFF</color>
+    <color name="color_fills_secondary">#29787880</color>
+    <color name="color_fills_tertiary">#1F767680</color>
+    <color name="color_fills_quarternary">#14747480</color>
+    <color name="color_labels_primary">#000000</color>
+    <color name="color_labels_secondary">#993C3C43</color>
+    <color name="color_labels_tertiary">#543C3C43</color>
+    <color name="color_labels_quarternary">#2E3C3C43</color>
+    <color name="color_separator_opaque">#C6C6C8</color>
+    <color name="color_separator_non_opaque">#543C3C43</color>
+
+    <!-- Main colors -->
+    <color name="system_background_secondary">#F9F9F9</color>
+    <color name="search_border_color">#20C2CDDC</color>
+
+    <color name="cashback_color">#704852B2</color>
+
+
+    <color name="color_success">#1AC321</color>
+    <color name="color_warning">#FFA11C</color>
+
+    <color name="color_check_in">#FFE609</color>
+    <color name="color_background">#F7F7F7</color>
+    <color name="color_active_text">#4A443F</color>
+    <color name="color_inactive_text">#BEBEBE</color>
+    <color name="color_icon">#919191</color>
+
+    <color name="color_border">#E0E0E0</color>
+    <color name="color_client_brand">#4B00FF</color>
+
+
+    <color name="text_primary">#4a443f</color>
+    <color name="text_secondary">#777777</color>
+    <color name="text_dark">#000000</color>
+
+
+    <color name="neon_blue">#0B38E8</color>
+    <color name="neon_blue2">#0027FE</color>
+    <color name="neon_blue3">#1B1FFE</color>
+    <color name="neon_blue4">#8200FF</color>
+    <color name="neon_purple">#D703FF</color>
+
+    <color name="dark_blue">#0c1837</color>
+    <color name="dark_yellow">#ffd600</color>
+    <color name="light_blue">#242f4b</color>
+    <color name="light_blue_70">#70242f4b</color>
+
+
+    <color name="gray_text">#9A9A9A</color>
+    <color name="violin">#DDDBFF</color>
+    <color name="loan_blue">#29BBCF</color>
+
+
+</resources>

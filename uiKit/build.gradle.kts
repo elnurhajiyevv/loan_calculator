@@ -47,7 +47,6 @@ android {
 }
 
 dependencies {
-    implementation(project(ApplicationModules.coreModule))
     implementation(project(ApplicationModules.domainModule))
     implementation(project(ApplicationModules.commonModule))
 

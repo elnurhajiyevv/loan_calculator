@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by Elnur Hajiyev on on 7/15/22, 6:07 PM
+  ~ Copyright (c) 2021 . All rights reserved to vpn
+  ~ This code is copyrighted and using this code without agreement from authors is forbidden
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/save_page_nav_graph"
+    app:startDestination="@id/savePageFragment">
+
+    <fragment
+        android:id="@+id/savePageFragment"
+        android:name="loan.calculator.save.view.SavePageFragment"
+        tools:layout="@layout/fragment_save_page">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="loan://save" />
+
+        <argument
+            android:name="sometext"
+            app:argType="string"
+            android:defaultValue="" />
+
+    </fragment>
+
+</navigation>

@@ -636,4 +636,12 @@
     <dimen name="_598sdp">598.00dp</dimen>
     <dimen name="_599sdp">599.00dp</dimen>
     <dimen name="_600sdp">600.00dp</dimen>
+
+    <dimen name="offset_half">12dp</dimen>
+    <dimen name="offset">16dp</dimen>
+    <dimen name="offset_big">24dp</dimen>
+    <dimen name="offset_very_big">32dp</dimen>
+    <dimen name="offset_64">64dp</dimen>
+    <dimen name="dialog_loading_width">280dp</dimen>
+
 </resources>

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="exchange.app" target="19" />
+      <module name="exchange.buildSrc" target="19" />
+      <module name="exchange.buildSrc.main" target="19" />
+      <module name="exchange.buildSrc.test" target="19" />
+      <module name="exchange.common" target="19" />
+      <module name="exchange.core" target="19" />
+      <module name="exchange.data" target="19" />
+      <module name="exchange.features.loan" target="19" />
+      <module name="exchange.features.save" target="19" />
+      <module name="exchange.features.setting" target="19" />
+      <module name="exchange.uiKit" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>
