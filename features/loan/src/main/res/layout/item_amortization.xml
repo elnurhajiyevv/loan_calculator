@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    android:id="@+id/main_container"
+    android:background="@color/color_pure_white">
+
+    <TextView
+        android:id="@+id/number"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/period"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@+id/interest"
+        app:layout_constraintBottom_toBottomOf="@+id/number"
+        app:layout_constraintStart_toEndOf="@+id/number"
+        app:layout_constraintTop_toTopOf="@+id/number"
+        tools:text="01/2024" />
+
+    <TextView
+        android:id="@+id/interest"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_height="match_parent"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@+id/principal"
+        app:layout_constraintBottom_toBottomOf="@+id/period"
+        app:layout_constraintStart_toEndOf="@+id/period"
+        app:layout_constraintTop_toTopOf="@+id/period"
+        tools:text="$1 000.50" />
+
+    <TextView
+        android:id="@+id/principal"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/interest"
+        app:layout_constraintEnd_toStartOf="@+id/balance"
+        app:layout_constraintStart_toEndOf="@+id/interest"
+        app:layout_constraintTop_toTopOf="@+id/interest"
+        tools:text="$6 000.50" />
+
+    <TextView
+        android:id="@+id/balance"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/principal"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/principal"
+        app:layout_constraintTop_toTopOf="@+id/principal"
+        tools:text="$65 000.50" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

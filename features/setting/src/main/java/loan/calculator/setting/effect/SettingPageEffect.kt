@@ -7,4 +7,5 @@
 package loan.calculator.setting.effect
 
 open class SettingPageEffect {
+    class OnAppVersion(val appVersion: String) : SettingPageEffect()
 }

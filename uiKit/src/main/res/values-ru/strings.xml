@@ -87,5 +87,12 @@
 
     <string name="unknown_error_title">Something went wrong</string>
     <string name="unknown_error_text">Sorry, unexpected error has happened. Please try again later</string>
+    <string name="amortization_title">Amortization Table</string>
+    <string name="app_theme">App theme</string>
+    <string name="change_language">English</string>
+    <string name="change_language_description">Tap to change language</string>
+    <string name="rate_us">Rate us on the play store</string>
+    <string name="bug_report">Bug report or suggestions</string>
+    <string name="app_version">Current app version: %1$s</string>
 
 </resources>

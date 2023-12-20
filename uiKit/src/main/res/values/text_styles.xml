@@ -16,43 +16,43 @@
 
     <style name="regular_caption2" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_18sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="regular_caption3" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_20sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="regular_caption4" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_22sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="regular_caption5" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_24sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="regular_caption6" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_26sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="regular_caption7" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_28sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="regular_caption8" parent="Default_Regular">
         <item name="android:textSize">@dimen/text_size_30sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
@@ -66,37 +66,37 @@
 
     <style name="light_caption1" parent="Default_Light">
         <item name="android:textSize">@dimen/text_size_14sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="light_caption2" parent="Default_Light">
         <item name="android:textSize">@dimen/text_size_16sp</item>
-        <item name="android:textColor">@color/color_pure_white</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="light_caption3" parent="Default_Light">
         <item name="android:textSize">@dimen/text_size_18sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="light_caption4" parent="Default_Light">
         <item name="android:textSize">@dimen/text_size_20sp</item>
-        <item name="android:textColor">@color/color_pure_white</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="light_caption5" parent="Default_Light">
         <item name="android:textSize">@dimen/text_size_22sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="light_caption6" parent="Default_Light">
         <item name="android:textSize">@dimen/text_size_24sp</item>
-        <item name="android:textColor">@color/color_pure_white</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
@@ -116,31 +116,31 @@
 
     <style name="bold_caption2" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_20sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="bold_caption3" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_22sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="bold_caption4" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_24sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="bold_caption5" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_26sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="bold_caption6" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_28sp</item>
-        <item name="android:textColor">@color/color_pure_black</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
@@ -153,19 +153,19 @@
 
     <style name="medium_caption1" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_18sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="medium_caption2" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_20sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="medium_caption3" parent="Default_Semibold">
         <item name="android:textSize">@dimen/text_size_22sp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/gray_text</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 

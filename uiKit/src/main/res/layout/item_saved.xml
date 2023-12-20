@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/radius_1_white"
+    android:paddingBottom="@dimen/_20sdp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo"
+        style="@style/bold_caption1"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_margin="@dimen/_10sdp"
+        tools:background="@drawable/bg_balance"
+        android:padding="@dimen/_1sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_text"
+        style="@style/bold_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo"
+        tools:text="Masin krediti" />
+
+    <TextView
+        android:id="@+id/start_date_text"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/title_text"
+        tools:text="Start date:" />
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/start_date_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/start_date_text"
+        app:layout_constraintTop_toTopOf="@+id/start_date_text"
+        tools:text="12/18/2023" />
+
+    <TextView
+        android:id="@+id/paid_off_text"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/start_date_text"
+        tools:text="Paid off:" />
+
+    <TextView
+        android:id="@+id/paid_off"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/paid_off_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/paid_off_text"
+        app:layout_constraintTop_toTopOf="@+id/paid_off_text"
+        tools:text="12/15/2025" />
+
+
+    <TextView
+        android:id="@+id/loan_amount_text"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/paid_off_text"
+        tools:text="Loan amount:" />
+
+    <TextView
+        android:id="@+id/loan"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/loan_amount_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/loan_amount_text"
+        app:layout_constraintTop_toTopOf="@+id/loan_amount_text"
+        tools:text="$100 000.56" />
+
+
+    <TextView
+        android:id="@+id/interest_rate_text"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/loan_amount_text"
+        tools:text="Interest rate:" />
+
+    <TextView
+        android:id="@+id/interest_rate"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/interest_rate_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/interest_rate_text"
+        app:layout_constraintTop_toTopOf="@+id/interest_rate_text"
+        tools:text="12.0%" />
+
+    <TextView
+        android:id="@+id/frequency_text"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/interest_rate_text"
+        tools:text="Compounding frequency:" />
+
+    <TextView
+        android:id="@+id/frequency"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/frequency_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frequency_text"
+        app:layout_constraintTop_toTopOf="@+id/frequency_text"
+        tools:text="Montly" />
+
+    <TextView
+        android:id="@+id/total_repayment_text"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintTop_toBottomOf="@+id/frequency_text"
+        tools:text="Total repayment" />
+
+    <TextView
+        android:id="@+id/total_repayment"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/total_repayment_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/total_repayment_text"
+        app:layout_constraintTop_toTopOf="@+id/total_repayment_text"
+        tools:text="$105 567.60" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

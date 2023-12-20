@@ -9,20 +9,9 @@ class AuthPreferences @Inject constructor(@ApplicationContext context: Context) 
     override val filename = "auth_prefs"
 
     companion object {
-        const val LAST_SELECTED_AMOUNT = "last_selected_amount"
-        const val LAST_SELECTED_CONVERTER = "last_selected_converter"
-        const val LAST_RATE = "last_rate"
+        const val LIGHT_THEME = "LIGHT_THEME"
     }
-    var lastSelectedAmount
-        get() = get(LAST_SELECTED_AMOUNT, "USD")
-        set(value) = set(LAST_SELECTED_AMOUNT, value)
-
-    var lastSelectedConverter
-        get() = get(LAST_SELECTED_CONVERTER, "EUR")
-        set(value) = set(LAST_SELECTED_CONVERTER, value)
-
-    var lastRate
-        get() = get(LAST_RATE, 0.918345f)
-        set(value) = set(LAST_RATE, value)
-
+    var isLightTheme
+        get() = get(LIGHT_THEME, false)
+        set(value) = set(LIGHT_THEME, value)
 }

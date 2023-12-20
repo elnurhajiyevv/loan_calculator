@@ -1,4 +1,4 @@
-package loan.calculator.loan.bottomsheet
+package loan.calculator.setting.bottomsheet
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
@@ -12,24 +12,24 @@ import loan.calculator.common.extensions.dp
 import loan.calculator.core.base.BaseNotSerializableBottomSheet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import loan.calculator.domain.entity.home.SavedModel
-import loan.calculator.loan.R
-import loan.calculator.loan.databinding.DialogFragmentCurrencyBinding
+import loan.calculator.domain.entity.home.LanguageModel
+import loan.calculator.setting.R
+import loan.calculator.setting.adapter.LanguageAdapter
+import loan.calculator.setting.databinding.DialogLanguageBinding
 
-
-class CurrencyMenuBottomSheet : BaseNotSerializableBottomSheet() {
+class LanguageMenuBottomSheet : BaseNotSerializableBottomSheet() {
 
     private var backButton = false
-    private lateinit var itemList: List<SavedModel>
-    private var onItemsSelected: ((SavedModel) -> Unit)? = null
+    private lateinit var itemList: List<LanguageModel>
+    private var onItemsSelected: ((LanguageModel) -> Unit)? = null
     private var onDismiss: (() -> Unit)? = null
     private var onBack: (() -> Unit)? = null
 
-    lateinit var binding: DialogFragmentCurrencyBinding
-    lateinit var currencyAdapter: loan.calculator.loan.adapter.CurrencyAdapter
+    lateinit var binding: DialogLanguageBinding
+    lateinit var languageAdapter: LanguageAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = DialogFragmentCurrencyBinding.inflate(inflater, container, false)
+        binding = DialogLanguageBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -50,20 +50,20 @@ class CurrencyMenuBottomSheet : BaseNotSerializableBottomSheet() {
                 solidColor = R.color.color_pure_white,
                 radius = floatArrayOf(24.dp.toFloat(), 24.dp.toFloat(), 24.dp.toFloat(), 24.dp.toFloat(), 0f, 0f, 0f, 0f)
             )
-            recyclerViewCard.layoutManager = LinearLayoutManager(context)
-            recyclerViewCard.setHasFixedSize(true)
+            recyclerViewLanguage.layoutManager = LinearLayoutManager(context)
+            recyclerViewLanguage.setHasFixedSize(true)
 
-            currencyAdapter = loan.calculator.loan.adapter.CurrencyAdapter(
+            languageAdapter = LanguageAdapter(
                 itemList,
-                loan.calculator.loan.adapter.CurrencyAdapter.CurrencyItemClick {
+                LanguageAdapter.LanguageItemClick {
                     onItemsSelected?.invoke(it)
-                    this@CurrencyMenuBottomSheet.dismiss()
+                    this@LanguageMenuBottomSheet.dismiss()
                 })
-            recyclerViewCard.adapter = currencyAdapter
+            recyclerViewLanguage.adapter = languageAdapter
             search.setOnSearchAction {
-                currencyAdapter.filter(it)
+                languageAdapter.filter(it)
             }
-            backButton.setOnClickListener {
+            applyButton.setOnClickListener {
                 onDismiss?.invoke()
             }
 
@@ -77,16 +77,16 @@ class CurrencyMenuBottomSheet : BaseNotSerializableBottomSheet() {
 
 
     class Builder {
-        var itemList: List<SavedModel>? = null
-        var onItemsSelected: ((SavedModel) -> Unit)? = null
+        var itemList: List<LanguageModel>? = null
+        var onItemsSelected: ((LanguageModel) -> Unit)? = null
         var onDismiss: (() -> Unit)? = null
         var onBack: (() -> Unit)? = null
 
-        fun itemList(itemList: () -> List<SavedModel>) {
+        fun itemList(itemList: () -> List<LanguageModel>) {
             this.itemList = itemList()
         }
 
-        fun onItemsSelected(onItemsSelected: (SavedModel) -> Unit) {
+        fun onItemsSelected(onItemsSelected: (LanguageModel) -> Unit) {
             this.onItemsSelected = onItemsSelected
         }
 
@@ -97,8 +97,8 @@ class CurrencyMenuBottomSheet : BaseNotSerializableBottomSheet() {
             this.onBack = onBack
         }
 
-        fun build(): CurrencyMenuBottomSheet? {
-            val bottomSheet = CurrencyMenuBottomSheet()
+        fun build(): LanguageMenuBottomSheet? {
+            val bottomSheet = LanguageMenuBottomSheet()
             bottomSheet.itemList = itemList?:return null
             bottomSheet.onItemsSelected = onItemsSelected
             bottomSheet.onDismiss = onDismiss
@@ -110,5 +110,5 @@ class CurrencyMenuBottomSheet : BaseNotSerializableBottomSheet() {
 
 }
 
-fun currencyMenuBottomSheet(lambda: CurrencyMenuBottomSheet.Builder.() -> Unit) =
-    CurrencyMenuBottomSheet.Builder().apply(lambda).build()
+fun languageMenuBottomSheet(lambda: LanguageMenuBottomSheet.Builder.() -> Unit) =
+    LanguageMenuBottomSheet.Builder().apply(lambda).build()

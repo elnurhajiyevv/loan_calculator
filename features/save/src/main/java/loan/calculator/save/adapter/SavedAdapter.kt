@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.home.SavedModel
-import loan.calculator.save.databinding.ItemSavedBinding
+import loan.calculator.uikit.databinding.ItemSavedBinding
 
 class SavedAdapter(
     private val clickListener: SavedItemClick

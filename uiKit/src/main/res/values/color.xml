@@ -6,6 +6,10 @@
     <color name="color_error">#EA2227</color>
     <color name="color_acid_green">#BAF400</color>
 
+    <color name="background_color">#EFF1F5</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
 
 
     <!-- UI Color Kit -->
@@ -75,7 +79,7 @@
     <color name="light_blue_70">#70242f4b</color>
 
 
-    <color name="gray_text">#9A9A9A</color>
+    <color name="gray_text">#858585</color>
     <color name="violin">#DDDBFF</color>
     <color name="loan_blue">#29BBCF</color>
 

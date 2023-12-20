@@ -10,6 +10,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.setting.databinding.FragmentSettingPageBinding
 import loan.calculator.setting.effect.SettingPageEffect
@@ -18,15 +20,15 @@ import loan.calculator.setting.viewmodel.SettingPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.enums.UNIT_TYPE
+import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.entity.unit.UnitModel
 import loan.calculator.setting.R
 import loan.calculator.setting.adapter.UnitAdapter
+import loan.calculator.setting.bottomsheet.LanguageMenuBottomSheet
+import loan.calculator.setting.bottomsheet.languageMenuBottomSheet
 
 @AndroidEntryPoint
 class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, SettingPageViewModel, FragmentSettingPageBinding>() {
-
-    lateinit var unitAdapter: UnitAdapter
-    private lateinit var itemList: List<UnitModel>
 
     override val bindingCallback: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSettingPageBinding
         get() = FragmentSettingPageBinding::inflate
@@ -34,31 +36,52 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
     override fun getViewModelClass() = SettingPageViewModel::class.java
     override fun getViewModelScope() = this
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //startAppAd = StartAppAd(this)
+
+    override val bindViews: FragmentSettingPageBinding.() -> Unit = {
+
+        // get app version
+        viewmodel.getCurrentApplicationVersionName()
+
+        // disable toolbar back button
+        toolbar.setBackButtonVisibility(show = false)
+
+        switchOnOff.isChecked = viewmodel.getLightTheme()
+        // handle language change
+        switchOnOff.setOnCheckedChangeListener { buttonView, isChecked ->
+            AppCompatDelegate.setDefaultNightMode(if(isChecked)AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES)
+            viewmodel.setLightTheme(isChecked)
+        }
+        changeLanguage.setOnClickListener {
+            // get list of available languages
+            // viewmodel.getLanguage()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        unitAdapter = UnitAdapter(getItemList(), UnitAdapter.UnitItemClick {
-
-        })
-        binding.recyclerViewUnit.adapter = unitAdapter
     }
 
-    private fun getItemList(): List<UnitModel>{
-        var arrayList = arrayListOf<UnitModel>()
-        arrayList.add(UnitModel("ic_weight",requireContext().getString(R.string.weight), UNIT_TYPE.WEIGHT))
-        arrayList.add(UnitModel("ic_volume",requireContext().getString(R.string.volume),UNIT_TYPE.VOLUME))
-        arrayList.add(UnitModel("ic_temperature",requireContext().getString(R.string.temperature),UNIT_TYPE.TEMPERATURE))
-        arrayList.add(UnitModel("ic_length",requireContext().getString(R.string.length),UNIT_TYPE.LENGTH))
-        arrayList.add(UnitModel("ic_speed",requireContext().getString(R.string.speed),UNIT_TYPE.SPEED))
-        arrayList.add(UnitModel("ic_area",requireContext().getString(R.string.area),UNIT_TYPE.AREA))
-        arrayList.add(UnitModel("ic_time",requireContext().getString(R.string.time),UNIT_TYPE.TIME))
-        arrayList.add(UnitModel("ic_pressure",requireContext().getString(R.string.pressure),UNIT_TYPE.PRESSURE))
-        arrayList.add(UnitModel("ic_storage",requireContext().getString(R.string.storage),UNIT_TYPE.STORAGE))
-        return arrayList.toList()
+    override fun observeEffect(effect: SettingPageEffect) {
+        when(effect){
+            is SettingPageEffect.OnAppVersion -> {
+                binding.appVersion.text = getString(R.string.app_version, effect.appVersion)
+            }
+        }
+    }
+
+    override fun observeState(state: SettingPageState) {
+        when(state){
+            is SettingPageState.ListOfLanguage -> openLanguageBottomModule(state.list)
+        }
+    }
+
+    private fun openLanguageBottomModule(list: List<LanguageModel>){
+        languageMenuBottomSheet {
+            itemList = list
+            onItemsSelected = {
+                // update language when selected
+            }
+        }?.show(childFragmentManager, LanguageMenuBottomSheet::class.java.canonicalName)
     }
 
 }

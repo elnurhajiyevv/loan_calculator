@@ -5,10 +5,10 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_calc</item>
         <item name="android:windowSplashScreenBrandingImage" tools:ignore="NewApi">@drawable/ic_branding_icon</item>
         <item name="windowSplashScreenAnimationDuration">100</item>
-        <item name="postSplashScreenTheme">@style/Theme.ExchangeAndroid</item>
+        <item name="postSplashScreenTheme">@style/Theme.LoanAndroid</item>
     </style>
 
-    <style name="Theme.ExchangeAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.LoanAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryVariant">@color/color_primary</item>
@@ -26,7 +26,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Exchange_Cursor_Edit_Text" parent="Theme.ExchangeAndroid">
+    <style name="Exchange_Cursor_Edit_Text" parent="Theme.LoanAndroid">
         <item name="colorControlNormal">@color/loan_blue</item>
         <item name="colorControlActivated">@color/loan_blue</item>
         <item name="colorControlHighlight">@color/loan_blue</item>

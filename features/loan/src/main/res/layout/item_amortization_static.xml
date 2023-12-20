@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/number"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="#" />
+
+    <TextView
+        android:id="@+id/period"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@+id/interest"
+        app:layout_constraintBottom_toBottomOf="@+id/number"
+        app:layout_constraintStart_toEndOf="@+id/number"
+        app:layout_constraintTop_toTopOf="@+id/number"
+        android:text="Period" />
+
+    <TextView
+        android:id="@+id/interest"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_height="match_parent"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@+id/principal"
+        app:layout_constraintBottom_toBottomOf="@+id/period"
+        app:layout_constraintStart_toEndOf="@+id/period"
+        app:layout_constraintTop_toTopOf="@+id/period"
+        android:text="Interest" />
+
+    <TextView
+        android:id="@+id/principal"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/interest"
+        app:layout_constraintEnd_toStartOf="@+id/balance"
+        app:layout_constraintStart_toEndOf="@+id/interest"
+        app:layout_constraintTop_toTopOf="@+id/interest"
+        android:text="Principal" />
+
+    <TextView
+        android:id="@+id/balance"
+        style="@style/light_caption1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/principal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/principal"
+        app:layout_constraintTop_toTopOf="@+id/principal"
+        android:text="Balance" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

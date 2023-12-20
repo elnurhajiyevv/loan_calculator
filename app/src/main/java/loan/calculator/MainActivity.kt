@@ -3,6 +3,7 @@ package loan.calculator
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity() {
 
     private val hiddenBottomNavigationViews by lazy {
         setOf(
-            R.id.settingPageFragment,
+            R.id.amortizationFragment,
         )
     }
 
@@ -49,6 +50,9 @@ class MainActivity : BaseActivity() {
         mainActivityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(this)).also {
             setContentView(it.root)
         }
+
+        AppCompatDelegate.setDefaultNightMode(if(mainViewModel.getLightTheme()) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES)
+
         setStartGraph(savedInstanceState = savedInstanceState)
 
     }

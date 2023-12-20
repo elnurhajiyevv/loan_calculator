@@ -6,78 +6,13 @@ import loan.calculator.uikit.R
 fun String.getImageResource(): Int{
     var returnResource = 0
     returnResource = when(this){
-        "AZN" -> R.drawable.ic_azerbaijan
-        "ALL" -> R.drawable.ic_albania
-        "ARS" -> R.drawable.ic_argentina
-        "AUD" -> R.drawable.ic_australia
-        "AED" -> R.drawable.ic_united_arab_emirates
-        "AFN" -> R.drawable.ic_afghanistan
-        "AMD" -> R.drawable.ic_armenia
-        "AOA" -> R.drawable.ic_angola
+        "AZ" -> R.drawable.ic_azerbaijan
+        "TR" -> R.drawable.ic_turkey
+        "RU" -> R.drawable.ic_russia
+        "USA" -> R.drawable.ic_united_states
+        "GB" -> R.drawable.ic_united_kingdom
+        "GE" -> R.drawable.ic_georgia
 
-        "BRL" -> R.drawable.ic_brazil
-        "BMD" -> R.drawable.ic_bermuda
-        "BHD" -> R.drawable.ic_bahrain
-        "BDT" -> R.drawable.ic_bangladesh
-        "BYN" -> R.drawable.ic_belarus
-        "BOB" -> R.drawable.ic_bolivia
-        "BAM" -> R.drawable.ic_bosnia_and_herzegovina
-        "BGN" -> R.drawable.ic_bulgaria
-
-        "CHF" -> R.drawable.ic_switzerland
-        "CZK" -> R.drawable.ic_czech_republic
-        "CAD" -> R.drawable.ic_canada
-        "CLP" -> R.drawable.ic_chile
-        "CNY" -> R.drawable.ic_china
-        "CRC" -> R.drawable.ic_costa_rica
-        "CUC" -> R.drawable.ic_cuba
-
-        "DZD" -> R.drawable.ic_algeria
-        "DKK" -> R.drawable.ic_denmark
-
-        "EGP" -> R.drawable.ic_egypt
-        "EUR" -> R.drawable.ic_european_union
-        "ETB" -> R.drawable.ic_ethiopia
-
-        "FJD" -> R.drawable.ic_fiji
-
-        "GHS" -> R.drawable.ic_ghana
-        "GBP" -> R.drawable.ic_united_kingdom
-        "GEL" -> R.drawable.ic_georgia
-
-        "HKD" -> R.drawable.ic_hong_kong
-        "HRK" -> R.drawable.ic_croatia
-
-        "INR" -> R.drawable.ic_india
-        "ISK" -> R.drawable.ic_iceland
-        "IQD" -> R.drawable.ic_iraq
-        "IRR" -> R.drawable.ic_iran
-        "ILS" -> R.drawable.ic_israel
-
-        "JMD" -> R.drawable.ic_jamaica
-        "JPY" -> R.drawable.ic_japan
-
-        "KHR" -> R.drawable.ic_cambodia
-        "KZT" -> R.drawable.ic_kazakhstan
-        "KWD" -> R.drawable.ic_kuwait
-
-
-        "MNT" -> R.drawable.ic_mongolia
-        "MYR" -> R.drawable.ic_malaysia
-
-        "PKR" -> R.drawable.ic_pakistan
-        "PLN" -> R.drawable.ic_poland
-
-
-        "RUB" -> R.drawable.ic_russia
-
-        "SYS" -> R.drawable.ic_el_salvador
-        "SZL" -> R.drawable.ic_swaziland
-
-        "TRY" -> R.drawable.ic_turkey
-        "TMT" -> R.drawable.ic_turkmenistan
-
-        "USD" -> R.drawable.ic_united_states
 
         else -> R.drawable.bg_balance
     }

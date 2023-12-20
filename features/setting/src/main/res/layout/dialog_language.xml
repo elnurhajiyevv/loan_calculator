@@ -29,27 +29,27 @@
         app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_card"
+        android:id="@+id/recyclerView_language"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_3sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/back_button"
+        app:layout_constraintBottom_toTopOf="@+id/apply_button"
         app:layout_constraintEnd_toEndOf="@+id/search"
         app:layout_constraintStart_toStartOf="@+id/search"
         app:layout_constraintTop_toBottomOf="@+id/search"
-        tools:itemCount="40"
-        tools:listitem="@layout/item_currency" />
+        tools:itemCount="6"
+        tools:listitem="@layout/item_language" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/back_button"
+        android:id="@+id/apply_button"
         style="@style/medium_caption1"
         android:layout_height="@dimen/_50sdp"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/_20sdp"
         android:background="@drawable/radius_button"
         android:gravity="center"
-        android:text="@string/close"
+        android:text="@string/apply"
         android:textColor="@color/color_pure_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

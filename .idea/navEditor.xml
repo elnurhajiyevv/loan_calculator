@@ -39,17 +39,34 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="amortizationFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-53" />
+                            <option name="y" value="-11" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="loanPageFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="-286" />
+                            <option name="y" value="-11" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_loanPageFragment_to_amortizationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="deepLink">
                               <value>
                                 <LayoutPositions />

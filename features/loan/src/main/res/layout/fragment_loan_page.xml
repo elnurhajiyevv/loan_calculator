@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#EFF1F5"
+    android:background="@color/background_color"
     android:layout_height="match_parent">
 
     <loan.calculator.uikit.toolbar.LoanToolbar
@@ -48,6 +48,7 @@
                     android:layout_width="@dimen/_64sdp"
                     android:padding="@dimen/_18sdp"
                     android:layout_height="0dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:background="@color/color_gray_four"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -89,13 +90,28 @@
                     app:layout_constraintStart_toEndOf="@+id/loan_amount_part"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/loan_amount_currency"
+                    style="@style/regular_caption4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    android:text="$"
+                    android:textColor="@color/gray_text"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/loan_amount_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/loan_amount_textview" />
+
+
                 <EditText
                     android:id="@+id/loan_amount_edittext"
                     style="@style/regular_caption4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="$100 000.00"
+                    android:hint="0.00"
+                    android:textColorHint="@color/gray_text"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLines="1"
@@ -104,7 +120,7 @@
                     android:textColor="@color/gray_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/loan_amount_textview"
+                    app:layout_constraintStart_toEndOf="@+id/loan_amount_currency"
                     app:layout_constraintTop_toBottomOf="@+id/loan_amount_textview" />
 
 
@@ -127,6 +143,7 @@
                     android:layout_height="0dp"
                     android:background="@color/color_gray_four"
                     android:padding="@dimen/_18sdp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -173,9 +190,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="4.5"
+                    android:hint="0"
+                    android:textColorHint="@color/gray_text"
                     android:imeOptions="actionDone"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:paddingVertical="@dimen/_6sdp"
                     android:paddingRight="@dimen/_10sdp"
@@ -216,6 +234,7 @@
                     android:layout_height="0dp"
                     android:background="@color/color_gray_four"
                     android:padding="@dimen/_18sdp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -272,7 +291,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="1"
+                        android:hint="0"
+                        android:textColorHint="@color/gray_text"
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLines="1"
@@ -323,7 +343,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="6"
+                        android:hint="0"
+                        android:textColorHint="@color/gray_text"
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLines="1"
@@ -366,6 +387,7 @@
                     android:layout_height="0dp"
                     android:background="@color/light_blue_100"
                     android:padding="@dimen/_18sdp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -406,13 +428,28 @@
                     app:layout_constraintStart_toEndOf="@+id/loan_payment_part"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/loan_payment_currency"
+                    style="@style/regular_caption4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    android:text="$"
+                    android:textColor="@color/gray_text"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/loan_payment_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/loan_payment_textview" />
+
+
                 <EditText
                     android:id="@+id/loan_payment_edittext"
                     style="@style/regular_caption4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="$100 000.00"
+                    android:hint="0"
+                    android:textColorHint="@color/gray_text"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLines="1"
@@ -421,7 +458,7 @@
                     android:textColor="@color/gray_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/loan_payment_seperator"
-                    app:layout_constraintStart_toStartOf="@+id/loan_payment_textview"
+                    app:layout_constraintStart_toEndOf="@+id/loan_payment_currency"
                     app:layout_constraintTop_toBottomOf="@+id/loan_payment_textview" />
 
 
@@ -430,7 +467,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:spinnerMode="dropdown"
-                    android:backgroundTint="@color/light_blue_100"
+                    android:gravity="center"
+                    android:entries="@array/loanItems"
+                    android:drawSelectorOnTop="true"
+                    android:background="#EFF1F5"
+                    android:layout_margin="@dimen/_3sdp"
                     android:theme="@android:style/Theme.Holo.Light"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -457,7 +498,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center"
-                android:text="$23,456.00"
+                android:text="$0.00"
                 app:layout_constraintEnd_toEndOf="@+id/total_interest_textview"
                 app:layout_constraintStart_toStartOf="@+id/loan_payment"
                 app:layout_constraintTop_toBottomOf="@+id/total_interest_textview" />
@@ -493,7 +534,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center"
-                android:text="$345,675.00"
+                android:text="$0.00"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
                 app:layout_constraintTop_toBottomOf="@+id/total_repayment_textview" />
@@ -502,25 +543,27 @@
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/back_button"
-                app:layout_constraintStart_toStartOf="@+id/back_button"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="@dimen/_200sdp"
+                app:layout_constraintEnd_toEndOf="@+id/apply_button"
+                app:layout_constraintStart_toStartOf="@+id/apply_button"
                 app:layout_constraintTop_toBottomOf="@+id/seperator_bottom" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/back_button"
+                android:id="@+id/apply_button"
                 style="@style/medium_caption1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:background="@drawable/radius_button"
                 android:gravity="center"
-                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="Amortization Table"
                 android:textColor="@color/color_pure_white"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/loan_payment"
-                app:layout_constraintStart_toStartOf="@+id/loan_payment" />
+                app:layout_constraintStart_toStartOf="@+id/loan_payment"
+                app:layout_constraintTop_toBottomOf="@+id/chart" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

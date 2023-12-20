@@ -1,0 +1,46 @@
+package loan.calculator.loan.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import loan.calculator.core.base.BaseAdapter
+import loan.calculator.domain.entity.home.AmortizationModel
+import loan.calculator.loan.R
+import loan.calculator.loan.databinding.ItemAmortizationBinding
+import java.text.NumberFormat
+
+class AmortizationAdapter : BaseAdapter<AmortizationModel, AmortizationAdapter.AmortizationViewHolder>(areItemsTheSame = { oldItem, newItem ->
+        oldItem.beginningBalance == newItem.beginningBalance && oldItem.endingBalance == newItem.endingBalance
+    }) {
+
+    var nf: NumberFormat = NumberFormat.getCurrencyInstance()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AmortizationViewHolder {
+        return AmortizationViewHolder(
+            ItemAmortizationBinding.inflate(
+                LayoutInflater.from(
+                    parent.context
+                ), parent, false
+            )
+        )
+    }
+
+    class AmortizationViewHolder(private val binding: ItemAmortizationBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(numberFormat: NumberFormat,model: AmortizationModel) {
+            binding.apply {
+                binding.mainContainer.setBackgroundColor(ContextCompat.getColor(binding.root.context, if(model.month % 2 == 0) R.color.background_color else R.color.color_pure_white))
+                binding.number.text = model.month.toString()
+                binding.period.text = numberFormat.format(model.beginningBalance)
+                binding.interest.text = numberFormat.format(model.interest)
+                binding.principal.text = numberFormat.format(model.principal)
+                binding.balance.text = numberFormat.format(model.endingBalance)
+            }
+        }
+    }
+
+    override fun onBindViewHolder(holder: AmortizationViewHolder, position: Int) {
+        holder.bind(nf,getItem(position))
+    }
+}

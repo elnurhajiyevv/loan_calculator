@@ -34,7 +34,7 @@ class LoanToolbar @JvmOverloads constructor(
     private var titleStyle: Int = 0
     private var toolbarOption: Int = LoanToolbarOption.WITH_LEFT_AND_RIGHT.value
     private var toolbarRightActionIcon: Int = R.drawable.ic_saved
-    private var toolbarLeftActionIcon: Int = R.drawable.ic_reset
+    private var toolbarLeftActionIcon: Int = R.drawable.ic_remove
 
     var navigationIcon: Drawable?
         get() {
@@ -62,7 +62,7 @@ class LoanToolbar @JvmOverloads constructor(
                     titleStyle = getInt(R.styleable.LoanToolbar_android_textStyle,0)
                     toolbarLeftActionIcon = getResourceId(
                         R.styleable.LoanToolbar_loan_toolbar_left_action_icon,
-                        R.drawable.ic_reset
+                        R.drawable.ic_remove
                     )
                     toolbarRightActionIcon = getResourceId(
                         R.styleable.LoanToolbar_loan_toolbar_right_action_icon,

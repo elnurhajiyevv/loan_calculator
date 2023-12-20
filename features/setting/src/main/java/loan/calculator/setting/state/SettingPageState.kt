@@ -6,5 +6,8 @@
 
 package loan.calculator.setting.state
 
+import loan.calculator.domain.entity.home.LanguageModel
+
 sealed class SettingPageState {
+    class ListOfLanguage(val list: List<LanguageModel>): SettingPageState()
 }
