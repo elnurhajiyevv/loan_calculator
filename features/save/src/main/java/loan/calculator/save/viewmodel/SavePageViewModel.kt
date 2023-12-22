@@ -20,7 +20,7 @@ class SavePageViewModel @Inject constructor(
         observeSavedLoanUseCase.execute(ObserveSavedLoanUseCase.Param())
             .filterNotNull()
             .onEach {
-                //postState(SavePageState.GetSavedList()
+                //postState(SavePageState.GetSavedList())
             }
             .launchNoLoading()
         refreshSavedLoanUseCase.launch(RefreshSavedLoanUseCase.Param())

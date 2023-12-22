@@ -7,7 +7,6 @@
 package loan.calculator.setting.effect
 
 import loan.calculator.domain.entity.home.LanguageModel
-import loan.calculator.setting.state.SettingPageState
 
 open class SettingPageEffect {
     class OnAppVersion(val appVersion: String) : SettingPageEffect()

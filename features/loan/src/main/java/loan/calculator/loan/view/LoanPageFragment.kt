@@ -9,13 +9,14 @@ package loan.calculator.loan.view
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -38,6 +39,8 @@ import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.LoanPageState
 import loan.calculator.loan.viewmodel.LoanPageViewModel
 import loan.calculator.uikit.extension.enableSumFormatting
+import loan.calculator.uikit.util.setBackgroundColor
+import loan.calculator.uikit.util.setBackgroundResources
 
 
 @AndroidEntryPoint
@@ -93,37 +96,61 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             )
         }
 
-        loanAmountEdittext.setOnClickListenerDebounce {
+        loanAmountEdittext.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                try {
+                    // getValor(s)
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
+            }
+        })
 
-        }
+        loanRateEdittext.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                try {
+                    // getValor(s)
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
+            }
+        })
 
-        loanRateEdittext.setOnClickListenerDebounce {
+        loanPaymentEdittext.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                try {
+                    //getValor(s)
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
+            }
+        })
+    }
 
-        }
-
-        loanPaymentEdittext.setOnClickListenerDebounce {
-
-        }
-
-        loanPaymentEdittext.setOnClickListenerDebounce {
-
-        }
-
+    fun getValor(s: CharSequence): Double {
+        return if (s.isNotEmpty()) s.toString().replace("", " ").replace(" ", "")
+            .toDouble() else 0.0
     }
 
     private fun saveValues() {
 
     }
 
-    fun showPieChart(){
+    private fun showPieChart(){
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(25f, 5f, 25f, 0f)
         binding.chart.isDrawHoleEnabled = true
         binding.chart.setHoleColor(Color.WHITE)
 
         val yvalues: MutableList<PieEntry> = ArrayList()
-        yvalues.add(PieEntry(3600.28f, info[0]))
-        yvalues.add(PieEntry(10360.28f, info[1]))
+        yvalues.add(PieEntry(6618.55f, info[0]))
+        yvalues.add(PieEntry(106618.55f, info[1]))
         val dataSet = PieDataSet(yvalues, "")
         dataSet.sliceSpace = 3f
 
@@ -153,7 +180,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         binding.chart.holeRadius = 35f
         data.setValueTextSize(13f)
         data.setValueTextColor(Color.WHITE)
-        binding.chart.animateXY(1500, 1500)
+        binding.chart.animateXY(500, 500)
         binding.chart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
             override fun onValueSelected(e: Entry?, h: Highlight?) {
 
@@ -196,14 +223,14 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     }
 
     private fun resetSelection() {
-        binding.loanPayment.setBackgroundResource(R.drawable.radius_10_white)
-        binding.loanPaymentPart.setBackgroundColor(resources.getColor(R.color.color_gray_four))
-        binding.loanAmount.setBackgroundResource(R.drawable.radius_10_white)
-        binding.loanAmountPart.setBackgroundColor(resources.getColor(R.color.color_gray_four))
-        binding.loanRate.setBackgroundResource(R.drawable.radius_10_white)
-        binding.loanRatePart.setBackgroundColor(resources.getColor(R.color.color_gray_four))
-        binding.loanPeriod.setBackgroundResource(R.drawable.radius_10_white)
-        binding.loanPeriodPart.setBackgroundColor(resources.getColor(R.color.color_gray_four))
+        setBackgroundResources(
+            resource = R.drawable.radius_10_white,
+            binding.loanPayment,binding.loanAmount,binding.loanRate,binding.loanPeriod)
+
+        setBackgroundColor(
+            color = resources.getColor(R.color.color_gray_four),
+            binding.loanPaymentPart,binding.loanAmountPart,binding.loanRatePart,binding.loanPeriodPart
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -230,6 +257,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                 }
             }?.show(childFragmentManager, FilterLoanBottomSheet::class.java.canonicalName)
         }*/
+
     }
 
 
