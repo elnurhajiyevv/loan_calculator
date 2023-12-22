@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gray">#989898</color>
-    <color name="light_blue_100">#00B2FF</color>
-    <color name="red">#FF3B30</color>
-    <color name="color_error">#EA2227</color>
-    <color name="color_acid_green">#BAF400</color>
-
-    <color name="background_color">@color/color_pure_white</color>
-    <color name="gray_text">#F2F2F7</color>
-    <color name="color_pure_black">#FFFFFF</color>
-    <color name="color_pure_white">#000000</color>
-    <color name="black">#cfcfcf</color>
-    <color name="white">#242424</color>
-
 
     <!-- UI Color Kit -->
     <color name="color_gray_one">#33C2CDDC</color>
@@ -21,6 +8,30 @@
     <color name="color_gray_four">#B2C1DB</color>
     <color name="color_gray_five">#2A3038</color>
     <color name="color_gray_six">#F2F2F7</color>
+    <color name="background_color">@color/black</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white_black">#000000</color>
+    <color name="black_white">#FFFFFF</color>
+    <color name="item_background">#20C2CDDC</color>
+    <color name="edittext_background">#29787880</color>
+    <color name="spinner_background">#20C2CDDC</color>
+
+
+
+    <color name="gray">#989898</color>
+    <color name="light_blue_100">#00B2FF</color>
+    <color name="red">#FF3B30</color>
+    <color name="color_error">#EA2227</color>
+    <color name="color_acid_green">#BAF400</color>
+
+    <color name="gray_text">#F2F2F7</color>
+    <color name="color_pure_black">#FFFFFF</color>
+    <color name="color_pure_white">#000000</color>
+
+
+
+
 
     <color name="color_tint_acid_green">#AEE400</color>
     <color name="color_neon_green">#34C759</color>

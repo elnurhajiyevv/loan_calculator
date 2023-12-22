@@ -6,26 +6,27 @@
 
 package loan.calculator.setting.view
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
+import dagger.hilt.android.AndroidEntryPoint
+import loan.calculator.common.library.util.marketLink
+import loan.calculator.common.library.util.webLink
 import loan.calculator.core.base.BaseFragment
+import loan.calculator.domain.entity.home.LanguageModel
+import loan.calculator.setting.R
+import loan.calculator.setting.bottomsheet.LanguageMenuBottomSheet
+import loan.calculator.setting.bottomsheet.languageMenuBottomSheet
 import loan.calculator.setting.databinding.FragmentSettingPageBinding
 import loan.calculator.setting.effect.SettingPageEffect
 import loan.calculator.setting.state.SettingPageState
 import loan.calculator.setting.viewmodel.SettingPageViewModel
-import dagger.hilt.android.AndroidEntryPoint
-import loan.calculator.core.tools.NavigationCommand
-import loan.calculator.domain.entity.enums.UNIT_TYPE
-import loan.calculator.domain.entity.home.LanguageModel
-import loan.calculator.domain.entity.unit.UnitModel
-import loan.calculator.setting.R
-import loan.calculator.setting.adapter.UnitAdapter
-import loan.calculator.setting.bottomsheet.LanguageMenuBottomSheet
-import loan.calculator.setting.bottomsheet.languageMenuBottomSheet
+
 
 @AndroidEntryPoint
 class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, SettingPageViewModel, FragmentSettingPageBinding>() {
@@ -53,7 +54,11 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         }
         changeLanguage.setOnClickListener {
             // get list of available languages
-            // viewmodel.getLanguage()
+            viewmodel.getLanguage()
+        }
+        rateUs.setOnClickListener {
+            // get app package name
+            viewmodel.getPackageName()
         }
     }
 
@@ -66,12 +71,30 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
             is SettingPageEffect.OnAppVersion -> {
                 binding.appVersion.text = getString(R.string.app_version, effect.appVersion)
             }
+            is SettingPageEffect.OnPackageName -> {
+                navigateToRateUs(effect.packageName)
+            }
+            is SettingPageEffect.ListOfLanguage -> {
+                openLanguageBottomModule(effect.list)
+            }
         }
     }
 
-    override fun observeState(state: SettingPageState) {
-        when(state){
-            is SettingPageState.ListOfLanguage -> openLanguageBottomModule(state.list)
+    private fun navigateToRateUs(packageName: String) {
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("$marketLink$packageName")
+                )
+            )
+        } catch (e: ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("$webLink$packageName")
+                )
+            )
         }
     }
 

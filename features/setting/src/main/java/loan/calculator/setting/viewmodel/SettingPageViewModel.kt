@@ -7,6 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.usecase.settingpage.GetAppVersionUseCase
 import loan.calculator.domain.usecase.settingpage.GetLightThemeUseCase
+import loan.calculator.domain.usecase.settingpage.GetPackageNameUseCase
 import loan.calculator.domain.usecase.settingpage.SetLightThemeUseCase
 import javax.inject.Inject
 
@@ -14,7 +15,8 @@ import javax.inject.Inject
 class SettingPageViewModel @Inject constructor(
     private val getAppVersionUseCase: GetAppVersionUseCase,
     private val getLightThemeUseCase: GetLightThemeUseCase,
-    private val setLightThemeUseCase: SetLightThemeUseCase
+    private val setLightThemeUseCase: SetLightThemeUseCase,
+    private val getPackageNameUseCase: GetPackageNameUseCase
 ) : BaseViewModel<SettingPageState, SettingPageEffect>() {
 
 
@@ -22,6 +24,14 @@ class SettingPageViewModel @Inject constructor(
         getAppVersionUseCase.launch(Unit) {
             onSuccess = {
                 postEffect(effect = SettingPageEffect.OnAppVersion(it))
+            }
+        }
+    }
+
+    fun getPackageName() {
+        getPackageNameUseCase.launch(Unit) {
+            onSuccess = {
+                postEffect(effect = SettingPageEffect.OnPackageName(it))
             }
         }
     }
@@ -39,7 +49,7 @@ class SettingPageViewModel @Inject constructor(
             list.add(LanguageModel("RU","Russian"))
             list.add(LanguageModel("TR","Turkish"))
             list.add(LanguageModel("GE","Georgian"))
-            postState(state = SettingPageState.ListOfLanguage(list))
+            postEffect(effect = SettingPageEffect.ListOfLanguage(list))
         }
     }
 }
