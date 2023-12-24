@@ -26,6 +26,7 @@ import loan.calculator.setting.databinding.FragmentSettingPageBinding
 import loan.calculator.setting.effect.SettingPageEffect
 import loan.calculator.setting.state.SettingPageState
 import loan.calculator.setting.viewmodel.SettingPageViewModel
+import loan.calculator.uikit.extension.getImageResource
 
 
 @AndroidEntryPoint
@@ -54,12 +55,19 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         }
         changeLanguage.setOnClickListener {
             // get list of available languages
-            viewmodel.getLanguage()
+            viewmodel.getLanguageList()
         }
         rateUs.setOnClickListener {
             // get app package name
             viewmodel.getPackageName()
         }
+
+        // get app language and update UI
+        getAndUpdateLanguage()
+    }
+
+    private fun getAndUpdateLanguage() {
+        setLanguage(viewmodel.getLanguage())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,8 +111,19 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
             itemList = list
             onItemsSelected = {
                 // update language when selected
+                updateSelectedLanguage(it)
             }
         }?.show(childFragmentManager, LanguageMenuBottomSheet::class.java.canonicalName)
+    }
+
+    private fun updateSelectedLanguage(language: LanguageModel) {
+        viewmodel.setLanguage(language)
+        setLanguage(language)
+    }
+
+    private fun setLanguage(language: LanguageModel){
+        binding.changeLanguageImage.setImageResource(language.name.getImageResource())
+        binding.changeLanguageText.text = language.nationalName
     }
 
 }

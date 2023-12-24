@@ -6,6 +6,7 @@ import loan.calculator.uikit.R
 fun String.getImageResource(): Int{
     var returnResource = 0
     returnResource = when(this){
+        // language
         "AZ" -> R.drawable.ic_azerbaijan
         "TR" -> R.drawable.ic_turkey
         "RU" -> R.drawable.ic_russia
@@ -13,6 +14,12 @@ fun String.getImageResource(): Int{
         "GB" -> R.drawable.ic_united_kingdom
         "GE" -> R.drawable.ic_georgia
 
+        //icon
+        "laptop" -> R.drawable.ic_laptop
+        "phone" -> R.drawable.ic_phone
+        "card" -> R.drawable.ic_card
+        "car" -> R.drawable.ic_car
+        "home" -> R.drawable.ic_home
 
         else -> R.drawable.bg_balance
     }

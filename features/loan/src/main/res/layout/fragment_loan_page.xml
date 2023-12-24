@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/background_color"
     android:layout_height="match_parent">
@@ -45,7 +44,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/loan_amount_part"
-                    android:layout_width="@dimen/_64sdp"
+                    android:layout_width="@dimen/_70sdp"
                     android:padding="@dimen/_18sdp"
                     android:layout_height="0dp"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -111,12 +110,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_1sdp"
                     android:background="@null"
+                    android:paddingVertical="@dimen/_9sdp"
                     android:hint="100 000.00"
                     android:textColorHint="@color/gray_text"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:paddingVertical="@dimen/_6sdp"
                     android:paddingRight="@dimen/_10sdp"
                     android:textColor="@color/gray_text"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -140,7 +139,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/loan_rate_part"
-                    android:layout_width="@dimen/_64sdp"
+                    android:layout_width="@dimen/_70sdp"
                     android:layout_height="0dp"
                     android:background="@color/item_background"
                     android:padding="@dimen/_18sdp"
@@ -196,7 +195,7 @@
                     android:imeOptions="actionDone"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
-                    android:paddingVertical="@dimen/_6sdp"
+                    android:paddingVertical="@dimen/_9sdp"
                     android:paddingRight="@dimen/_10sdp"
                     android:textColor="@color/gray_text"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -231,7 +230,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/loan_period_part"
-                    android:layout_width="@dimen/_64sdp"
+                    android:layout_width="@dimen/_70sdp"
                     android:layout_height="0dp"
                     android:background="@color/item_background"
                     android:padding="@dimen/_18sdp"
@@ -297,7 +296,7 @@
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:paddingVertical="@dimen/_6sdp"
+                        android:paddingVertical="@dimen/_9sdp"
                         android:paddingRight="@dimen/_10sdp"
                         android:textColor="@color/gray_text"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -349,7 +348,7 @@
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:paddingVertical="@dimen/_6sdp"
+                        android:paddingVertical="@dimen/_9sdp"
                         android:paddingRight="@dimen/_10sdp"
                         android:textColor="@color/gray_text"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -384,7 +383,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/loan_payment_part"
-                    android:layout_width="@dimen/_64sdp"
+                    android:layout_width="@dimen/_70sdp"
                     android:layout_height="0dp"
                     android:background="@color/light_blue_100"
                     android:padding="@dimen/_18sdp"
@@ -397,7 +396,7 @@
                         android:id="@+id/loan_payment_image"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:src="@drawable/ic_unlock"
+                        android:src="@drawable/ic_lock"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -550,21 +549,33 @@
                 app:layout_constraintStart_toStartOf="@+id/apply_button"
                 app:layout_constraintTop_toBottomOf="@+id/seperator_bottom" />
 
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                app:adSize="BANNER"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chart" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/apply_button"
                 style="@style/medium_caption1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
                 android:background="@drawable/radius_button"
                 android:gravity="center"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:text="Amortization Table"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:textColor="@color/color_pure_white"
-                app:layout_constraintEnd_toEndOf="@+id/loan_payment"
-                app:layout_constraintStart_toStartOf="@+id/loan_payment"
-                app:layout_constraintTop_toBottomOf="@+id/chart" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adView" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

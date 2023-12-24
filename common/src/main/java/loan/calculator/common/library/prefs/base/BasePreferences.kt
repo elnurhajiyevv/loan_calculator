@@ -40,6 +40,9 @@ abstract class BasePreferences {
             is Boolean -> {
                 editor?.putBoolean(item, value)
             }
+            else -> {
+                editor?.putString(item, value as String)
+            }
         }
         editor?.apply()
     }

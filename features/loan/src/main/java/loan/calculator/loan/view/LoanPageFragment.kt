@@ -16,6 +16,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.annotation.ColorInt
+import androidx.appcompat.widget.AppCompatImageView
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
@@ -41,6 +43,7 @@ import loan.calculator.loan.viewmodel.LoanPageViewModel
 import loan.calculator.uikit.extension.enableSumFormatting
 import loan.calculator.uikit.util.setBackgroundColor
 import loan.calculator.uikit.util.setBackgroundResources
+import loan.calculator.uikit.util.setImageResources
 
 
 @AndroidEntryPoint
@@ -139,7 +142,8 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     }
 
     private fun saveValues() {
-
+        val saveDialog = SaveDialog()
+        saveDialog.show(parentFragmentManager,"saveDialog")
     }
 
     private fun showPieChart(){
@@ -166,9 +170,10 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         binding.chart.setEntryLabelTextSize(13f)
         val colors = intArrayOf(
             Color.GRAY,
-            Color.GREEN
+            0xFF00B2FF.toInt()
         )
         dataSet.colors = ColorTemplate.createColors(colors)
+
 
         val d = Description()
         d.textSize = 18f
@@ -204,22 +209,24 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         resetSelection()
         when(type){
             SELECT_PART.AMOUNT -> {
-                binding.loanAmount.setBackgroundResource(R.drawable.radius_10_blue)
-                binding.loanAmountPart.setBackgroundColor(resources.getColor(R.color.light_blue_100))
+                selection(binding.loanAmount,binding.loanAmountPart,binding.loanAmountImage)
             }
             SELECT_PART.PERIOD -> {
-                binding.loanPeriod.setBackgroundResource(R.drawable.radius_10_blue)
-                binding.loanPeriodPart.setBackgroundColor(resources.getColor(R.color.light_blue_100))
+                selection(binding.loanPeriod,binding.loanPeriodPart,binding.loanPeriodImage)
             }
             SELECT_PART.RATE -> {
-                binding.loanRate.setBackgroundResource(R.drawable.radius_10_blue)
-                binding.loanRatePart.setBackgroundColor(resources.getColor(R.color.light_blue_100))
+                selection(binding.loanRate,binding.loanRatePart,binding.loanRateImage)
             }
             SELECT_PART.PAYMENT -> {
-                binding.loanPayment.setBackgroundResource(R.drawable.radius_10_blue)
-                binding.loanPaymentPart.setBackgroundColor(resources.getColor(R.color.light_blue_100))
+                selection(binding.loanPayment,binding.loanPaymentPart,binding.loanPaymentImage)
             }
         }
+    }
+
+    private fun selection(backgroundResource: View, backgroundColor: View, imageView: AppCompatImageView) {
+        backgroundResource.setBackgroundResource(R.drawable.radius_10_blue)
+        backgroundColor.setBackgroundColor(resources.getColor(R.color.light_blue_100))
+        imageView.setImageResource(R.drawable.ic_lock)
     }
 
     private fun resetSelection() {
@@ -230,6 +237,10 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         setBackgroundColor(
             color = resources.getColor(R.color.color_gray_four),
             binding.loanPaymentPart,binding.loanAmountPart,binding.loanRatePart,binding.loanPeriodPart
+        )
+        setImageResources(
+            resource = R.drawable.ic_unlock,
+            binding.loanAmountImage,binding.loanRateImage,binding.loanPaymentImage,binding.loanPeriodImage
         )
     }
 

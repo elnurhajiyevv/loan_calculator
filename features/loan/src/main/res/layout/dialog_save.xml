@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/header"
-        style="@style/bold_caption4"
+        style="@style/regular_caption2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_32sdp"
@@ -38,14 +38,13 @@
         android:background="@color/white"
         android:layout_marginTop="@dimen/_10sdp"
         android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@+id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header">
 
         <TextView
             android:id="@+id/icon_text"
-            style="@style/regular_caption3"
+            style="@style/regular_caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/icon"
@@ -69,7 +68,7 @@
 
         <TextView
             android:id="@+id/name_text"
-            style="@style/regular_caption3"
+            style="@style/regular_caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16sdp"
@@ -79,15 +78,15 @@
 
         <EditText
             android:id="@+id/name_edittext"
-            style="@style/regular_caption3"
+            style="@style/regular_caption1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/background_color"
+            android:background="@drawable/bg_etittext"
+            android:paddingVertical="@dimen/_9sdp"
             android:hint="Value"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLines="1"
-            android:paddingVertical="@dimen/_6sdp"
             android:paddingLeft="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:textColor="@color/gray_text"
@@ -98,7 +97,7 @@
 
         <TextView
             android:id="@+id/start_text"
-            style="@style/regular_caption3"
+            style="@style/regular_caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32sdp"
@@ -108,17 +107,27 @@
 
         <TextView
             android:id="@+id/data_text"
-            style="@style/regular_caption3"
+            style="@style/regular_caption1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="12/22/2023"
-            android:paddingVertical="@dimen/_6sdp"
+            android:paddingVertical="@dimen/_9sdp"
             android:paddingLeft="@dimen/_4sdp"
-            android:background="@color/background_color"
+            android:background="@drawable/bg_etittext"
             android:layout_marginTop="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/start_text" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/calendar"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_calendar"
+            android:padding="@dimen/_4sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/data_text"
+            app:layout_constraintEnd_toEndOf="@+id/data_text"
+            app:layout_constraintTop_toTopOf="@+id/data_text" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -132,11 +141,12 @@
         android:layout_marginLeft="@dimen/_5sdp"
         android:background="@drawable/radius_button"
         android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
         android:text="@string/save"
         android:textColor="@color/color_pure_white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cancel_button"/>
+        app:layout_constraintStart_toEndOf="@+id/cancel_button"
+        app:layout_constraintTop_toBottomOf="@+id/body_container" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancel_button"
@@ -148,8 +158,9 @@
         android:gravity="center"
         android:text="@string/cancel"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/save_button"
         app:layout_constraintEnd_toStartOf="@+id/save_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/save_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

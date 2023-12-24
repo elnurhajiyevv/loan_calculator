@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class SaveRepositoryImpl @Inject constructor(
     private val homeApi: HomeApi,
-    private val authPreferences: AuthPreferences,
+    private val settingPreferences: SettingPreferences,
     private val getSavedLoanLocalDataSource: GetSavedLoanLocalDataSource,
 ) : SaveRepository {
 

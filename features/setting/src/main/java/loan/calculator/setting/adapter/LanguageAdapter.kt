@@ -2,15 +2,20 @@ package loan.calculator.setting.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.home.LanguageModel
+import loan.calculator.setting.R
 import loan.calculator.setting.databinding.ItemLanguageBinding
 import loan.calculator.uikit.extension.getImageResource
 
 class LanguageAdapter(private val itemList: List<LanguageModel>, private val clickListener: LanguageItemClick) : BaseAdapter<LanguageModel, LanguageAdapter.LanguageViewHolder>(
     areItemsTheSame = { oldItem, newItem -> oldItem.name == newItem.name && oldItem.nationalName == newItem.nationalName }) {
 
+    init {
+        submitList(itemList)
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LanguageViewHolder {
         return LanguageViewHolder(
             ItemLanguageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -41,6 +46,9 @@ class LanguageAdapter(private val itemList: List<LanguageModel>, private val cli
                 binding.logo.setImageResource(model.name.getImageResource())
                 binding.title.text = model.name
                 binding.description.text = model.nationalName
+                if(model.isSelected){
+                    binding.mainLayout.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.background_color))
+                }
             }
         }
     }

@@ -6,8 +6,10 @@ import loan.calculator.setting.state.SettingPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.usecase.settingpage.GetAppVersionUseCase
+import loan.calculator.domain.usecase.settingpage.GetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.GetLightThemeUseCase
 import loan.calculator.domain.usecase.settingpage.GetPackageNameUseCase
+import loan.calculator.domain.usecase.settingpage.SetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.SetLightThemeUseCase
 import javax.inject.Inject
 
@@ -16,7 +18,9 @@ class SettingPageViewModel @Inject constructor(
     private val getAppVersionUseCase: GetAppVersionUseCase,
     private val getLightThemeUseCase: GetLightThemeUseCase,
     private val setLightThemeUseCase: SetLightThemeUseCase,
-    private val getPackageNameUseCase: GetPackageNameUseCase
+    private val getPackageNameUseCase: GetPackageNameUseCase,
+    private val getLanguageUseCase: GetLanguageUseCase,
+    private val setLanguageUseCase: SetLanguageUseCase
 ) : BaseViewModel<SettingPageState, SettingPageEffect>() {
 
 
@@ -42,14 +46,30 @@ class SettingPageViewModel @Inject constructor(
         setLightThemeUseCase.invoke(SetLightThemeUseCase.Params(isLightTheme = isOn))
     }
 
-    fun getLanguage(){
+    fun getLanguage() = getLanguageUseCase.invoke(Unit)
+
+    fun setLanguage(language:LanguageModel){
+        setLanguageUseCase.invoke(SetLanguageUseCase.Params(language = language))
+    }
+
+
+    fun getLanguageList(){
         var list = arrayListOf<LanguageModel>()
+        list.clear()
         launchAll {
-            list.add(LanguageModel("USA","English"))
-            list.add(LanguageModel("RU","Russian"))
-            list.add(LanguageModel("TR","Turkish"))
-            list.add(LanguageModel("GE","Georgian"))
+            list.add(LanguageModel("en","USA",LANGUAGENAME.ENGLISH.type))
+            list.add(LanguageModel("ru","RU",LANGUAGENAME.RUSSIAN.type))
+            list.add(LanguageModel("tr","TR",LANGUAGENAME.TURKISH.type))
+            list.add(LanguageModel("ge","GE",LANGUAGENAME.GEORGIAN.type))
+            list.forEach {
+                if(it.code == getLanguage().code)
+                    it.isSelected = true
+            }
             postEffect(effect = SettingPageEffect.ListOfLanguage(list))
         }
+    }
+
+    enum class LANGUAGENAME(var type: String) {
+        ENGLISH("English"), RUSSIAN("Russian"), TURKISH("Turkish"), GEORGIAN("Georgian")
     }
 }

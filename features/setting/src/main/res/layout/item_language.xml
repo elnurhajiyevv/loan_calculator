@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_3sdp"
-    android:background="?android:attr/selectableItemBackground"
+    android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
-    android:paddingHorizontal="@dimen/_5sdp"
-    android:paddingVertical="@dimen/_8sdp">
+    android:id="@+id/main_layout"
+    android:paddingHorizontal="@dimen/_10sdp"
+    android:paddingVertical="@dimen/_12sdp">
 
     <ImageView
         android:id="@+id/logo"

@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/period"
-        style="@style/light_caption1"
+        style="@style/regular_caption1"
         android:layout_width="0dp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_height="match_parent"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/interest"
-        style="@style/light_caption1"
+        style="@style/regular_caption1"
         android:layout_width="0dp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_height="match_parent"
@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/principal"
-        style="@style/light_caption1"
+        style="@style/regular_caption1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -58,7 +58,7 @@
 
     <TextView
         android:id="@+id/balance"
-        style="@style/light_caption1"
+        style="@style/regular_caption1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/_10sdp"

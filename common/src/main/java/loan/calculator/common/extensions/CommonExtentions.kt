@@ -83,6 +83,14 @@ fun Date.asFormattedTime(): String? {
     return SimpleDateFormat("HH:mm", Locale.UK).format(this)
 }
 
+fun Date.asFormattedDateWithDot(format: String = "dd.MM.yyyy"): String {
+    return try {
+        SimpleDateFormat(format, Locale.getDefault()).format(this)
+    } catch (e: Exception) {
+        ""
+    }
+}
+
 @SuppressLint("SimpleDateFormat")
 fun Date.asFormattedDateTime(): String {
     return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(this)
