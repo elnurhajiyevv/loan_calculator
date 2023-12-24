@@ -1,10 +1,11 @@
 package loan.calculator.data.mapper
 
 import loan.calculator.data.local.GetSavedLoanLocalDto
-import loan.calculator.domain.entity.home.response.GetSavedLoanResponseModel
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
 
 fun GetSavedLoanLocalDto.toRemote(
-) = GetSavedLoanResponseModel(
+) = GetSavedLoanModel(
     name = name,
+    code = code,
     description = description
 )

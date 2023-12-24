@@ -10,5 +10,6 @@ import androidx.room.PrimaryKey
 data class GetSavedLoanLocalDto(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "name") val name: String?,
+    @ColumnInfo(name = "code") val code: String?,
     @ColumnInfo(name = "description") val description: String?
 )

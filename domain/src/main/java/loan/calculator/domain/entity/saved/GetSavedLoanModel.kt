@@ -1,9 +1,10 @@
-package loan.calculator.domain.entity.home.response
+package loan.calculator.domain.entity.saved
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-class GetSavedLoanResponseModel(
+class GetSavedLoanModel(
     val name: String?,
+    val code: String?,
     val description: String?
 )

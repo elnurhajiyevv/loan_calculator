@@ -7,14 +7,14 @@ import loan.calculator.domain.repository.SaveRepository
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class GetSavedLoanUseCase @Inject constructor(
+class InsertSaveLoanUseCase @Inject constructor(
     context: CoroutineContext,
     converter: ErrorConverter,
     private val repository: SaveRepository
-) : BaseUseCase<GetSavedLoanUseCase.Params, GetSavedLoanModel?>(context, converter) {
+) : BaseUseCase<InsertSaveLoanUseCase.Params, Unit>(context, converter) {
 
-    override suspend fun executeOnBackground(params: Params) = repository.getSavedLoan(params.name)
+    override suspend fun executeOnBackground(params: Params) = repository.saveLoan(params.model)
 
-    class Params(val name: String)
+    class Params(val model: GetSavedLoanModel)
 
 }

@@ -1,7 +1,7 @@
 package loan.calculator.data.remote.api
 
 import loan.calculator.domain.entity.home.response.ConvertCurrencyResponseModel
-import loan.calculator.domain.entity.home.response.GetSavedLoanResponseModel
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.home.response.LatestRatesResponseModel
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface HomeApi {
 
     @GET("currencies")
-    suspend fun getCurrencies(): GetSavedLoanResponseModel
+    suspend fun getCurrencies(): GetSavedLoanModel
 
     @GET("latest-rates")
     suspend fun getLatestExchangeRates(

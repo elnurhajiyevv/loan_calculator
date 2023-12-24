@@ -274,7 +274,8 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     override fun observeState(state: LoanPageState) {
         when(state){
-            is LoanPageState.GetCurrency -> {}
+
+            else -> {}
         }
     }
 

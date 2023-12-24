@@ -4,16 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
-import loan.calculator.domain.entity.home.SavedModel
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
+
 import loan.calculator.uikit.databinding.ItemSavedBinding
 
 class SavedAdapter(
     private val clickListener: SavedItemClick
-) : BaseAdapter<SavedModel, SavedAdapter.CurrencyViewHolder>(areItemsTheSame = {
+) : BaseAdapter<GetSavedLoanModel, SavedAdapter.SavedViewHolder>(areItemsTheSame = {
         oldItem, newItem -> oldItem.name == newItem.name }) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
-        return CurrencyViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedViewHolder {
+        return SavedViewHolder(
             ItemSavedBinding.inflate(
                 LayoutInflater.from(
                     parent.context
@@ -22,14 +23,14 @@ class SavedAdapter(
         )
     }
 
-    class SavedItemClick(val clickListener: (model: SavedModel) -> Unit) {
-        fun onClick(model: SavedModel) = clickListener(model)
+    class SavedItemClick(val clickListener: (model: GetSavedLoanModel) -> Unit) {
+        fun onClick(model: GetSavedLoanModel) = clickListener(model)
     }
 
 
-    class CurrencyViewHolder(private val binding: ItemSavedBinding) :
+    class SavedViewHolder(private val binding: ItemSavedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(model: SavedModel) {
+        fun bind(model: GetSavedLoanModel) {
             binding.apply {
                 titleText.text = model.name
                 startDateText.text = model.name
@@ -37,7 +38,7 @@ class SavedAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SavedViewHolder, position: Int) {
         holder.bind(getItem(position))
         holder.itemView.setOnClickListener {
             clickListener.onClick(getItem(position))

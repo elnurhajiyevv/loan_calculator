@@ -7,25 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.core.delegate.viewBinding
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.IconAdapter
 import loan.calculator.loan.bottomsheet.DatePickerBottomSheet
 import loan.calculator.loan.bottomsheet.datePickerBottomSheet
 import loan.calculator.loan.databinding.DialogSaveBinding
+import loan.calculator.loan.viewmodel.SaveDialogViewModel
 
+@AndroidEntryPoint
 class SaveDialog: DialogFragment() {
 
     lateinit var iconAdapter: IconAdapter
 
     private val binding by viewBinding(DialogSaveBinding::bind)
-
+    private val saveDialogViewModel: SaveDialogViewModel by viewModels()
     override fun onResume() {
         // Set the width of the dialog proportional to 90% of the screen width
         val window = dialog?.window
@@ -56,6 +62,10 @@ class SaveDialog: DialogFragment() {
 
         binding.cancelButton.setOnClickListenerDebounce {
             dismiss()
+        }
+
+        binding.saveButton.setOnClickListener {
+            saveDialogViewModel.insertSavedLoan(GetSavedLoanModel("test","telebe","description1"))
         }
 
         binding.calendar.setOnClickListenerDebounce {

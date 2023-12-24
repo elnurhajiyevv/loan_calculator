@@ -59,6 +59,7 @@ dependencies {
     implementation(ApplicationDependencies.hiltAndroid)
     implementation("com.google.android.gms:play-services-ads-lite:22.1.0")
     kapt(ApplicationDependencies.hiltCompiler)
+    implementation(ApplicationDependencies.shimmer)
     implementation("com.startapp:inapp-sdk:4.11.+")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.libraries.places:places:3.2.0")

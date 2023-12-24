@@ -38,6 +38,8 @@ object ApplicationDependencies {
 
     const val securityCrypto = "androidx.security:security-crypto:1.1.0-alpha03"
 
+    const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+
     //Core components
     const val appcompat = "androidx.appcompat:appcompat:${ApplicationVersions.appcompat}"
     private const val coreKtx = "androidx.core:core-ktx:${ApplicationVersions.coreKtx}"

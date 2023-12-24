@@ -15,6 +15,7 @@
     <color name="item_background">#B2C1DB</color>
     <color name="edittext_background">#ffffff</color>
     <color name="spinner_background">#EFF1F5</color>
+    <color name="color_shimmer_background">#cccccc</color>
 
 
 

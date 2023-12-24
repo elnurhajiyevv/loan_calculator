@@ -24,13 +24,10 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
     fun getLanguage(): LanguageModel {
         val format = Json { isLenient = true }
         val defaultValue = LanguageModel("en","USA","English")
-        return prefs.getString(LANGUAGE, null)?.let {
-            try {
-                format.decodeFromString<LanguageModel>(it)
-            } catch (ex: Exception) {
-                defaultValue
-            }
-        } ?: defaultValue
+        return if(get(LANGUAGE,"").isNullOrEmpty())
+            defaultValue
+        else
+            format.decodeFromString(get(LANGUAGE,""))
     }
 
     fun setLanguage(model: LanguageModel) {

@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
 import loan.calculator.domain.entity.home.SavedModel
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.save.adapter.SavedAdapter
 import loan.calculator.save.databinding.FragmentSavePageBinding
 
@@ -42,6 +43,9 @@ class SavePageFragment : BaseFragment<SavePageState, SavePageEffect, SavePageVie
 
     override val bindViews: FragmentSavePageBinding.() -> Unit = {
         toolbar.setBackButtonVisibility(show = false)
+
+        // getSavedLoans
+        viewmodel.getSavedLoans()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,14 +63,23 @@ class SavePageFragment : BaseFragment<SavePageState, SavePageEffect, SavePageVie
     override fun observeState(state: SavePageState) {
         when(state){
             is SavePageState.GetSavedList -> updateSavedList(state.savedList)
+            is SavePageState.DeleteSaveLoan -> deletedLoan()
         }
     }
 
-    private fun updateSavedList(savedList: List<SavedModel>) {
-        if(savedList.isNullOrEmpty())
+    private fun deletedLoan() {
+
+    }
+
+    private fun updateSavedList(savedList: List<GetSavedLoanModel>) {
+        if(savedList.isNullOrEmpty()){
+            binding.shimmerLayoutSaved.gone()
             binding.noData.show()
-        else {
+            binding.recyclerViewSaved.gone()
+        } else {
             binding.noData.gone()
+            binding.shimmerLayoutSaved.gone()
+            binding.recyclerViewSaved.show()
             savedAdapter.submitList(savedList)
         }
     }

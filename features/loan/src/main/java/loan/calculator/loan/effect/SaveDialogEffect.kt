@@ -4,9 +4,7 @@
  * This code is copyrighted and using this code without agreement from authors is forbidden
  */
 
-package loan.calculator.loan.state
+package loan.calculator.loan.effect
 
-import loan.calculator.domain.entity.saved.GetSavedLoanModel
-
-sealed class LoanPageState {
+open class SaveDialogEffect {
 }
