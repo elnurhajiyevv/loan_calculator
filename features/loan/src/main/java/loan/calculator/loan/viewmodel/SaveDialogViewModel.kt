@@ -17,7 +17,7 @@ class SaveDialogViewModel @Inject constructor(
     fun insertSavedLoan(model: GetSavedLoanModel) {
         insertSaveLoanUseCase.launch(InsertSaveLoanUseCase.Params(model = model)) {
             onSuccess = {
-                postState(SaveDialogState.InsertSavedLoan(model))
+                postEffect(SaveDialogEffect.InsertSavedLoan(model))
             }
         }
     }

@@ -6,9 +6,6 @@
 
 package loan.calculator.loan.state
 
-import loan.calculator.domain.entity.saved.GetSavedLoanModel
-
 
 sealed class SaveDialogState {
-    class InsertSavedLoan(var model: GetSavedLoanModel): SaveDialogState()
 }

@@ -6,5 +6,9 @@
 
 package loan.calculator.loan.effect
 
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.loan.state.SaveDialogState
+
 open class SaveDialogEffect {
+    class InsertSavedLoan(var model: GetSavedLoanModel): SaveDialogEffect()
 }
