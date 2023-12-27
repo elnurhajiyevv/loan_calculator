@@ -7,5 +7,14 @@ fun GetSavedLoanLocalDto.toRemote(
 ) = GetSavedLoanModel(
     name = name,
     code = code,
-    description = description
+    description = description,
+    type = type,
+    background = background,
+    src = src,
+    startDate = startDate,
+    paidOff = paidOff,
+    loanAmount = loanAmount,
+    interestRate = interestRate,
+    compoundingFrequency = compoundingFrequency,
+    totalPayment = totalPayment
 )

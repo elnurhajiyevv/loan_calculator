@@ -16,8 +16,9 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_margin="@dimen/_10sdp"
-        tools:background="@drawable/bg_balance"
-        android:padding="@dimen/_1sdp"
+        tools:background="@drawable/bg_item"
+        android:src="@drawable/ic_car"
+        android:padding="@dimen/_10sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +40,7 @@
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/title_text"
-        tools:text="Start date:" />
+        android:text="@string/start_date" />
 
     <TextView
         android:id="@+id/description"
@@ -62,7 +63,7 @@
         android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/start_date_text"
-        tools:text="Paid off:" />
+        android:text="@string/paid_off" />
 
     <TextView
         android:id="@+id/paid_off"
@@ -86,7 +87,7 @@
         android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/paid_off_text"
-        tools:text="Loan amount:" />
+        android:text="@string/loan_amount" />
 
     <TextView
         android:id="@+id/loan"
@@ -110,7 +111,7 @@
         android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/loan_amount_text"
-        tools:text="Interest rate:" />
+        android:text="@string/interest_rate" />
 
     <TextView
         android:id="@+id/interest_rate"
@@ -133,7 +134,7 @@
         android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/interest_rate_text"
-        tools:text="Compounding frequency:" />
+        android:text="@string/compounding_frequency" />
 
     <TextView
         android:id="@+id/frequency"
@@ -156,7 +157,7 @@
         android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/frequency_text"
-        tools:text="Total repayment" />
+        android:text="@string/total_repayment" />
 
     <TextView
         android:id="@+id/total_repayment"

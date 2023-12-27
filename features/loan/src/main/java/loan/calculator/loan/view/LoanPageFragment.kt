@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.EditText
 import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatImageView
 import com.github.mikephil.charting.components.Description
@@ -29,10 +30,12 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.setOnClickListenerDebounce
+import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.loan.R
@@ -210,16 +213,27 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         when(type){
             SELECT_PART.AMOUNT -> {
                 selection(binding.loanAmount,binding.loanAmountPart,binding.loanAmountImage)
+                disableSelection(binding.loanAmountEdittext, setSelection = false)
             }
             SELECT_PART.PERIOD -> {
                 selection(binding.loanPeriod,binding.loanPeriodPart,binding.loanPeriodImage)
+                disableSelection(binding.loanYearEdittext, binding.loanMonthEdittext, setSelection = false)
             }
             SELECT_PART.RATE -> {
                 selection(binding.loanRate,binding.loanRatePart,binding.loanRateImage)
+                disableSelection(binding.loanRateEdittext, setSelection = false)
             }
             SELECT_PART.PAYMENT -> {
                 selection(binding.loanPayment,binding.loanPaymentPart,binding.loanPaymentImage)
+                disableSelection(binding.loanPaymentEdittext, setSelection = false)
             }
+        }
+    }
+
+    private fun disableSelection(vararg viewEditText : EditText,setSelection: Boolean) {
+        viewEditText.forEach {
+            it.isFocusable = setSelection
+            it.isEnabled = setSelection
         }
     }
 
@@ -242,24 +256,19 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             resource = R.drawable.ic_unlock,
             binding.loanAmountImage,binding.loanRateImage,binding.loanPaymentImage,binding.loanPeriodImage
         )
+
+        disableSelection(
+            binding.loanPaymentEdittext, binding.loanYearEdittext, binding.loanMonthEdittext, binding.loanRateEdittext, binding.loanAmountEdittext,
+            setSelection = false
+        )
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(requireContext(),getString(R.string.admodIdTest), adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.d("TAG", adError.toString())
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                Log.d("TAG", "Ad was loaded.")
-                mInterstitialAd = interstitialAd
-            }
-        })
-
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
 
         showPieChart()
         /*binding.filter.setOnClickListenerDebounce {

@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/_16sdp"
-    android:layout_marginBottom="@dimen/_32sdp"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/_16sdp"
+    android:background="@color/background_color"
+    android:paddingBottom="@dimen/_32sdp"
     android:paddingTop="@dimen/_16sdp">
 
     <DatePicker
         android:id="@+id/date_picker"
         android:layout_width="match_parent"
+        android:theme="@style/Loan_DataPicker"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
-        android:calendarTextColor="@color/black"
         android:layout_marginBottom="@dimen/_8sdp"
         app:layout_constraintBottom_toTopOf="@+id/select_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,29 +23,30 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/select_button"
-        style="@style/medium_caption1"
+        style="@style/light_caption1"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginLeft="@dimen/_5sdp"
         android:background="@drawable/radius_button"
         android:gravity="center"
         android:text="@string/select"
-        android:textColor="@color/color_pure_white"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back_button"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back_button"
-        style="@style/medium_caption1"
+        style="@style/light_caption1"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginRight="@dimen/_5sdp"
         android:background="@drawable/radius_button_white"
         android:gravity="center"
         android:text="@string/back"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/select_button"
         app:layout_constraintEnd_toStartOf="@+id/select_button"
         app:layout_constraintStart_toStartOf="parent" />
 

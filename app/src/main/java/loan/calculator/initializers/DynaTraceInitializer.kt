@@ -4,7 +4,7 @@ import android.app.Application
 import com.dynatrace.android.agent.Dynatrace
 import com.dynatrace.android.agent.conf.DataCollectionLevel
 import com.dynatrace.android.agent.conf.UserPrivacyOptions
-import loan.calculator.currency.BuildConfig
+import loan.calculator.BuildConfig
 import javax.inject.Inject
 
 class DynaTraceInitializer @Inject constructor() : AppInitializer {

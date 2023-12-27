@@ -18,7 +18,7 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
         const val LANGUAGE = "LANGUAGE"
     }
     var isLightTheme
-        get() = get(LIGHT_THEME, false)
+        get() = get(LIGHT_THEME, true)
         set(value) = set(LIGHT_THEME, value)
 
     fun getLanguage(): LanguageModel {

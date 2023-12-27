@@ -34,4 +34,11 @@
 
     <style name="LoanToolbarStyle" />
 
+    <style name="Loan_DataPicker">
+        <!-- Text color -->
+        <item name="android:textColorPrimary">@color/color_pure_black</item>
+        <!-- Divider color -->
+        <item name="colorControlNormal">@color/color_gray_one</item>
+    </style>
+
 </resources>

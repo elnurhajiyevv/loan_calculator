@@ -49,8 +49,6 @@
     <string name="converter_text">1 %1$s = %2$s %3$s</string>
     <string name="setting_header">Settings</string>
     <string name="apply">Apply</string>
-    <string name="interest_rate">Interest Rate</string>
-    <string name="interest_rate_text">1</string>
     <string name="see_monthly">See Monthly List</string>
     <string name="loan_result_header">Payment Every Month</string>
     <string name="loan_result_total_header">Total of %1$s Payments</string>
@@ -103,7 +101,14 @@
     <string name="cancel">Cancel</string>
     <string name="icon">Icon</string>
     <string name="name">Name</string>
-    <string name="start_date">Start date</string>
+    <string name="start_date">Start date:</string>
+    <string name="paid_off">Paid off:</string>
+    <string name="loan_amount">Loan amount:</string>
+    <string name="interest_rate">Interest rate:</string>
+    <string name="compounding_frequency">Compounding frequency:</string>
+    <string name="total_repayment">Total repayment:</string>
+    <string name="required">Required</string>
+
 
 
 </resources>

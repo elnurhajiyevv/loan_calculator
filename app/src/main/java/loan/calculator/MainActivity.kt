@@ -8,15 +8,13 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import loan.calculator.currency.databinding.ActivityMainBinding
 import loan.calculator.core.base.BaseActivity
 import com.startapp.sdk.adsbase.StartAppAd
 import com.startapp.sdk.adsbase.StartAppSDK
 import dagger.hilt.android.AndroidEntryPoint
-import loan.calculator.currency.BuildConfig
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
-import loan.calculator.currency.R
+import loan.calculator.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {

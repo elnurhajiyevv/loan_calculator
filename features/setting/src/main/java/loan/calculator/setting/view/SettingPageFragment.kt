@@ -14,6 +14,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.library.util.marketLink
 import loan.calculator.common.library.util.webLink
@@ -26,6 +29,7 @@ import loan.calculator.setting.databinding.FragmentSettingPageBinding
 import loan.calculator.setting.effect.SettingPageEffect
 import loan.calculator.setting.state.SettingPageState
 import loan.calculator.setting.viewmodel.SettingPageViewModel
+import loan.calculator.uikit.ads.NativeTemplateStyle
 import loan.calculator.uikit.extension.getImageResource
 
 
@@ -72,6 +76,19 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        MobileAds.initialize(requireContext())
+        val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
+            .forNativeAd { nativeAd ->
+                val styles: NativeTemplateStyle =
+                    NativeTemplateStyle.Builder().build()
+
+                binding.myTemplate.setStyles(styles)
+                binding.myTemplate.setNativeAd(nativeAd)
+            }
+            .build()
+
+        adLoader.loadAd(AdRequest.Builder().build())
     }
 
     override fun observeEffect(effect: SettingPageEffect) {

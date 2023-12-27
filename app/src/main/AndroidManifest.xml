@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="loan.calculator.currency"
+    package="loan.calculator"
     tools:ignore="LockedOrientationActivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -27,7 +27,7 @@
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5232085807124057~9044589886"/>
+            android:value="ca-app-pub-5232085807124057~3030044902"/>
         <activity
             android:name="loan.calculator.MainActivity"
             android:exported="true"

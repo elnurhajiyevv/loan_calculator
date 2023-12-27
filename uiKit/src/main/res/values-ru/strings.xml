@@ -50,8 +50,6 @@
     <string name="converter_text">1 %1$s = %2$s %3$s</string>
     <string name="setting_header">Настройка</string>
     <string name="apply">Применить</string>
-    <string name="interest_rate">Процентная ставка</string>
-    <string name="interest_rate_text">1</string>
     <string name="see_monthly">Просмотреть</string>
     <string name="loan_result_header">Платеж каждый месяц</string>
     <string name="loan_result_total_header">Общая сумма платежей: %1$s</string>
@@ -100,5 +98,11 @@
     <string name="icon">Icon</string>
     <string name="name">Name</string>
     <string name="start_date">Start date</string>
+    <string name="paid_off">Paid off:</string>
+    <string name="loan_amount">Loan amount:</string>
+    <string name="interest_rate">Interest rate:</string>
+    <string name="compounding_frequency">Compounding frequency:</string>
+    <string name="total_repayment">Total repayment:</string>
+    <string name="required">Required</string>
 
 </resources>

@@ -5,6 +5,8 @@
   ~ This code is copyrighted and using this code without agreement from authors is forbidden
   -->
 
-<manifest package="loan.calculator.setting">
+<manifest package="loan.calculator.setting"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -50,8 +50,7 @@
     <string name="converter_text">1 %1$s = %2$s %3$s</string>
     <string name="setting_header">Ayar</string>
     <string name="apply">Uygula</string>
-    <string name="interest_rate">Faiz Oranı</string>
-    <string name="interest_rate_text">1</string>
+
     <string name="see_monthly">Aylık Listeye Bakın</string>
     <string name="loan_result_header">Her Ay Ödeme</string>
     <string name="loan_result_total_header">Toplam %1$s Ödeme</string>
@@ -100,5 +99,11 @@
     <string name="icon">Icon</string>
     <string name="name">Name</string>
     <string name="start_date">Start date</string>
+    <string name="paid_off">Paid off:</string>
+    <string name="loan_amount">Loan amount:</string>
+    <string name="interest_rate">Faiz Oranı:</string>
+    <string name="compounding_frequency">Compounding frequency:</string>
+    <string name="total_repayment">Total repayment:</string>
+    <string name="required">Required</string>
 
 </resources>

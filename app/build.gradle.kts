@@ -37,13 +37,13 @@ android {
                 isCheckReleaseBuilds = false
                 isAbortOnError = false
             }
-            buildConfigField("String","APP_NAME","\"exchange\"")
+            buildConfigField("String","APP_NAME","\"loan calculator\"")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
         }
         getByName("debug") {
             isMinifyEnabled = false
-            buildConfigField("String","APP_NAME","\"exchange\"")
+            buildConfigField("String","APP_NAME","\"loan calculator\"")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }

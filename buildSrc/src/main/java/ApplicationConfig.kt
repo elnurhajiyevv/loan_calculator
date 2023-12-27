@@ -6,14 +6,14 @@
 
 //app level config constants
 object ApplicationConfig {
-    const val appName = "Currency Loan Unit Converter"
+    const val appName = "Loan Calculator"
     const val compileSdk = 33
     const val buildToolsVersion = "33.0.1"
     const val minSdk = 24
     const val targetSdk = 33
-    const val versionCode = 8
-    const val applicationId = "loan.exchange.currency"
-    const val frameworkVersion = "1.0.4"
+    const val versionCode = 1
+    const val applicationId = "loan.calculator"
+    const val frameworkVersion = "1.0.0"
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
     const val jvmTarget =  "1.8"
 

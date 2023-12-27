@@ -7,6 +7,15 @@ fun GetSavedLoanModel.toLocal(
 ) = GetSavedLoanLocalDto(
     name = name,
     code = code,
-    description = description
+    description = description,
+    type = type,
+    background = background,
+    src = src,
+    startDate = startDate,
+    paidOff = paidOff,
+    loanAmount = loanAmount,
+    interestRate = interestRate,
+    compoundingFrequency = compoundingFrequency,
+    totalPayment = totalPayment
 )
 

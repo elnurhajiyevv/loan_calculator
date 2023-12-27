@@ -14,7 +14,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
+import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.setOnClickListenerDebounce
+import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseDialogFragment
 import loan.calculator.core.delegate.viewBinding
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
@@ -32,8 +34,6 @@ import loan.calculator.loan.viewmodel.SaveDialogViewModel
 
 @AndroidEntryPoint
 class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialogViewModel,DialogSaveBinding>() {
-
-    private val saveDialogViewModel: SaveDialogViewModel by viewModels()
 
     override val bindingCallback: (LayoutInflater, ViewGroup?, Boolean) -> DialogSaveBinding
         get() = DialogSaveBinding::inflate
@@ -53,7 +53,12 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         }
 
         saveButton.setOnClickListener {
-            saveDialogViewModel.insertSavedLoan(GetSavedLoanModel(binding.nameEdittext.text.toString(),"","description1"))
+            if(nameEdittext.text.toString().isNullOrEmpty())
+                errorText.show()
+            else {
+                errorText.gone()
+                //saveDialogViewModel.insertSavedLoan()
+            }
         }
 
         calendar.setOnClickListenerDebounce {
@@ -111,6 +116,10 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         list.add(IconModel("laptop",""))
         list.add(IconModel("phone",""))
         list.add(IconModel("card",""))
+        list.add(IconModel("building",""))
+        list.add(IconModel("study",""))
+        list.add(IconModel("sport",""))
+        list.add(IconModel("health",""))
         return list
     }
 

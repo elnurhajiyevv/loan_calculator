@@ -16,7 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import loan.calculator.MainActivity
-import loan.calculator.currency.R
+import loan.calculator.R
 import loan.calculator.notification.entity.DeepLinkTypes
 import loan.calculator.notification.entity.NotificationModel
 import dagger.hilt.android.qualifiers.ApplicationContext

@@ -20,6 +20,10 @@ fun String.getImageResource(): Int{
         "card" -> R.drawable.ic_card
         "car" -> R.drawable.ic_car
         "home" -> R.drawable.ic_home
+        "building" -> R.drawable.ic_building
+        "study" -> R.drawable.ic_study
+        "sport" -> R.drawable.ic_sport
+        "health" -> R.drawable.ic_healty
 
         else -> R.drawable.bg_balance
     }

@@ -1,7 +1,7 @@
 package loan.calculator.initializers
 
 import android.app.Application
-import loan.calculator.currency.BuildConfig
+import loan.calculator.BuildConfig
 import timber.log.Timber
 import javax.inject.Inject
 
