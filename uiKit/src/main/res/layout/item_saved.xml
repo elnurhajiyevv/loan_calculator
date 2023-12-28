@@ -17,7 +17,7 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_margin="@dimen/_10sdp"
         tools:background="@drawable/bg_item"
-        android:src="@drawable/ic_car"
+        tools:src="@drawable/ic_car"
         android:padding="@dimen/_10sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
         android:text="@string/start_date" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/startDateText"
         style="@style/regular_caption1"
         android:layout_width="0dp"
         android:layout_height="match_parent"

@@ -9,7 +9,7 @@ class GetSavedLoanModel(
     val description: String?,
     val type: String?,
     val background: String?,
-    val src: String?,
+    val src: String? = "other",
     val startDate: String?,
     val paidOff: String?,
     val loanAmount: String?,

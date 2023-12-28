@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/description"
+        android:id="@+id/startDateText"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_15sdp"
         android:layout_marginRight="@dimen/_4sdp"

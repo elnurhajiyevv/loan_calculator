@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "997887180930",
-    "project_id": "sunflower-lab-tech",
-    "storage_bucket": "sunflower-lab-tech.appspot.com"
+    "project_number": "26253956716",
+    "project_id": "codehive-131ca",
+    "storage_bucket": "codehive-131ca.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:997887180930:android:ad0391ae3f42848162349b",
+        "mobilesdk_app_id": "1:26253956716:android:22214ea766c0d29e3caa49",
         "android_client_info": {
           "package_name": "loan.calculator"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD2mIIFQcAlzYbK-rq_8jqu4MNEpUSo5a4"
+          "current_key": "AIzaSyBUjNDyJ6geOkm-w5MBkDZHTCE_e8wHB4U"
         }
       ],
       "services": {

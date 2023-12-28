@@ -25,6 +25,12 @@
     <fragment
         android:id="@+id/amortizationFragment"
         android:name="loan.calculator.loan.view.AmortizationFragment"
-        tools:layout="@layout/fragment_amortization" />
+        tools:layout="@layout/fragment_amortization">
+
+        <argument
+            android:name="loan"
+            app:argType="loan.calculator.domain.entity.home.Loan" />
+
+    </fragment>
 
 </navigation>

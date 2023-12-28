@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.uikit.R
 
 import loan.calculator.uikit.databinding.ItemSavedBinding
+import loan.calculator.uikit.extension.getImageResource
 
 class SavedAdapter(
     private val clickListener: SavedItemClick
@@ -33,7 +35,13 @@ class SavedAdapter(
         fun bind(model: GetSavedLoanModel) {
             binding.apply {
                 titleText.text = model.name
-                startDateText.text = model.name
+                startDateText.text = model.startDate
+                paidOff.text = model.paidOff
+                totalRepayment.text = model.totalPayment
+                interestRate.text = model.interestRate
+                frequency.text = model.compoundingFrequency
+                loan.text = model.loanAmount
+                logo.setImageResource(model.src?.getImageResource() ?: R.drawable.bg_balance)
             }
         }
     }

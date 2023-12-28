@@ -18,6 +18,7 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
+import loan.calculator.common.library.changelang.LocaleHelper
 import loan.calculator.common.library.util.marketLink
 import loan.calculator.common.library.util.webLink
 import loan.calculator.core.base.BaseFragment

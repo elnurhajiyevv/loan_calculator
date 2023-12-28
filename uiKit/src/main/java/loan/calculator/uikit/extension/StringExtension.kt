@@ -24,7 +24,6 @@ fun String.getImageResource(): Int{
         "study" -> R.drawable.ic_study
         "sport" -> R.drawable.ic_sport
         "health" -> R.drawable.ic_healty
-
         else -> R.drawable.bg_balance
     }
     return returnResource

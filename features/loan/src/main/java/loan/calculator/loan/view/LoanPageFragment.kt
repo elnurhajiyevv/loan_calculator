@@ -38,6 +38,8 @@ import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
+import loan.calculator.domain.entity.home.Loan
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.loan.R
 import loan.calculator.loan.databinding.FragmentLoanPageBinding
 import loan.calculator.loan.effect.LoanPageEffect
@@ -97,7 +99,18 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         applyButton.setOnClickListenerDebounce {
             viewmodel.navigate(
                 NavigationCommand.To(
-                    LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment()
+                    LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
+                        loan = Loan(
+                            loanAmount = loanAmountEdittext.text.trim().toString().toDouble(),
+                            termInYears = loanYearEdittext.text.trim().toString().toInt(),
+                            annualInterestRate = loanRateEdittext.text.trim().toString().toDouble(),
+                            downPayment = 14.0,
+                            tradeInValue = 20.0,
+                            salesTaxRate = 4.0,
+                            fees = 4.0,
+                            frequency = type.selectedItem.toString()
+                        )
+                    )
                 )
             )
         }
@@ -228,6 +241,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                 disableSelection(binding.loanPaymentEdittext, setSelection = false)
             }
         }
+        viewmodel.setSelection = type
     }
 
     private fun disableSelection(vararg viewEditText : EditText,setSelection: Boolean) {
@@ -259,7 +273,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
         disableSelection(
             binding.loanPaymentEdittext, binding.loanYearEdittext, binding.loanMonthEdittext, binding.loanRateEdittext, binding.loanAmountEdittext,
-            setSelection = false
+            setSelection = true
         )
 
     }

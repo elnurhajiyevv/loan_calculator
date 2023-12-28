@@ -31,6 +31,7 @@ import loan.calculator.loan.effect.SaveDialogEffect
 import loan.calculator.loan.state.SaveDialogState
 import loan.calculator.loan.viewmodel.LoanPageViewModel
 import loan.calculator.loan.viewmodel.SaveDialogViewModel
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialogViewModel,DialogSaveBinding>() {
@@ -57,7 +58,22 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
                 errorText.show()
             else {
                 errorText.gone()
-                //saveDialogViewModel.insertSavedLoan()
+                viewmodel.insertSavedLoan(
+                    model = GetSavedLoanModel(
+                        name = binding.nameEdittext.text.toString(),
+                        code = Random(100).toString(),
+                        description = "sometext",
+                        type = "",
+                        background = "",
+                        src = "",
+                        startDate = binding.dataText.text.toString(),
+                        paidOff = "",
+                        loanAmount = arguments?.getString(AMOUNT),
+                        interestRate = arguments?.getString(RATE),
+                        compoundingFrequency = "",
+                        totalPayment = arguments?.getString(PAYMENT)
+                    )
+                )
             }
         }
 
@@ -103,9 +119,9 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*arguments?.getString(TITLE)?.let {
-            binding.title.text = it
-        }*/
+        arguments?.getString(AMOUNT)?.let {
+
+        }
         isCancelable = false
     }
 
@@ -124,11 +140,19 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
     }
 
     companion object {
-        private const val TITLE = "title"
-        private const val TEXT = "text"
+        private const val AMOUNT = "amount"
+        private const val PERIOD = "period"
+        private const val RATE = "rate"
+        private const val PAYMENT = "payment"
 
-        fun build(title: String? = null, text: String? = null) = SaveDialog().apply {
-            arguments = bundleOf(TITLE to title, TEXT to text)
+        fun build(amount: String? = null, period: String? = null, rate: String? = null, payment: String? = null) = SaveDialog().apply {
+            arguments =
+                bundleOf(
+                    AMOUNT to amount,
+                    PERIOD to period,
+                    RATE to rate,
+                    PAYMENT to payment
+                )
         }
     }
 }

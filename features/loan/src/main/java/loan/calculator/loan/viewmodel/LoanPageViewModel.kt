@@ -4,13 +4,14 @@ import loan.calculator.core.base.BaseViewModel
 import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.LoanPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import loan.calculator.loan.view.LoanPageFragment
 import javax.inject.Inject
 
 @HiltViewModel
 class LoanPageViewModel @Inject constructor(
 ) : BaseViewModel<LoanPageState, LoanPageEffect>() {
 
-
+    var setSelection = LoanPageFragment.SELECT_PART.PAYMENT
 
     /*fun getCurrency(){
         observeCurrencyUseCase.execute(ObserveSavedLoanUseCase.Param())

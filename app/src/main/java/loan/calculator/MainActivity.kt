@@ -1,5 +1,7 @@
 package loan.calculator
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
@@ -14,7 +16,10 @@ import com.startapp.sdk.adsbase.StartAppSDK
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
+import loan.calculator.data.repository.SettingPreferences
 import loan.calculator.databinding.ActivityMainBinding
+import java.util.Locale
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -28,6 +33,14 @@ class MainActivity : BaseActivity() {
         setOf(
             R.id.amortizationFragment,
         )
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        val newConfiguration = Configuration(newBase?.resources?.configuration).apply {
+            setLocale(Locale("en"))
+        }
+
+        super.attachBaseContext(newBase?.createConfigurationContext(newConfiguration))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

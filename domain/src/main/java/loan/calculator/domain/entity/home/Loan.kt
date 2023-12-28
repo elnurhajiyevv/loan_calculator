@@ -2,6 +2,7 @@ package loan.calculator.domain.entity.home
 
 import java.io.Serializable
 import java.text.NumberFormat
+import kotlin.math.pow
 
 
 class Loan(// Supplied Values:
@@ -11,18 +12,19 @@ class Loan(// Supplied Values:
     downPayment: Double,
     tradeInValue: Double,
     salesTaxRate: Double,
-    fees: Double
+    fees: Double,
+    frequency: String
 ) :
     Serializable {
-    val termInYears: Double
+    private val termInYears: Double
     val interestRate: Double
 
     // Computed Values:
-    val monthlyPayment: Double
-    val totalLoanPayments: Double
-    val totalLoanInterest: Double
-    val totalCost: Double
-    val termInMonths: Double
+    private val monthlyPayment: Double
+    private val totalLoanPayments: Double
+    private val totalLoanInterest: Double
+    private val totalCost: Double
+    private val termInMonths: Double
     var amortizationItems: Array<AmortizationModel?>
 
     init {
@@ -73,9 +75,6 @@ class Loan(// Supplied Values:
         val termInMonths = termInYears * 12
 
         // Calculate the monthly payment
-        return financedAmount * monthlyRate / (1 - Math.pow(
-            1 + monthlyRate,
-            -termInMonths.toDouble()
-        ))
+        return financedAmount * monthlyRate / (1 - (1 + monthlyRate).pow(-termInMonths.toDouble()))
     }
 }
