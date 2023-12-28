@@ -13,6 +13,7 @@
       <module name="exchange.features.save" target="19" />
       <module name="exchange.features.setting" target="19" />
       <module name="exchange.uiKit" target="19" />
+      <module name="loan_calculator.langChanger" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>

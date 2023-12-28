@@ -248,6 +248,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         viewEditText.forEach {
             it.isFocusable = setSelection
             it.isEnabled = setSelection
+            it.isFocusableInTouchMode = setSelection
         }
     }
 
