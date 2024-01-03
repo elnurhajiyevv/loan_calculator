@@ -51,6 +51,7 @@
     <color name="color_midnight_green">#004852</color>
     <color name="color_midnight_blue">#222246</color>
     <color name="color_neon_red">#FF3B30</color>
+    <color name="color_neon_red_night">#FF453A</color>
     <color name="color_bright_yellow">#FFCC00</color>
     <color name="color_pure_black">#000000</color>
     <color name="color_pure_white">#FFFFFF</color>

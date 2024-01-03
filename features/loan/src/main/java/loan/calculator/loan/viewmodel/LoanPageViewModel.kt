@@ -39,4 +39,12 @@ class LoanPageViewModel @Inject constructor(
     fun calculateInterest(total: Double, amount: Double): Double {
         return total - amount
     }
+
+    fun getPeriodInYear(year: Int, month: Int): Double{
+        return ((month / 12) + year).toDouble()
+    }
+
+    fun getPeriodInMonth(year: Int, month: Int): Int{
+        return (year * 12) + month
+    }
 }

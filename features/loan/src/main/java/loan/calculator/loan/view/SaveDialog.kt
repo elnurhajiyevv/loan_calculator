@@ -140,6 +140,7 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
     }
 
     companion object {
+
         private const val AMOUNT = "amount"
         private const val PERIOD = "period"
         private const val RATE = "rate"

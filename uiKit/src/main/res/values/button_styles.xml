@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.AppSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/color_pure_white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_calc</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.LoanAndroid</item>
+    </style>
+
+    <style name="Theme.LoanAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/color_pure_white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/color_pure_black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi ="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Exchange_Cursor_Edit_Text" parent="Theme.LoanAndroid">
+        <item name="colorControlNormal">@color/loan_blue</item>
+        <item name="colorControlActivated">@color/loan_blue</item>
+        <item name="colorControlHighlight">@color/loan_blue</item>
+
+    </style>
+
+    <style name="LoanToolbarStyle" />
+
+    <style name="Loan_DataPicker">
+        <!-- Text color -->
+        <item name="android:textColorPrimary">@color/color_pure_black</item>
+        <!-- Divider color -->
+        <item name="colorControlNormal">@color/color_gray_one</item>
+    </style>
+
+
+
+</resources>

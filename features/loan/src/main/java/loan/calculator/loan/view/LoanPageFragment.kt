@@ -158,19 +158,24 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     }
 
     private fun saveValues() {
-        val saveDialog = SaveDialog()
-        saveDialog.show(parentFragmentManager,"saveDialog")
+        val saveDialog = SaveDialog
+        saveDialog.build(
+            amount = binding.loanAmountEdittext.text.toString(),
+            period = binding.loanYearEdittext.text.toString(),
+            rate = binding.loanRateEdittext.text.toString(),
+            payment = binding.loanPaymentEdittext.text.toString()
+        ).show(parentFragmentManager,"saveDialog")
     }
 
-    private fun showPieChart(){
+    private fun showPieChart(totalInterest: Float, totalPayment: Float){
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(25f, 5f, 25f, 0f)
         binding.chart.isDrawHoleEnabled = true
         binding.chart.setHoleColor(Color.WHITE)
 
         val yvalues: MutableList<PieEntry> = ArrayList()
-        yvalues.add(PieEntry(6618.55f, info[0]))
-        yvalues.add(PieEntry(106618.55f, info[1]))
+        yvalues.add(PieEntry(totalInterest, info[0]))
+        yvalues.add(PieEntry(totalPayment, info[1]))
         val dataSet = PieDataSet(yvalues, "")
         dataSet.sliceSpace = 3f
 
@@ -285,7 +290,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
 
-        showPieChart()
+        //showPieChart()
         /*binding.filter.setOnClickListenerDebounce {
             filterLoanBottomSheet {
                 onApplyClicked = { amount, rate, period ->

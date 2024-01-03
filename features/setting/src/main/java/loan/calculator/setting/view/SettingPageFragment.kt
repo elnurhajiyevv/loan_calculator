@@ -67,6 +67,10 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
             viewmodel.getPackageName()
         }
 
+        bugReport.setOnClickListener {
+            
+        }
+
         // get app language and update UI
         getAndUpdateLanguage()
     }

@@ -5,12 +5,7 @@
     tools:ignore="LockedOrientationActivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.Ad_ID" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-
 
     <application
         android:name="loan.calculator.CalculatorApplication"
@@ -22,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_main"
         android:theme="@style/Theme.AppSplash"
         tools:targetApi="n">
-        <meta-data android:name="com.startapp.sdk.APPLICATION_ID" android:value="208574498" />
+        <meta-data android:name="com.startapp.sdk.APPLICATION_ID" android:value="211278478" />
         <meta-data android:name="com.startapp.sdk.RETURN_ADS_ENABLED" android:value="false" />
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
