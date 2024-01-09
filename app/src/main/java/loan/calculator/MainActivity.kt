@@ -16,10 +16,8 @@ import com.startapp.sdk.adsbase.StartAppSDK
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
-import loan.calculator.data.repository.SettingPreferences
+import loan.calculator.data.util.RuntimeLocaleChanger
 import loan.calculator.databinding.ActivityMainBinding
-import java.util.Locale
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -35,12 +33,13 @@ class MainActivity : BaseActivity() {
         )
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        val newConfiguration = Configuration(newBase?.resources?.configuration).apply {
-            setLocale(Locale("en"))
-        }
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(RuntimeLocaleChanger.wrapContext(newBase))
+    }
 
-        super.attachBaseContext(newBase?.createConfigurationContext(newConfiguration))
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        RuntimeLocaleChanger.overrideLocale(applicationContext)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,17 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import loan.calculator.common.extensions.getMonthAndYear
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.home.AmortizationModel
 import loan.calculator.loan.R
 import loan.calculator.loan.databinding.ItemAmortizationBinding
 import java.text.NumberFormat
+import java.util.Currency
+import java.util.Locale
 
 class AmortizationAdapter : BaseAdapter<AmortizationModel, AmortizationAdapter.AmortizationViewHolder>(areItemsTheSame = { oldItem, newItem ->
         oldItem.beginningBalance == newItem.beginningBalance && oldItem.endingBalance == newItem.endingBalance
     }) {
 
-    var nf: NumberFormat = NumberFormat.getCurrencyInstance()
+    var nf: NumberFormat = NumberFormat.getCurrencyInstance(Locale.US)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AmortizationViewHolder {
         return AmortizationViewHolder(
@@ -32,7 +35,7 @@ class AmortizationAdapter : BaseAdapter<AmortizationModel, AmortizationAdapter.A
             binding.apply {
                 binding.mainContainer.setBackgroundColor(ContextCompat.getColor(binding.root.context, if(model.month % 2 == 0) R.color.background_color else R.color.color_pure_white))
                 binding.number.text = model.month.toString()
-                binding.period.text = numberFormat.format(model.beginningBalance)
+                binding.period.text = model.month.toString().getMonthAndYear()
                 binding.interest.text = numberFormat.format(model.interest)
                 binding.principal.text = numberFormat.format(model.principal)
                 binding.balance.text = numberFormat.format(model.endingBalance)

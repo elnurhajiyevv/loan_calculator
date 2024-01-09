@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/head"
     android:background="@drawable/radius_1_white"
     android:paddingBottom="@dimen/_20sdp"
     android:foreground="?android:attr/selectableItemBackground"

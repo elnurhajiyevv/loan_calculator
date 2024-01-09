@@ -95,3 +95,12 @@ fun Date.asFormattedDateWithDot(format: String = "dd.MM.yyyy"): String {
 fun Date.asFormattedDateTime(): String {
     return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(this)
 }
+
+fun String.getMonthAndYear(): String {
+    val currentMonth = Calendar.getInstance()
+    val formatter = SimpleDateFormat("MM/yyyy")
+    currentMonth.add(Calendar.MONTH, this.toInt() + 1)
+    return formatter.format(currentMonth.time)
+}
+
+

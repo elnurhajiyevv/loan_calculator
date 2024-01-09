@@ -4,6 +4,7 @@ import loan.calculator.core.base.BaseViewModel
 import loan.calculator.setting.effect.SettingPageEffect
 import loan.calculator.setting.state.SettingPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import loan.calculator.common.library.changelang.Locales
 import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.usecase.settingpage.GetAppVersionUseCase
 import loan.calculator.domain.usecase.settingpage.GetLanguageUseCase

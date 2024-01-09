@@ -14,6 +14,7 @@ import loan.calculator.initializers.AppInitializers
 import com.onesignal.OneSignal
 import dagger.hilt.android.HiltAndroidApp
 import loan.calculator.data.repository.SettingPreferences
+import loan.calculator.data.util.RuntimeLocaleChanger
 import java.util.Locale
 import javax.inject.Inject
 
@@ -31,24 +32,7 @@ class CalculatorApplication : Application() {
         OneSignal.setAppId(ONESIGNAL_APP_ID)
     }
 
-   /* *//*override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(wrapContext(base))
-    }*//*
-
-    fun wrapContext(context: Context): Context {
-
-        val savedLocale = createLocaleFromSavedLanguage()
-        Locale.setDefault(savedLocale)
-
-        // create new configuration with the saved locale
-        val newConfig = Configuration()
-        newConfig.setLocale(savedLocale)
-
-        return context.createConfigurationContext(newConfig)
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(RuntimeLocaleChanger.wrapContext(base))
     }
-
-    private fun createLocaleFromSavedLanguage(): Locale {
-        var lang = settingPreferences.getLanguage().code
-        return Locale("","")
-    }*/
 }

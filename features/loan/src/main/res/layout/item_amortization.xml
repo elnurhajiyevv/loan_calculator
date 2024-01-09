@@ -11,8 +11,11 @@
     <TextView
         android:id="@+id/number"
         style="@style/light_caption1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +31,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/number"
         app:layout_constraintStart_toEndOf="@+id/number"
         app:layout_constraintTop_toTopOf="@+id/number"
+        android:maxLines="1"
+        android:ellipsize="end"
         tools:text="01/2024" />
 
     <TextView
@@ -36,7 +41,7 @@
         android:layout_width="0dp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_height="match_parent"
-        android:maxLines="2"
+        android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintEnd_toStartOf="@+id/principal"
         app:layout_constraintBottom_toBottomOf="@+id/period"
@@ -54,6 +59,8 @@
         app:layout_constraintEnd_toStartOf="@+id/balance"
         app:layout_constraintStart_toEndOf="@+id/interest"
         app:layout_constraintTop_toTopOf="@+id/interest"
+        android:maxLines="1"
+        android:ellipsize="end"
         tools:text="$6 000.50" />
 
     <TextView
@@ -65,6 +72,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/principal"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@+id/principal"
         app:layout_constraintTop_toTopOf="@+id/principal"
         tools:text="$65 000.50" />

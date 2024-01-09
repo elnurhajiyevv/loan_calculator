@@ -71,9 +71,9 @@
     <!-- Background -->
     <item>
         <shape>
-            <stroke android:color="@color/white"
+            <stroke android:color="@color/item_background"
                 android:width="@dimen/_1sdp"/>
-            <solid android:color="@color/white" />
+            <solid android:color="@color/item_background" />
             <corners android:radius="@dimen/_1sdp" />
         </shape>
     </item>

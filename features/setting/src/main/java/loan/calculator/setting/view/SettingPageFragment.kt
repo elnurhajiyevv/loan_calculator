@@ -18,7 +18,6 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
-import loan.calculator.common.library.changelang.LocaleHelper
 import loan.calculator.common.library.util.marketLink
 import loan.calculator.common.library.util.webLink
 import loan.calculator.core.base.BaseFragment
@@ -141,11 +140,16 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
     private fun updateSelectedLanguage(language: LanguageModel) {
         viewmodel.setLanguage(language)
         setLanguage(language)
+        changeAppContext()
     }
 
     private fun setLanguage(language: LanguageModel){
         binding.changeLanguageImage.setImageResource(language.name.getImageResource())
         binding.changeLanguageText.text = language.nationalName
+    }
+
+    private fun changeAppContext() {
+       requireActivity().recreate()
     }
 
 }

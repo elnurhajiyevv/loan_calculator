@@ -77,3 +77,27 @@ fun String.formatToAmount(): String {
         .replace("[${currency.symbol},]".toRegex(), "")
 
 }
+
+fun String.getDoubleValue(): Double{
+    return try {
+        this.replace(" ","").toDouble()
+    } catch (e: Exception){
+        0.0
+    }
+}
+
+fun String.getIntValue(): Int{
+    return try {
+        this.replace(" ","").toInt()
+    } catch (e: Exception){
+        0
+    }
+}
+
+fun String.getFloatValue(): Float{
+    return try {
+        this.replace(" ","").toFloat()
+    } catch (e: Exception){
+        0.0F
+    }
+}

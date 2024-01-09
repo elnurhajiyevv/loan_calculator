@@ -34,6 +34,8 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import dagger.hilt.android.AndroidEntryPoint
+import loan.calculator.common.extensions.getDoubleValue
+import loan.calculator.common.extensions.getIntValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseFragment
@@ -77,7 +79,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
         type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(arg0: AdapterView<*>?, arg1: View?, position: Int, id: Long) {
-                // TODO Auto-generated method stub
+
             }
 
             override fun onNothingSelected(arg0: AdapterView<*>?) {
@@ -101,13 +103,13 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                 NavigationCommand.To(
                     LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
                         loan = Loan(
-                            loanAmount = loanAmountEdittext.text.trim().toString().toDouble(),
-                            termInYears = loanYearEdittext.text.trim().toString().toInt(),
-                            annualInterestRate = loanRateEdittext.text.trim().toString().toDouble(),
-                            downPayment = 14.0,
-                            tradeInValue = 20.0,
-                            salesTaxRate = 4.0,
-                            fees = 4.0,
+                            loanAmount = loanAmountEdittext.text.toString().getDoubleValue(),
+                            termInYears = loanYearEdittext.text.toString().getIntValue(),
+                            annualInterestRate = loanRateEdittext.text.toString().getDoubleValue(),
+                            downPayment = 0.0,
+                            tradeInValue = 0.0,
+                            salesTaxRate = 0.0,
+                            fees = 0.0,
                             frequency = type.selectedItem.toString()
                         )
                     )
