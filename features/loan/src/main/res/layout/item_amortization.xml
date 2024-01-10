@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="1" />
+        tools:text="99" />
 
     <TextView
         android:id="@+id/period"
@@ -41,13 +41,13 @@
         android:layout_width="0dp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_height="match_parent"
-        android:maxLines="1"
+        android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintEnd_toStartOf="@+id/principal"
         app:layout_constraintBottom_toBottomOf="@+id/period"
         app:layout_constraintStart_toEndOf="@+id/period"
         app:layout_constraintTop_toTopOf="@+id/period"
-        tools:text="$1 000.50" />
+        tools:text="$12303340.50" />
 
     <TextView
         android:id="@+id/principal"
@@ -59,9 +59,9 @@
         app:layout_constraintEnd_toStartOf="@+id/balance"
         app:layout_constraintStart_toEndOf="@+id/interest"
         app:layout_constraintTop_toTopOf="@+id/interest"
-        android:maxLines="1"
+        android:maxLines="2"
         android:ellipsize="end"
-        tools:text="$6 000.50" />
+        tools:text="$6234343.50" />
 
     <TextView
         android:id="@+id/balance"
@@ -71,12 +71,11 @@
         android:layout_marginLeft="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="@+id/principal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
-        android:maxLines="1"
+        android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@+id/principal"
         app:layout_constraintTop_toTopOf="@+id/principal"
-        tools:text="$65 000.50" />
+        tools:text="$653000.50" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

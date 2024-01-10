@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#EFF1F5"
+    app:layoutDescription="@xml/amortization_motion_scene"
     android:layout_height="match_parent">
 
     <loan.calculator.uikit.toolbar.LoanToolbar
@@ -19,8 +20,8 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <include
-        android:id="@+id/head"
-        layout="@layout/item_saved"
+        android:id="@+id/include"
+        layout="@layout/item_amortization_head"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,28 +29,41 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/static_layout"
         layout="@layout/item_amortization_static"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/head" />
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_amortization"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/amortization_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/_3sdp"
-        android:orientation="vertical"
-        android:padding="@dimen/_4sdp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:spanCount="1"
-        tools:itemCount="8"
-        tools:listitem="@layout/item_amortization" />
+        app:layout_constraintTop_toBottomOf="@+id/static_layout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_amortization"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
+            android:orientation="vertical"
+            android:padding="@dimen/_4sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="1"
+            tools:itemCount="14"
+            tools:listitem="@layout/item_amortization" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

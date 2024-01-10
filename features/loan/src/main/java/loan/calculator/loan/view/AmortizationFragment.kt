@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.core.base.BaseFragment
+import loan.calculator.loan.R
 import loan.calculator.loan.adapter.AmortizationAdapter
 import loan.calculator.loan.databinding.FragmentAmortizationBinding
 import loan.calculator.loan.effect.AmortizationPageEffect
 import loan.calculator.loan.state.AmortizationPageState
 import loan.calculator.loan.viewmodel.AmortizationPageViewModel
+import loan.calculator.uikit.extension.getImageResource
 
 @AndroidEntryPoint
 class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect, AmortizationPageViewModel, FragmentAmortizationBinding>() {
@@ -29,6 +31,14 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         toolbar.setBackButtonVisibility(show = true)
         amortizationAdapter = AmortizationAdapter()
         recyclerViewAmortization.adapter = amortizationAdapter
+        /*include.logo.background.overrideColor(args?.loan?.type?.backgroundColor)*/
+        include.logo.setImageResource(args?.loanInfo?.name?.getImageResource()?: R.drawable.bg_balance)
+        include.startDateText.text = args?.loanInfo?.startDate
+        include.paidOff.text = args?.loanInfo?.paidOff
+        include.loan.text = args?.loanInfo?.loanAmount
+        include.interestRate.text = args?.loanInfo?.interestRate
+        include.frequency.text = args?.loanInfo?.frequency
+        include.totalRepayment.text = args?.loanInfo?.totalRepayment
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

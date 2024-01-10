@@ -7,12 +7,15 @@ import loan.calculator.domain.usecase.savepage.InsertSaveLoanUseCase
 import loan.calculator.loan.effect.SaveDialogEffect
 import loan.calculator.loan.state.LoanPageState
 import loan.calculator.loan.state.SaveDialogState
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
 class SaveDialogViewModel @Inject constructor(
     private val insertSaveLoanUseCase: InsertSaveLoanUseCase,
 ) : BaseViewModel<SaveDialogState, SaveDialogEffect>() {
+
+    var selectedStartDate = Date()
 
     fun insertSavedLoan(model: GetSavedLoanModel) {
         insertSaveLoanUseCase.launch(InsertSaveLoanUseCase.Params(model = model)) {

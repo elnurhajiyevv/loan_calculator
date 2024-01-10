@@ -32,20 +32,16 @@
     <color name="gnt_gray">#808080</color>
     <color name="gnt_outline">#E0E0E0</color>
 
-
-
     <color name="gray">#989898</color>
     <color name="light_blue_100">#00B2FF</color>
     <color name="red">#FF3B30</color>
     <color name="color_error">#EA2227</color>
     <color name="color_acid_green">#BAF400</color>
 
-
-
-
-
-
-
+    <color name="type_blue">#4D00B2FF</color>
+    <color name="type_pink">#4Dff1499</color>
+    <color name="type_red">#4Dff1428</color>
+    <color name="type_yellow">#4Dffd014</color>
 
     <color name="color_tint_acid_green">#AEE400</color>
     <color name="color_neon_green">#34C759</color>

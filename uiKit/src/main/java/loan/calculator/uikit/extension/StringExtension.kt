@@ -1,5 +1,6 @@
 package loan.calculator.uikit.extension
 
+import android.content.Context
 import loan.calculator.uikit.R
 
 
@@ -27,6 +28,23 @@ fun String.getImageResource(): Int{
         else -> R.drawable.bg_balance
     }
     return returnResource
+}
+
+fun String.getImageBackgroundColor(context:Context): Int{
+    var returnColor: Int = when(this){
+        //icon
+        "laptop" -> context.resources.getColor(R.color.color_gray_two)
+        "phone" -> context.resources.getColor(R.color.type_blue)
+        "card" -> context.resources.getColor(R.color.type_pink)
+        "car" -> context.resources.getColor(R.color.type_red)
+        "home" -> context.resources.getColor(R.color.type_yellow)
+        "building" -> context.resources.getColor(R.color.type_yellow)
+        "study" -> context.resources.getColor(R.color.color_gray_two)
+        "sport" -> context.resources.getColor(R.color.type_red)
+        "health" -> context.resources.getColor(R.color.type_red)
+        else -> context.resources.getColor(R.color.color_gray_two)
+    }
+    return returnColor
 }
 
 fun String.getCurrencySymbolResource(): String{

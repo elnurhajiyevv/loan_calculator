@@ -14,6 +14,13 @@ object DateFormats {
         return calendar.time
     }
 
+    fun addMonthsToDate(monthCount: Int, date: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.add(Calendar.MONTH, monthCount)
+        return calendar.time
+    }
+
     fun Date.convertDateToCalendar(): Calendar {
         val cal = Calendar.getInstance()
         cal.time = this

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:contentInsetLeft="0dp"
+    android:background="@color/white"
     app:contentInsetStart="0dp"
     android:paddingHorizontal="@dimen/_12sdp">
 
@@ -18,6 +19,8 @@
             android:layout_height="0dp"
             android:layout_gravity="center_vertical"
             android:visibility="gone"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +53,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_saved"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             tools:visibility="visible" />
 
 

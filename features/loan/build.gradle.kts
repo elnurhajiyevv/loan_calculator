@@ -63,6 +63,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.libraries.places:places:3.2.0")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
-    implementation("org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
 }

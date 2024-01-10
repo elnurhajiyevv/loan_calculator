@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 class IconModel (
     var iconResource:String,
-    var backgroundColor: String
+    var backgroundColor: Int,
 )

@@ -69,7 +69,7 @@
 
                 <TextView
                     android:id="@+id/loan_amount_textview"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:gravity="center_vertical"
                     android:layout_height="0dp"
@@ -92,7 +92,7 @@
 
                 <TextView
                     android:id="@+id/loan_amount_currency"
-                    style="@style/regular_caption4"
+                    style="@style/regular_caption3"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:gravity="center_vertical"
@@ -106,7 +106,7 @@
 
                 <EditText
                     android:id="@+id/loan_amount_edittext"
-                    style="@style/regular_caption4"
+                    style="@style/regular_caption3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_1sdp"
@@ -164,7 +164,7 @@
 
                 <TextView
                     android:id="@+id/loan_rate_textview"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -187,7 +187,7 @@
 
                 <EditText
                     android:id="@+id/loan_rate_edittext"
-                    style="@style/regular_caption4"
+                    style="@style/regular_caption3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -255,7 +255,7 @@
 
                 <TextView
                     android:id="@+id/loan_period_textview"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -288,7 +288,7 @@
 
                     <EditText
                         android:id="@+id/loan_year_edittext"
-                        style="@style/regular_caption4"
+                        style="@style/regular_caption3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -307,7 +307,7 @@
 
                     <TextView
                         android:id="@+id/loan_year_textview"
-                        style="@style/regular_caption2"
+                        style="@style/regular_caption1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:gravity="center_vertical"
@@ -340,7 +340,7 @@
 
                     <EditText
                         android:id="@+id/loan_month_edittext"
-                        style="@style/regular_caption4"
+                        style="@style/regular_caption3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -359,7 +359,7 @@
 
                     <TextView
                         android:id="@+id/loan_month_textview"
-                        style="@style/regular_caption2"
+                        style="@style/regular_caption1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:gravity="center_vertical"
@@ -408,7 +408,7 @@
 
                 <TextView
                     android:id="@+id/loan_payment_textview"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -431,7 +431,7 @@
 
                 <TextView
                     android:id="@+id/loan_payment_currency"
-                    style="@style/regular_caption4"
+                    style="@style/regular_caption3"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:gravity="center_vertical"
@@ -444,7 +444,7 @@
 
                 <EditText
                     android:id="@+id/loan_payment_edittext"
-                    style="@style/regular_caption4"
+                    style="@style/regular_caption3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_1sdp"
@@ -483,7 +483,7 @@
 
             <TextView
                 android:id="@+id/total_interest_textview"
-                style="@style/regular_caption2"
+                style="@style/regular_caption1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -494,7 +494,7 @@
 
             <TextView
                 android:id="@+id/total_interest_value"
-                style="@style/bold_caption4"
+                style="@style/bold_caption3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -518,7 +518,7 @@
 
             <TextView
                 android:id="@+id/total_repayment_textview"
-                style="@style/regular_caption2"
+                style="@style/regular_caption1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -530,7 +530,7 @@
 
             <TextView
                 android:id="@+id/total_repayment_value"
-                style="@style/bold_caption4"
+                style="@style/bold_caption3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"

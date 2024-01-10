@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/header"
-        style="@style/regular_caption1"
+        style="@style/regular_caption2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"

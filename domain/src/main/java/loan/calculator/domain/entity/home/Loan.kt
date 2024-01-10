@@ -1,7 +1,6 @@
 package loan.calculator.domain.entity.home
 
 import java.io.Serializable
-import java.text.NumberFormat
 import kotlin.math.pow
 
 
@@ -12,8 +11,7 @@ class Loan(// Supplied Values:
     downPayment: Double,
     tradeInValue: Double,
     salesTaxRate: Double,
-    fees: Double,
-    frequency: String
+    fees: Double
 ) :
     Serializable {
     private val termInYears: Double

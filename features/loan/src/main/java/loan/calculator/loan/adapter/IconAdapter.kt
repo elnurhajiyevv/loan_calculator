@@ -3,6 +3,7 @@ package loan.calculator.loan.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import loan.calculator.common.extensions.overrideColor
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.core.extension.loadFromResource
 import loan.calculator.domain.entity.unit.IconModel
@@ -34,6 +35,7 @@ class IconAdapter(private val clickListener: IconItemClick) :
         fun bind(model: IconModel) {
             binding.apply {
                 iconImageview.setImageResource(model.iconResource.getImageResource())
+                mainLayout.background.overrideColor(model.backgroundColor)
             }
         }
     }

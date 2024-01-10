@@ -31,6 +31,10 @@
             android:name="loan"
             app:argType="loan.calculator.domain.entity.home.Loan" />
 
+        <argument
+            android:name="loanInfo"
+            app:argType="loan.calculator.domain.entity.home.LoanInfo" />
+
     </fragment>
 
 </navigation>
