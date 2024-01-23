@@ -19,6 +19,7 @@ import android.widget.AdapterView
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
 import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -32,12 +33,13 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.getDoubleValue
-import loan.calculator.common.extensions.getIntValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
 import loan.calculator.domain.entity.home.LoanInfo
+import loan.calculator.domain.util.SELECT_PART
+import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
 import loan.calculator.loan.databinding.FragmentLoanPageBinding
 import loan.calculator.loan.effect.LoanPageEffect
@@ -65,6 +67,12 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     private var mInterstitialAd: InterstitialAd? = null
 
     var info = arrayOf("Total interest", "Total repayment")
+
+    var loanAmountFocus = false
+    var loanPeriodYearFocus = false
+    var loanPeriodMonthFocus = false
+    var loanRateFocus = false
+    var loanPaymentFocus = false
 
     override val bindViews: FragmentLoanPageBinding.() -> Unit = {
         toolbar.setBackButtonVisibility(show = false)
@@ -104,7 +112,10 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                     LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
                         loan = Loan(
                             loanAmount = returnValueIfNull(binding.loanAmountEdittext).getDoubleValue(),
-                            termInYears = returnValueIfNull(binding.loanYearEdittext).getIntValue(),
+                            termInMonths = viewmodel.getPeriodInMonth(
+                                returnValueIfNull(binding.loanYearEdittext).toInt(),
+                                returnValueIfNull(binding.loanMonthEdittext).toInt()
+                            ),
                             annualInterestRate = returnValueIfNull(binding.loanRateEdittext).getDoubleValue(),
                             downPayment = 0.0,
                             tradeInValue = 0.0,
@@ -112,7 +123,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                             fees = 0.0
                         ),
                         loanInfo = LoanInfo(
-                            name = "",
+                            name = "Loan Calculator",
                             backgroundColor = 0,
                             startDate = Date().asFormattedDateWithDot(),
                             paidOff = calculatePaidOff(
@@ -131,73 +142,154 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             )
         }
 
-        loanMonthEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 12))
+        loanMonthEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 11))
         loanYearEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 99))
 
+        loanAmountEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanAmountFocus = b }
         loanAmountEdittext.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                try {
-                    binding.loanPaymentEdittext.setText(viewmodel.calculateMonthlyPayment(
-                        amount = getValor(s),
-                        termInMonth = returnValueIfNull(loanMonthEdittext).toInt(),
-                        termInYear = returnValueIfNull(loanYearEdittext).toInt(),
-                        interestRate = getValor(returnValueIfNull(loanRateEdittext))
-                    ).toString())
-                } catch (e: Exception){
-                    e.printStackTrace()
+                if(loanAmountFocus){
+                    try {
+                        var type = viewmodel.setSelection
+                        var termInMonth = viewmodel.getPeriodInMonth (
+                            month = returnValueIfNull(loanMonthEdittext).toInt(),
+                            year = returnValueIfNull(loanYearEdittext).toInt()
+                        )
+                        setCalculatedValue(
+                            type = type,
+                            value = calculatePayment(
+                                amount = getValor(s),
+                                termInMonth = termInMonth,
+                                interestRate = getValor(returnValueIfNull(loanRateEdittext)),
+                                payment = 0.0,
+                                type = type
+                            )
+                        )
+                    } catch (e: Exception){
+                        e.printStackTrace()
+                    }
                 }
+
             }
         })
 
+        loanRateEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanRateFocus = b }
         loanRateEdittext.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                try {
-                    // getValor(s)
-                }catch (e: Exception){
-                    e.printStackTrace()
+                if(loanRateFocus){
+                    try {
+                        var type = viewmodel.setSelection
+                        var termInMonth = viewmodel.getPeriodInMonth (
+                            month = returnValueIfNull(loanMonthEdittext).toInt(),
+                            year = returnValueIfNull(loanYearEdittext).toInt()
+                        )
+                        setCalculatedValue(
+                            type = type,
+                            value = calculatePayment(
+                                amount = getValor(returnValueIfNull(loanAmountEdittext)),
+                                termInMonth = termInMonth,
+                                interestRate = getValor(s),
+                                payment = 0.0,
+                                type = type
+                            )
+                        )
+                    }catch (e: Exception){
+                        e.printStackTrace()
+                        loanRateEdittext.setText("")
+                    }
                 }
             }
         })
 
+        loanPaymentEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanPaymentFocus = b }
         loanPaymentEdittext.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                try {
-                    //getValor(s)
-                }catch (e: Exception){
-                    e.printStackTrace()
+                if(loanPaymentFocus){
+                    try {
+                        // getValor(s)
+                    }catch (e: Exception){
+                        e.printStackTrace()
+                    }
                 }
             }
         })
 
+        loanMonthEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanPeriodMonthFocus = b }
         loanMonthEdittext.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                try {
-                    //getValor(s)
-                }catch (e: Exception){
-                    e.printStackTrace()
+                if(loanPeriodMonthFocus){
+                    try {
+                        var type = viewmodel.setSelection
+                        var termInMonth = viewmodel.getPeriodInMonth (
+                            month = getValor(s).toInt(),
+                            year = returnValueIfNull(loanYearEdittext).toInt()
+                        )
+                        setCalculatedValue(
+                            type = type,
+                            value = calculatePayment(
+                                amount = getValor(returnValueIfNull(loanAmountEdittext)),
+                                termInMonth = termInMonth,
+                                interestRate = getValor(returnValueIfNull(loanRateEdittext)),
+                                payment = 0.0,
+                                type = type
+                            )
+                        )
+                    }catch (e: Exception){
+                        e.printStackTrace()
+                    }
                 }
             }
         })
 
+        loanYearEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanPeriodYearFocus = b }
         loanYearEdittext.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                try {
-                    //getValor(s)
-                }catch (e: Exception){
-                    e.printStackTrace()
+                if(loanPeriodYearFocus){
+                    try {
+                        var type = viewmodel.setSelection
+                        var termInMonth = viewmodel.getPeriodInMonth (
+                            month = returnValueIfNull(loanMonthEdittext).toInt(),
+                            year = getValor(s).toInt()
+                        )
+                        setCalculatedValue(
+                            type = type,
+                            value = calculatePayment(
+                                amount = getValor(returnValueIfNull(loanAmountEdittext)),
+                                termInMonth = termInMonth,
+                                interestRate = getValor(returnValueIfNull(loanRateEdittext)),
+                                payment = 0.0,
+                                type = type
+                            )
+                        )
+                    }catch (e: Exception){
+                        e.printStackTrace()
+                    }
                 }
             }
         })
+    }
+
+    fun setCalculatedValue(type: SELECT_PART, value: Double) {
+        when(type){
+            SELECT_PART.AMOUNT -> binding.loanAmountEdittext.setText(value.toString())
+            SELECT_PART.PERIOD -> {
+                binding.loanYearEdittext.setText(viewmodel.convertMonthToYear(value.toInt()))
+                binding.loanMonthEdittext.setText(viewmodel.convertedMonth(value.toInt()))
+            }
+            SELECT_PART.RATE -> binding.loanRateEdittext.setText(value.toString())
+            SELECT_PART.PAYMENT -> binding.loanPaymentEdittext.setText(value.toString())
+        }
+
     }
 
     fun getValor(s: CharSequence): Double {
@@ -246,6 +338,14 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         xVals.add(info[1])
         val data = PieData(dataSet)
 
+        val l = binding.chart.legend
+        l.verticalAlignment = Legend.LegendVerticalAlignment.CENTER
+        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+        l.orientation = Legend.LegendOrientation.VERTICAL
+        l.xEntrySpace = 7f
+        l.yEntrySpace = 5f
+        l.yOffset = 0f
+
         data.setValueFormatter(PercentFormatter())
         // data.setValueFormatter(new DefaultValueFormatter(0));
         // data.setValueFormatter(new DefaultValueFormatter(0));
@@ -267,7 +367,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         binding.chart.transparentCircleRadius = 35f
         binding.chart.holeRadius = 35f
         data.setValueTextSize(13f)
-        data.setValueTextColor(Color.WHITE)
+        data.setValueTextColor(resources.getColor(R.color.black_white))
         binding.chart.animateXY(500, 500)
         binding.chart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
             override fun onValueSelected(e: Entry?, h: Highlight?) {
@@ -378,17 +478,5 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         }
     }
 
-    enum class SELECT_PART(type: String){
-        AMOUNT("amount"),
-        PERIOD("period"),
-        RATE("rate"),
-        PAYMENT("payment")
-    }
 
-    enum class SELECT_FREQUENCY(type: String){
-        MONTHLY("Monthly"),
-        WEEKLY("Weekly"),
-        DAILY("Daily"),
-        YEARLY("Yearly")
-    }
 }

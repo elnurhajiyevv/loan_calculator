@@ -113,6 +113,7 @@
                     android:background="@null"
                     android:paddingVertical="@dimen/_9sdp"
                     android:hint="100 000.00"
+                    android:textCursorDrawable="@drawable/input_text_cursor_color"
                     android:textColorHint="@color/gray_text"
                     android:imeOptions="actionDone"
                     android:inputType="number"
@@ -192,6 +193,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:hint="12"
+                    android:textCursorDrawable="@drawable/input_text_cursor_color"
                     android:textColorHint="@color/gray_text"
                     android:textColor="@color/color_pure_black"
                     android:imeOptions="actionDone"
@@ -293,6 +295,7 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:hint="1"
+                        android:textCursorDrawable="@drawable/input_text_cursor_color"
                         android:textColorHint="@color/gray_text"
                         android:textColor="@color/color_pure_black"
                         android:imeOptions="actionDone"
@@ -345,6 +348,7 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:hint="0"
+                        android:textCursorDrawable="@drawable/input_text_cursor_color"
                         android:textColorHint="@color/gray_text"
                         android:imeOptions="actionDone"
                         android:inputType="number"
@@ -451,6 +455,7 @@
                     android:background="@null"
                     android:hint="8 884.88"
                     android:textColorHint="@color/gray_text"
+                    android:textCursorDrawable="@drawable/input_text_cursor_color"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLines="1"
@@ -463,7 +468,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/loan_payment_textview" />
 
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/type"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
@@ -471,9 +476,10 @@
                     android:gravity="center"
                     android:entries="@array/loanItems"
                     android:drawSelectorOnTop="true"
-                    android:background="@color/spinner_background"
+                    android:background="@drawable/bg_spinner"
+                    android:paddingRight="@dimen/_15sdp"
                     android:layout_margin="@dimen/_3sdp"
-                    android:theme="@android:style/Theme.Holo.Light"
+                    style="@style/spinnerItemStyle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

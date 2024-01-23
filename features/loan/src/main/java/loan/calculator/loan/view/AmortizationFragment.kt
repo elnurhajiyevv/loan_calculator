@@ -31,14 +31,15 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         toolbar.setBackButtonVisibility(show = true)
         amortizationAdapter = AmortizationAdapter()
         recyclerViewAmortization.adapter = amortizationAdapter
+        toolbar.setGravityLeft()
         /*include.logo.background.overrideColor(args?.loan?.type?.backgroundColor)*/
-        include.logo.setImageResource(args?.loanInfo?.name?.getImageResource()?: R.drawable.bg_balance)
-        include.startDateText.text = args?.loanInfo?.startDate
+        include.titleText.text = args?.loanInfo?.name
+        include.startDate.text = args?.loanInfo?.startDate
         include.paidOff.text = args?.loanInfo?.paidOff
-        include.loan.text = args?.loanInfo?.loanAmount
-        include.interestRate.text = args?.loanInfo?.interestRate
+        include.loan.text = "$ ${args?.loanInfo?.loanAmount}"
+        include.interestRate.text = "${args?.loanInfo?.interestRate}%"
         include.frequency.text = args?.loanInfo?.frequency
-        include.totalRepayment.text = args?.loanInfo?.totalRepayment
+        include.totalRepayment.text = "$ ${args?.loanInfo?.totalRepayment}"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

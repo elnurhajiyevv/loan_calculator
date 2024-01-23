@@ -20,6 +20,7 @@ import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.extensions.show
 import loan.calculator.common.library.util.DateFormats
 import loan.calculator.core.base.BaseDialogFragment
+import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.R
@@ -66,7 +67,7 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
                         name = binding.nameEdittext.text.toString(),
                         code = Random(100).toString(),
                         description = "sometext",
-                        type = "",
+                        type = viewmodel.selectedType,
                         background = "",
                         src = "",
                         startDate = binding.dataText.text.toString(),
@@ -90,6 +91,8 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
 
         iconAdapter = IconAdapter(IconAdapter.IconItemClick{
             // handle click listener
+            iconType.text = ":${it.iconResource.type}"
+            viewmodel.selectedType = it.iconResource.type
         })
         iconAdapter.submitList(getIconList())
 
@@ -148,47 +151,47 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         var list = arrayListOf<IconModel>()
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.HOME.type,
+            iconResource = SELECT_TYPE_LOAN.HOME,
             backgroundColor = SELECT_TYPE_LOAN.HOME.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.CAR.type,
+            iconResource = SELECT_TYPE_LOAN.CAR,
             backgroundColor = SELECT_TYPE_LOAN.CAR.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.LAPTOP.type,
+            iconResource = SELECT_TYPE_LOAN.LAPTOP,
             backgroundColor = SELECT_TYPE_LOAN.LAPTOP.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.PHONE.type,
+            iconResource = SELECT_TYPE_LOAN.PHONE,
             backgroundColor = SELECT_TYPE_LOAN.PHONE.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.CARD.type,
+            iconResource = SELECT_TYPE_LOAN.CARD,
             backgroundColor = SELECT_TYPE_LOAN.CARD.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.BUILDING.type,
+            iconResource = SELECT_TYPE_LOAN.BUILDING,
             backgroundColor = SELECT_TYPE_LOAN.BUILDING.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.STUDY.type,
+            iconResource = SELECT_TYPE_LOAN.STUDY,
             backgroundColor = SELECT_TYPE_LOAN.STUDY.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.SPORT.type,
+            iconResource = SELECT_TYPE_LOAN.SPORT,
             backgroundColor = SELECT_TYPE_LOAN.SPORT.type.getImageBackgroundColor(requireContext()))
         )
 
         list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.HEALTY.type,
+            iconResource = SELECT_TYPE_LOAN.HEALTY,
             backgroundColor = SELECT_TYPE_LOAN.HEALTY.type.getImageBackgroundColor(requireContext()))
         )
 
@@ -218,17 +221,5 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
                     FREQUENCY to frequency
                 )
         }
-    }
-
-    enum class SELECT_TYPE_LOAN(var type: String){
-        HOME("home"),
-        CAR("car"),
-        LAPTOP("laptop"),
-        PHONE("phone"),
-        CARD("card"),
-        BUILDING("building"),
-        STUDY("study"),
-        SPORT("sport"),
-        HEALTY("health"),
     }
 }

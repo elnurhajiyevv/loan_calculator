@@ -34,7 +34,7 @@ class IconAdapter(private val clickListener: IconItemClick) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: IconModel) {
             binding.apply {
-                iconImageview.setImageResource(model.iconResource.getImageResource())
+                iconImageview.setImageResource(model.iconResource.type.getImageResource())
                 mainLayout.background.overrideColor(model.backgroundColor)
             }
         }

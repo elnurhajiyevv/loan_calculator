@@ -12,4 +12,4 @@ class LoanInfo (
     var interestRate:String,
     var frequency:String,
     var totalRepayment:String
-)
+): java.io.Serializable

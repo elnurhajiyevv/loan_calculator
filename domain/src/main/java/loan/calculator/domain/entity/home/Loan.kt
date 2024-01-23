@@ -6,7 +6,7 @@ import kotlin.math.pow
 
 class Loan(// Supplied Values:
     val loanAmount: Double,
-    termInYears: Int,
+    termInMonths: Int,
     annualInterestRate: Double,
     downPayment: Double,
     tradeInValue: Double,
@@ -14,7 +14,6 @@ class Loan(// Supplied Values:
     fees: Double
 ) :
     Serializable {
-    private val termInYears: Double
     val interestRate: Double
 
     // Computed Values:
@@ -26,14 +25,13 @@ class Loan(// Supplied Values:
     var amortizationItems: Array<AmortizationModel?>
 
     init {
-        this.termInYears = termInYears.toDouble()
+        this.termInMonths = termInMonths.toDouble()
         interestRate = annualInterestRate
-        amortizationItems = arrayOfNulls(termInYears * 12)
+        amortizationItems = arrayOfNulls(termInMonths)
         val taxableAmount = loanAmount - tradeInValue
         val salesTax = taxableAmount * salesTaxRate / 100.0
         val financedAmount = taxableAmount + salesTax + fees - downPayment
-        monthlyPayment = calculateMonthlyPayment(financedAmount, termInYears, annualInterestRate)
-        termInMonths = (termInYears * 12).toDouble()
+        monthlyPayment = calculateMonthlyPayment(financedAmount, termInMonths, annualInterestRate)
         totalLoanPayments = monthlyPayment * termInMonths
         totalLoanInterest = totalLoanPayments - financedAmount
         totalCost = loanAmount + totalLoanInterest + salesTax + fees
@@ -59,7 +57,7 @@ class Loan(// Supplied Values:
 
     private fun calculateMonthlyPayment(
         financedAmount: Double,
-        termInYears: Int,
+        termInMonths: Int,
         interestRate: Double
     ): Double {
         // Convert tvInterest rate into a decimal. eg. 3.75% ==> 0.0375
@@ -68,9 +66,6 @@ class Loan(// Supplied Values:
 
         // Monthly Interest Rate is the yearly rate divided by 12 months
         val monthlyRate = interestRate / 12.0
-
-        // The term of the mLoan in months
-        val termInMonths = termInYears * 12
 
         // Calculate the monthly payment
         return financedAmount * monthlyRate / (1 - (1 + monthlyRate).pow(-termInMonths.toDouble()))

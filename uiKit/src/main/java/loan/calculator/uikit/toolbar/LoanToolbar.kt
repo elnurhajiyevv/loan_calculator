@@ -3,6 +3,7 @@ package loan.calculator.uikit.toolbar
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
@@ -114,6 +115,9 @@ class LoanToolbar @JvmOverloads constructor(
         mOnToolbarLeftActionClick = actionClick
     }
 
+    fun setGravityLeft(){
+        binding.loanToolbarTitle.gravity = Gravity.LEFT
+    }
     fun setToolbarRightActionClick(actionClick: () -> Unit) {
         mOnToolbarRightActionClick = actionClick
     }

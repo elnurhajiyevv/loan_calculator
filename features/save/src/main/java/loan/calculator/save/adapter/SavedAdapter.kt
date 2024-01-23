@@ -35,12 +35,12 @@ class SavedAdapter(
         fun bind(model: GetSavedLoanModel) {
             binding.apply {
                 titleText.text = model.name
-                startDateText.text = model.startDate
+                startDate.text = model.startDate
                 paidOff.text = model.paidOff
-                totalRepayment.text = model.totalPayment
-                interestRate.text = model.interestRate
+                totalRepayment.text = "$ ${model.totalPayment}"
+                interestRate.text = "${model.interestRate}%"
                 frequency.text = model.compoundingFrequency
-                loan.text = model.loanAmount
+                loan.text = "$ ${model.loanAmount}"
                 logo.setImageResource(model.src?.getImageResource() ?: R.drawable.bg_balance)
             }
         }

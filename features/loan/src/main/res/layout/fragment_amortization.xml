@@ -32,6 +32,7 @@
         android:id="@+id/static_layout"
         layout="@layout/item_amortization_static"
         android:layout_width="0dp"
+        android:layout_marginHorizontal="@dimen/_4sdp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

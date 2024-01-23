@@ -2,11 +2,13 @@ package  loan.calculator.loan.viewmodel
 
 import loan.calculator.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.usecase.savepage.InsertSaveLoanUseCase
 import loan.calculator.loan.effect.SaveDialogEffect
 import loan.calculator.loan.state.LoanPageState
 import loan.calculator.loan.state.SaveDialogState
+import loan.calculator.loan.view.SaveDialog
 import java.util.Date
 import javax.inject.Inject
 
@@ -16,6 +18,8 @@ class SaveDialogViewModel @Inject constructor(
 ) : BaseViewModel<SaveDialogState, SaveDialogEffect>() {
 
     var selectedStartDate = Date()
+
+    var selectedType = SELECT_TYPE_LOAN.HOME.type
 
     fun insertSavedLoan(model: GetSavedLoanModel) {
         insertSaveLoanUseCase.launch(InsertSaveLoanUseCase.Params(model = model)) {

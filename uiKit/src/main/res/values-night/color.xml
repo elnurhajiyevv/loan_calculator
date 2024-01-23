@@ -16,7 +16,8 @@
     <color name="item_background">#20C2CDDC</color>
     <color name="edittext_background">#29787880</color>
     <color name="spinner_background">#20C2CDDC</color>
-    <color name="white_gray">#20C2CDDC</color>
+    <color name="white_gray">#20C2CDDC</color>B2C1DB
+    <color name="white_toolbar">#B2C1DB</color>
 
 
 

@@ -1,6 +1,7 @@
 package loan.calculator.domain.entity.saved
 
 import kotlinx.serialization.Serializable
+import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 
 @Serializable
 class GetSavedLoanModel(

@@ -34,4 +34,8 @@
 
     <style name="LoanToolbarStyle" />
 
+    <style name="spinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

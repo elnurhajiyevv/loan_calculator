@@ -6,6 +6,8 @@
     android:id="@+id/main_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_item"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
     android:padding="@dimen/_10sdp"
     android:layout_margin="@dimen/_5sdp">
 
@@ -17,8 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
         tools:src="@drawable/ic_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
