@@ -7,14 +7,14 @@ interface SaveRepository {
 
     fun observeSavedLoans(): Flow<List<GetSavedLoanModel>>
 
-    suspend fun getSavedLoan(name: String): GetSavedLoanModel
+    fun getSavedLoan(name: String): Flow<GetSavedLoanModel>
 
-    suspend fun deleteSavedLoan(name: String)
+    fun deleteSavedLoan(name: String)
 
-    suspend fun saveLoan(model: GetSavedLoanModel)
+    fun saveLoan(model: GetSavedLoanModel)
 
-    suspend fun saveLoans(models: List<GetSavedLoanModel>)
+    fun saveLoans(models: List<GetSavedLoanModel>)
 
-    suspend fun clearData()
+    fun clearData()
 
 }

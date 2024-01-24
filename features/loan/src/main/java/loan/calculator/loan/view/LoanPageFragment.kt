@@ -38,6 +38,7 @@ import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
 import loan.calculator.domain.entity.home.LoanInfo
+import loan.calculator.domain.util.SELECT_FREQUENCY
 import loan.calculator.domain.util.SELECT_PART
 import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
@@ -152,19 +153,20 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(loanAmountFocus){
                     try {
-                        var type = viewmodel.setSelection
+                        var selectionType = viewmodel.setSelection
                         var termInMonth = viewmodel.getPeriodInMonth (
                             month = returnValueIfNull(loanMonthEdittext).toInt(),
                             year = returnValueIfNull(loanYearEdittext).toInt()
                         )
                         setCalculatedValue(
-                            type = type,
+                            type = selectionType,
                             value = calculatePayment(
                                 amount = getValor(s),
                                 termInMonth = termInMonth,
                                 interestRate = getValor(returnValueIfNull(loanRateEdittext)),
                                 payment = 0.0,
-                                type = type
+                                type = selectionType,
+                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
                             )
                         )
                     } catch (e: Exception){
@@ -182,19 +184,20 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(loanRateFocus){
                     try {
-                        var type = viewmodel.setSelection
+                        var selectionType = viewmodel.setSelection
                         var termInMonth = viewmodel.getPeriodInMonth (
                             month = returnValueIfNull(loanMonthEdittext).toInt(),
                             year = returnValueIfNull(loanYearEdittext).toInt()
                         )
                         setCalculatedValue(
-                            type = type,
+                            type = selectionType,
                             value = calculatePayment(
                                 amount = getValor(returnValueIfNull(loanAmountEdittext)),
                                 termInMonth = termInMonth,
                                 interestRate = getValor(s),
                                 payment = 0.0,
-                                type = type
+                                type = selectionType,
+                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
                             )
                         )
                     }catch (e: Exception){
@@ -227,19 +230,20 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(loanPeriodMonthFocus){
                     try {
-                        var type = viewmodel.setSelection
+                        var selectionType = viewmodel.setSelection
                         var termInMonth = viewmodel.getPeriodInMonth (
                             month = getValor(s).toInt(),
                             year = returnValueIfNull(loanYearEdittext).toInt()
                         )
                         setCalculatedValue(
-                            type = type,
+                            type = selectionType,
                             value = calculatePayment(
                                 amount = getValor(returnValueIfNull(loanAmountEdittext)),
                                 termInMonth = termInMonth,
                                 interestRate = getValor(returnValueIfNull(loanRateEdittext)),
                                 payment = 0.0,
-                                type = type
+                                type = selectionType,
+                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
                             )
                         )
                     }catch (e: Exception){
@@ -256,19 +260,20 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(loanPeriodYearFocus){
                     try {
-                        var type = viewmodel.setSelection
+                        var selectionType = viewmodel.setSelection
                         var termInMonth = viewmodel.getPeriodInMonth (
                             month = returnValueIfNull(loanMonthEdittext).toInt(),
                             year = getValor(s).toInt()
                         )
                         setCalculatedValue(
-                            type = type,
+                            type = selectionType,
                             value = calculatePayment(
                                 amount = getValor(returnValueIfNull(loanAmountEdittext)),
                                 termInMonth = termInMonth,
                                 interestRate = getValor(returnValueIfNull(loanRateEdittext)),
                                 payment = 0.0,
-                                type = type
+                                type = selectionType,
+                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
                             )
                         )
                     }catch (e: Exception){

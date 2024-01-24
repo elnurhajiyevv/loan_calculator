@@ -1,6 +1,9 @@
 package loan.calculator.domain.usecase.savepage
 
-import loan.calculator.domain.base.BaseUseCase
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import loan.calculator.domain.base.BaseFlowUseCase
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.exceptions.ErrorConverter
 import loan.calculator.domain.repository.SaveRepository
@@ -8,13 +11,17 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class GetSavedLoanUseCase @Inject constructor(
-    context: CoroutineContext,
-    converter: ErrorConverter,
+    val context: CoroutineContext,
+    val converter: ErrorConverter,
     private val repository: SaveRepository
-) : BaseUseCase<GetSavedLoanUseCase.Params, GetSavedLoanModel?>(context, converter) {
+) : BaseFlowUseCase<GetSavedLoanUseCase.Params, GetSavedLoanModel?>(context, converter) {
 
-    override suspend fun executeOnBackground(params: Params) = repository.getSavedLoan(params.name)
-
+    override fun createFlow(params: Params): Flow<GetSavedLoanModel> {
+        val contactsFlow = repository.getSavedLoan(params.name)
+        return contactsFlow
+            .flowOn(context)
+            .catch { throw converter.convert(it) }
+    }
     class Params(val name: String)
 
 }

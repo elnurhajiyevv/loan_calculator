@@ -8,7 +8,7 @@
 object ApplicationVersions {
     //Project level versions
     const val gradleVersion = "7.3.1"
-    const val kotlinBuildVersion = "1.5.21"
+    const val kotlinBuildVersion = "2.0.0-Beta3"
     const val kotlinCoroutinesCore = "1.4.2"
     const val crashLyticsVersion: String = "2.9.2"
     const val gmsVersion: String ="4.3.14"
@@ -27,7 +27,7 @@ object ApplicationVersions {
     const val mockitoCore = "2.28.2"
 
     //Hilt & Dagger
-    const val hiltVersion = "2.44"
+    const val hiltVersion = "2.50"
 
     //Source code checks
     const val detektVersion = "1.17.1"

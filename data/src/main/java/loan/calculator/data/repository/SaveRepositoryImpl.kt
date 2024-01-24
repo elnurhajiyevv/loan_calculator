@@ -1,7 +1,6 @@
 package loan.calculator.data.repository
 
 import loan.calculator.data.local.GetSavedLoanLocalDataSource
-import loan.calculator.data.mapper.toLocal
 import loan.calculator.domain.repository.SaveRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,24 +17,26 @@ class SaveRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getSavedLoan(name: String): GetSavedLoanModel {
-        return getSavedLoanLocalDataSource.getSavedLoan(name).toRemote()
+    override fun getSavedLoan(name: String): Flow<GetSavedLoanModel> {
+        return getSavedLoanLocalDataSource.getSavedLoan(name).map { list->
+            list.toRemote()
+        }
     }
 
-    override suspend fun deleteSavedLoan(name: String) {
+    override fun deleteSavedLoan(name: String) {
         return getSavedLoanLocalDataSource.deleteSavedLoan(name)
     }
 
-    override suspend fun saveLoan(model: GetSavedLoanModel) {
+    override fun saveLoan(model: GetSavedLoanModel) {
         return getSavedLoanLocalDataSource.saveLoan(saveLoan = model)
     }
 
-    override suspend fun saveLoans(models: List<GetSavedLoanModel>) {
+    override fun saveLoans(models: List<GetSavedLoanModel>) {
         return getSavedLoanLocalDataSource.saveLoans(savedLoans = models)
     }
 
 
-    override suspend fun clearData() {
+    override fun clearData() {
         getSavedLoanLocalDataSource.clearData()
     }
 

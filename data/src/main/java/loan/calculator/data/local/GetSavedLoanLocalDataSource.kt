@@ -8,44 +8,35 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class GetSavedLoanLocalDataSource @Inject constructor(
-    private val getSavedLoanDao: GetSavedLoanDao,
-    private val ioDispatcher: CoroutineContext,
+    private val getSavedLoanDao: GetSavedLoanDao
 ) {
     fun observeSavedLoans(): Flow<List<GetSavedLoanLocalDto>> {
         return getSavedLoanDao.observeSavedLoan()
     }
 
-    suspend fun getSavedLoan(name: String): GetSavedLoanLocalDto {
+    fun getSavedLoan(name: String): Flow<GetSavedLoanLocalDto> {
         return getSavedLoanDao.getSavedLoan(name = name)
     }
 
-    suspend fun deleteSavedLoan(name: String) {
+    fun deleteSavedLoan(name: String) {
         return getSavedLoanDao.deleteSavedLoan(name = name)
     }
 
-    suspend fun saveLoans(
+    fun saveLoans(
         savedLoans: List<GetSavedLoanModel>
     ) {
-        return withContext(ioDispatcher) {
-            val savedLoans = savedLoans.map { it.toLocal() }
-            getSavedLoanDao.insertSavedLoans(savedLoans)
-        }
+        val savedLoans = savedLoans.map { it.toLocal() }
+        getSavedLoanDao.insertSavedLoans(savedLoans)
     }
 
-    suspend fun saveLoan(saveLoan: GetSavedLoanModel) {
-        return withContext(ioDispatcher) {
-            getSavedLoanDao.insertSavedLoan(saveLoan.toLocal())
-        }
+    fun saveLoan(saveLoan: GetSavedLoanModel) {
+        getSavedLoanDao.insertSavedLoan(saveLoan.toLocal())
     }
 
-    suspend fun clearData() {
-        withContext(ioDispatcher) {
-            getSavedLoanDao.deleteSavedLoanList()
-        }
+    fun clearData() {
+        getSavedLoanDao.deleteSavedLoanList()
     }
-    suspend fun flushAndInsertSavedLoan(responseModel: GetSavedLoanLocalDto) {
-        return withContext(ioDispatcher) {
-            getSavedLoanDao.flushAndInsertSavedLoan(responseModel)
-        }
+    fun flushAndInsertSavedLoan(responseModel: GetSavedLoanLocalDto) {
+        getSavedLoanDao.flushAndInsertSavedLoan(responseModel)
     }
 }
