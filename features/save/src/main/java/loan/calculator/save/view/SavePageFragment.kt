@@ -17,9 +17,13 @@ import loan.calculator.save.viewmodel.SavePageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
+import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.entity.home.SavedModel
+import loan.calculator.domain.entity.saved.ExportTypeModel
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.save.adapter.SavedAdapter
+import loan.calculator.save.bottomsheet.ExportTypeBottomSheet
+import loan.calculator.save.bottomsheet.exportTypeBottomSheet
 import loan.calculator.save.databinding.FragmentSavePageBinding
 
 @AndroidEntryPoint
@@ -41,11 +45,36 @@ class SavePageFragment : BaseFragment<SavePageState, SavePageEffect, SavePageVie
         //startAppAd = StartAppAd(this)
     }
 
+    var typeList = arrayListOf<ExportTypeModel>()
+
     override val bindViews: FragmentSavePageBinding.() -> Unit = {
         toolbar.setBackButtonVisibility(show = false)
 
+        toolbar.setToolbarRightActionClick {
+            typeList.clear()
+            typeList.add(ExportTypeModel("Export as PDF",0))
+            typeList.add(ExportTypeModel("Export as XLMS",1))
+            openExportTypeBottomModule(typeList)
+        }
+
         // getSavedLoans
         viewmodel.getSavedLoans()
+    }
+
+    private fun openExportTypeBottomModule(list: List<ExportTypeModel>){
+        exportTypeBottomSheet {
+            itemList = list
+            onItemsSelected = {
+                when(it.type){
+                    0 ->{
+                        //update pdf
+                    }
+                    1 ->{
+                        //update xlms
+                    }
+                }
+            }
+        }?.show(childFragmentManager, ExportTypeBottomSheet::class.java.canonicalName)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

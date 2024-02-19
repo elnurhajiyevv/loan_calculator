@@ -18,11 +18,9 @@ import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.extensions.show
-import loan.calculator.common.library.util.DateFormats
 import loan.calculator.core.base.BaseDialogFragment
 import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
-import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.IconAdapter
 import loan.calculator.loan.bottomsheet.DatePickerBottomSheet
@@ -31,8 +29,7 @@ import loan.calculator.loan.databinding.DialogSaveBinding
 import loan.calculator.loan.effect.SaveDialogEffect
 import loan.calculator.loan.state.SaveDialogState
 import loan.calculator.loan.viewmodel.SaveDialogViewModel
-import loan.calculator.uikit.extension.getImageBackgroundColor
-import loan.calculator.uikit.extension.getImageResource
+
 import loan.calculator.uikit.util.calculatePaidOff
 import java.util.Date
 import kotlin.random.Random
@@ -56,6 +53,8 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         cancelButton.setOnClickListenerDebounce {
             dismiss()
         }
+
+        iconType.text = ":${viewmodel.getIconModel().iconResource.type}"
 
         saveButton.setOnClickListener {
             if(nameEdittext.text.toString().isNullOrEmpty())
@@ -91,10 +90,11 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
 
         iconAdapter = IconAdapter(IconAdapter.IconItemClick{
             // handle click listener
+            viewmodel.setIconModel(it)
             iconType.text = ":${it.iconResource.type}"
             viewmodel.selectedType = it.iconResource.type
         })
-        iconAdapter.submitList(getIconList())
+        viewmodel.getIconModelList(requireContext())
 
         recyclerViewIcon.adapter = iconAdapter
     }
@@ -129,6 +129,14 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         }
     }
 
+    override fun observeState(state: SaveDialogState) {
+        when(state){
+            is SaveDialogState.ListOfIconModel -> {
+                iconAdapter.submitList(state.list)
+            }
+        }
+    }
+
     // Generate palette synchronously and return it.
     fun createPaletteSync(bitmap: Bitmap): Palette = Palette.from(bitmap).generate()
 
@@ -146,56 +154,6 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         }
         isCancelable = false
         updateSelectedDate(Date())
-    }
-    private fun getIconList(): List<IconModel>{
-        var list = arrayListOf<IconModel>()
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.HOME,
-            backgroundColor = SELECT_TYPE_LOAN.HOME.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.CAR,
-            backgroundColor = SELECT_TYPE_LOAN.CAR.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.LAPTOP,
-            backgroundColor = SELECT_TYPE_LOAN.LAPTOP.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.PHONE,
-            backgroundColor = SELECT_TYPE_LOAN.PHONE.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.CARD,
-            backgroundColor = SELECT_TYPE_LOAN.CARD.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.BUILDING,
-            backgroundColor = SELECT_TYPE_LOAN.BUILDING.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.STUDY,
-            backgroundColor = SELECT_TYPE_LOAN.STUDY.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.SPORT,
-            backgroundColor = SELECT_TYPE_LOAN.SPORT.type.getImageBackgroundColor(requireContext()))
-        )
-
-        list.add(IconModel(
-            iconResource = SELECT_TYPE_LOAN.HEALTY,
-            backgroundColor = SELECT_TYPE_LOAN.HEALTY.type.getImageBackgroundColor(requireContext()))
-        )
-
-        return list
     }
 
     private fun getBackgroundColorPallet(@ColorInt color: Int): Int{

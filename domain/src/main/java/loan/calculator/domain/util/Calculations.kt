@@ -8,7 +8,7 @@ fun calculatePayment(
     interestRate: Double,
     payment: Double,
     type: SELECT_PART,
-    frequency: SELECT_FREQUENCY
+    frequency: String
 ): Double {
     when(type){
         SELECT_PART.AMOUNT -> return getLoanPayment(
@@ -29,23 +29,13 @@ fun calculatePayment(
     }
 }
 
-fun getTotalPayment(amount: Double, termInMonth: Int, interestRate: Double, frequency: SELECT_FREQUENCY): Double{
+fun getTotalPayment(amount: Double, termInMonth: Int, interestRate: Double, frequency: String): Double{
     // Convert tvInterest rate into a decimal. eg. 3.75% ==> 0.0375
     var interestRate = interestRate
     interestRate /= 100.0
 
     // Monthly Interest Rate is the yearly rate divided by 12 months
-    // Weekly Interest Rate is the yearly rate divided by 52.14 weeks
-    // Yearly Interest Rate is the yearly rate divided by 1 year
-    // Daily Interest Rate is the yearly rate divided by 365 days
-    var rate = 0.0
-    when(frequency){
-        SELECT_FREQUENCY.MONTHLY -> rate = interestRate / 12.0
-        SELECT_FREQUENCY.WEEKLY -> rate = interestRate / 52.14
-        SELECT_FREQUENCY.YEARLY -> rate = interestRate
-        SELECT_FREQUENCY.DAILY -> rate = interestRate / 365
-    }
-
+    var rate = interestRate / 12.0
     // Calculate the payment
     return amount * rate / (1 - (1 + rate).pow(-termInMonth.toDouble()))
 }
@@ -58,17 +48,18 @@ fun getPeriodPayment(): Int {
     return 0
 }
 
-fun getLoanPayment(totalAmount: Double, termInMonth: Int, interestRate: Double, frequency: SELECT_FREQUENCY): Double {
+fun getLoanPayment(totalAmount: Double, termInMonth: Int, interestRate: Double, frequency: String): Double {
 
     var interestRate = interestRate
     interestRate /= 100.0
 
     var rate = 0.0
+
     when(frequency){
-        SELECT_FREQUENCY.MONTHLY -> rate = interestRate / 12.0
-        SELECT_FREQUENCY.WEEKLY -> rate = interestRate / 52.14
-        SELECT_FREQUENCY.YEARLY -> rate = interestRate
-        SELECT_FREQUENCY.DAILY -> rate = interestRate / 365
+        "Monthly" -> rate = interestRate / 12.0
+        "Weekly" -> rate = interestRate / 52.14
+        "Yearly" -> rate = interestRate
+        "Daily" -> rate = interestRate / 365
     }
 
     // Calculate the loan amount

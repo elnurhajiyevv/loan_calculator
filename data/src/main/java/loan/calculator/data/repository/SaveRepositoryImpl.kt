@@ -6,10 +6,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import loan.calculator.data.mapper.toRemote
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.domain.entity.unit.IconModel
 import javax.inject.Inject
 
 class SaveRepositoryImpl @Inject constructor(
     private val getSavedLoanLocalDataSource: GetSavedLoanLocalDataSource,
+    private val settingPreferences: SettingPreferences
 ) : SaveRepository {
     override fun observeSavedLoans(): Flow<List<GetSavedLoanModel>> {
         return getSavedLoanLocalDataSource.observeSavedLoans().map { list->
@@ -38,6 +40,12 @@ class SaveRepositoryImpl @Inject constructor(
 
     override fun clearData() {
         getSavedLoanLocalDataSource.clearData()
+    }
+
+    override fun getIconModel() = settingPreferences.getIconModel()
+
+    override fun setIconModel(iconModel: IconModel) {
+        settingPreferences.setIconModel(iconModel)
     }
 
 }

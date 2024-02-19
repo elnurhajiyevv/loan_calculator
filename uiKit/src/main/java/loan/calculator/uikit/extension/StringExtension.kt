@@ -33,7 +33,7 @@ fun String.getImageResource(): Int{
 fun String.getImageBackgroundColor(context:Context): Int{
     var returnColor: Int = when(this){
         //icon
-        "laptop" -> context.resources.getColor(R.color.color_gray_two)
+        "laptop" -> context.resources.getColor(R.color.color_gray_one)
         "phone" -> context.resources.getColor(R.color.type_blue)
         "card" -> context.resources.getColor(R.color.type_pink)
         "car" -> context.resources.getColor(R.color.type_red)

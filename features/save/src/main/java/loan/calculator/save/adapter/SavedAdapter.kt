@@ -8,6 +8,7 @@ import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.uikit.R
 
 import loan.calculator.uikit.databinding.ItemSavedBinding
+import loan.calculator.uikit.extension.getImageBackgroundColor
 import loan.calculator.uikit.extension.getImageResource
 
 class SavedAdapter(
@@ -41,7 +42,8 @@ class SavedAdapter(
                 interestRate.text = "${model.interestRate}%"
                 frequency.text = model.compoundingFrequency
                 loan.text = "$ ${model.loanAmount}"
-                logo.setImageResource(model.src?.getImageResource() ?: R.drawable.bg_balance)
+                logo.setImageResource(model.type?.getImageResource() ?: R.drawable.bg_balance)
+                //logo.background.setTint(model.type?.getImageBackgroundColor(binding.root.context)?:R.color.light_blue_100)
             }
         }
     }

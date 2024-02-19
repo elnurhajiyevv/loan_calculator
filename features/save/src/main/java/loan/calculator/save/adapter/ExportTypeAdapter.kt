@@ -1,0 +1,42 @@
+package loan.calculator.save.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import loan.calculator.core.base.BaseAdapter
+import loan.calculator.domain.entity.saved.ExportTypeModel
+import loan.calculator.save.databinding.ItemExportTypeBinding
+
+class ExportTypeAdapter(private val itemList: List<ExportTypeModel>, private val clickListener: ExportItemClick) : BaseAdapter<ExportTypeModel, ExportTypeAdapter.ExportViewHolder>(
+    areItemsTheSame = { oldItem, newItem -> oldItem.name == newItem.name && oldItem.name == newItem.name }) {
+
+    init {
+        submitList(itemList)
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExportViewHolder {
+        return ExportViewHolder(
+            ItemExportTypeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
+    }
+
+
+    class ExportItemClick(val clickListener: (model: ExportTypeModel) -> Unit) {
+        fun onClick(model: ExportTypeModel) = clickListener(model)
+    }
+
+    class ExportViewHolder(private val binding: ItemExportTypeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(model: ExportTypeModel) {
+            binding.apply {
+                title.text = model.name
+            }
+        }
+    }
+
+    override fun onBindViewHolder(holder: ExportViewHolder, position: Int) {
+        holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            clickListener.onClick(getItem(position))
+        }
+    }
+}

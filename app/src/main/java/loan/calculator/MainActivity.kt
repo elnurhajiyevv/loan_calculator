@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -48,6 +49,8 @@ class MainActivity : BaseActivity() {
 
         StartAppSDK.enableReturnAds(false)
         StartAppAd.disableSplash()
+
+        //window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
         // NOTE always use test ads during development and testing
 
         //MobileAds.initialize(this) {}

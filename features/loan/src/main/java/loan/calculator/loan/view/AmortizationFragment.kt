@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import loan.calculator.common.extensions.overrideColor
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.AmortizationAdapter
@@ -32,7 +33,7 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         amortizationAdapter = AmortizationAdapter()
         recyclerViewAmortization.adapter = amortizationAdapter
         toolbar.setGravityLeft()
-        /*include.logo.background.overrideColor(args?.loan?.type?.backgroundColor)*/
+        //include.logo.background.overrideColor(args?.loan?.type?.backgroundColor)
         include.titleText.text = args?.loanInfo?.name
         include.startDate.text = args?.loanInfo?.startDate
         include.paidOff.text = args?.loanInfo?.paidOff

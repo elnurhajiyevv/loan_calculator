@@ -2,17 +2,21 @@ package loan.calculator.loan.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.common.extensions.overrideColor
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.core.extension.loadFromResource
+import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.entity.unit.IconModel
+import loan.calculator.loan.R
 import loan.calculator.uikit.databinding.ItemIconBinding
 import loan.calculator.uikit.extension.getImageResource
 
-class IconAdapter(private val clickListener: IconItemClick) :
+class IconAdapter(
+    private val clickListener: IconItemClick) :
     BaseAdapter<IconModel, IconAdapter.IconViewHolder>(areItemsTheSame = { oldItem, newItem ->
-        oldItem.iconResource == newItem.iconResource && oldItem.backgroundColor == newItem.backgroundColor
+        oldItem.iconResource == newItem.iconResource && oldItem.isSelected == newItem.isSelected
     }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
@@ -36,6 +40,9 @@ class IconAdapter(private val clickListener: IconItemClick) :
             binding.apply {
                 iconImageview.setImageResource(model.iconResource.type.getImageResource())
                 mainLayout.background.overrideColor(model.backgroundColor)
+                /*if(model.isSelected){
+                    binding.mainContainer.setBackgroundResource(R.drawable.radius_1_gray)
+                }*/
             }
         }
     }

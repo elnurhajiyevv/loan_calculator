@@ -7,4 +7,5 @@ import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 class IconModel (
     var iconResource: SELECT_TYPE_LOAN = SELECT_TYPE_LOAN.HOME,
     var backgroundColor: Int,
+    var isSelected: Boolean = false
 )

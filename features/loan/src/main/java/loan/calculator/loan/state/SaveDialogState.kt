@@ -6,6 +6,9 @@
 
 package loan.calculator.loan.state
 
+import loan.calculator.domain.entity.unit.IconModel
+
 
 sealed class SaveDialogState {
+    class ListOfIconModel(val list: List<IconModel>): SaveDialogState()
 }

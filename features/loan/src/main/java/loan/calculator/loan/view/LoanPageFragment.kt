@@ -166,7 +166,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 interestRate = getValor(returnValueIfNull(loanRateEdittext)),
                                 payment = 0.0,
                                 type = selectionType,
-                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
+                                frequency = type.selectedItem.toString()
                             )
                         )
                     } catch (e: Exception){
@@ -197,7 +197,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 interestRate = getValor(s),
                                 payment = 0.0,
                                 type = selectionType,
-                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
+                                frequency = type.selectedItem.toString()
                             )
                         )
                     }catch (e: Exception){
@@ -243,7 +243,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 interestRate = getValor(returnValueIfNull(loanRateEdittext)),
                                 payment = 0.0,
                                 type = selectionType,
-                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
+                                frequency = type.selectedItem.toString()
                             )
                         )
                     }catch (e: Exception){
@@ -273,7 +273,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 interestRate = getValor(returnValueIfNull(loanRateEdittext)),
                                 payment = 0.0,
                                 type = selectionType,
-                                frequency = type.selectedItem.toString() as SELECT_FREQUENCY
+                                frequency = type.selectedItem.toString()
                             )
                         )
                     }catch (e: Exception){
@@ -294,6 +294,11 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             SELECT_PART.RATE -> binding.loanRateEdittext.setText(value.toString())
             SELECT_PART.PAYMENT -> binding.loanPaymentEdittext.setText(value.toString())
         }
+
+        showPieChart(
+            totalInterest = 6618.55F,
+            totalPayment = 106618.55F
+        )
 
     }
 
