@@ -18,8 +18,8 @@ class Loan(// Supplied Values:
 
     // Computed Values:
     private val monthlyPayment: Double
-    private val totalLoanPayments: Double
-    private val totalLoanInterest: Double
+    val totalLoanPayments: Double
+    val totalLoanInterest: Double
     private val totalCost: Double
     private val termInMonths: Double
     var amortizationItems: Array<AmortizationModel?>

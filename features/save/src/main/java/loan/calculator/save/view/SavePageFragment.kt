@@ -21,6 +21,7 @@ import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.entity.home.SavedModel
 import loan.calculator.domain.entity.saved.ExportTypeModel
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.save.R
 import loan.calculator.save.adapter.SavedAdapter
 import loan.calculator.save.bottomsheet.ExportTypeBottomSheet
 import loan.calculator.save.bottomsheet.exportTypeBottomSheet
@@ -52,8 +53,9 @@ class SavePageFragment : BaseFragment<SavePageState, SavePageEffect, SavePageVie
 
         toolbar.setToolbarRightActionClick {
             typeList.clear()
-            typeList.add(ExportTypeModel("Export as PDF",0))
-            typeList.add(ExportTypeModel("Export as XLMS",1))
+            typeList.add(ExportTypeModel("export as PDF", R.drawable.ic_pdf))
+            typeList.add(ExportTypeModel("export as XLS",R.drawable.ic_xls))
+            typeList.add(ExportTypeModel("export as CSV",R.drawable.ic_csv))
             openExportTypeBottomModule(typeList)
         }
 

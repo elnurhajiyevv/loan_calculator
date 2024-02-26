@@ -295,9 +295,24 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             SELECT_PART.PAYMENT -> binding.loanPaymentEdittext.setText(value.toString())
         }
 
+        var loanModel = Loan(
+            loanAmount = returnValueIfNull(binding.loanAmountEdittext).getDoubleValue(),
+            termInMonths = viewmodel.getPeriodInMonth(
+                returnValueIfNull(binding.loanYearEdittext).toInt(),
+                returnValueIfNull(binding.loanMonthEdittext).toInt()
+            ),
+            annualInterestRate = returnValueIfNull(binding.loanRateEdittext).getDoubleValue(),
+            downPayment = 0.0,
+            tradeInValue = 0.0,
+            salesTaxRate = 0.0,
+            fees = 0.0
+        )
+        viewmodel.totalInterest = loanModel.totalLoanInterest
+        viewmodel.totalPayment = loanModel.totalLoanPayments
+
         showPieChart(
-            totalInterest = 6618.55F,
-            totalPayment = 106618.55F
+            totalInterest = viewmodel.totalInterest.toFloat(),
+            totalPayment = viewmodel.totalPayment.toFloat()
         )
 
     }
@@ -317,7 +332,10 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         val saveDialog = SaveDialog
         saveDialog.build(
             amount = returnValueIfNull(binding.loanAmountEdittext),
-            period = returnValueIfNull(binding.loanYearEdittext),
+            period = viewmodel.getPeriodInMonth(
+                returnValueIfNull(binding.loanYearEdittext).toInt(),
+                returnValueIfNull(binding.loanMonthEdittext).toInt()
+            ).toString(),
             rate = returnValueIfNull(binding.loanRateEdittext),
             payment = returnValueIfNull(binding.loanPaymentEdittext),
             frequency = binding.type.selectedItem.toString()
@@ -332,6 +350,8 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     }
 
     private fun showPieChart(totalInterest: Float, totalPayment: Float){
+        binding.totalInterestValue.text = "$${totalInterest}"
+        binding.totalRepaymentValue.text = "$${totalPayment}"
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(25f, 5f, 25f, 0f)
         binding.chart.isDrawHoleEnabled = true

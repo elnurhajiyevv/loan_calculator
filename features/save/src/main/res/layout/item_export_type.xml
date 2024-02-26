@@ -9,14 +9,14 @@
     android:clickable="true"
     android:id="@+id/main_layout"
     android:paddingHorizontal="@dimen/_10sdp"
-    android:paddingVertical="@dimen/_12sdp">
+    android:paddingVertical="@dimen/_6sdp">
 
     <ImageView
         android:id="@+id/logo"
         style="@style/bold_caption1"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
-        tools:background="@drawable/ic_russia"
+        tools:background="@drawable/ic_pdf"
         android:padding="@dimen/_1sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

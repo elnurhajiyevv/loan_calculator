@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.saved.ExportTypeModel
 import loan.calculator.save.databinding.ItemExportTypeBinding
+import loan.calculator.uikit.R
+import loan.calculator.uikit.extension.getImageResource
 
 class ExportTypeAdapter(private val itemList: List<ExportTypeModel>, private val clickListener: ExportItemClick) : BaseAdapter<ExportTypeModel, ExportTypeAdapter.ExportViewHolder>(
     areItemsTheSame = { oldItem, newItem -> oldItem.name == newItem.name && oldItem.name == newItem.name }) {
@@ -29,6 +31,7 @@ class ExportTypeAdapter(private val itemList: List<ExportTypeModel>, private val
         fun bind(model: ExportTypeModel) {
             binding.apply {
                 title.text = model.name
+                logo.setImageResource(model.type)
             }
         }
     }
