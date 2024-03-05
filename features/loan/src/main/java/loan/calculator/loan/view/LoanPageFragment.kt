@@ -18,6 +18,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.Entry
@@ -353,13 +354,13 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         binding.totalInterestValue.text = "$${totalInterest}"
         binding.totalRepaymentValue.text = "$${totalPayment}"
         binding.chart.setUsePercentValues(true)
-        binding.chart.setExtraOffsets(25f, 5f, 25f, 0f)
+        binding.chart.setExtraOffsets(5f, 5f, 5f, 0f)
         binding.chart.isDrawHoleEnabled = true
         binding.chart.setHoleColor(Color.WHITE)
 
         val yvalues: MutableList<PieEntry> = ArrayList()
         yvalues.add(PieEntry(totalInterest, info[0]))
-        yvalues.add(PieEntry(totalPayment, info[1]))
+        yvalues.add(PieEntry(totalPayment - totalInterest, info[1]))
         val dataSet = PieDataSet(yvalues, "")
         dataSet.sliceSpace = 3f
 
@@ -375,6 +376,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         l.xEntrySpace = 7f
         l.yEntrySpace = 5f
         l.yOffset = 0f
+        binding.chart.setEntryLabelColor(resources.getColor(R.color.black_white))
 
         data.setValueFormatter(PercentFormatter())
         // data.setValueFormatter(new DefaultValueFormatter(0));

@@ -6,9 +6,14 @@
 
 package loan.calculator.setting.view
 
+import android.annotation.TargetApi
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +36,8 @@ import loan.calculator.setting.state.SettingPageState
 import loan.calculator.setting.viewmodel.SettingPageViewModel
 import loan.calculator.uikit.ads.NativeTemplateStyle
 import loan.calculator.uikit.extension.getImageResource
+import java.util.Locale
+import kotlin.coroutines.coroutineContext
 
 
 @AndroidEntryPoint
@@ -140,7 +147,7 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
     private fun updateSelectedLanguage(language: LanguageModel) {
         viewmodel.setLanguage(language)
         setLanguage(language)
-        changeAppContext()
+        changeAppContext(language.name)
     }
 
     private fun setLanguage(language: LanguageModel){
@@ -148,8 +155,32 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         binding.changeLanguageText.text = language.nationalName
     }
 
-    private fun changeAppContext() {
-       requireActivity().recreate()
+    private fun changeAppContext(language:String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            updateResources(requireActivity().applicationContext, language);
+        } else
+            updateResourcesLegacy(requireActivity().applicationContext, language);
+       //requireActivity().recreate()
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    private fun updateResources(context: Context, language: String): Context {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val configuration: Configuration = context.resources.configuration
+        configuration.setLocale(locale)
+        return context.createConfigurationContext(configuration)
+    }
+
+    @Suppress("deprecation")
+    private fun updateResourcesLegacy(context: Context, language: String): Context {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val resources: Resources = context.resources
+        val configuration: Configuration = resources.configuration
+        configuration.locale = locale
+        resources.updateConfiguration(configuration, resources.displayMetrics)
+        return context
     }
 
 }

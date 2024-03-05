@@ -9,7 +9,7 @@ import loan.calculator.save.databinding.ItemExportTypeBinding
 import loan.calculator.uikit.R
 import loan.calculator.uikit.extension.getImageResource
 
-class ExportTypeAdapter(private val itemList: List<ExportTypeModel>, private val clickListener: ExportItemClick) : BaseAdapter<ExportTypeModel, ExportTypeAdapter.ExportViewHolder>(
+class ExportTypeAdapter(itemList: List<ExportTypeModel>, private val clickListener: ExportItemClick) : BaseAdapter<ExportTypeModel, ExportTypeAdapter.ExportViewHolder>(
     areItemsTheSame = { oldItem, newItem -> oldItem.name == newItem.name && oldItem.name == newItem.name }) {
 
     init {
