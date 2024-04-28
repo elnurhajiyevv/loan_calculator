@@ -6,6 +6,7 @@ import loan.calculator.save.state.SavePageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterNotNull
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.usecase.savepage.DeleteSavedLoanUseCase
 import loan.calculator.domain.usecase.savepage.GetSavedLoansUseCase
 import javax.inject.Inject
@@ -16,6 +17,9 @@ class SavePageViewModel @Inject constructor(
     private val deleteSavedLoanUseCase: DeleteSavedLoanUseCase,
 ) : BaseViewModel<SavePageState, SavePageEffect>() {
 
+    var list: List<GetSavedLoanModel> = arrayListOf()
+
+    lateinit var selectedItem: GetSavedLoanModel
     fun getSavedLoans(){
         launchAll(loadingHandle = {}) {
             getSavedLoansUseCase.execute(Unit)

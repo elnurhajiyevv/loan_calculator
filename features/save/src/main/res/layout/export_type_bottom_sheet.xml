@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="2"
         tools:listitem="@layout/item_export_type" />
@@ -27,14 +27,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back_button"
-        style="@style/light_caption1"
         android:layout_width="0dp"
+        android:background="@null"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginRight="@dimen/_5sdp"
-        android:background="@drawable/radius_button_white"
         android:gravity="center"
         android:text="@string/cancel"
-        android:textColor="@color/white"
+        android:textColor="@color/loan_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

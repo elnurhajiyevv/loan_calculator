@@ -17,11 +17,23 @@
         <deepLink
             android:id="@+id/deepLink"
             app:uri="loan://save" />
+        <action
+            android:id="@+id/action_savePageFragment_to_savedAmortizationFragment"
+            app:destination="@id/savedAmortizationFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/savedAmortizationFragment"
+        android:name="loan.calculator.save.view.SavedAmortizationFragment"
+        tools:layout="@layout/fragment_saved_amortization">
 
         <argument
-            android:name="sometext"
-            app:argType="string"
-            android:defaultValue="" />
+            android:name="loanInfo"
+            app:argType="loan.calculator.domain.entity.home.LoanInfo" />
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="loan://savedamortization/{loanInfo}" />
 
     </fragment>
 

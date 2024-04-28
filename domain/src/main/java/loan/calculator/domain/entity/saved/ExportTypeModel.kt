@@ -5,5 +5,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 class ExportTypeModel (
     val name: String,
-    val type: Int
+    val icon: Int,
+    val type: Int = 0
 )

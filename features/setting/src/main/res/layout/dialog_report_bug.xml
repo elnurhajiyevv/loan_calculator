@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/_16sdp"
+    android:background="@color/background_color"
+    android:paddingBottom="@dimen/_32sdp"
+    android:paddingTop="@dimen/_16sdp"
+    tools:ignore="MissingDefaultResource">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dialog_title"
+        style="@style/bold_caption3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Please add your comment(s) or feedback(s)" />
+
+    <EditText
+        android:id="@+id/report_bug"
+        style="@style/regular_caption1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/bg_etittext"
+        android:hint="type..."
+        android:paddingStart="@dimen/_12sdp"
+        android:imeOptions="actionDone"
+        android:maxLines="2"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColor="@color/color_pure_black"
+        android:textColorHint="@color/gray_text"
+        android:textCursorDrawable="@drawable/input_text_cursor_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialog_title"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title" />
+
+
+    <loan.calculator.uikit.button.LoanButton
+        android:id="@+id/ok_button"
+        style="@style/Loan_Button_Medium_Primary_Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:gravity="center"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <loan.calculator.uikit.button.LoanButton
+        android:id="@+id/cancel_button"
+        style="@style/Loan_Button_Medium_Delete_Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:gravity="center"
+        android:text="@string/cancel"
+        app:layout_constraintStart_toEndOf="@+id/ok_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ok_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,13 +41,12 @@
         tools:itemCount="6"
         tools:listitem="@layout/item_language" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <loan.calculator.uikit.button.LoanButton
         android:id="@+id/apply_button"
-        style="@style/medium_caption1"
-        android:layout_height="@dimen/_50sdp"
+        style="@style/Loan_Button_Medium_Primary_Filled"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:background="@drawable/radius_button"
         android:gravity="center"
         android:text="@string/apply"
         android:textColor="@color/color_pure_white"

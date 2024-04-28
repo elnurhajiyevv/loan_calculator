@@ -31,7 +31,7 @@ class ExportTypeAdapter(itemList: List<ExportTypeModel>, private val clickListen
         fun bind(model: ExportTypeModel) {
             binding.apply {
                 title.text = model.name
-                logo.setImageResource(model.type)
+                logo.setImageResource(model.icon)
             }
         }
     }

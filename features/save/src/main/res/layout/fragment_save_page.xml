@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_30sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:loan_toolbar_option="with_right"
+        app:loan_toolbar_option="without_left_and_right"
         app:loan_toolbar_right_action_icon="@drawable/ic_share"
         app:loan_toolbar_title="@string/header_title"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +47,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <include layout="@layout/item_saved_shimmer" />
-            <include layout="@layout/item_saved_shimmer" />
-            <include layout="@layout/item_saved_shimmer" />
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/item_saved_shimmer"
+                android:layout_marginBottom="@dimen/_10sdp"/>
+            <include android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/item_saved_shimmer"
+                android:layout_marginBottom="@dimen/_10sdp" />
+            <include android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/item_saved_shimmer"
+                android:layout_marginBottom="@dimen/_10sdp" />
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -58,8 +68,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:padding="@dimen/_4sdp"
+        android:visibility="visible"
+
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

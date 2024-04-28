@@ -108,7 +108,8 @@
     <string name="compounding_frequency">Compounding frequency:</string>
     <string name="total_repayment">Total repayment:</string>
     <string name="required">Required</string>
-
+    <string name="ok">Confirm</string>
+    <string name="submit">Submit</string>
 
 
 </resources>

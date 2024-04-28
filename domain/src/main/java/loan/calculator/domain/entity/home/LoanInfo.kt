@@ -1,6 +1,7 @@
 package loan.calculator.domain.entity.home
 
 import kotlinx.serialization.Serializable
+import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 
 @Serializable
 class LoanInfo (
@@ -8,8 +9,10 @@ class LoanInfo (
     var backgroundColor: Int,
     var startDate:String,
     var paidOff:String,
-    var loanAmount:String,
-    var interestRate:String,
+    var loanAmount:Double,
+    var interestRate:Double,
     var frequency:String,
-    var totalRepayment:String
+    var totalRepayment:String,
+    var termInMonth: Int? = 0,
+    var type: String = SELECT_TYPE_LOAN.HOME.type
 ): java.io.Serializable

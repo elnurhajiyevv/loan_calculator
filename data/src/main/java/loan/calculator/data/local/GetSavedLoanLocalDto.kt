@@ -21,5 +21,6 @@ data class GetSavedLoanLocalDto(
     @ColumnInfo(name = "interestRate") val interestRate: String?,
     @ColumnInfo(name = "compoundingFrequency") val compoundingFrequency: String?,
     @ColumnInfo(name = "totalPayment") val totalPayment: String?,
+    @ColumnInfo(name = "termInMonth") val termInMonth: Int?,
 
 )

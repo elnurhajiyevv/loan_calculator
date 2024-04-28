@@ -28,7 +28,9 @@ import loan.calculator.common.library.util.webLink
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.setting.R
+import loan.calculator.setting.bottomsheet.BugReportBottomSheet
 import loan.calculator.setting.bottomsheet.LanguageMenuBottomSheet
+import loan.calculator.setting.bottomsheet.bugReportBottomSheetBottomSheet
 import loan.calculator.setting.bottomsheet.languageMenuBottomSheet
 import loan.calculator.setting.databinding.FragmentSettingPageBinding
 import loan.calculator.setting.effect.SettingPageEffect
@@ -74,7 +76,7 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         }
 
         bugReport.setOnClickListener {
-            
+            openBugReportBottomModule()
         }
 
         // get app language and update UI
@@ -144,43 +146,25 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         }?.show(childFragmentManager, LanguageMenuBottomSheet::class.java.canonicalName)
     }
 
+    private fun openBugReportBottomModule(){
+        bugReportBottomSheetBottomSheet {
+            onItemsSelected = {
+                // update
+            }
+        }?.show(childFragmentManager, BugReportBottomSheet::class.java.canonicalName)
+    }
+
     private fun updateSelectedLanguage(language: LanguageModel) {
         viewmodel.setLanguage(language)
         setLanguage(language)
-        changeAppContext(language.name)
+        changeAppContext()
     }
 
     private fun setLanguage(language: LanguageModel){
         binding.changeLanguageImage.setImageResource(language.name.getImageResource())
         binding.changeLanguageText.text = language.nationalName
     }
-
-    private fun changeAppContext(language:String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            updateResources(requireActivity().applicationContext, language);
-        } else
-            updateResourcesLegacy(requireActivity().applicationContext, language);
-       //requireActivity().recreate()
+    private fun changeAppContext() {
+        requireActivity().recreate()
     }
-
-    @TargetApi(Build.VERSION_CODES.N)
-    private fun updateResources(context: Context, language: String): Context {
-        val locale = Locale(language)
-        Locale.setDefault(locale)
-        val configuration: Configuration = context.resources.configuration
-        configuration.setLocale(locale)
-        return context.createConfigurationContext(configuration)
-    }
-
-    @Suppress("deprecation")
-    private fun updateResourcesLegacy(context: Context, language: String): Context {
-        val locale = Locale(language)
-        Locale.setDefault(locale)
-        val resources: Resources = context.resources
-        val configuration: Configuration = resources.configuration
-        configuration.locale = locale
-        resources.updateConfiguration(configuration, resources.displayMetrics)
-        return context
-    }
-
 }

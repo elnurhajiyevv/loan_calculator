@@ -36,3 +36,20 @@ fun disableSelection(vararg viewEditText : EditText, setSelection: Boolean) {
 fun calculatePaidOff(monthCount: Int, date: Date): String {
     return DateFormats.addMonthsToDate(monthCount = monthCount, date = date).asFormattedDateWithDot()
 }
+
+fun returnValueIfNull(editText: EditText): String{
+    return if(editText.text.toString().trim().isNullOrEmpty())
+        editText.hint.toString()
+    else
+        editText.text.toString()
+}
+
+fun getFloatValue(s: String): Float {
+    return if (s.isNotEmpty()) s.replace(" ", "").replace("$", "")
+        .toFloat() else 0.0F
+}
+
+fun getValor(s: CharSequence): Double {
+    return if (s.isNotEmpty()) s.toString().replace("", " ").replace(" ", "")
+        .toDouble() else 0.0
+}

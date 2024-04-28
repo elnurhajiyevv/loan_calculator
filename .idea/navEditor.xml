@@ -44,9 +44,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-53" />
-                            <option name="y" value="-11" />
+                            <option name="x" value="-76" />
+                            <option name="y" value="-251" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="deepLink">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -56,8 +65,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-286" />
-                            <option name="y" value="-11" />
+                            <option name="x" value="-317" />
+                            <option name="y" value="-251" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -138,8 +147,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="-75" />
+                            <option name="y" value="-5" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -150,6 +159,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="savedAmortizationFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="110" />
+                            <option name="y" value="-15" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

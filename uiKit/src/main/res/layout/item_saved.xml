@@ -6,9 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/radius_1_white"
-    android:paddingBottom="@dimen/_20sdp"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true">
+
+    <View
+        android:id="@+id/selected_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:background="@color/gnt_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo"
@@ -155,9 +165,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
+        android:text="@string/total_repayment"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/title_text"
-        app:layout_constraintTop_toBottomOf="@+id/frequency_text"
-        android:text="@string/total_repayment" />
+        app:layout_constraintTop_toBottomOf="@+id/frequency_text" />
 
     <TextView
         android:id="@+id/total_repayment"
@@ -166,6 +178,7 @@
         android:layout_height="match_parent"
         android:layout_marginRight="@dimen/_4sdp"
         android:gravity="end"
+
         app:layout_constraintBottom_toBottomOf="@+id/total_repayment_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/total_repayment_text"

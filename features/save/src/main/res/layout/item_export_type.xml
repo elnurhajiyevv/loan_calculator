@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/_3sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:id="@+id/main_layout"
-    android:paddingHorizontal="@dimen/_10sdp"
-    android:paddingVertical="@dimen/_6sdp">
+    android:paddingHorizontal="@dimen/_15sdp"
+    android:paddingVertical="@dimen/_10sdp">
 
     <ImageView
         android:id="@+id/logo"

@@ -19,11 +19,14 @@
         <attr name="loan_toolbar_title" format="string" />
         <attr name="loan_toolbar_right_action_icon" format="reference" />
         <attr name="loan_toolbar_left_action_icon" format="reference" />
+        <attr name="loan_toolbar_delete_action_icon" format="reference" />
         <attr name="loan_toolbar_option" format="enum">
             <enum name="with_left_and_right" value="0" />
             <enum name="with_left" value="1" />
             <enum name="with_right" value="2" />
-            <enum name="without_left_and_right" value="3" />
+            <enum name="with_full" value="3" />
+            <enum name="with_full_right" value="4" />
+            <enum name="without_left_and_right" value="5" />
         </attr>
         <attr name="android:textStyle" tools:ignore="ResourceName" />
     </declare-styleable>
@@ -43,5 +46,15 @@
             <enum name="left" value="0" />
             <enum name="right" value="1" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="AutofitTextView">
+        <!-- Minimum size of the text. -->
+        <attr name="minTextSize" format="dimension" />
+        <!-- Amount of precision used to calculate the correct text size to fit within its
+        bounds. Lower precision is more precise and takes more time. -->
+        <attr name="precision" format="float" />
+        <!-- Defines whether to automatically resize text to fit to the view's bounds. -->
+        <attr name="sizeToFit" format="boolean" />
     </declare-styleable>
 </resources>

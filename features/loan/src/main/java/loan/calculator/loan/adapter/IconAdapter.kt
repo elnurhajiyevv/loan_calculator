@@ -39,7 +39,7 @@ class IconAdapter(
         fun bind(model: IconModel) {
             binding.apply {
                 iconImageview.setImageResource(model.iconResource.type.getImageResource())
-                mainLayout.background.overrideColor(model.backgroundColor)
+                //mainLayout.background.overrideColor(model.backgroundColor)
                 /*if(model.isSelected){
                     binding.mainContainer.setBackgroundResource(R.drawable.radius_1_gray)
                 }*/

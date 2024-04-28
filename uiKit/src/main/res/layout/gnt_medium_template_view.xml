@@ -205,7 +205,7 @@
             android:layout_height="0dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/gnt_blue"
+            android:background="@color/light_blue_100"
             android:gravity="center"
             android:lines="1"
             android:textColor="@color/gnt_white"

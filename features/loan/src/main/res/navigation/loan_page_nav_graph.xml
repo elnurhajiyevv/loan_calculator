@@ -28,12 +28,12 @@
         tools:layout="@layout/fragment_amortization">
 
         <argument
-            android:name="loan"
-            app:argType="loan.calculator.domain.entity.home.Loan" />
-
-        <argument
             android:name="loanInfo"
             app:argType="loan.calculator.domain.entity.home.LoanInfo" />
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="loan://amortization/{loanInfo}" />
 
     </fragment>
 

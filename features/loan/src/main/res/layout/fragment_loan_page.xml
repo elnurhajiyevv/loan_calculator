@@ -498,25 +498,46 @@
                 app:layout_constraintStart_toStartOf="@+id/loan_payment"
                 app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
 
-            <TextView
-                android:id="@+id/total_interest_value"
-                style="@style/bold_caption3"
+            <LinearLayout
+                android:id="@+id/total_interest_container"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:text="$6 618.55"
+                android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="@+id/total_interest_textview"
                 app:layout_constraintStart_toStartOf="@+id/loan_payment"
-                app:layout_constraintTop_toBottomOf="@+id/total_interest_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/total_interest_textview">
 
+                <TextView
+                    android:id="@+id/total_interest_currency"
+                    style="@style/bold_caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="$" />
+
+
+                <TextView
+                    android:id="@+id/total_interest_value"
+                    style="@style/bold_caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="6 618.55"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/total_interest_currency"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </LinearLayout>
 
             <View
                 android:id="@+id/seperator_bottom"
                 android:layout_width="@dimen/_1sdp"
                 android:layout_height="0dp"
                 android:background="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@+id/total_interest_value"
+                app:layout_constraintBottom_toBottomOf="@+id/total_interest_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
@@ -534,18 +555,33 @@
                 app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
                 app:layout_constraintTop_toBottomOf="@+id/loan_payment" />
 
-            <TextView
-                android:id="@+id/total_repayment_value"
-                style="@style/bold_caption3"
+            <LinearLayout
+                android:id="@+id/total_repayment_container"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center"
-                android:text="$106 618.55"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
-                app:layout_constraintTop_toBottomOf="@+id/total_repayment_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/total_repayment_textview">
+                <TextView
+                    android:id="@+id/total_repayment_currency"
+                    style="@style/bold_caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$" />
 
+
+                <TextView
+                    android:id="@+id/total_repayment_value"
+                    style="@style/bold_caption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="106 618.55" />
+
+
+            </LinearLayout>
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart"

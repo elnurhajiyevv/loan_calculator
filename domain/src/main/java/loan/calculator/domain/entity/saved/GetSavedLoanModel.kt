@@ -2,6 +2,7 @@ package loan.calculator.domain.entity.saved
 
 import kotlinx.serialization.Serializable
 import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
+import loan.calculator.domain.entity.home.AmortizationModel
 
 @Serializable
 class GetSavedLoanModel(
@@ -16,5 +17,8 @@ class GetSavedLoanModel(
     val loanAmount: String?,
     val interestRate: String?,
     val compoundingFrequency: String?,
-    val totalPayment: String?
+    val totalPayment: String?,
+    val period: String? = null,
+    var selected: Boolean = false,
+    var termInMonth: Int?
 )

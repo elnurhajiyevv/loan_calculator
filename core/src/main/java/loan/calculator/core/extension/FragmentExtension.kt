@@ -48,8 +48,9 @@ fun NavController.deeplinkNavigate(
 }
 
 object DeeplinkNavigationTypes {
-    private const val DOMAIN = "vpn://"
-    const val SPLASH_PAGE = "${DOMAIN}splash"
+    private const val DOMAIN = "loan://"
+    const val AMORTIZATION = "${DOMAIN}amortization/{${NavigationArgs.LOAN}}"
+    const val SAVED_AMORTIZATION = "${DOMAIN}savedamortization/{${NavigationArgs.LOAN}}"
     const val INIT_PAGE = "${DOMAIN}init"
     const val HOME_PAGE = "${DOMAIN}home"
     const val INTRO_PAGE = "${DOMAIN}intro"
@@ -62,5 +63,5 @@ object DeeplinkNavigationTypes {
 }
 
 object NavigationArgs {
-
+    const val LOAN = "loanInfo"
 }

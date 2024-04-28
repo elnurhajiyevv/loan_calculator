@@ -19,7 +19,9 @@ import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseDialogFragment
+import loan.calculator.core.extension.toast
 import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
+import loan.calculator.domain.entity.home.AmortizationModel
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.IconAdapter
@@ -74,7 +76,9 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
                         loanAmount = arguments?.getString(AMOUNT),
                         interestRate = arguments?.getString(RATE),
                         compoundingFrequency = arguments?.getString(FREQUENCY),
-                        totalPayment = arguments?.getString(PAYMENT)
+                        period = arguments?.getString(PERIOD),
+                        totalPayment = arguments?.getString(PAYMENT),
+                        termInMonth = arguments?.getInt(TERMINMONTH)
                     )
                 )
             }
@@ -124,6 +128,7 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
     override fun observeEffect(effect: SaveDialogEffect) {
         when(effect){
             is SaveDialogEffect.InsertSavedLoan -> {
+                toast("Your loan added to favorite.")
                 dismiss()
             }
         }
@@ -168,15 +173,17 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         private const val RATE = "rate"
         private const val PAYMENT = "payment"
         private const val FREQUENCY = "frequency"
+        private const val TERMINMONTH = "termInMonth"
 
-        fun build(amount: String? = null, period: String? = null, rate: String? = null, payment: String? = null, frequency: String? = null) = SaveDialog().apply {
+        fun build(amount: String? = null, period: String? = null, rate: String? = null, payment: String? = null, frequency: String? = null, termInMonth: Int? = null) = SaveDialog().apply {
             arguments =
                 bundleOf(
                     AMOUNT to amount,
                     PERIOD to period,
                     RATE to rate,
                     PAYMENT to payment,
-                    FREQUENCY to frequency
+                    FREQUENCY to frequency,
+                    TERMINMONTH to termInMonth
                 )
         }
     }

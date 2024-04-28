@@ -11,7 +11,13 @@ class Loan(// Supplied Values:
     downPayment: Double,
     tradeInValue: Double,
     salesTaxRate: Double,
-    fees: Double
+    fees: Double,
+    val name: String? = null,
+    var backgroundColor: Int? = 0,
+    var startDate:String? = null,
+    var paidOff:String? = null,
+    var frequency:String? = null,
+    var totalRepayment:String? = null
 ) :
     Serializable {
     val interestRate: Double

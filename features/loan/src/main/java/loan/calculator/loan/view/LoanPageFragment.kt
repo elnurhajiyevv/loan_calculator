@@ -35,11 +35,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
+import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
 import loan.calculator.domain.entity.home.LoanInfo
-import loan.calculator.domain.util.SELECT_FREQUENCY
 import loan.calculator.domain.util.SELECT_PART
 import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
@@ -51,6 +51,8 @@ import loan.calculator.uikit.edittext.InputFilterMinMax
 import loan.calculator.uikit.extension.enableSumFormatting
 import loan.calculator.uikit.util.calculatePaidOff
 import loan.calculator.uikit.util.disableSelection
+import loan.calculator.uikit.util.getValor
+import loan.calculator.uikit.util.returnValueIfNull
 import loan.calculator.uikit.util.setBackgroundColor
 import loan.calculator.uikit.util.setBackgroundResources
 import loan.calculator.uikit.util.setImageResources
@@ -109,35 +111,25 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         loanPaymentPart.setOnClickListenerDebounce { selectPart(SELECT_PART.PAYMENT) }
 
         applyButton.setOnClickListenerDebounce {
+            var termInMonth = viewmodel.getPeriodInMonth(
+                returnValueIfNull(binding.loanYearEdittext).toInt(),
+                returnValueIfNull(binding.loanMonthEdittext).toInt()
+            )
             viewmodel.navigate(
                 NavigationCommand.To(
                     LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
-                        loan = Loan(
-                            loanAmount = returnValueIfNull(binding.loanAmountEdittext).getDoubleValue(),
-                            termInMonths = viewmodel.getPeriodInMonth(
-                                returnValueIfNull(binding.loanYearEdittext).toInt(),
-                                returnValueIfNull(binding.loanMonthEdittext).toInt()
-                            ),
-                            annualInterestRate = returnValueIfNull(binding.loanRateEdittext).getDoubleValue(),
-                            downPayment = 0.0,
-                            tradeInValue = 0.0,
-                            salesTaxRate = 0.0,
-                            fees = 0.0
-                        ),
                         loanInfo = LoanInfo(
                             name = "Loan Calculator",
                             backgroundColor = 0,
                             startDate = Date().asFormattedDateWithDot(),
                             paidOff = calculatePaidOff(
-                                viewmodel.getPeriodInMonth(
-                                    returnValueIfNull(binding.loanYearEdittext).toInt(),
-                                    returnValueIfNull(binding.loanMonthEdittext).toInt()
-                                ), Date()
+                                termInMonth, Date()
                             ),
-                            loanAmount = returnValueIfNull(binding.loanAmountEdittext),
-                            interestRate = returnValueIfNull(binding.loanRateEdittext),
+                            loanAmount = returnValueIfNull(binding.loanAmountEdittext).getDoubleValue(),
+                            interestRate = returnValueIfNull(binding.loanRateEdittext).getDoubleValue(),
                             frequency = type.selectedItem.toString(),
-                            totalRepayment = returnValueIfNull(binding.loanPaymentEdittext)
+                            totalRepayment = returnValueIfNull(binding.loanPaymentEdittext),
+                            termInMonth = termInMonth
                         )
                     )
                 )
@@ -318,18 +310,11 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     }
 
-    fun getValor(s: CharSequence): Double {
-        return if (s.isNotEmpty()) s.toString().replace("", " ").replace(" ", "")
-            .toDouble() else 0.0
-    }
-
-    fun getFloatValue(s: String): Float {
-        return if (s.isNotEmpty()) s.replace(" ", "").replace("$", "")
-            .toFloat() else 0.0F
-    }
-
-
     private fun saveValues() {
+        var termInMonth = viewmodel.getPeriodInMonth(
+            returnValueIfNull(binding.loanYearEdittext).toInt(),
+            returnValueIfNull(binding.loanMonthEdittext).toInt()
+        )
         val saveDialog = SaveDialog
         saveDialog.build(
             amount = returnValueIfNull(binding.loanAmountEdittext),
@@ -339,32 +324,32 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             ).toString(),
             rate = returnValueIfNull(binding.loanRateEdittext),
             payment = returnValueIfNull(binding.loanPaymentEdittext),
-            frequency = binding.type.selectedItem.toString()
+            frequency = binding.type.selectedItem.toString(),
+            termInMonth = termInMonth
         ).show(parentFragmentManager,"saveDialog")
     }
 
-    private fun returnValueIfNull(editText: EditText): String{
-        return if(editText.text.toString().trim().isNullOrEmpty())
-            editText.hint.toString()
-        else
-            editText.text.toString()
-    }
-
     private fun showPieChart(totalInterest: Float, totalPayment: Float){
-        binding.totalInterestValue.text = "$${totalInterest}"
-        binding.totalRepaymentValue.text = "$${totalPayment}"
+
+        binding.totalInterestValue.text = "${String.format("%.2f", totalInterest).replace(",",".").toFloat()}"
+        binding.totalRepaymentValue.text = "${String.format("%.2f", totalPayment).replace(",",".").toFloat()}"
+        binding.totalInterestValue.enableSumFormatting()
+        binding.totalRepaymentValue.enableSumFormatting()
+
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(5f, 5f, 5f, 0f)
         binding.chart.isDrawHoleEnabled = true
         binding.chart.setHoleColor(Color.WHITE)
 
         val yvalues: MutableList<PieEntry> = ArrayList()
+        yvalues.clear()
         yvalues.add(PieEntry(totalInterest, info[0]))
         yvalues.add(PieEntry(totalPayment - totalInterest, info[1]))
         val dataSet = PieDataSet(yvalues, "")
         dataSet.sliceSpace = 3f
 
         val xVals = ArrayList<String>()
+        xVals.clear()
         xVals.add(info[0])
         xVals.add(info[1])
         val data = PieData(dataSet)
@@ -384,16 +369,13 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         binding.chart.data = data
         binding.chart.setEntryLabelTextSize(13f)
         val colors = intArrayOf(
-            Color.GRAY,
-            0xFF00B2FF.toInt()
+            0xFFB2C1DB.toInt(),
+            0xFF7DD16A.toInt()
         )
         dataSet.colors = ColorTemplate.createColors(colors)
 
 
         val d = Description()
-        d.textSize = 18f
-        d.setPosition(65f, 50f)
-        d.textAlign = Paint.Align.LEFT
         d.text = ""
         binding.chart.description = d
         binding.chart.transparentCircleRadius = 35f
@@ -471,6 +453,11 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     }
 
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        defaultSelection()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -498,8 +485,6 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             totalInterest = 6618.55F,
             totalPayment = 106618.55F
         )
-        binding.totalInterestValue.text = "$6 618.55"
-        binding.totalRepaymentValue.text = "$106 618.55"
     }
 
 

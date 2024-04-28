@@ -30,11 +30,13 @@ class LoanToolbar @JvmOverloads constructor(
 
     private var mOnToolbarLeftActionClick: (() -> Unit)? = null
     private var mOnToolbarRightActionClick: (() -> Unit)? = null
+    private var mOnToolbarRightActionDeleteClick: (() -> Unit)? = null
 
     private var title: String = ""
     private var titleStyle: Int = 0
     private var toolbarOption: Int = LoanToolbarOption.WITH_LEFT_AND_RIGHT.value
     private var toolbarRightActionIcon: Int = R.drawable.ic_saved
+    private var toolbarRightActionDeleteIcon: Int = R.drawable.ic_delete
     private var toolbarLeftActionIcon: Int = R.drawable.ic_remove
 
     var navigationIcon: Drawable?
@@ -69,6 +71,10 @@ class LoanToolbar @JvmOverloads constructor(
                         R.styleable.LoanToolbar_loan_toolbar_right_action_icon,
                         R.drawable.ic_saved
                     )
+                    toolbarRightActionDeleteIcon = getResourceId(
+                        R.styleable.LoanToolbar_loan_toolbar_delete_action_icon,
+                        R.drawable.ic_delete
+                    )
                 } finally {
                     recycle()
                 }
@@ -80,12 +86,16 @@ class LoanToolbar @JvmOverloads constructor(
                 setTitleStyle(titleStyle)
                 setToolbarActionIcon(toolbarOption)
                 setToolbarRightActionButtonIcon(toolbarRightActionIcon)
+                setToolbarRightActionDeleteButtonIcon(toolbarRightActionDeleteIcon)
                 setToolbarLeftActionButtonIcon(toolbarLeftActionIcon)
                 loanToolbarLeft.setOnClickListener {
                     mOnToolbarLeftActionClick?.invoke()
                 }
                 loanToolbarRight.setOnClickListener {
                     mOnToolbarRightActionClick?.invoke()
+                }
+                loanToolbarDelete.setOnClickListener {
+                    mOnToolbarRightActionDeleteClick?.invoke()
                 }
             }
         }
@@ -111,6 +121,16 @@ class LoanToolbar @JvmOverloads constructor(
         )
     }
 
+    private fun setToolbarRightActionDeleteButtonIcon(@DrawableRes resId: Int) {
+        this.toolbarRightActionDeleteIcon = resId
+        binding.loanToolbarDelete.setImageDrawable(
+            ContextCompat.getDrawable(
+                context,
+                toolbarRightActionDeleteIcon
+            )
+        )
+    }
+
     fun setToolbarLeftActionClick(actionClick: () -> Unit) {
         mOnToolbarLeftActionClick = actionClick
     }
@@ -120,6 +140,10 @@ class LoanToolbar @JvmOverloads constructor(
     }
     fun setToolbarRightActionClick(actionClick: () -> Unit) {
         mOnToolbarRightActionClick = actionClick
+    }
+
+    fun setToolbarRightDeleteActionClick(actionClick: () -> Unit) {
+        mOnToolbarRightActionDeleteClick = actionClick
     }
 
     fun getTitle(): String {
@@ -142,6 +166,16 @@ class LoanToolbar @JvmOverloads constructor(
         binding.loanToolbarTitle.text = this.title
     }
 
+    fun showRightToolbar(on:Boolean){
+        if(on){
+            binding.loanToolbarRight.show()
+            binding.loanToolbarDelete.show()
+        } else {
+            binding.loanToolbarRight.gone()
+            binding.loanToolbarDelete.gone()
+        }
+    }
+
     fun setBackButtonVisibility(show: Boolean){
         with(binding.root){
             navigationIcon = if(show){
@@ -158,18 +192,32 @@ class LoanToolbar @JvmOverloads constructor(
             LoanToolbarOption.WITH_LEFT.value -> {
                 binding.loanToolbarLeft.show()
                 binding.loanToolbarRight.gone()
+                binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITH_RIGHT.value -> {
                 binding.loanToolbarLeft.gone()
                 binding.loanToolbarRight.show()
+                binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITHOUT_LEFT_AND_RIGHT.value -> {
                 binding.loanToolbarLeft.gone()
                 binding.loanToolbarRight.gone()
+                binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITH_LEFT_AND_RIGHT.value -> {
                 binding.loanToolbarLeft.show()
                 binding.loanToolbarRight.show()
+                binding.loanToolbarDelete.gone()
+            }
+            LoanToolbarOption.WITH_FULL.value -> {
+                binding.loanToolbarLeft.show()
+                binding.loanToolbarRight.show()
+                binding.loanToolbarDelete.show()
+            }
+            LoanToolbarOption.WITH_FULL_RIGHT.value -> {
+                binding.loanToolbarLeft.gone()
+                binding.loanToolbarRight.show()
+                binding.loanToolbarDelete.show()
             }
         }
     }
@@ -219,7 +267,7 @@ class LoanToolbar @JvmOverloads constructor(
     }
 
     enum class LoanToolbarOption(val value: Int) {
-        WITH_LEFT_AND_RIGHT(0), WITH_LEFT(1),WITH_RIGHT(2), WITHOUT_LEFT_AND_RIGHT(3),
+        WITH_LEFT_AND_RIGHT(0), WITH_LEFT(1),WITH_RIGHT(2), WITH_FULL(3),WITH_FULL_RIGHT(4),WITHOUT_LEFT_AND_RIGHT(5),
     }
 
 }

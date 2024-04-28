@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.overrideColor
+import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.AmortizationAdapter
@@ -15,6 +17,7 @@ import loan.calculator.loan.effect.AmortizationPageEffect
 import loan.calculator.loan.state.AmortizationPageState
 import loan.calculator.loan.viewmodel.AmortizationPageViewModel
 import loan.calculator.uikit.extension.getImageResource
+import loan.calculator.uikit.util.returnValueIfNull
 
 @AndroidEntryPoint
 class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect, AmortizationPageViewModel, FragmentAmortizationBinding>() {
@@ -45,6 +48,11 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        amortizationAdapter.submitList(args.loan.amortizationItems.toMutableList())
+        var list = calculateAmortization(
+            loanAmount = args.loanInfo.loanAmount,
+            termInMonths = args.loanInfo.termInMonth?:0,
+            annualInterestRate = args.loanInfo.interestRate
+        )
+        amortizationAdapter.submitList(list.toMutableList())
     }
 }

@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/header"
-        style="@style/regular_caption2"
+        style="@style/bold_caption3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/icon_text"
-            style="@style/regular_caption2"
+            style="@style/bold_caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/icon"
@@ -82,7 +82,7 @@
 
         <TextView
             android:id="@+id/name_text"
-            style="@style/regular_caption1"
+            style="@style/bold_caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16sdp"
@@ -123,7 +123,7 @@
 
         <TextView
             android:id="@+id/start_text"
-            style="@style/regular_caption1"
+            style="@style/bold_caption1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_32sdp"

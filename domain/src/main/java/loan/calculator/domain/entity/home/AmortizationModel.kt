@@ -9,4 +9,4 @@ class AmortizationModel (
     var interest: Double?,
     var principal: Double?,
     var endingBalance: Double?,
-)
+): java.io.Serializable

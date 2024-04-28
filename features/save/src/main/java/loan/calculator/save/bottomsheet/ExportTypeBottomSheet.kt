@@ -67,7 +67,7 @@ class ExportTypeBottomSheet: BaseNotSerializableBottomSheet() {
                 })
             recyclerViewExport.adapter = exportTypeAdapter
             binding.backButton.setOnClickListener {
-                onDismiss?.invoke()
+                this@ExportTypeBottomSheet.dismiss()
             }
 
         }
