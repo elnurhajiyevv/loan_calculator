@@ -10,7 +10,6 @@ import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.uikit.R
 
 import loan.calculator.uikit.databinding.ItemSavedBinding
-import loan.calculator.uikit.extension.getImageBackgroundColor
 import loan.calculator.uikit.extension.getImageResource
 
 class SavedAdapter(
@@ -45,7 +44,7 @@ class SavedAdapter(
                 titleText.text = model.name
                 startDate.text = model.startDate
                 paidOff.text = model.paidOff
-                totalRepayment.text = "$ ${model.totalPayment}"
+                totalRepayment.text = "$ ${model.totalRePayment}"
                 interestRate.text = "${model.interestRate}%"
                 frequency.text = model.compoundingFrequency
                 loan.text = "$ ${model.loanAmount}"

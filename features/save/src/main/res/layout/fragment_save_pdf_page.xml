@@ -23,6 +23,8 @@
         android:id="@+id/pdfView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
         android:background="@color/background_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

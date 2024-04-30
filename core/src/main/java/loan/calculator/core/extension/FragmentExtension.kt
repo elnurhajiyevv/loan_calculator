@@ -50,10 +50,9 @@ fun NavController.deeplinkNavigate(
 object DeeplinkNavigationTypes {
     private const val DOMAIN = "loan://"
     const val AMORTIZATION = "${DOMAIN}amortization/{${NavigationArgs.LOAN}}"
-    const val SAVED_AMORTIZATION = "${DOMAIN}savedamortization/{${NavigationArgs.LOAN}}"
     const val PDF_PAGE = "${DOMAIN}savepdf"
     const val HOME_PAGE = "${DOMAIN}home"
-    const val INTRO_PAGE = "${DOMAIN}intro"
+    const val SAVE_PAGE = "${DOMAIN}save"
     const val SIGN_UP_PAGE = "${DOMAIN}signup"
     const val LOCATION_PAGE = "${DOMAIN}location"
     const val RESET_PAGE = "${DOMAIN}reset"

@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -326,7 +327,9 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             rate = returnValueIfNull(binding.loanRateEdittext),
             payment = returnValueIfNull(binding.loanPaymentEdittext),
             frequency = binding.type.selectedItem.toString(),
-            termInMonth = termInMonth
+            termInMonth = termInMonth,
+            totalInterest = "${viewmodel.totalInterest.toFloat()}",
+            totalPayment = "${viewmodel.totalPayment.toFloat()}"
         ).show(parentFragmentManager,"saveDialog")
     }
 
@@ -362,15 +365,17 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         l.xEntrySpace = 7f
         l.yEntrySpace = 5f
         l.yOffset = 0f
+        l.textColor = resources.getColor(R.color.black_white)
         binding.chart.setEntryLabelColor(resources.getColor(R.color.black_white))
 
         data.setValueFormatter(PercentFormatter())
+        data.setValueTextColor(resources.getColor(R.color.black_white))
         // data.setValueFormatter(new DefaultValueFormatter(0));
         // data.setValueFormatter(new DefaultValueFormatter(0));
         binding.chart.data = data
         binding.chart.setEntryLabelTextSize(13f)
         val colors = intArrayOf(
-            0xFFB2C1DB.toInt(),
+            0xFFFF3B30.toInt(),
             0xFF7DD16A.toInt()
         )
         dataSet.colors = ColorTemplate.createColors(colors)
@@ -456,7 +461,6 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        defaultSelection()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -488,6 +492,15 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d("onResume LoanPage:","LoanPage resume started!")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("onPause LoanPage:","LoanPage pause started!")
+    }
 
     override fun observeState(state: LoanPageState) {
         when(state){

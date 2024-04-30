@@ -12,6 +12,7 @@ import android.view.WindowManager
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.palette.graphics.Palette
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
@@ -19,9 +20,9 @@ import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseDialogFragment
+import loan.calculator.core.extension.DeeplinkNavigationTypes
 import loan.calculator.core.extension.toast
-import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
-import loan.calculator.domain.entity.home.AmortizationModel
+import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.IconAdapter
@@ -56,10 +57,10 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
             dismiss()
         }
 
-        iconType.text = ":${viewmodel.getIconModel().iconResource.type}"
+        iconText.text = viewmodel.getIconModel().iconResource.type
 
         saveButton.setOnClickListener {
-            if(nameEdittext.text.toString().isNullOrEmpty())
+            if(nameEdittext.text.toString().isEmpty())
                 errorText.show()
             else {
                 errorText.gone()
@@ -77,8 +78,10 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
                         interestRate = arguments?.getString(RATE),
                         compoundingFrequency = arguments?.getString(FREQUENCY),
                         period = arguments?.getString(PERIOD),
-                        totalPayment = arguments?.getString(PAYMENT),
-                        termInMonth = arguments?.getInt(TERMINMONTH)
+                        totalRePayment = arguments?.getString(PAYMENT),
+                        termInMonth = arguments?.getInt(TERMINMONTH),
+                        totalInterest = arguments?.getString(TOTALINTEREST),
+                        totalPayment = arguments?.getString(TOTALPAYMENT)
                     )
                 )
             }
@@ -95,7 +98,7 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         iconAdapter = IconAdapter(IconAdapter.IconItemClick{
             // handle click listener
             viewmodel.setIconModel(it)
-            iconType.text = ":${it.iconResource.type}"
+            iconText.text = it.iconResource.type
             viewmodel.selectedType = it.iconResource.type
         })
         viewmodel.getIconModelList(requireContext())
@@ -130,6 +133,7 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
             is SaveDialogEffect.InsertSavedLoan -> {
                 toast("Your loan added to favorite.")
                 dismiss()
+                //viewmodel.navigate(NavigationCommand.Deeplink(DeeplinkNavigationTypes.SAVE_PAGE,null,false))
             }
         }
     }
@@ -174,8 +178,10 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         private const val PAYMENT = "payment"
         private const val FREQUENCY = "frequency"
         private const val TERMINMONTH = "termInMonth"
+        private const val TOTALINTEREST = "totalInterest"
+        private const val TOTALPAYMENT = "totalPayment"
 
-        fun build(amount: String? = null, period: String? = null, rate: String? = null, payment: String? = null, frequency: String? = null, termInMonth: Int? = null) = SaveDialog().apply {
+        fun build(amount: String? = null, period: String? = null, rate: String? = null, payment: String? = null, frequency: String? = null, termInMonth: Int? = null,totalInterest: String? = null,totalPayment: String? = null) = SaveDialog().apply {
             arguments =
                 bundleOf(
                     AMOUNT to amount,
@@ -183,7 +189,9 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
                     RATE to rate,
                     PAYMENT to payment,
                     FREQUENCY to frequency,
-                    TERMINMONTH to termInMonth
+                    TERMINMONTH to termInMonth,
+                    TOTALINTEREST to totalInterest,
+                    TOTALPAYMENT to totalPayment
                 )
         }
     }

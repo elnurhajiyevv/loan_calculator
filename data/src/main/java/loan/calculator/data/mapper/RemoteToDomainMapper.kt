@@ -16,7 +16,9 @@ fun GetSavedLoanModel.toLocal(
     loanAmount = loanAmount,
     interestRate = interestRate,
     compoundingFrequency = compoundingFrequency,
-    totalPayment = totalPayment,
-    termInMonth = termInMonth
+    totalRePayment = totalRePayment,
+    termInMonth = termInMonth,
+    totalInterest = totalInterest,
+    totalPayment = totalPayment
 )
 

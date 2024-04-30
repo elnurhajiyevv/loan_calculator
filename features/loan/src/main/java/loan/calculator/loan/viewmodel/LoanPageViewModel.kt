@@ -13,8 +13,9 @@ class LoanPageViewModel @Inject constructor(
 
     var setSelection = SELECT_PART.PAYMENT
 
-    var totalInterest = 0.0
-    var totalPayment = 0.0
+    var totalInterest = 6618.55
+    var totalPayment = 106618.55
+
 
     var selectedLoanAmount = 100000.0F
     var selectedLoanPeriodYear = 1

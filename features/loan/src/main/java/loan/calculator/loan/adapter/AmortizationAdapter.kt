@@ -34,7 +34,7 @@ class AmortizationAdapter : BaseAdapter<AmortizationModel, AmortizationAdapter.A
         RecyclerView.ViewHolder(binding.root) {
         fun bind(numberFormat: NumberFormat,model: AmortizationModel) {
             binding.apply {
-                mainContainer.setBackgroundColor(ContextCompat.getColor(binding.root.context, if(model.month % 2 == 0) R.color.adapter_background else R.color.color_white_gray))
+                mainContainer.setBackgroundColor(ContextCompat.getColor(binding.root.context, if(model.month % 2 == 0) R.color.adapter_amortization else R.color.color_white_gray))
                 number.text = model.month.toString()
                 period.text = model.month.toString().getMonthAndYear()
                 interest.text = numberFormat.format(model.interest)

@@ -10,6 +10,7 @@
     <color name="color_gray_six">#F2F2F7</color>
     <color name="background_color">@color/black</color>
     <color name="adapter_background">#1c1c1c</color>
+    <color name="adapter_amortization">#1c1c1c</color>
     <color name="white">#FFFFFF</color>
     <color name="color_white_gray">#20C2CDDC</color>
     <color name="black">#000000</color>

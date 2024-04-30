@@ -20,7 +20,8 @@ data class GetSavedLoanLocalDto(
     @ColumnInfo(name = "loanAmount") val loanAmount: String?,
     @ColumnInfo(name = "interestRate") val interestRate: String?,
     @ColumnInfo(name = "compoundingFrequency") val compoundingFrequency: String?,
-    @ColumnInfo(name = "totalPayment") val totalPayment: String?,
+    @ColumnInfo(name = "totalRePayment") val totalRePayment: String?,
     @ColumnInfo(name = "termInMonth") val termInMonth: Int?,
-
+    @ColumnInfo(name = "totalInterest") val totalInterest: String?,
+    @ColumnInfo(name = "totalPayment") val totalPayment: String?
 )
