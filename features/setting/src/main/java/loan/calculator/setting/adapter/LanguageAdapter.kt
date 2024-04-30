@@ -47,7 +47,7 @@ class LanguageAdapter(private val itemList: List<LanguageModel>, private val cli
                 binding.title.text = model.name
                 binding.description.text = model.nationalName
                 if(model.isSelected){
-                    binding.mainLayout.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.background_color))
+                    binding.mainLayout.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.lang_background))
                 }
             }
         }

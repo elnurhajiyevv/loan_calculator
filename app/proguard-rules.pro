@@ -21,3 +21,4 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class loan.calculator.domain.entity.** { *; }
+-keep class com.shockwave.**

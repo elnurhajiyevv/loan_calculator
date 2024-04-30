@@ -21,4 +21,4 @@ class GetSavedLoanModel(
     val period: String? = null,
     var selected: Boolean = false,
     var termInMonth: Int?
-)
+): java.io.Serializable

@@ -30,6 +30,7 @@ import loan.calculator.domain.entity.home.Loan
 import loan.calculator.domain.entity.home.LoanInfo
 import loan.calculator.domain.entity.home.SavedModel
 import loan.calculator.domain.entity.saved.ExportTypeModel
+import loan.calculator.domain.entity.saved.GetPdfLoanModel
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.save.R
 import loan.calculator.save.adapter.SavedAdapter
@@ -99,6 +100,7 @@ class SavePageFragment :
                 when (it.type) {
                     0 -> {
                         //update pdf
+                        saveAsPdf()
                     }
 
                     1 -> {
@@ -113,6 +115,16 @@ class SavePageFragment :
         }?.show(childFragmentManager, ExportTypeBottomSheet::class.java.canonicalName)
     }
 
+    private fun saveAsPdf() {
+        viewmodel.navigate(
+            NavigationCommand.To(
+                SavePageFragmentDirections.actionSavePageFragmentToSavePdfFragment(
+                    getSavedLoanModel = viewmodel.selectedItem
+                )
+            )
+        )
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -122,14 +134,14 @@ class SavePageFragment :
                 NavigationCommand.To(
                     SavePageFragmentDirections.actionSavePageFragmentToSavedAmortizationFragment(
                         loanInfo = LoanInfo(
-                            name = it.name?:"",
+                            name = it.name ?: "",
                             backgroundColor = 0,
                             startDate = it.startDate.toString(),
                             paidOff = it.paidOff.toString(),
-                            loanAmount = it.loanAmount?.getDoubleValue()?:0.0,
-                            interestRate = it.interestRate?.getDoubleValue()?:0.0,
+                            loanAmount = it.loanAmount?.getDoubleValue() ?: 0.0,
+                            interestRate = it.interestRate?.getDoubleValue() ?: 0.0,
                             frequency = it.compoundingFrequency.toString(),
-                            totalRepayment = it.totalPayment?:"",
+                            totalRepayment = it.totalPayment ?: "",
                             termInMonth = it.termInMonth
                         )
                     )

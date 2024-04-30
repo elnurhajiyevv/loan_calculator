@@ -8,6 +8,7 @@
     <color name="color_gray_five">#2A3038</color>
     <color name="color_gray_six">#F2F2F7</color>
     <color name="background_color">#EFF1F5</color>
+    <color name="adapter_background">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="white_black">#ffffff</color>
@@ -18,6 +19,8 @@
     <color name="color_shimmer_background">#cccccc</color>
     <color name="white_gray">#ffffff</color>
     <color name="white_toolbar">#ffffff</color>
+    <color name="lang_background">#EFF1F5</color>
+    <color name="search_background">#ffffff</color>
 
 
 
@@ -53,6 +56,7 @@
     <color name="color_bright_yellow">#FFCC00</color>
     <color name="color_pure_black">#000000</color>
     <color name="color_pure_white">#FFFFFF</color>
+    <color name="color_white_gray">#FFFFFF</color>
     <color name="color_primary">#FFFFFF</color>
     <color name="color_secondary">#F2F2F7</color>
     <color name="color_tertiary">#05000000</color>

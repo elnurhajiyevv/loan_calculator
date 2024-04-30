@@ -9,15 +9,19 @@
     <color name="color_gray_five">#2A3038</color>
     <color name="color_gray_six">#F2F2F7</color>
     <color name="background_color">@color/black</color>
+    <color name="adapter_background">#1c1c1c</color>
     <color name="white">#FFFFFF</color>
+    <color name="color_white_gray">#20C2CDDC</color>
     <color name="black">#000000</color>
     <color name="white_black">#000000</color>
     <color name="black_white">#FFFFFF</color>
     <color name="item_background">#20C2CDDC</color>
     <color name="edittext_background">#29787880</color>
     <color name="spinner_background">#20C2CDDC</color>
-    <color name="white_gray">#20C2CDDC</color>B2C1DB
+    <color name="white_gray">#20C2CDDC</color>
     <color name="white_toolbar">#B2C1DB</color>
+    <color name="lang_background">#1f1f1f</color>
+    <color name="search_background">#20C2CDDC</color>
 
 
 
@@ -49,7 +53,7 @@
     <color name="color_fills_tertiary">#1F767680</color>
     <color name="color_fills_quarternary">#14747480</color>
     <color name="color_labels_primary">#000000</color>
-    <color name="color_labels_secondary">#993C3C43</color>
+    <color name="color_labels_secondary">#99000000</color>
     <color name="color_labels_tertiary">#543C3C43</color>
     <color name="color_labels_quarternary">#2E3C3C43</color>
     <color name="color_separator_opaque">#C6C6C8</color>

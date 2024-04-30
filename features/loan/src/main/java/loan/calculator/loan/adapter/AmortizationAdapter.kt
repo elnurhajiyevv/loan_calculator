@@ -8,6 +8,7 @@ import loan.calculator.common.extensions.getMonthAndYear
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.home.AmortizationModel
 import loan.calculator.loan.R
+
 import loan.calculator.uikit.databinding.ItemAmortizationBinding
 import java.text.NumberFormat
 import java.util.Currency
@@ -33,7 +34,7 @@ class AmortizationAdapter : BaseAdapter<AmortizationModel, AmortizationAdapter.A
         RecyclerView.ViewHolder(binding.root) {
         fun bind(numberFormat: NumberFormat,model: AmortizationModel) {
             binding.apply {
-                mainContainer.setBackgroundColor(ContextCompat.getColor(binding.root.context, if(model.month % 2 == 0) R.color.background_color else R.color.color_pure_white))
+                mainContainer.setBackgroundColor(ContextCompat.getColor(binding.root.context, if(model.month % 2 == 0) R.color.adapter_background else R.color.color_white_gray))
                 number.text = model.month.toString()
                 period.text = model.month.toString().getMonthAndYear()
                 interest.text = numberFormat.format(model.interest)

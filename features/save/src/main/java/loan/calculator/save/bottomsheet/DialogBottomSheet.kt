@@ -48,7 +48,7 @@ class DialogBottomSheet: BaseNotSerializableBottomSheet() {
     private fun initView() {
         with(binding) {
             mainLayout.addCorners(
-                solidColor = R.color.color_pure_white,
+                solidColor = R.color.adapter_background,
                 radius = floatArrayOf(24.dp.toFloat(), 24.dp.toFloat(), 24.dp.toFloat(), 24.dp.toFloat(), 0f, 0f, 0f, 0f)
             )
 

@@ -153,6 +153,16 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_savePageFragment_to_savePdfFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_savePageFragment_to_savedAmortizationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="deepLink">
                               <value>
                                 <LayoutPositions />
@@ -163,14 +173,35 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="savePdfFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="147" />
+                            <option name="y" value="-178" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="savedAmortizationFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="110" />
-                            <option name="y" value="-15" />
+                            <option name="x" value="162" />
+                            <option name="y" value="147" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="deepLink">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

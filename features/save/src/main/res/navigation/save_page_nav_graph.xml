@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_savePageFragment_to_savedAmortizationFragment"
             app:destination="@id/savedAmortizationFragment" />
+        <action
+            android:id="@+id/action_savePageFragment_to_savePdfFragment"
+            app:destination="@id/savePdfFragment" />
 
     </fragment>
     <fragment
@@ -34,6 +37,16 @@
         <deepLink
             android:id="@+id/deepLink"
             app:uri="loan://savedamortization/{loanInfo}" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/savePdfFragment"
+        android:name="loan.calculator.save.view.SavePdfFragment"
+        tools:layout="@layout/fragment_save_pdf_page" >
+
+        <argument
+            android:name="getSavedLoanModel"
+            app:argType="loan.calculator.domain.entity.saved.GetSavedLoanModel" />
 
     </fragment>
 

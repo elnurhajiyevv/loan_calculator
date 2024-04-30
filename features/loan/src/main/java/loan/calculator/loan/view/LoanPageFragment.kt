@@ -36,6 +36,7 @@ import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.library.util.calculateAmortization
+import loan.calculator.common.library.util.calculateMonthlyPayment
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
@@ -339,7 +340,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(5f, 5f, 5f, 0f)
         binding.chart.isDrawHoleEnabled = true
-        binding.chart.setHoleColor(Color.WHITE)
+        binding.chart.setHoleColor(resources.getColor(R.color.white_black))
 
         val yvalues: MutableList<PieEntry> = ArrayList()
         yvalues.clear()
