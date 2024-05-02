@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.content.FileProvider
 import androidx.navigation.fragment.navArgs
 import com.itextpdf.text.BaseColor
@@ -126,6 +127,8 @@ class SavePdfFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+
         appFontRegular.color = BaseColor.WHITE
         val doc = Document(A4, 0f, 0f, 0f, 0f)
         val outPath = requireActivity().getExternalFilesDir(null)

@@ -35,8 +35,7 @@ class MainActivity : BaseActivity() {
     private val hiddenBottomNavigationViews by lazy {
         setOf(
             R.id.amortizationFragment,
-            R.id.savePdfFragment,
-            R.id.savedAmortizationFragment
+            R.id.savePdfFragment
         )
     }
 

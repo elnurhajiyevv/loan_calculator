@@ -28,12 +28,53 @@
         tools:layout="@layout/fragment_amortization">
 
         <argument
-            android:name="loanInfo"
-            app:argType="loan.calculator.domain.entity.home.LoanInfo" />
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="startDate"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="paidOff"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="loanAmount"
+            app:argType="string"
+            android:defaultValue="0" />
+
+        <argument
+            android:name="interestRate"
+            app:argType="string"
+            android:defaultValue="0" />
+
+        <argument
+            android:name="frequency"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="totalRepayment"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="termInMonth"
+            app:argType="string"
+            android:defaultValue="0" />
+
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="" />
 
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="loan://amortization/{loanInfo}" />
+            app:uri="loan://amortization/{name}/{startDate}/{paidOff}/{loanAmount}/{interestRate}/{frequency}/{totalRepayment}/{termInMonth}/{type}" />
 
     </fragment>
 

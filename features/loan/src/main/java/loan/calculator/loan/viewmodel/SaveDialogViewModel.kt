@@ -116,6 +116,7 @@ class SaveDialogViewModel @Inject constructor(
     fun getIconModel() = getIconModelUseCase.invoke(Unit)
 
     fun setIconModel(model:IconModel){
+        selectedType = model.iconResource.type
         setIconModelUseCase.invoke(SetIconModelUseCase.Params(model = model))
     }
 

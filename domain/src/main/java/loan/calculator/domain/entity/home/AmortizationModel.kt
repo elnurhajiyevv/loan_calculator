@@ -9,4 +9,6 @@ class AmortizationModel (
     var interest: Double?,
     var principal: Double?,
     var endingBalance: Double?,
+    val type: Int? = 0,
+    val countOfYear: Int? = 0
 ): java.io.Serializable

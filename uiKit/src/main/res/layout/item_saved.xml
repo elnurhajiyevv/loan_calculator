@@ -178,7 +178,6 @@
         android:layout_height="match_parent"
         android:layout_marginRight="@dimen/_4sdp"
         android:gravity="end"
-
         app:layout_constraintBottom_toBottomOf="@+id/total_repayment_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/total_repayment_text"

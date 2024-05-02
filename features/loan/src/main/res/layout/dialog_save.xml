@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/header"
-        style="@style/bold_caption3"
+        style="@style/bold_caption4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
@@ -80,7 +80,7 @@
 
         <EditText
             android:id="@+id/name_edittext"
-            style="@style/regular_caption1"
+            style="@style/regular_caption3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_etittext"
@@ -121,7 +121,7 @@
 
         <TextView
             android:id="@+id/data_text"
-            style="@style/regular_caption1"
+            style="@style/regular_caption3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="ex: 31/12/2023"

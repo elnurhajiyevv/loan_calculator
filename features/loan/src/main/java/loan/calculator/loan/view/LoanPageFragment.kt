@@ -68,7 +68,8 @@ import java.util.Date
 
 
 @AndroidEntryPoint
-class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageViewModel, FragmentLoanPageBinding>() {
+class LoanPageFragment :
+    BaseFragment<LoanPageState, LoanPageEffect, LoanPageViewModel, FragmentLoanPageBinding>() {
 
     override val bindingCallback: (LayoutInflater, ViewGroup?, Boolean) -> FragmentLoanPageBinding
         get() = FragmentLoanPageBinding::inflate
@@ -98,7 +99,12 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         }
 
         type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(arg0: AdapterView<*>?, arg1: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                arg0: AdapterView<*>?,
+                arg1: View?,
+                position: Int,
+                id: Long
+            ) {
 
             }
 
@@ -126,19 +132,17 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             viewmodel.navigate(
                 NavigationCommand.To(
                     LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
-                        loanInfo = LoanInfo(
-                            name = "Loan Calculator",
-                            backgroundColor = 0,
-                            startDate = Date().asFormattedDateWithDot(),
-                            paidOff = calculatePaidOff(
-                                termInMonth, Date()
-                            ),
-                            loanAmount = returnValueIfNull(binding.loanAmountEdittext).getDoubleValue(),
-                            interestRate = returnValueIfNull(binding.loanRateEdittext).getDoubleValue(),
-                            frequency = type.selectedItem.toString(),
-                            totalRepayment = returnValueIfNull(binding.loanPaymentEdittext),
-                            termInMonth = termInMonth
-                        )
+                        name = "Loan Calculator",
+                        startDate = Date().asFormattedDateWithDot(),
+                        paidOff = calculatePaidOff(
+                            termInMonth, Date()
+                        ),
+                        loanAmount = returnValueIfNull(binding.loanAmountEdittext),
+                        interestRate = returnValueIfNull(binding.loanRateEdittext),
+                        frequency = type.selectedItem.toString(),
+                        totalRepayment = returnValueIfNull(binding.loanPaymentEdittext),
+                        termInMonth = termInMonth.toString(),
+                        type = ""
                     )
                 )
             )
@@ -147,15 +151,16 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         loanMonthEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 11))
         loanYearEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 99))
 
-        loanAmountEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanAmountFocus = b }
-        loanAmountEdittext.addTextChangedListener(object: TextWatcher {
+        loanAmountEdittext.onFocusChangeListener =
+            View.OnFocusChangeListener { _, b -> loanAmountFocus = b }
+        loanAmountEdittext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(loanAmountFocus){
+                if (loanAmountFocus) {
                     try {
                         var selectionType = viewmodel.setSelection
-                        var termInMonth = viewmodel.getPeriodInMonth (
+                        var termInMonth = viewmodel.getPeriodInMonth(
                             month = returnValueIfNull(loanMonthEdittext).toInt(),
                             year = returnValueIfNull(loanYearEdittext).toInt()
                         )
@@ -170,7 +175,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 frequency = type.selectedItem.toString()
                             )
                         )
-                    } catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
@@ -178,15 +183,16 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             }
         })
 
-        loanRateEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanRateFocus = b }
-        loanRateEdittext.addTextChangedListener(object: TextWatcher {
+        loanRateEdittext.onFocusChangeListener =
+            View.OnFocusChangeListener { _, b -> loanRateFocus = b }
+        loanRateEdittext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(loanRateFocus){
+                if (loanRateFocus) {
                     try {
                         var selectionType = viewmodel.setSelection
-                        var termInMonth = viewmodel.getPeriodInMonth (
+                        var termInMonth = viewmodel.getPeriodInMonth(
                             month = returnValueIfNull(loanMonthEdittext).toInt(),
                             year = returnValueIfNull(loanYearEdittext).toInt()
                         )
@@ -201,7 +207,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 frequency = type.selectedItem.toString()
                             )
                         )
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                         loanRateEdittext.setText("")
                     }
@@ -209,30 +215,32 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             }
         })
 
-        loanPaymentEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanPaymentFocus = b }
-        loanPaymentEdittext.addTextChangedListener(object: TextWatcher {
+        loanPaymentEdittext.onFocusChangeListener =
+            View.OnFocusChangeListener { _, b -> loanPaymentFocus = b }
+        loanPaymentEdittext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(loanPaymentFocus){
+                if (loanPaymentFocus) {
                     try {
                         // getValor(s)
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
             }
         })
 
-        loanMonthEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanPeriodMonthFocus = b }
-        loanMonthEdittext.addTextChangedListener(object: TextWatcher {
+        loanMonthEdittext.onFocusChangeListener =
+            View.OnFocusChangeListener { _, b -> loanPeriodMonthFocus = b }
+        loanMonthEdittext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(loanPeriodMonthFocus){
+                if (loanPeriodMonthFocus) {
                     try {
                         var selectionType = viewmodel.setSelection
-                        var termInMonth = viewmodel.getPeriodInMonth (
+                        var termInMonth = viewmodel.getPeriodInMonth(
                             month = getValor(s).toInt(),
                             year = returnValueIfNull(loanYearEdittext).toInt()
                         )
@@ -247,22 +255,23 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 frequency = type.selectedItem.toString()
                             )
                         )
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
             }
         })
 
-        loanYearEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, b -> loanPeriodYearFocus = b }
-        loanYearEdittext.addTextChangedListener(object: TextWatcher {
+        loanYearEdittext.onFocusChangeListener =
+            View.OnFocusChangeListener { _, b -> loanPeriodYearFocus = b }
+        loanYearEdittext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if(loanPeriodYearFocus){
+                if (loanPeriodYearFocus) {
                     try {
                         var selectionType = viewmodel.setSelection
-                        var termInMonth = viewmodel.getPeriodInMonth (
+                        var termInMonth = viewmodel.getPeriodInMonth(
                             month = returnValueIfNull(loanMonthEdittext).toInt(),
                             year = getValor(s).toInt()
                         )
@@ -277,7 +286,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
                                 frequency = type.selectedItem.toString()
                             )
                         )
-                    }catch (e: Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
                 }
@@ -286,12 +295,13 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     }
 
     fun setCalculatedValue(type: SELECT_PART, value: Double) {
-        when(type){
+        when (type) {
             SELECT_PART.AMOUNT -> binding.loanAmountEdittext.setText(value.toString())
             SELECT_PART.PERIOD -> {
                 binding.loanYearEdittext.setText(viewmodel.convertMonthToYear(value.toInt()))
                 binding.loanMonthEdittext.setText(viewmodel.convertedMonth(value.toInt()))
             }
+
             SELECT_PART.RATE -> binding.loanRateEdittext.setText(value.toString())
             SELECT_PART.PAYMENT -> binding.loanPaymentEdittext.setText(value.toString())
         }
@@ -324,7 +334,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             returnValueIfNull(binding.loanMonthEdittext).toInt()
         )
 
-        paymentFormat(viewmodel.totalInterest.toFloat(),viewmodel.totalPayment.toFloat())
+        paymentFormat(viewmodel.totalInterest.toFloat(), viewmodel.totalPayment.toFloat())
 
         val saveDialog = SaveDialog
         saveDialog.build(
@@ -339,18 +349,21 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             termInMonth = termInMonth,
             totalInterest = binding.totalInterestValue.text.toString(),
             totalPayment = binding.totalRepaymentValue.text.toString()
-        ).show(parentFragmentManager,"saveDialog")
+        ).show(parentFragmentManager, "saveDialog")
     }
 
-    fun paymentFormat(totalInterest: Float, totalPayment: Float){
-        binding.totalInterestValue.text = "${String.format("%.2f", totalInterest).replace(",",".").toFloat()}"
-        binding.totalRepaymentValue.text = "${String.format("%.2f", totalPayment).replace(",",".").toFloat()}"
+    fun paymentFormat(totalInterest: Float, totalPayment: Float) {
+        binding.totalInterestValue.text =
+            "${String.format("%.2f", totalInterest).replace(",", ".").toFloat()}"
+        binding.totalRepaymentValue.text =
+            "${String.format("%.2f", totalPayment).replace(",", ".").toFloat()}"
         binding.totalInterestValue.enableSumFormatting()
         binding.totalRepaymentValue.enableSumFormatting()
     }
-    private fun showPieChart(totalInterest: Float, totalPayment: Float){
 
-        paymentFormat(totalInterest,totalPayment)
+    private fun showPieChart(totalInterest: Float, totalPayment: Float) {
+
+        paymentFormat(totalInterest, totalPayment)
 
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(5f, 5f, 5f, 0f)
@@ -401,7 +414,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
         data.setValueTextSize(13f)
         data.setValueTextColor(resources.getColor(R.color.black_white))
         binding.chart.animateXY(500, 500)
-        binding.chart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
+        binding.chart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
             override fun onValueSelected(e: Entry?, h: Highlight?) {
 
             }
@@ -422,21 +435,28 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     private fun selectPart(type: SELECT_PART) {
         resetSelection()
-        when(type){
+        when (type) {
             SELECT_PART.AMOUNT -> {
-                selection(binding.loanAmount,binding.loanAmountPart,binding.loanAmountImage)
+                selection(binding.loanAmount, binding.loanAmountPart, binding.loanAmountImage)
                 disableSelection(binding.loanAmountEdittext, setSelection = false)
             }
+
             SELECT_PART.PERIOD -> {
-                selection(binding.loanPeriod,binding.loanPeriodPart,binding.loanPeriodImage)
-                disableSelection(binding.loanYearEdittext, binding.loanMonthEdittext, setSelection = false)
+                selection(binding.loanPeriod, binding.loanPeriodPart, binding.loanPeriodImage)
+                disableSelection(
+                    binding.loanYearEdittext,
+                    binding.loanMonthEdittext,
+                    setSelection = false
+                )
             }
+
             SELECT_PART.RATE -> {
-                selection(binding.loanRate,binding.loanRatePart,binding.loanRateImage)
+                selection(binding.loanRate, binding.loanRatePart, binding.loanRateImage)
                 disableSelection(binding.loanRateEdittext, setSelection = false)
             }
+
             SELECT_PART.PAYMENT -> {
-                selection(binding.loanPayment,binding.loanPaymentPart,binding.loanPaymentImage)
+                selection(binding.loanPayment, binding.loanPaymentPart, binding.loanPaymentImage)
                 disableSelection(binding.loanPaymentEdittext, setSelection = false)
             }
         }
@@ -444,7 +464,11 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     }
 
 
-    private fun selection(backgroundResource: View, backgroundColor: View, imageView: AppCompatImageView) {
+    private fun selection(
+        backgroundResource: View,
+        backgroundColor: View,
+        imageView: AppCompatImageView
+    ) {
         backgroundResource.setBackgroundResource(R.drawable.radius_10_green)
         (backgroundResource.layoutParams as ConstraintLayout.LayoutParams).leftMargin = 4.dp
         (backgroundResource.layoutParams as ConstraintLayout.LayoutParams).rightMargin = 4.dp
@@ -455,23 +479,34 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     private fun resetSelection() {
         setBackgroundResources(
             resource = R.drawable.radius_10_white,
-            binding.loanPayment,binding.loanAmount,binding.loanRate,binding.loanPeriod)
+            binding.loanPayment, binding.loanAmount, binding.loanRate, binding.loanPeriod
+        )
 
         setBackgroundColor(
             color = resources.getColor(R.color.color_gray_four),
-            binding.loanPaymentPart,binding.loanAmountPart,binding.loanRatePart,binding.loanPeriodPart
+            binding.loanPaymentPart,
+            binding.loanAmountPart,
+            binding.loanRatePart,
+            binding.loanPeriodPart
         )
         setImageResources(
             resource = R.drawable.ic_unlock,
-            binding.loanAmountImage,binding.loanRateImage,binding.loanPaymentImage,binding.loanPeriodImage
+            binding.loanAmountImage,
+            binding.loanRateImage,
+            binding.loanPaymentImage,
+            binding.loanPeriodImage
         )
 
         disableSelection(
-            binding.loanPaymentEdittext, binding.loanYearEdittext, binding.loanMonthEdittext, binding.loanRateEdittext, binding.loanAmountEdittext,
+            binding.loanPaymentEdittext,
+            binding.loanYearEdittext,
+            binding.loanMonthEdittext,
+            binding.loanRateEdittext,
+            binding.loanAmountEdittext,
             setSelection = true
         )
         resetLeftMargin(
-            binding.loanPayment,binding.loanAmount,binding.loanRate,binding.loanPeriod
+            binding.loanPayment, binding.loanAmount, binding.loanRate, binding.loanPeriod
         )
 
     }
@@ -505,7 +540,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
     private fun defaultSelection() {
         resetValues()
         resetSelection()
-        selection(binding.loanPayment,binding.loanPaymentPart,binding.loanPaymentImage)
+        selection(binding.loanPayment, binding.loanPaymentPart, binding.loanPaymentImage)
         disableSelection(binding.loanPaymentEdittext, setSelection = false)
         showPieChart(
             totalInterest = 6618.55F,
@@ -515,16 +550,16 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     override fun onResume() {
         super.onResume()
-        Log.d("onResume LoanPage:","LoanPage resume started!")
+        Log.d("onResume LoanPage:", "LoanPage resume started!")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("onPause LoanPage:","LoanPage pause started!")
+        Log.d("onPause LoanPage:", "LoanPage pause started!")
     }
 
     override fun observeState(state: LoanPageState) {
-        when(state){
+        when (state) {
 
             else -> {}
         }

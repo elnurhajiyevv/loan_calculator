@@ -97,9 +97,8 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
 
         iconAdapter = IconAdapter(IconAdapter.IconItemClick{
             // handle click listener
-            viewmodel.setIconModel(it)
             iconText.text = it.iconResource.type
-            viewmodel.selectedType = it.iconResource.type
+            viewmodel.setIconModel(it)
         })
         viewmodel.getIconModelList(requireContext())
 

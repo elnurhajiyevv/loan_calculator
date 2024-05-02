@@ -16,6 +16,8 @@ import loan.calculator.save.state.SavePageState
 import loan.calculator.save.viewmodel.SavePageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.getDoubleValue
+import loan.calculator.core.extension.DeeplinkNavigationTypes
+import loan.calculator.core.extension.NavigationArgs
 import loan.calculator.core.extension.toast
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.LoanInfo
@@ -118,26 +120,22 @@ class SavePageFragment :
         binding.shimmerLayoutSaved.startShimmer()
         savedAdapter = SavedAdapter(SavedAdapter.SavedItemClick {
             viewmodel.navigate(
-                NavigationCommand.To(
-                    SavePageFragmentDirections.actionSavePageFragmentToSavedAmortizationFragment(
-                        loanInfo = LoanInfo(
-                            name = it.name ?: "",
-                            backgroundColor = 0,
-                            startDate = it.startDate.toString(),
-                            paidOff = it.paidOff.toString(),
-                            loanAmount = it.loanAmount?.getDoubleValue() ?: 0.0,
-                            interestRate = it.interestRate?.getDoubleValue() ?: 0.0,
-                            frequency = it.compoundingFrequency.toString(),
-                            totalRepayment = it.totalRePayment ?: "",
-                            termInMonth = it.termInMonth
-                        )
-                    )
+                NavigationCommand.Deeplink(
+                    DeeplinkNavigationTypes.AMORTIZATION,
+                    extras = mutableMapOf(
+                        NavigationArgs.NAME to (it.name ?: ""),
+                        NavigationArgs.START_DATE to (it.startDate ?: ""),
+                        NavigationArgs.PAID_OFF to (it.paidOff ?: ""),
+                        NavigationArgs.LOAN_AMOUNT to (it.loanAmount ?: ""),
+                        NavigationArgs.INTEREST_RATE to (it.interestRate ?: ""),
+                        NavigationArgs.FREQUENCY to (it.compoundingFrequency ?: ""),
+                        NavigationArgs.TOTAL_REPAYMENT to (it.totalRePayment ?: ""),
+                        NavigationArgs.TERM_IN_MONTH to (it.termInMonth.toString()),
+                        NavigationArgs.TYPE to (it.type?:"")
+                    ), false
                 )
             )
         }, SavedAdapter.SavedItemOnLongClick { selected ->
-
-            // set selected item to shared
-            viewmodel.selectedItem = selected
 
             viewmodel.list.forEach {
                 it.selected = selected.name == it.name

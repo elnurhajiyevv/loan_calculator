@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.getDoubleValue
-import loan.calculator.common.extensions.overrideColor
+import loan.calculator.common.extensions.getIntValue
 import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.core.base.BaseFragment
-import loan.calculator.loan.R
+import loan.calculator.domain.entity.home.AmortizationModel
 import loan.calculator.loan.adapter.AmortizationAdapter
 import loan.calculator.loan.databinding.FragmentAmortizationBinding
 import loan.calculator.loan.effect.AmortizationPageEffect
 import loan.calculator.loan.state.AmortizationPageState
 import loan.calculator.loan.viewmodel.AmortizationPageViewModel
+import loan.calculator.uikit.R
 import loan.calculator.uikit.extension.getImageResource
-import loan.calculator.uikit.util.returnValueIfNull
 
 @AndroidEntryPoint
 class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect, AmortizationPageViewModel, FragmentAmortizationBinding>() {
@@ -33,26 +33,35 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
 
     override val bindViews: FragmentAmortizationBinding.() -> Unit = {
         toolbar.setBackButtonVisibility(show = true)
-        amortizationAdapter = AmortizationAdapter()
-        recyclerViewAmortization.adapter = amortizationAdapter
+
         toolbar.setGravityLeft()
-        //include.logo.background.overrideColor(args?.loan?.type?.backgroundColor)
-        include.titleText.text = args?.loanInfo?.name
-        include.startDate.text = args?.loanInfo?.startDate
-        include.paidOff.text = args?.loanInfo?.paidOff
-        include.loan.text = "$ ${args?.loanInfo?.loanAmount}"
-        include.interestRate.text = "${args?.loanInfo?.interestRate}%"
-        include.frequency.text = args?.loanInfo?.frequency
-        include.totalRepayment.text = "$ ${args?.loanInfo?.totalRepayment}"
+        include.logo.setImageResource(args?.type?.getImageResource() ?: R.drawable.bg_balance)
+        include.titleText.text = args?.name
+        include.startDate.text = args?.startDate
+        include.paidOff.text = args?.paidOff
+        include.loan.text = "$ ${args?.loanAmount}"
+        include.interestRate.text = "${args?.interestRate}%"
+        include.frequency.text = args?.frequency
+        include.totalRepayment.text = "$ ${args?.totalRepayment}"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var list = calculateAmortization(
-            loanAmount = args.loanInfo.loanAmount,
-            termInMonths = args.loanInfo.termInMonth?:0,
-            annualInterestRate = args.loanInfo.interestRate
+            loanAmount = args.loanAmount.getDoubleValue(),
+            termInMonths = args.termInMonth.getIntValue(),
+            annualInterestRate = args.interestRate.getDoubleValue()
         )
-        amortizationAdapter.submitList(list.toMutableList())
+        var arrayList = arrayListOf<AmortizationModel?>()
+        arrayList.clear()
+        list.map {
+            if((it?.month)?.rem(12) ?: 0 == 0)
+                arrayList.add(AmortizationModel((it?.month?:0),0.0,0.0,0.0,0.0,1,it?.month?.div(12) ?: 0))
+            arrayList.add(it)
+        }
+        amortizationAdapter = AmortizationAdapter(arrayList,AmortizationAdapter.AmortizationModelClick{
+            // handle on click listener
+        })
+        binding.recyclerViewAmortization.adapter = amortizationAdapter
     }
 }

@@ -14,53 +14,55 @@ fun Fragment.toast(message: String) {
     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 }
 
-fun View.showKeyboard(){
+fun View.showKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.showSoftInput(this, 0)
 }
 
-fun View.hideKeyboard(){
+fun View.hideKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(this.windowToken, 0)
 }
 
 fun NavController.deeplinkNavigate(
-    direction: String,
-    extras: MutableMap<String, String>? = null,
-    isInclusive: Boolean = false
+    direction: String, extras: MutableMap<String, String>? = null, isInclusive: Boolean = false
 ) {
     var deeplinkDirection = direction
     extras?.forEach { (key, value) ->
         deeplinkDirection = deeplinkDirection.replace("{$key}", value)
     }
-    val deepLink = NavDeepLinkRequest.Builder
-        .fromUri(deeplinkDirection.toUri())
-        .build()
+    val deepLink = NavDeepLinkRequest.Builder.fromUri(deeplinkDirection.toUri()).build()
 
     val currentId = currentDestination?.id
     if (currentId != null && isInclusive) {
-        val options = NavOptions.Builder()
-            .setPopUpTo(currentId, true)
-            .build()
+        val options = NavOptions.Builder().setPopUpTo(currentId, true).build()
         navigate(deepLink, options)
-    } else
-        navigate(deepLink)
+    } else navigate(deepLink)
 }
 
 object DeeplinkNavigationTypes {
     private const val DOMAIN = "loan://"
-    const val AMORTIZATION = "${DOMAIN}amortization/{${NavigationArgs.LOAN}}"
-    const val PDF_PAGE = "${DOMAIN}savepdf"
-    const val HOME_PAGE = "${DOMAIN}home"
-    const val SAVE_PAGE = "${DOMAIN}save"
-    const val SIGN_UP_PAGE = "${DOMAIN}signup"
-    const val LOCATION_PAGE = "${DOMAIN}location"
-    const val RESET_PAGE = "${DOMAIN}reset"
-    const val LOGIN_PAGE = "${DOMAIN}login"
-    const val EMAIL_FORGOT_PAGE = "${DOMAIN}emailforgot"
-    const val VERIFY_PAGE = "${DOMAIN}verify"
+    const val AMORTIZATION =
+        "${DOMAIN}amortization/" +
+                "{${NavigationArgs.NAME}}/" +
+                "{${NavigationArgs.START_DATE}}/" +
+                "{${NavigationArgs.PAID_OFF}}/" +
+                "{${NavigationArgs.LOAN_AMOUNT}}/" +
+                "{${NavigationArgs.INTEREST_RATE}}/" +
+                "{${NavigationArgs.FREQUENCY}}/" +
+                "{${NavigationArgs.TOTAL_REPAYMENT}}/" +
+                "{${NavigationArgs.TERM_IN_MONTH}}/" +
+                "{${NavigationArgs.TYPE}}"
 }
 
 object NavigationArgs {
-    const val LOAN = "loanInfo"
+    const val NAME = "name"
+    const val START_DATE = "startDate"
+    const val PAID_OFF = "paidOff"
+    const val LOAN_AMOUNT = "loanAmount"
+    const val INTEREST_RATE = "interestRate"
+    const val FREQUENCY = "frequency"
+    const val TOTAL_REPAYMENT = "totalRepayment"
+    const val TERM_IN_MONTH = "termInMonth"
+    const val TYPE = "type"
 }
