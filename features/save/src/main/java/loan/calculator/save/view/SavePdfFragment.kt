@@ -239,20 +239,21 @@ class SavePdfFragment :
                 netAmount.backgroundColor = colorTable
             itemsTable.addCell(netAmount)
             doc.add(itemsTable)
+
+            if((item?.month)?.rem(12) ?: 0 == 0){
+                initEndOfYear(doc, ((item?.month)?.div(12)).toString())
+            }
         }
     }
 
-    private fun initFooter(doc: Document) {
-
+    private fun initEndOfYear(doc: Document,year: String) {
         val footerTable = PdfPTable(1)
         footerTable.totalWidth = A4.width
         footerTable.isLockedWidth = true
-        var newFont = appFontSemiBold
-        newFont.size = 36f
-        val thankYouCell = PdfPCell(Phrase("Good Luck...", newFont))
+        val thankYouCell = PdfPCell(Phrase("End of Year #$year", appFontBold))
         thankYouCell.border = Rectangle.NO_BORDER
-        thankYouCell.paddingLeft = PADDING_EDGE
-        thankYouCell.paddingTop = 40f
+        thankYouCell.paddingTop = 20f
+        thankYouCell.paddingBottom = 20f
         thankYouCell.horizontalAlignment = Rectangle.ALIGN_CENTER
         footerTable.addCell(thankYouCell)
         doc.add(footerTable)
