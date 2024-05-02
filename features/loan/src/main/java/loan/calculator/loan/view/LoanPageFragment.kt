@@ -116,13 +116,13 @@ class LoanPageFragment :
         loanAmountEdittext.enableSumFormatting()
         loanPaymentEdittext.enableSumFormatting()
 
-        loanAmountPart.setOnClickListenerDebounce { selectPart(SELECT_PART.AMOUNT) }
+        /*loanAmountPart.setOnClickListenerDebounce { selectPart(SELECT_PART.AMOUNT) }
 
         loanRatePart.setOnClickListenerDebounce { selectPart(SELECT_PART.RATE) }
 
         loanPeriodPart.setOnClickListenerDebounce { selectPart(SELECT_PART.PERIOD) }
 
-        loanPaymentPart.setOnClickListenerDebounce { selectPart(SELECT_PART.PAYMENT) }
+        loanPaymentPart.setOnClickListenerDebounce { selectPart(SELECT_PART.PAYMENT) }*/
 
         applyButton.setOnClickListenerDebounce {
             var termInMonth = viewmodel.getPeriodInMonth(
@@ -142,14 +142,14 @@ class LoanPageFragment :
                         frequency = type.selectedItem.toString(),
                         totalRepayment = returnValueIfNull(binding.loanPaymentEdittext),
                         termInMonth = termInMonth.toString(),
-                        type = ""
+                        type = "home"
                     )
                 )
             )
         }
 
-        loanMonthEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 11))
-        loanYearEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 99))
+        loanMonthEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(0, 11))
+        loanYearEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(0, 99))
 
         loanAmountEdittext.onFocusChangeListener =
             View.OnFocusChangeListener { _, b -> loanAmountFocus = b }
@@ -237,6 +237,9 @@ class LoanPageFragment :
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(s.toString()=="0")
+                    if(loanYearEdittext.text.toString() == "0" || loanYearEdittext.text.toString() == "")
+                        loanYearEdittext.setText("1")
                 if (loanPeriodMonthFocus) {
                     try {
                         var selectionType = viewmodel.setSelection
@@ -268,6 +271,9 @@ class LoanPageFragment :
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(s.toString()=="0")
+                    if(loanMonthEdittext.text.toString() == "0" || loanMonthEdittext.text.toString() == "")
+                        loanMonthEdittext.setText("6")
                 if (loanPeriodYearFocus) {
                     try {
                         var selectionType = viewmodel.setSelection
