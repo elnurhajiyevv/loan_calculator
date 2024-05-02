@@ -56,5 +56,9 @@
     <string name="payment">Оплата:</string>
     <string name="months">месяцы</string>
 
+    <string name="export_pdf">Экспортировать в PDF</string>
+    <string name="export_xls">Экспортировать в XLS</string>
+    <string name="export_csv">Экспортировать в CSV</string>
+
 
 </resources>

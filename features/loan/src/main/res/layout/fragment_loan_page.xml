@@ -493,9 +493,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingHorizontal="@dimen/_4sdp"
                 android:text="@string/loan_result_interest_header"
                 app:layout_constraintEnd_toStartOf="@+id/total_repayment_textview"
-                app:layout_constraintStart_toStartOf="@+id/loan_payment"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
 
             <LinearLayout
@@ -506,7 +507,7 @@
                 android:gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="@+id/total_interest_textview"
-                app:layout_constraintStart_toStartOf="@+id/loan_payment"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_interest_textview">
 
                 <TextView
@@ -549,6 +550,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingHorizontal="@dimen/_4sdp"
                 android:text="@string/total_repayment"
                 android:layout_marginTop="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"

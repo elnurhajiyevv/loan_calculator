@@ -33,7 +33,7 @@
     <string name="app_theme">Uygulama teması</string>
     <string name="change_language">Türkçe</string>
     <string name="change_language_description">Dili değiştirmek için dokunun</string>
-    <string name="rate_us">Bizi mağaza üzerinde değerlendirin</string>
+    <string name="rate_us">Bizi Play Store\'da değerlendirin</string>
     <string name="bug_report">Hata raporu veya öneriler</string>
     <string name="app_version">Mevcut uygulama sürümü: %1$s</string>
     <string name="save_loan_data">Kredi verilerini kaydet</string>
@@ -56,5 +56,9 @@
     <string name="year">yıl</string>
     <string name="payment">Ödeme:</string>
     <string name="months">aylar</string>
+
+    <string name="export_pdf">PDF olarak dışa aktar</string>
+    <string name="export_xls">XLS olarak dışa aktar</string>
+    <string name="export_csv">CSV olarak dışa aktar</string>
 
 </resources>
