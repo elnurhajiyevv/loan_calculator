@@ -18,8 +18,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginLeft
+import androidx.core.view.setMargins
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.Entry
@@ -34,6 +38,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
+import loan.calculator.common.extensions.dp
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.common.library.util.calculateAmortization
@@ -54,6 +59,7 @@ import loan.calculator.uikit.extension.enableSumFormatting
 import loan.calculator.uikit.util.calculatePaidOff
 import loan.calculator.uikit.util.disableSelection
 import loan.calculator.uikit.util.getValor
+import loan.calculator.uikit.util.resetLeftMargin
 import loan.calculator.uikit.util.returnValueIfNull
 import loan.calculator.uikit.util.setBackgroundColor
 import loan.calculator.uikit.util.setBackgroundResources
@@ -72,7 +78,7 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
     private var mInterstitialAd: InterstitialAd? = null
 
-    var info = arrayOf("Total interest", "Total repayment")
+    var info = arrayListOf<String>()
 
     var loanAmountFocus = false
     var loanPeriodYearFocus = false
@@ -317,6 +323,9 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             returnValueIfNull(binding.loanYearEdittext).toInt(),
             returnValueIfNull(binding.loanMonthEdittext).toInt()
         )
+
+        paymentFormat(viewmodel.totalInterest.toFloat(),viewmodel.totalPayment.toFloat())
+
         val saveDialog = SaveDialog
         saveDialog.build(
             amount = returnValueIfNull(binding.loanAmountEdittext),
@@ -328,17 +337,20 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             payment = returnValueIfNull(binding.loanPaymentEdittext),
             frequency = binding.type.selectedItem.toString(),
             termInMonth = termInMonth,
-            totalInterest = "${viewmodel.totalInterest.toFloat()}",
-            totalPayment = "${viewmodel.totalPayment.toFloat()}"
+            totalInterest = binding.totalInterestValue.text.toString(),
+            totalPayment = binding.totalRepaymentValue.text.toString()
         ).show(parentFragmentManager,"saveDialog")
     }
 
-    private fun showPieChart(totalInterest: Float, totalPayment: Float){
-
+    fun paymentFormat(totalInterest: Float, totalPayment: Float){
         binding.totalInterestValue.text = "${String.format("%.2f", totalInterest).replace(",",".").toFloat()}"
         binding.totalRepaymentValue.text = "${String.format("%.2f", totalPayment).replace(",",".").toFloat()}"
         binding.totalInterestValue.enableSumFormatting()
         binding.totalRepaymentValue.enableSumFormatting()
+    }
+    private fun showPieChart(totalInterest: Float, totalPayment: Float){
+
+        paymentFormat(totalInterest,totalPayment)
 
         binding.chart.setUsePercentValues(true)
         binding.chart.setExtraOffsets(5f, 5f, 5f, 0f)
@@ -433,7 +445,9 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
 
     private fun selection(backgroundResource: View, backgroundColor: View, imageView: AppCompatImageView) {
-        backgroundResource.setBackgroundResource(R.drawable.radius_10_blue)
+        backgroundResource.setBackgroundResource(R.drawable.radius_10_green)
+        (backgroundResource.layoutParams as ConstraintLayout.LayoutParams).leftMargin = 4.dp
+        (backgroundResource.layoutParams as ConstraintLayout.LayoutParams).rightMargin = 4.dp
         backgroundColor.setBackgroundColor(resources.getColor(R.color.light_blue_100))
         imageView.setImageResource(R.drawable.ic_lock)
     }
@@ -456,6 +470,9 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
             binding.loanPaymentEdittext, binding.loanYearEdittext, binding.loanMonthEdittext, binding.loanRateEdittext, binding.loanAmountEdittext,
             setSelection = true
         )
+        resetLeftMargin(
+            binding.loanPayment,binding.loanAmount,binding.loanRate,binding.loanPeriod
+        )
 
     }
 
@@ -468,6 +485,10 @@ class LoanPageFragment : BaseFragment<LoanPageState, LoanPageEffect, LoanPageVie
 
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
+
+        info.clear()
+        info.add(resources.getString(R.string.loan_result_interest_header))
+        info.add(resources.getString(R.string.total_repayment))
 
         defaultSelection()
 

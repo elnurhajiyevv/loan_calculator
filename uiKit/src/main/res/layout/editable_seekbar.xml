@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:maxLines="1"
-        android:text="@string/funding_text"
+
         android:textColor="@color/color_gray_five"
         android:textColorHint="@color/color_labels_secondary"
         android:textCursorDrawable="@drawable/input_text_cursor_color"

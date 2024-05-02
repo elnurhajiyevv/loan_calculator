@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:loan_toolbar_option="without_left_and_right"
         app:loan_toolbar_right_action_icon="@drawable/ic_share"
-        app:loan_toolbar_title="@string/header_title"
+        app:loan_toolbar_title="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatImageView

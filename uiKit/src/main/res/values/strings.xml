@@ -3,26 +3,13 @@
 
     <string name="admodIdTest">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admodId">ca-app-pub-5232085807124057/4634571584</string>
-    <string name="loan_amount_left">%1$s $</string>
-    <string name="loan_amount_right">%1$s $</string>
-    <string name="loan_rate_left">%1$s</string>
-    <string name="loan_rate_right">%1$s</string>
 
-    <string name="default_channel_description">Exchange default notification</string>
     <string name="bottom_menu_save">Saved</string>
     <string name="bottom_menu_loan">Loan</string>
-    <string name="loan_period_left">%1$s month</string>
-    <string name="loan_period_right">%1$s months</string>
-    <string name="bottom_header">Estimated monthly installments</string>
-    <string name="bottom_description">Installment fees may change according to the results of the verification of the physical condition at the branch office. Use this calculator for basic calculations of common loan types such as mortgages, auto loans, student loans, or personal loans.</string>
-
     <string name="summary">Summary</string>
     <string name="back">Back</string>
     <string name="select">Select</string>
     <string name="search">Search for a language</string>
-    <string name="choose">Choose</string>
-    <string name="header_setting">Settings</string>
-    <string name="bottom_menu_home">Home</string>
     <string name="bottom_menu_setting">Setting</string>
     <string name="app_name">Loan Calculator</string>
     <string name="close">Close</string>
@@ -31,62 +18,15 @@
     <string name="loading_dialog_title">Please wait</string>
     <string name="loading_dialog_description">We’re loading details…</string>
     <string name="default_channel_name">Messages</string>
-    <string name="currency_header">Currency Converter</string>
-    <string name="currency_description">Check live rates, set rate alerts, receive notifications and more.</string>
-    <string name="amount_text">Amount</string>
-    <string name="converted_amount_text">Converted Amount</string>
-    <string name="indicative_header">Indicative Exchange Rate</string>
-    <string name="loan_header">Loan Calculator</string>
-    <string name="funding_header">Maximum Funding</string>
-    <string name="funding_text">1</string>
-    <string name="funding_text_header">500 000.00 $</string>
-    <string name="funding_source">Choose load type and filter</string>
-    <string name="funding_source_year">2023</string>
-    <string name="loan_amount_header">Loan Amount</string>
-    <string name="loan_period_header">Loan Period</string>
     <string name="loan_rate_header">Loan Rate</string>
-    <string name="loan_period_text">1</string>
-    <string name="converter_text">1 %1$s = %2$s %3$s</string>
     <string name="setting_header">Settings</string>
     <string name="apply">Apply</string>
-    <string name="see_monthly">See Monthly List</string>
     <string name="loan_result_header">Payment Every Month</string>
     <string name="loan_result_total_header">Total of %1$s Payments</string>
     <string name="loan_result_interest_header">Total Interest</string>
     <string name="loan_result_interest_graph">Result</string>
-    <string name="usd">USD</string>
-    <string name="euro">EUR</string>
-
-    <string name="weight">Weight/Mass</string>
-    <string name="volume">Volume</string>
-    <string name="temperature">Temperature</string>
-    <string name="length">Length</string>
-    <string name="speed">Speed</string>
-    <string name="area">Area</string>
-    <string name="time">Time</string>
-    <string name="pressure">Pressure</string>
-    <string name="storage">Storage</string>
-    <string name="formula">Display Formula:</string>
-
     <string name="from">From</string>
     <string name="to">To</string>
-
-
-    <string name="kilogram">Kilogram</string>
-    <string name="gram">Gram</string>
-    <string name="milligram">Milligram</string>
-    <string name="microgram">Microgram</string>
-    <string name="imperial_ton">Imperial ton</string>
-    <string name="us_tom">Us ton</string>
-    <string name="stone">Stone</string>
-    <string name="pound">Pound</string>
-    <string name="ounce">Ounce</string>
-
-
-
-    <string name="header_title">Loan Calculator</string>
-
-
     <string name="unknown_error_title">Something went wrong</string>
     <string name="unknown_error_text">Sorry, unexpected error has happened. Please try again later</string>
     <string name="amortization_title">Amortization Table</string>
@@ -110,6 +50,11 @@
     <string name="required">Required</string>
     <string name="ok">Confirm</string>
     <string name="submit">Submit</string>
+
+    <string name="loan_term">Loan term:</string>
+    <string name="year">year</string>
+    <string name="payment">Payment:</string>
+    <string name="months">months</string>
 
 
 </resources>

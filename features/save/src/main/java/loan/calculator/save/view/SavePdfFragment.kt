@@ -324,7 +324,7 @@ class SavePdfFragment :
         txtInvoiceNumber.border = Rectangle.NO_BORDER
         invoiceNumAndData.addCell(txtInvoiceNumber)
 
-        val invoiceNumber = PdfPCell(Phrase("${args.getSavedLoanModel.interestRate} %", appFontRegular))
+        val invoiceNumber = PdfPCell(Phrase("${args.getSavedLoanModel.interestRate}%", appFontRegular))
         invoiceNumber.border = Rectangle.NO_BORDER
         invoiceNumber.paddingTop = TEXT_TOP_PADDING
         invoiceNumAndData.addCell(invoiceNumber)

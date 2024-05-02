@@ -3,6 +3,8 @@ package loan.calculator.uikit.util
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginLeft
 import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.library.util.DateFormats
 import java.util.Date
@@ -30,6 +32,14 @@ fun disableSelection(vararg viewEditText : EditText, setSelection: Boolean) {
         it.isFocusable = setSelection
         it.isEnabled = setSelection
         it.isFocusableInTouchMode = setSelection
+    }
+}
+
+fun resetLeftMargin(vararg views : View) {
+    views.forEach {
+        val params = it.layoutParams as ConstraintLayout.LayoutParams
+        params.leftMargin = 0
+        params.rightMargin = 0
     }
 }
 

@@ -56,7 +56,7 @@ class NotificationHandlerImpl @Inject constructor(@ApplicationContext val contex
         val importance = NotificationManager.IMPORTANCE_HIGH
         val mChannel = NotificationChannel(CHANNEL_ID, context.getString(R.string.default_channel_name), importance)
         mChannel.lightColor = Color.GREEN
-        mChannel.description = context.getString(R.string.default_channel_description)
+        mChannel.description = context.getString(R.string.app_name)
         mChannel.enableVibration(true)
         mChannel.vibrationPattern = longArrayOf(100, 200, 300, 400, 500)
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
