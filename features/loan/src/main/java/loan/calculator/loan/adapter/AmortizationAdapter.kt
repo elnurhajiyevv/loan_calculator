@@ -45,7 +45,9 @@ class AmortizationAdapter(
 
     inner class AmortizationEndOfYearTypeViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var year: AutofitTextView
+        var mainContainer: ConstraintLayout
         init {
+            mainContainer = view.findViewById<View>(R.id.main_container) as ConstraintLayout
             year = view.findViewById<View>(R.id.year) as AutofitTextView
         }
     }
@@ -84,7 +86,7 @@ class AmortizationAdapter(
         val model = listItems[position]
         when(model?.type){
             0 ->{
-                (holder as AmortizationTypeViewHolder).mainContainer.setBackgroundColor(ContextCompat.getColor(holder.mainContainer.rootView.context, if(model.month % 2 == 0) R.color.adapter_amortization else R.color.color_white_gray))
+                (holder as AmortizationTypeViewHolder).mainContainer.setBackgroundColor(ContextCompat.getColor(holder.mainContainer.rootView.context, if(model.numberOfItems % 2 == 0) R.color.adapter_amortization else R.color.color_white_gray))
                 holder.number.text = model.month.toString()
                 holder.period.text = model.month.toString().getMonthAndYear()
                 holder.interest.text = nf.format(model.interest)
@@ -95,7 +97,8 @@ class AmortizationAdapter(
                 }
             }
             1 ->{
-                (holder as AmortizationEndOfYearTypeViewHolder).year.text = "End of Year " + model.countOfYear
+                (holder as AmortizationEndOfYearTypeViewHolder).mainContainer.setBackgroundColor(ContextCompat.getColor(holder.mainContainer.rootView.context, if(model.numberOfItems % 2 == 0) R.color.adapter_amortization else R.color.color_white_gray))
+                holder.year.text = "End of Year " + model.countOfYear
             }
         }
     }

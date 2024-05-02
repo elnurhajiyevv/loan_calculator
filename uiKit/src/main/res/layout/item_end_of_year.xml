@@ -5,11 +5,12 @@
     xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/main_container"
     android:padding="@dimen/_10sdp">
 
     <loan.calculator.uikit.textview.AutofitTextView
         android:id="@+id/year"
-        style="@style/regular_caption3"
+        style="@style/regular_caption1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"

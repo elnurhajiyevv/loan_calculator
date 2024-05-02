@@ -476,7 +476,7 @@ class SavePdfFragment :
         val headerTable = PdfPTable(2)
         headerTable.setWidths(
             floatArrayOf(
-                1.5f, 1f
+                1f, 4f
             )
         ) // adds 2 colomn horizontally
         headerTable.isLockedWidth = true

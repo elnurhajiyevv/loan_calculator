@@ -54,11 +54,29 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         )
         var arrayList = arrayListOf<AmortizationModel?>()
         arrayList.clear()
-        list.map {
-            if((it?.month)?.rem(12) ?: 0 == 0)
-                arrayList.add(AmortizationModel((it?.month?:0),0.0,0.0,0.0,0.0,1,it?.month?.div(12) ?: 0))
-            arrayList.add(it)
+
+        var numOfItems = 0
+        for(i in list.indices){
+            var item = list[i]
+            if(((item?.month)?.rem(12) ?: 0) == 0){
+                numOfItems++
+                item?.numberOfItems = numOfItems
+                arrayList.add(item)
+                numOfItems++
+                arrayList.add(AmortizationModel(0,0.0,0.0,0.0,0.0,1,list[i]?.month?.div(12) ?: 0,numOfItems))
+            } else {
+                numOfItems++
+                item?.numberOfItems = numOfItems
+                arrayList.add(item)
+            }
         }
+        /*list.map {
+            if((it?.month)?.rem(12) ?: 0 == 0){
+                arrayList.add(it)
+                arrayList.add(AmortizationModel((it?.month?:0),0.0,0.0,0.0,0.0,1,it?.month?.div(12) ?: 0))
+            } else
+                arrayList.add(it)
+        }*/
         amortizationAdapter = AmortizationAdapter(arrayList,AmortizationAdapter.AmortizationModelClick{
             // handle on click listener
         })
