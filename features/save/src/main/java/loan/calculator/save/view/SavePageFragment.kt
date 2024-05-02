@@ -137,6 +137,9 @@ class SavePageFragment :
             )
         }, SavedAdapter.SavedItemOnLongClick { selected ->
 
+            // set selected item to shared
+            viewmodel.selectedItem = selected
+
             viewmodel.list.forEach {
                 it.selected = selected.name == it.name
             }
