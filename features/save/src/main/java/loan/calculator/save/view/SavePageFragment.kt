@@ -78,7 +78,7 @@ class SavePageFragment :
     fun getListOfExport() {
         typeList.clear()
         typeList.add(ExportTypeModel(getString(R.string.export_pdf), R.drawable.ic_pdf, 0))
-        typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 1))
+        //typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 1))
         typeList.add(ExportTypeModel(getString(R.string.export_csv), R.drawable.ic_csv, 2))
     }
 
@@ -98,10 +98,19 @@ class SavePageFragment :
 
                     2 -> {
                         //update csv
+                        saveAsCsv()
                     }
                 }
             }
         }?.show(childFragmentManager, ExportTypeBottomSheet::class.java.canonicalName)
+    }
+
+    private fun saveAsCsv() {
+        viewmodel.navigate(
+            NavigationCommand.To(
+                SavePageFragmentDirections.actionSavePageFragmentToSaveCsvFragment()
+            )
+        )
     }
 
     private fun saveAsPdf() {

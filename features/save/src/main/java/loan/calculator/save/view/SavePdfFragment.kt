@@ -1,5 +1,6 @@
 package loan.calculator.save.view
 
+import android.R.attr.path
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.FileProvider
+import androidx.core.net.toFile
 import androidx.navigation.fragment.navArgs
 import com.itextpdf.text.BaseColor
 import com.itextpdf.text.Document
@@ -71,15 +73,20 @@ class SavePdfFragment :
         toolbar.setGravityLeft()
     }
 
-    fun saveToDevice(sourceuri: Uri) {
-        val sourceFilename = sourceuri.path
+    fun saveToDevice(sourceuri: File) {
+        val sourceFilename = sourceuri
         val destinationFilename =
-            Environment.getExternalStorageDirectory().path + File.separatorChar + sourceuri.lastPathSegment
+            Environment.getExternalStorageDirectory().path + File.separatorChar + sourceuri.path
+        val dir = File(destinationFilename)
+        if (!dir.exists()) {
+            dir.mkdirs()
+        }
+
         var bis: BufferedInputStream? = null
         var bos: BufferedOutputStream? = null
         try {
             bis = BufferedInputStream(FileInputStream(sourceFilename))
-            bos = BufferedOutputStream(FileOutputStream(destinationFilename, false))
+            bos = BufferedOutputStream(FileOutputStream(dir, false))
             val buf = ByteArray(1024)
             bis.read(buf)
             do {
@@ -159,7 +166,7 @@ class SavePdfFragment :
             toast("There is no PDF Viewer ")
         }
         binding.toolbar.setToolbarRightActionClick {
-            saveToDevice(path)
+            saveToDevice(file)
         }
     }
 

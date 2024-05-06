@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_savePageFragment_to_savePdfFragment"
             app:destination="@id/savePdfFragment" />
+        <action
+            android:id="@+id/action_savePageFragment_to_saveCsvFragment"
+            app:destination="@id/saveCsvFragment" />
 
     </fragment>
 
@@ -34,5 +37,9 @@
             app:argType="loan.calculator.domain.entity.saved.GetSavedLoanModel" />
 
     </fragment>
+    <fragment
+        android:id="@+id/saveCsvFragment"
+        android:name="loan.calculator.save.view.SaveCsvFragment"
+        tools:layout="@layout/fragment_save_csv_page" />
 
 </navigation>

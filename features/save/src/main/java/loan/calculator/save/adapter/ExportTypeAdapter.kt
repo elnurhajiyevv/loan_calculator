@@ -2,6 +2,7 @@ package loan.calculator.save.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.saved.ExportTypeModel
@@ -30,6 +31,7 @@ class ExportTypeAdapter(itemList: List<ExportTypeModel>, private val clickListen
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: ExportTypeModel) {
             binding.apply {
+                //title.setTextColor(if(model.type ==0) ContextCompat.getColor(this.root.context, R.color.color_pure_black) else ContextCompat.getColor(this.root.context, R.color.gnt_red))
                 title.text = model.name
                 logo.setImageResource(model.icon)
             }

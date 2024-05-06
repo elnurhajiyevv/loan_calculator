@@ -61,4 +61,9 @@
     <string name="export_xls">Exportar como XLS</string>
     <string name="export_csv">Exportar como CSV</string>
 
+    <!--PERMISSION-->
+    <string name="allow_location_permission">Allow your location permission</string>
+    <string name="allow_storage_permission">Allow your storage permission</string>
+    <string name="setting_permission">Open Setting to Allow Location Permission</string>
+
 </resources>

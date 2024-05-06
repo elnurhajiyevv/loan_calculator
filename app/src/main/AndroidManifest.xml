@@ -18,6 +18,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@style/Theme.AppSplash"
+        tools:replace="android:allowBackup"
         tools:targetApi="n">
         <meta-data android:name="com.startapp.sdk.APPLICATION_ID" android:value="211278478" />
         <meta-data android:name="com.startapp.sdk.RETURN_ADS_ENABLED" android:value="false" />
