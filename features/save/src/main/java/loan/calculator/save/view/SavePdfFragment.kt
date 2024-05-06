@@ -38,6 +38,7 @@ import loan.calculator.save.databinding.FragmentSavePdfPageBinding
 import loan.calculator.save.effect.SavePdfEffect
 import loan.calculator.save.state.SavePdfState
 import loan.calculator.save.viewmodel.SavePdfViewModel
+import loan.calculator.uikit.util.getThemeColor
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
 import java.io.ByteArrayOutputStream
@@ -58,7 +59,7 @@ import java.util.Locale
 class SavePdfFragment :
     BaseFragment<SavePdfState, SavePdfEffect, SavePdfViewModel, FragmentSavePdfPageBinding>() {
 
-    val colorPrimary = BaseColor(46, 151, 76)
+    lateinit var colorPrimary: BaseColor
     val colorTable = BaseColor(239, 241, 245)
     override val bindingCallback: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSavePdfPageBinding
         get() = FragmentSavePdfPageBinding::inflate
@@ -136,6 +137,7 @@ class SavePdfFragment :
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
+        colorPrimary = BaseColor(getThemeColor(requireContext()))
         appFontRegular.color = BaseColor.WHITE
         val doc = Document(A4, 0f, 0f, 0f, 0f)
         val outPath = requireActivity().getExternalFilesDir(null)
