@@ -160,7 +160,7 @@
                     android:id="@+id/cta"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/gnt_no_size"
-                    android:background="@color/light_blue_100"
+                    android:background="?attr/mainCustomColor"
                     android:gravity="center"
                     android:lines="1"
                     android:textColor="@color/gnt_white"

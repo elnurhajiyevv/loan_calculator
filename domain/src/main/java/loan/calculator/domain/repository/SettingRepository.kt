@@ -13,4 +13,8 @@ interface SettingRepository {
 
     fun setLanguage(language: LanguageModel)
 
+    fun getColor(): Int
+
+    fun setColor(color: Int)
+
 }

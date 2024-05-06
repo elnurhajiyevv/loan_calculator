@@ -19,10 +19,15 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
         const val LIGHT_THEME = "LIGHT_THEME"
         const val LANGUAGE = "LANGUAGE"
         const val ICON_MODEL = "ICON_MODEL"
+        const val COLOR = "COLOR"
     }
     var isLightTheme
         get() = get(LIGHT_THEME, true)
         set(value) = set(LIGHT_THEME, value)
+
+    var colorValue
+        get() = get(COLOR, -1)
+        set(value) = set(COLOR, value)
 
     fun getLanguage(): LanguageModel {
         val format = Json { isLenient = true }

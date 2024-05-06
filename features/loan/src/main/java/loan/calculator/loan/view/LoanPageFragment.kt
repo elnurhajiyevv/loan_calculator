@@ -58,6 +58,7 @@ import loan.calculator.uikit.edittext.InputFilterMinMax
 import loan.calculator.uikit.extension.enableSumFormatting
 import loan.calculator.uikit.util.calculatePaidOff
 import loan.calculator.uikit.util.disableSelection
+import loan.calculator.uikit.util.getThemeColor
 import loan.calculator.uikit.util.getValor
 import loan.calculator.uikit.util.resetLeftMargin
 import loan.calculator.uikit.util.returnValueIfNull
@@ -406,8 +407,8 @@ class LoanPageFragment :
         binding.chart.data = data
         binding.chart.setEntryLabelTextSize(13f)
         val colors = intArrayOf(
-            0xFFFF3B30.toInt(),
-            0xFF7DD16A.toInt()
+            0XFFB2C1DB.toInt(),
+            getThemeColor(requireContext()),
         )
         dataSet.colors = ColorTemplate.createColors(colors)
 
@@ -545,8 +546,8 @@ class LoanPageFragment :
 
     private fun defaultSelection() {
         resetValues()
-        resetSelection()
-        selection(binding.loanPayment, binding.loanPaymentPart, binding.loanPaymentImage)
+        //resetSelection()
+        //selection(binding.loanPayment, binding.loanPaymentPart, binding.loanPaymentImage)
         disableSelection(binding.loanPaymentEdittext, setSelection = false)
         showPieChart(
             totalInterest = 6618.55F,

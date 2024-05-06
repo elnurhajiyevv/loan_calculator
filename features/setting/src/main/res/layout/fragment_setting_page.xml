@@ -164,7 +164,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rate_us"
+        android:id="@+id/color_picker"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radius_1_white"
@@ -173,6 +173,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_language">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/color_picker_image"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:src="@drawable/ic_color_choose"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/color_picker_text"
+            style="@style/regular_caption2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:text="@string/choose_your_color"
+            app:layout_constraintBottom_toBottomOf="@+id/color_picker_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/color_picker_image"
+            app:layout_constraintTop_toTopOf="@+id/color_picker_image" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rate_us"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_1_white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/color_picker">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/rate_us_image"

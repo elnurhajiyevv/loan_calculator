@@ -114,4 +114,28 @@
     <color name="loan_blue">#29BBCF</color>
 
 
+    <color name="theme_one">#2062AF</color>
+    <color name="theme_two">#58AEB7</color>
+    <color name="theme_three">#F4B528</color>
+    <color name="theme_four">#DD3E48</color>
+    <color name="theme_five">#BF89AE</color>
+    <color name="theme_six">#5C88BE</color>
+    <color name="theme_seven">#59BC10</color>
+    <color name="theme_eight">#E87034</color>
+    <color name="theme_nine">#F84C44</color>
+    <color name="theme_ten">#8C47FB</color>
+
+
+    <color name="selected_theme_one">#502062AF</color>
+    <color name="selected_theme_two">#5058AEB7</color>
+    <color name="selected_theme_three">#50F4B528</color>
+    <color name="selected_theme_four">#50DD3E48</color>
+    <color name="selected_theme_five">#50BF89AE</color>
+    <color name="selected_theme_six">#505C88BE</color>
+    <color name="selected_theme_seven">#5059BC10</color>
+    <color name="selected_theme_eight">#50E87034</color>
+    <color name="selected_theme_nine">#50F84C44</color>
+    <color name="selected_theme_ten">#508C47FB</color>
+
+
 </resources>

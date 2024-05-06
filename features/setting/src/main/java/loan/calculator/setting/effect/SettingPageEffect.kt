@@ -11,6 +11,8 @@ import loan.calculator.domain.entity.home.LanguageModel
 open class SettingPageEffect {
     class OnAppVersion(val appVersion: String) : SettingPageEffect()
 
+
+
     class OnPackageName(val packageName: String) : SettingPageEffect()
 
     class ListOfLanguage(val list: List<LanguageModel>): SettingPageEffect()

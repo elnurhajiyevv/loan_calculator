@@ -60,4 +60,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads-lite:22.1.0")
     kapt(ApplicationDependencies.hiltCompiler)
     implementation("com.startapp:inapp-sdk:4.11.+")
+
+    implementation("petrov.kristiyan:colorpicker-library:1.1.10")
 }

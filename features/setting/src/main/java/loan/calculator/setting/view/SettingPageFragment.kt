@@ -6,14 +6,9 @@
 
 package loan.calculator.setting.view
 
-import android.annotation.TargetApi
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,8 +33,8 @@ import loan.calculator.setting.state.SettingPageState
 import loan.calculator.setting.viewmodel.SettingPageViewModel
 import loan.calculator.uikit.ads.NativeTemplateStyle
 import loan.calculator.uikit.extension.getImageResource
-import java.util.Locale
-import kotlin.coroutines.coroutineContext
+import petrov.kristiyan.colorpicker.ColorPicker
+import petrov.kristiyan.colorpicker.ColorPicker.OnChooseColorListener
 
 
 @AndroidEntryPoint
@@ -79,8 +74,28 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
             openBugReportBottomModule()
         }
 
+        colorPicker.setOnClickListener {
+            openColorChoose()
+        }
+
         // get app language and update UI
         getAndUpdateLanguage()
+    }
+
+
+    private fun openColorChoose() {
+        val colorPicker = ColorPicker(requireActivity())
+        colorPicker.show()
+        colorPicker.setOnChooseColorListener(object : OnChooseColorListener {
+            override fun onChooseColor(position: Int, color: Int) {
+                viewmodel.setAppColor(position)
+                changeAppContext()
+            }
+
+            override fun onCancel() {
+                // put code
+            }
+        })
     }
 
     private fun getAndUpdateLanguage() {

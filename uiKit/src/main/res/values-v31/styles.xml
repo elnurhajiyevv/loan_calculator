@@ -4,9 +4,48 @@
     <style name="Theme.AppSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/color_pure_white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_calc</item>
-        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_branding_icon</item>
         <item name="windowSplashScreenAnimationDuration">100</item>
         <item name="postSplashScreenTheme">@style/Theme.LoanAndroid</item>
+    </style>
+
+    <style name="Theme_One" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_one</item>
+    </style>
+
+    <style name="Theme_Two" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_two</item>
+    </style>
+
+    <style name="Theme_Three" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_three</item>
+    </style>
+
+    <style name="Theme_Four" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_four</item>
+    </style>
+
+    <style name="Theme_Five" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_five</item>
+    </style>
+
+    <style name="Theme_Six" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_six</item>
+    </style>
+
+    <style name="Theme_Seven" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_seven</item>
+    </style>
+
+    <style name="Theme_Eight" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_eight</item>
+    </style>
+
+    <style name="Theme_Nine" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_nine</item>
+    </style>
+
+    <style name="Theme_Ten" parent="Theme.LoanAndroid">
+        <item name="mainCustomColor">@color/theme_ten</item>
     </style>
 
     <style name="Loan_DataPicker">

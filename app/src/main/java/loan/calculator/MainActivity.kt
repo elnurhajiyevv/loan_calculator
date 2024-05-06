@@ -21,11 +21,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
 import loan.calculator.core.extension.setWindowFlag
+import loan.calculator.data.repository.SettingPreferences
 import loan.calculator.data.util.RuntimeLocaleChanger
 import loan.calculator.databinding.ActivityMainBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
+
+    @Inject lateinit var settingPreferences: SettingPreferences
 
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var navHost: NavHostFragment
@@ -51,6 +55,8 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        setThemeByColor(settingPreferences.colorValue)
 
         //make translucent statusBar on kitkat devices
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -88,6 +94,44 @@ class MainActivity : BaseActivity() {
         setStartGraph(savedInstanceState = savedInstanceState)
 
     }
+
+    private fun setThemeByColor(colorValue: Int) {
+        when(colorValue){
+            0->{
+                setTheme(R.style.Theme_One)
+            }
+            1->{
+                setTheme(R.style.Theme_Two)
+            }
+            2->{
+                setTheme(R.style.Theme_Three)
+            }
+            3->{
+                setTheme(R.style.Theme_Four)
+            }
+            4->{
+                setTheme(R.style.Theme_Five)
+            }
+            5->{
+                setTheme(R.style.Theme_Six)
+            }
+            6->{
+                setTheme(R.style.Theme_Seven)
+            }
+            7->{
+                setTheme(R.style.Theme_Eight)
+            }
+            8->{
+                setTheme(R.style.Theme_Nine)
+            }
+            9->{
+                setTheme(R.style.Theme_Ten)
+            } else ->{
+                // set default
+            }
+        }
+    }
+
     private fun setStartGraph(savedInstanceState: Bundle?) {
         navHost = supportFragmentManager.findFragmentById(R.id.main_nav_fragment) as NavHostFragment? ?: return
         navController = navHost.navController

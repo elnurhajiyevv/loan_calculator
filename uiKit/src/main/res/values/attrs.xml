@@ -57,4 +57,7 @@
         <!-- Defines whether to automatically resize text to fit to the view's bounds. -->
         <attr name="sizeToFit" format="boolean" />
     </declare-styleable>
+
+    <attr name="mainCustomColor" format="reference|color" />
+    <attr name="selectedColor" format="reference|color" />
 </resources>

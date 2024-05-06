@@ -64,6 +64,7 @@
     <string name="allow_location_permission">Allow your location permission</string>
     <string name="allow_storage_permission">Allow your storage permission</string>
     <string name="setting_permission">Open Setting to Allow Location Permission</string>
+    <string name="choose_your_color">Choose your color</string>
 
 
 </resources>

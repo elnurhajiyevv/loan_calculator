@@ -19,4 +19,12 @@ class SettingRepositoryImpl @Inject constructor(
         settingPreferences.setLanguage(language)
     }
 
+    override fun getColor(): Int {
+        return settingPreferences.colorValue
+    }
+
+    override fun setColor(color: Int) {
+        settingPreferences.colorValue = color
+    }
+
 }

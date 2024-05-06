@@ -1,12 +1,15 @@
 package loan.calculator.uikit.util
 
+import android.content.Context
+import android.content.res.Resources
+import android.util.TypedValue
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginLeft
 import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.library.util.DateFormats
+import loan.calculator.uikit.R
 import java.util.Date
 
 fun setBackgroundResources(resource: Int, vararg views : View){
@@ -62,4 +65,11 @@ fun getFloatValue(s: String): Float {
 fun getValor(s: CharSequence): Double {
     return if (s.isNotEmpty()) s.toString().replace("", " ").replace(" ", "")
         .toDouble() else 0.0
+}
+
+fun getThemeColor(context: Context): Int {
+    val typedValue = TypedValue()
+    val theme: Resources.Theme = context.theme
+    theme.resolveAttribute(R.attr.mainCustomColor, typedValue, true)
+    return typedValue.data
 }

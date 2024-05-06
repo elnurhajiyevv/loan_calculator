@@ -6,10 +6,12 @@ import loan.calculator.setting.state.SettingPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import loan.calculator.common.library.changelang.Locales
 import loan.calculator.domain.entity.home.LanguageModel
+import loan.calculator.domain.usecase.settingpage.GetAppColorUseCase
 import loan.calculator.domain.usecase.settingpage.GetAppVersionUseCase
 import loan.calculator.domain.usecase.settingpage.GetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.GetLightThemeUseCase
 import loan.calculator.domain.usecase.settingpage.GetPackageNameUseCase
+import loan.calculator.domain.usecase.settingpage.SetAppColorUseCase
 import loan.calculator.domain.usecase.settingpage.SetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.SetLightThemeUseCase
 import javax.inject.Inject
@@ -21,7 +23,8 @@ class SettingPageViewModel @Inject constructor(
     private val setLightThemeUseCase: SetLightThemeUseCase,
     private val getPackageNameUseCase: GetPackageNameUseCase,
     private val getLanguageUseCase: GetLanguageUseCase,
-    private val setLanguageUseCase: SetLanguageUseCase
+    private val setLanguageUseCase: SetLanguageUseCase,
+    private val setAppColorUseCase: SetAppColorUseCase
 ) : BaseViewModel<SettingPageState, SettingPageEffect>() {
 
 
@@ -31,6 +34,10 @@ class SettingPageViewModel @Inject constructor(
                 postEffect(effect = SettingPageEffect.OnAppVersion(it))
             }
         }
+    }
+
+    fun setAppColor(color: Int){
+        setAppColorUseCase.invoke(SetAppColorUseCase.Params(color = color))
     }
 
     fun getPackageName() {
