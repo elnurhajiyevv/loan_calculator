@@ -32,7 +32,7 @@
         android:layout_marginRight="@dimen/_5sdp"
         android:gravity="center"
         android:text="@string/cancel"
-        android:textColor="@color/loan_blue"
+        android:textColor="?mainCustomColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

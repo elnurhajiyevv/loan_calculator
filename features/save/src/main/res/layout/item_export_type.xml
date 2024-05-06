@@ -34,4 +34,18 @@
         app:layout_constraintTop_toTopOf="@+id/logo"
         tools:text="Export as Pdf" />
 
+    <TextView
+        android:id="@+id/status"
+        style="@style/regular_caption1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:gravity="center"
+        android:visibility="visible"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/logo"
+        android:text="Pro" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

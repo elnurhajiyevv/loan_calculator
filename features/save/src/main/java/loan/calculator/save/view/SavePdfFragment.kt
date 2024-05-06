@@ -1,6 +1,7 @@
 package loan.calculator.save.view
 
-import android.R.attr.path
+import android.R.attr
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
@@ -12,7 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.core.content.FileProvider
-import androidx.core.net.toFile
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.itextpdf.text.BaseColor
 import com.itextpdf.text.Document
@@ -31,6 +32,7 @@ import com.itextpdf.text.pdf.PdfWriter
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.getMonthAndYear
+import loan.calculator.common.extensions.isNotNull
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.extension.toast
 import loan.calculator.save.R
@@ -40,11 +42,12 @@ import loan.calculator.save.state.SavePdfState
 import loan.calculator.save.viewmodel.SavePdfViewModel
 import loan.calculator.uikit.util.getThemeColor
 import java.io.BufferedInputStream
-import java.io.BufferedOutputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.io.FileOutputStream
+import java.io.FileWriter
 import java.io.IOException
 import java.text.NumberFormat
 import java.util.Locale
@@ -72,37 +75,6 @@ class SavePdfFragment :
     override val bindViews: FragmentSavePdfPageBinding.() -> Unit = {
         toolbar.setBackButtonVisibility(true)
         toolbar.setGravityLeft()
-    }
-
-    fun saveToDevice(sourceuri: File) {
-        val sourceFilename = sourceuri
-        val destinationFilename =
-            Environment.getExternalStorageDirectory().path + File.separatorChar + sourceuri.path
-        val dir = File(destinationFilename)
-        if (!dir.exists()) {
-            dir.mkdirs()
-        }
-
-        var bis: BufferedInputStream? = null
-        var bos: BufferedOutputStream? = null
-        try {
-            bis = BufferedInputStream(FileInputStream(sourceFilename))
-            bos = BufferedOutputStream(FileOutputStream(dir, false))
-            val buf = ByteArray(1024)
-            bis.read(buf)
-            do {
-                bos.write(buf)
-            } while (bis.read(buf) != -1)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } finally {
-            try {
-                bis?.close()
-                bos?.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
     }
 
     val PADDING_EDGE = 20f
@@ -168,9 +140,53 @@ class SavePdfFragment :
             toast("There is no PDF Viewer ")
         }
         binding.toolbar.setToolbarRightActionClick {
-            saveToDevice(file)
+            if(isExternalStorageAvailable() && !isExternalStorageReadOnly()){
+                try {
+                    val size = file.length().toInt()
+                    val bytes = ByteArray(size)
+                    try {
+                        val buf = BufferedInputStream(FileInputStream(file))
+                        buf.read(bytes, 0, bytes.size)
+                        buf.close()
+                    } catch (e: FileNotFoundException) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace()
+                    } catch (e: IOException) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace()
+                    }
+                    var filePath = Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOWNLOADS + File.separator + "loanCalculator")
+                    if(!filePath.exists())
+                        filePath.mkdirs()
+
+                    var test = File(filePath,file.name)
+                    if(!test.exists())
+                        test.createNewFile()
+
+                    val fos = FileOutputStream(test)
+                    fos.write(bytes)
+                    fos.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                } finally {
+                    toast(file.name + " is created!")
+                    findNavController().popBackStack()
+                }
+            }
         }
     }
+
+    private fun isExternalStorageReadOnly(): Boolean {
+        val extStorageState = Environment.getExternalStorageState()
+        return Environment.MEDIA_MOUNTED_READ_ONLY == extStorageState
+    }
+
+    private fun isExternalStorageAvailable(): Boolean {
+        val extStorageState = Environment.getExternalStorageState()
+        return Environment.MEDIA_MOUNTED == extStorageState
+    }
+
 
     private fun addLine(writer: PdfWriter) {
         val canvas: PdfContentByte = writer.directContent

@@ -78,7 +78,7 @@ class SavePageFragment :
     fun getListOfExport() {
         typeList.clear()
         typeList.add(ExportTypeModel(getString(R.string.export_pdf), R.drawable.ic_pdf, 0))
-        //typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 1))
+        typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 1))
         typeList.add(ExportTypeModel(getString(R.string.export_csv), R.drawable.ic_csv, 2))
     }
 
@@ -88,7 +88,7 @@ class SavePageFragment :
             onItemsSelected = {
                 when (it.type) {
                     0 -> {
-                        //update pdf
+                        // update pdf
                         saveAsPdf()
                     }
 

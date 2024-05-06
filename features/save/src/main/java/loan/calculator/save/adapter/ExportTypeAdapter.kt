@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import loan.calculator.common.extensions.gone
+import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.saved.ExportTypeModel
 import loan.calculator.save.databinding.ItemExportTypeBinding
@@ -31,9 +33,21 @@ class ExportTypeAdapter(itemList: List<ExportTypeModel>, private val clickListen
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: ExportTypeModel) {
             binding.apply {
-                //title.setTextColor(if(model.type ==0) ContextCompat.getColor(this.root.context, R.color.color_pure_black) else ContextCompat.getColor(this.root.context, R.color.gnt_red))
                 title.text = model.name
                 logo.setImageResource(model.icon)
+
+                if(model.type==0){
+                    status.gone()
+                } else {
+                    mainLayout.isFocusable = false
+                    mainLayout.isEnabled = false
+                    mainLayout.isFocusableInTouchMode = false
+
+                    title.setTextColor(ContextCompat.getColor(binding.root.context,R.color.item_background))
+                    status.show()
+                }
+                //title.setTextColor(if(model.type ==0) ContextCompat.getColor(this.root.context, R.color.color_pure_black) else ContextCompat.getColor(this.root.context, R.color.gnt_red))
+
             }
         }
     }

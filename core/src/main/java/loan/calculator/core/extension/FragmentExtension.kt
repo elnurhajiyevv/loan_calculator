@@ -53,6 +53,7 @@ object DeeplinkNavigationTypes {
                 "{${NavigationArgs.TOTAL_REPAYMENT}}/" +
                 "{${NavigationArgs.TERM_IN_MONTH}}/" +
                 "{${NavigationArgs.TYPE}}"
+    const val SAVE_PDF = "${DOMAIN}savepdf"
 }
 
 object NavigationArgs {
