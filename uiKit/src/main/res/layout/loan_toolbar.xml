@@ -51,10 +51,11 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:visibility="visible"
+            android:padding="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/loanToolbarDelete"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_saved"
+            tools:src="@drawable/icon_save"
             tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatImageView

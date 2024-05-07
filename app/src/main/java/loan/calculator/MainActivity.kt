@@ -1,10 +1,8 @@
 package loan.calculator
 
 import android.content.Context
-import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,19 +12,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.startapp.sdk.adsbase.StartAppAd
 import com.startapp.sdk.adsbase.StartAppSDK
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.gone
-import loan.calculator.common.extensions.isNotNull
 import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseActivity
-import loan.calculator.core.extension.DeeplinkNavigationTypes
 import loan.calculator.core.extension.setWindowFlag
-import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.data.repository.SettingPreferences
 import loan.calculator.data.util.RuntimeLocaleChanger
 import loan.calculator.databinding.ActivityMainBinding
@@ -100,11 +94,11 @@ class MainActivity : BaseActivity() {
 
         setStartGraph(savedInstanceState = savedInstanceState)
 
-        val intent = intent
+        /*val intent = intent
         val uriPdf = intent.data
         if(uriPdf.isNotNull()){
             mainViewModel.navigate(NavigationCommand.Deeplink(DeeplinkNavigationTypes.SAVE_PDF,null,false))
-        }
+        }*/
 
     }
 

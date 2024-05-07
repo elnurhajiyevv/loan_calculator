@@ -8,7 +8,7 @@
     <color name="color_gray_four">#B2C1DB</color>
     <color name="color_gray_five">#2A3038</color>
     <color name="color_gray_six">#F2F2F7</color>
-    <color name="background_color">@color/black</color>
+    <color name="background_color">#1a1a1a</color>
     <color name="adapter_background">#1c1c1c</color>
     <color name="adapter_amortization">#1c1c1c</color>
     <color name="white">#FFFFFF</color>

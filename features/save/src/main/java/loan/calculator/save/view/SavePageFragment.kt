@@ -15,12 +15,10 @@ import loan.calculator.save.effect.SavePageEffect
 import loan.calculator.save.state.SavePageState
 import loan.calculator.save.viewmodel.SavePageViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.core.extension.DeeplinkNavigationTypes
 import loan.calculator.core.extension.NavigationArgs
 import loan.calculator.core.extension.toast
 import loan.calculator.core.tools.NavigationCommand
-import loan.calculator.domain.entity.home.LoanInfo
 import loan.calculator.domain.entity.saved.ExportTypeModel
 import loan.calculator.save.R
 import loan.calculator.save.adapter.SavedAdapter

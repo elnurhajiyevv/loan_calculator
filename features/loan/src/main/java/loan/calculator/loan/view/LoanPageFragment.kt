@@ -151,6 +151,7 @@ class LoanPageFragment :
 
         loanMonthEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(0, 11))
         loanYearEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(0, 99))
+        loanRateEdittext.filters = arrayOf<InputFilter>(InputFilterMinMax(1, 999))
 
         loanAmountEdittext.onFocusChangeListener =
             View.OnFocusChangeListener { _, b -> loanAmountFocus = b }

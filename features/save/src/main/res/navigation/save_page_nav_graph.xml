@@ -36,10 +36,6 @@
             android:name="getSavedLoanModel"
             app:argType="loan.calculator.domain.entity.saved.GetSavedLoanModel" />
 
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="loan://savepdf" />
-
     </fragment>
     <fragment
         android:id="@+id/saveCsvFragment"

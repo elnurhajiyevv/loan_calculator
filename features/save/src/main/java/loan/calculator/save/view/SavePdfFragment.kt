@@ -107,7 +107,7 @@ class SavePdfFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        //requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
         colorPrimary = BaseColor(getThemeColor(requireContext()))
         appFontRegular.color = BaseColor.WHITE
@@ -191,10 +191,10 @@ class SavePdfFragment :
     private fun addLine(writer: PdfWriter) {
         val canvas: PdfContentByte = writer.directContent
         canvas.setColorStroke(colorPrimary)
-        canvas.moveTo(30.0, 570.0)
+        canvas.moveTo(30.0, 470.0)
 
         // Drawing the line
-        canvas.lineTo(570.0, 570.0)
+        canvas.lineTo(570.0, 470.0)
         canvas.setLineWidth(1f)
 
         // Closing the path stroke

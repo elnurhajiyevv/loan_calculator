@@ -38,12 +38,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <intent-filter android:label="View or edit your pdf files">
+            <!--<intent-filter android:label="View or edit your pdf files">
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="android.intent.action.VIEW" />
                 <data android:scheme="content" />
                 <data android:mimeType="application/pdf" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <service
             android:name="loan.calculator.FirebaseMessageService"
