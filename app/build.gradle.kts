@@ -75,6 +75,7 @@ dependencies {
     implementation(project(ApplicationModules.loanModule))
     implementation(project(ApplicationModules.settingModule))
     implementation(project(ApplicationModules.uiKit))
+    implementation(project(ApplicationModules.showCase))
 
     // Dagger Hilt
     implementation(ApplicationDependencies.hiltAndroid)

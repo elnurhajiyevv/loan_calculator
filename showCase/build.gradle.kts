@@ -12,6 +12,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+
 android {
     compileSdkVersion(ApplicationConfig.compileSdk)
     buildToolsVersion(ApplicationConfig.buildToolsVersion)
@@ -50,22 +51,12 @@ dependencies {
     implementation(project(ApplicationModules.domainModule))
     implementation(project(ApplicationModules.commonModule))
     implementation(project(ApplicationModules.uiKit))
-    implementation(project(ApplicationModules.showCase))
-    //implementation("com.github.mreram:showcaseview:1.4.1")
 
     implementation(ApplicationDependencies.appLibraries)
     implementation(ApplicationDependencies.testLibraries)
     implementation(ApplicationDependencies.navigationLibraries)
 
-
     implementation(ApplicationDependencies.hiltAndroid)
-    implementation("com.google.android.gms:play-services-ads-lite:22.1.0")
     kapt(ApplicationDependencies.hiltCompiler)
-    implementation("com.startapp:inapp-sdk:4.11.+")
-    implementation("com.google.android.gms:play-services-location:21.0.1")
-    implementation("com.google.android.libraries.places:places:3.2.0")
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("androidx.palette:palette-ktx:1.0.0")
 
 }

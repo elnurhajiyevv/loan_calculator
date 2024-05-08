@@ -11,6 +11,7 @@ object ApplicationModules {
     const val domainModule = ":domain"
     const val dataModule = ":data"
     const val uiKit = ":uiKit"
+    const val showCase = ":showCase"
     const val commonModule = ":common"
     const val saveModule = ":features:save"
     const val loanModule = ":features:loan"

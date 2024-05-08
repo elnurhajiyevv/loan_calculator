@@ -50,6 +50,7 @@ dependencies {
     implementation(project(ApplicationModules.domainModule))
     implementation(project(ApplicationModules.commonModule))
     implementation(project(ApplicationModules.uiKit))
+    //implementation(project(ApplicationModules.showCase))
 
 
     implementation(ApplicationDependencies.appLibraries)
@@ -68,5 +69,4 @@ dependencies {
     implementation("com.itextpdf:itextg:5.5.10") // iText PDF
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
     implementation("com.github.abdymm:androidcsv:0.1.5")
-    implementation("com.github.deano2390:MaterialShowcaseView:1.3.7")
 }

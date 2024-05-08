@@ -28,8 +28,6 @@ import loan.calculator.save.bottomsheet.dialogBottomSheet
 import loan.calculator.save.bottomsheet.exportTypeBottomSheet
 import loan.calculator.save.databinding.FragmentSavePageBinding
 import loan.calculator.uikit.toolbar.LoanToolbar
-import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
-import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
 
 @AndroidEntryPoint
 class SavePageFragment :
@@ -187,29 +185,7 @@ class SavePageFragment :
     }
 
     private fun showCase() {
-        val config = ShowcaseConfig()
-        config.delay = 500 // half second between each showcase view
 
-        val sequence = MaterialShowcaseSequence(requireActivity(), viewmodel.getShowCase().toString())
-
-        sequence.setConfig(config)
-
-        sequence.addSequenceItem(
-            binding.recyclerViewSaved.getChildAt(0),
-            "Long press on item for share or delete", "GOT IT"
-        )
-
-        sequence.addSequenceItem(
-            binding.toolbar.getSaveIcon(),
-            "This is save button that enable to view as pdf and store to device", "GOT IT"
-        )
-
-        sequence.addSequenceItem(
-            binding.toolbar.getDeleteIcon(),
-            "This is delete button that enable delete selected item", "GOT IT"
-        )
-
-        sequence.start()
 
     }
 
