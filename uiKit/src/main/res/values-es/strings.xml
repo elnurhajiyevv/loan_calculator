@@ -65,6 +65,7 @@
     <string name="allow_location_permission">Allow your location permission</string>
     <string name="allow_storage_permission">Allow your storage permission</string>
     <string name="setting_permission">Open Setting to Allow Location Permission</string>
-    <string name="choose_your_color">Elige tu color</string>
+    <string name="choose_your_color">Desactivar captura de pantalla</string>
+    <string name="disable_screenshot">Desactivar captura de pantalla</string>
 
 </resources>

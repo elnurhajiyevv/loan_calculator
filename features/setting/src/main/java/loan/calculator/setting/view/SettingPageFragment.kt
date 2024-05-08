@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
@@ -38,7 +39,8 @@ import petrov.kristiyan.colorpicker.ColorPicker.OnChooseColorListener
 
 
 @AndroidEntryPoint
-class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, SettingPageViewModel, FragmentSettingPageBinding>() {
+class SettingPageFragment :
+    BaseFragment<SettingPageState, SettingPageEffect, SettingPageViewModel, FragmentSettingPageBinding>() {
 
     override val bindingCallback: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSettingPageBinding
         get() = FragmentSettingPageBinding::inflate
@@ -58,7 +60,7 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         switchOnOff.isChecked = viewmodel.getLightTheme()
         // handle language change
         switchOnOff.setOnCheckedChangeListener { buttonView, isChecked ->
-            AppCompatDelegate.setDefaultNightMode(if(isChecked)AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES)
+            AppCompatDelegate.setDefaultNightMode(if (isChecked) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES)
             viewmodel.setLightTheme(isChecked)
         }
         changeLanguage.setOnClickListener {
@@ -68,6 +70,32 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         rateUs.setOnClickListener {
             // get app package name
             viewmodel.getPackageName()
+        }
+
+        if (viewmodel.getScreenShot()) {
+            on.setTextColor(resources.getColor(R.color.gray_text))
+            off.setTextColor(resources.getColor(R.color.color_secondary))
+            disableScreenshot.isChecked = true
+        } else {
+            off.setTextColor(resources.getColor(R.color.gray_text))
+            on.setTextColor(resources.getColor(R.color.color_secondary))
+            disableScreenshot.isChecked = false
+        }
+
+        // handle language change
+        disableScreenshot.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                on.setTextColor(resources.getColor(R.color.gray_text))
+                off.setTextColor(resources.getColor(R.color.color_secondary))
+                requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            } else {
+                off.setTextColor(resources.getColor(R.color.gray_text))
+                on.setTextColor(resources.getColor(R.color.color_secondary))
+                requireActivity().window.setFlags(
+                    WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE
+                )
+            }
+            viewmodel.setScreenShot(isChecked)
         }
 
         bugReport.setOnClickListener {
@@ -108,25 +136,25 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         MobileAds.initialize(requireContext())
         val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
             .forNativeAd { nativeAd ->
-                val styles: NativeTemplateStyle =
-                    NativeTemplateStyle.Builder().build()
+                val styles: NativeTemplateStyle = NativeTemplateStyle.Builder().build()
 
                 binding.myTemplate.setStyles(styles)
                 binding.myTemplate.setNativeAd(nativeAd)
-            }
-            .build()
+            }.build()
 
         adLoader.loadAd(AdRequest.Builder().build())
     }
 
     override fun observeEffect(effect: SettingPageEffect) {
-        when(effect){
+        when (effect) {
             is SettingPageEffect.OnAppVersion -> {
                 binding.appVersion.text = getString(R.string.app_version, effect.appVersion)
             }
+
             is SettingPageEffect.OnPackageName -> {
                 navigateToRateUs(effect.packageName)
             }
+
             is SettingPageEffect.ListOfLanguage -> {
                 openLanguageBottomModule(effect.list)
             }
@@ -137,21 +165,19 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         try {
             startActivity(
                 Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("$marketLink$packageName")
+                    Intent.ACTION_VIEW, Uri.parse("$marketLink$packageName")
                 )
             )
         } catch (e: ActivityNotFoundException) {
             startActivity(
                 Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("$webLink$packageName")
+                    Intent.ACTION_VIEW, Uri.parse("$webLink$packageName")
                 )
             )
         }
     }
 
-    private fun openLanguageBottomModule(list: List<LanguageModel>){
+    private fun openLanguageBottomModule(list: List<LanguageModel>) {
         languageMenuBottomSheet {
             itemList = list
             onItemsSelected = {
@@ -161,7 +187,7 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         }?.show(childFragmentManager, LanguageMenuBottomSheet::class.java.canonicalName)
     }
 
-    private fun openBugReportBottomModule(){
+    private fun openBugReportBottomModule() {
         bugReportBottomSheetBottomSheet {
             onItemsSelected = {
                 // update
@@ -175,10 +201,11 @@ class SettingPageFragment : BaseFragment<SettingPageState, SettingPageEffect, Se
         changeAppContext()
     }
 
-    private fun setLanguage(language: LanguageModel){
+    private fun setLanguage(language: LanguageModel) {
         binding.changeLanguageImage.setImageResource(language.name.getImageResource())
         binding.changeLanguageText.text = language.nationalName
     }
+
     private fun changeAppContext() {
         requireActivity().recreate()
     }

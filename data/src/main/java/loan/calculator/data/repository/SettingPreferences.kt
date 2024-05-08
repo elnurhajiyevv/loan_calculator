@@ -20,10 +20,24 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
         const val LANGUAGE = "LANGUAGE"
         const val ICON_MODEL = "ICON_MODEL"
         const val COLOR = "COLOR"
+        const val IS_SCREENSHOT = "IS_SCREEN_SHOT"
+        const val SHOWCASE = "SHOWCASE"
     }
     var isLightTheme
         get() = get(LIGHT_THEME, true)
         set(value) = set(LIGHT_THEME, value)
+
+    var isScreenShot
+        get() = get(IS_SCREENSHOT, true)
+        set(value) = set(IS_SCREENSHOT, value)
+
+    var isShowCase
+        get() = get(SHOWCASE, 92)
+        set(value) = set(SHOWCASE, value)
+
+    var isShowCase2
+        get() = get(SHOWCASE, 94)
+        set(value) = set(SHOWCASE, value)
 
     var colorValue
         get() = get(COLOR, -1)

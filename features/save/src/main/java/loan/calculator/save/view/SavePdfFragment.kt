@@ -107,7 +107,6 @@ class SavePdfFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
         colorPrimary = BaseColor(getThemeColor(requireContext()))
         appFontRegular.color = BaseColor.WHITE

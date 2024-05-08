@@ -65,5 +65,6 @@
     <string name="allow_storage_permission">Allow your storage permission</string>
     <string name="setting_permission">Open Setting to Allow Location Permission</string>
     <string name="choose_your_color">Выберите свой цвет</string>
+    <string name="disable_screenshot">Отключить скриншот</string>
 
 </resources>

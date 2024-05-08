@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import loan.calculator.common.extensions.getString
 import loan.calculator.common.extensions.gone
@@ -100,6 +101,10 @@ class LoanToolbar @JvmOverloads constructor(
             }
         }
     }
+
+    fun getSaveIcon() = binding.loanToolbarRight
+
+    fun getDeleteIcon() = binding.loanToolbarDelete
 
     private fun setToolbarLeftActionButtonIcon(@DrawableRes resId: Int) {
         this.toolbarLeftActionIcon = resId

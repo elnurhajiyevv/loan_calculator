@@ -65,4 +65,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation("com.github.deano2390:MaterialShowcaseView:1.3.7")
 }

@@ -4,12 +4,24 @@ import loan.calculator.core.base.BaseViewModel
 import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.LoanPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import loan.calculator.domain.usecase.settingpage.GetScreenShotUseCase
+import loan.calculator.domain.usecase.settingpage.GetShowCaseUseCase
+import loan.calculator.domain.usecase.settingpage.SetScreenShotUseCase
+import loan.calculator.domain.usecase.settingpage.SetShowCaseUseCase
 import loan.calculator.domain.util.SELECT_PART
 import javax.inject.Inject
 
 @HiltViewModel
 class LoanPageViewModel @Inject constructor(
-) : BaseViewModel<LoanPageState, LoanPageEffect>() {
+    private val getShowCaseUseCase: GetShowCaseUseCase,
+    private val setShowCaseUseCase: SetShowCaseUseCase,
+    ) : BaseViewModel<LoanPageState, LoanPageEffect>() {
+
+    fun getShowCase() = getShowCaseUseCase.invoke(Unit)
+
+    fun setShowCase(id:Int){
+        setShowCaseUseCase.invoke(SetShowCaseUseCase.Params(id = id))
+    }
 
     var setSelection = SELECT_PART.PAYMENT
 

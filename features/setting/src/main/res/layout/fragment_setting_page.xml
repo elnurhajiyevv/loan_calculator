@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/background_color"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
 
     <loan.calculator.uikit.toolbar.LoanToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:loan_toolbar_option="without_left_and_right"
         app:loan_toolbar_right_action_icon="@drawable/ic_share"
-        app:loan_toolbar_title="@string/setting_header"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:loan_toolbar_title="@string/setting_header" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/app_theme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="@dimen/_16sdp"
-        android:foreground="?android:attr/selectableItemBackground"
         android:background="@drawable/radius_1_white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
@@ -34,8 +33,8 @@
             android:id="@+id/app_theme_image"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/ic_night"
             android:layout_marginLeft="@dimen/_15sdp"
+            android:src="@drawable/ic_night"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -98,14 +97,13 @@
                 android:gravity="center"
                 android:text="Light"
                 android:textColor="#ffffff"
-                app:layout_constraintStart_toEndOf="@+id/dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dark"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -136,8 +134,8 @@
             style="@style/regular_caption3"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:gravity="center"
             android:layout_marginLeft="@dimen/_10sdp"
+            android:gravity="center"
             android:text="@string/change_language"
             app:layout_constraintStart_toEndOf="@+id/change_language_image"
             app:layout_constraintTop_toTopOf="@+id/change_language_image" />
@@ -201,7 +199,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rate_us"
+        android:id="@+id/screenshot_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radius_1_white"
@@ -210,6 +208,96 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color_picker">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/screenshot_image"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:src="@drawable/ic_screenshot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/screenshot_text"
+            style="@style/regular_caption2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:text="@string/disable_screenshot"
+            app:layout_constraintBottom_toBottomOf="@+id/screenshot_image"
+            app:layout_constraintEnd_toStartOf="@+id/disable_screenshot_change"
+            app:layout_constraintStart_toEndOf="@+id/screenshot_image"
+            app:layout_constraintTop_toTopOf="@+id/screenshot_image" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/disable_screenshot_change"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_switch"
+            app:layout_constraintBottom_toBottomOf="@+id/screenshot_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/screenshot_image">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/disable_screenshot"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:checked="true"
+                android:textColor="@color/color_pure_white"
+                android:thumb="@drawable/thumb_selector"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:track="@drawable/track_selector" />
+
+            <TextView
+                android:id="@+id/on"
+                style="@style/regular_caption2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="On"
+                android:textColor="@color/gray_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/off"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/off"
+                style="@style/regular_caption2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="Off"
+                android:textColor="#ffffff"
+                app:layout_constraintStart_toEndOf="@+id/on"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rate_us"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_1_white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/screenshot_container">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/rate_us_image"
@@ -288,13 +376,12 @@
         style="@style/regular_caption3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
         android:text="@string/app_version"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

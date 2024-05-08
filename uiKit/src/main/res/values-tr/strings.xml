@@ -66,5 +66,6 @@
     <string name="allow_storage_permission">Allow your storage permission</string>
     <string name="setting_permission">Open Setting to Allow Location Permission</string>
     <string name="choose_your_color">Rengini seç</string>
+    <string name="disable_screenshot">Ekran görüntüsünü kapat</string>
 
 </resources>

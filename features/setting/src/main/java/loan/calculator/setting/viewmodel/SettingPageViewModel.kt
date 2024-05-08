@@ -11,9 +11,11 @@ import loan.calculator.domain.usecase.settingpage.GetAppVersionUseCase
 import loan.calculator.domain.usecase.settingpage.GetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.GetLightThemeUseCase
 import loan.calculator.domain.usecase.settingpage.GetPackageNameUseCase
+import loan.calculator.domain.usecase.settingpage.GetScreenShotUseCase
 import loan.calculator.domain.usecase.settingpage.SetAppColorUseCase
 import loan.calculator.domain.usecase.settingpage.SetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.SetLightThemeUseCase
+import loan.calculator.domain.usecase.settingpage.SetScreenShotUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,7 +26,9 @@ class SettingPageViewModel @Inject constructor(
     private val getPackageNameUseCase: GetPackageNameUseCase,
     private val getLanguageUseCase: GetLanguageUseCase,
     private val setLanguageUseCase: SetLanguageUseCase,
-    private val setAppColorUseCase: SetAppColorUseCase
+    private val setAppColorUseCase: SetAppColorUseCase,
+    private val getScreenShotUseCase: GetScreenShotUseCase,
+    private val setScreenShotUseCase: SetScreenShotUseCase,
 ) : BaseViewModel<SettingPageState, SettingPageEffect>() {
 
 
@@ -60,6 +64,11 @@ class SettingPageViewModel @Inject constructor(
         setLanguageUseCase.invoke(SetLanguageUseCase.Params(language = language))
     }
 
+    fun getScreenShot() = getScreenShotUseCase.invoke(Unit)
+
+    fun setScreenShot(isOn:Boolean){
+        setScreenShotUseCase.invoke(SetScreenShotUseCase.Params(isOn = isOn))
+    }
 
     fun getLanguageList(){
         var list = arrayListOf<LanguageModel>()

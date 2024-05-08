@@ -6,8 +6,6 @@
 
 package loan.calculator.loan.view
 
-import android.graphics.Color
-import android.graphics.Paint
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -17,13 +15,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginLeft
-import androidx.core.view.setMargins
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.Entry
@@ -41,12 +35,9 @@ import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.dp
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
-import loan.calculator.common.library.util.calculateAmortization
-import loan.calculator.common.library.util.calculateMonthlyPayment
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
-import loan.calculator.domain.entity.home.LoanInfo
 import loan.calculator.domain.util.SELECT_PART
 import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
@@ -65,6 +56,8 @@ import loan.calculator.uikit.util.returnValueIfNull
 import loan.calculator.uikit.util.setBackgroundColor
 import loan.calculator.uikit.util.setBackgroundResources
 import loan.calculator.uikit.util.setImageResources
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
 import java.util.Date
 
 
@@ -378,6 +371,10 @@ class LoanPageFragment :
         binding.chart.isDrawHoleEnabled = true
         binding.chart.setHoleColor(resources.getColor(R.color.white_black))
 
+        info.clear()
+        info.add(resources.getString(R.string.loan_result_interest_header))
+        info.add(resources.getString(R.string.total_repayment))
+
         val yvalues: MutableList<PieEntry> = ArrayList()
         yvalues.clear()
         yvalues.add(PieEntry(totalInterest, info[0]))
@@ -529,11 +526,9 @@ class LoanPageFragment :
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
 
-        info.clear()
-        info.add(resources.getString(R.string.loan_result_interest_header))
-        info.add(resources.getString(R.string.total_repayment))
-
         defaultSelection()
+
+        showShowcase()
 
         //showPieChart()
         /*binding.filter.setOnClickListenerDebounce {
@@ -543,6 +538,29 @@ class LoanPageFragment :
             }?.show(childFragmentManager, FilterLoanBottomSheet::class.java.canonicalName)
         }*/
 
+    }
+
+    private fun showShowcase() {
+        // sequence example
+        val config = ShowcaseConfig()
+        config.delay = 500 // half second between each showcase view
+
+        val sequence = MaterialShowcaseSequence(requireActivity(), viewmodel.getShowCase().toString())
+
+        sequence.setConfig(config)
+
+        sequence.addSequenceItem(
+            binding.toolbar.getSaveIcon(),
+            "This is save button that enable to save loan template to 'saved' field", "GOT IT"
+        )
+
+        sequence.addSequenceItem(
+            binding.applyButton,
+            "Click here to amortize selected loan", "GOT IT"
+        )
+
+        sequence.start()
+        //viewmodel.setShowCase(false)
     }
 
     private fun defaultSelection() {

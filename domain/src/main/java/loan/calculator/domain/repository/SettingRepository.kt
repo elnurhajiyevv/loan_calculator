@@ -17,4 +17,16 @@ interface SettingRepository {
 
     fun setColor(color: Int)
 
+    fun getScreenShot(): Boolean
+
+    fun setScreenShot(isOn: Boolean)
+
+    fun getShowCase(): Int
+
+    fun setShowCase(id: Int)
+
+    fun getShowCase2(): Int
+
+    fun setShowCase2(id: Int)
+
 }
