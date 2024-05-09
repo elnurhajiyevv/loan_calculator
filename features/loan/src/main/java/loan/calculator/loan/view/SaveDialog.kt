@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +25,9 @@ import loan.calculator.core.base.BaseDialogFragment
 import loan.calculator.core.extension.DeeplinkNavigationTypes
 import loan.calculator.core.extension.toast
 import loan.calculator.core.tools.NavigationCommand
+import loan.calculator.domain.entity.enum.ButtonStyleEnum
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
 import loan.calculator.loan.adapter.IconAdapter
 import loan.calculator.loan.bottomsheet.DatePickerBottomSheet
@@ -34,6 +38,8 @@ import loan.calculator.loan.state.SaveDialogState
 import loan.calculator.loan.viewmodel.SaveDialogViewModel
 
 import loan.calculator.uikit.util.calculatePaidOff
+import loan.calculator.uikit.util.getValor
+import loan.calculator.uikit.util.returnValueIfNull
 import java.util.Date
 import kotlin.random.Random
 
@@ -59,32 +65,42 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
 
         iconText.text = viewmodel.getIconModel().iconResource.type
 
-        saveButton.setOnClickListener {
-            if(nameEdittext.text.toString().isEmpty())
-                errorText.show()
-            else {
-                errorText.gone()
-                viewmodel.insertSavedLoan(
-                    model = GetSavedLoanModel(
-                        name = binding.nameEdittext.text.toString(),
-                        code = Random(100).toString(),
-                        description = "sometext",
-                        type = viewmodel.selectedType,
-                        background = "",
-                        src = "",
-                        startDate = binding.dataText.text.toString(),
-                        paidOff = calculatePaidOff(arguments?.getString(PERIOD)?.toInt() ?: 0, viewmodel.selectedStartDate),
-                        loanAmount = arguments?.getString(AMOUNT),
-                        interestRate = arguments?.getString(RATE),
-                        compoundingFrequency = arguments?.getString(FREQUENCY),
-                        period = arguments?.getString(PERIOD),
-                        totalRePayment = arguments?.getString(PAYMENT),
-                        termInMonth = arguments?.getInt(TERMINMONTH),
-                        totalInterest = arguments?.getString(TOTALINTEREST),
-                        totalPayment = arguments?.getString(TOTALPAYMENT)
-                    )
-                )
+        nameEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(s.trim().length>3){
+                    saveButton.isEnabled = true
+                    saveButton.setTextColor(resources.getColor(R.color.white))
+                } else {
+                    saveButton.isEnabled = false
+                    saveButton.setTextColor(resources.getColor(R.color.gray_text))
+                }
+
             }
+        })
+
+        saveButton.setOnClickListener {
+            viewmodel.insertSavedLoan(
+                model = GetSavedLoanModel(
+                    name = binding.nameEdittext.text.toString(),
+                    code = Random(100).toString(),
+                    description = "sometext",
+                    type = viewmodel.selectedType,
+                    background = "",
+                    src = "",
+                    startDate = binding.dataText.text.toString(),
+                    paidOff = calculatePaidOff(arguments?.getString(PERIOD)?.toInt() ?: 0, viewmodel.selectedStartDate),
+                    loanAmount = arguments?.getString(AMOUNT),
+                    interestRate = arguments?.getString(RATE),
+                    compoundingFrequency = arguments?.getString(FREQUENCY),
+                    period = arguments?.getString(PERIOD),
+                    totalRePayment = arguments?.getString(PAYMENT),
+                    termInMonth = arguments?.getInt(TERMINMONTH),
+                    totalInterest = arguments?.getString(TOTALINTEREST),
+                    totalPayment = arguments?.getString(TOTALPAYMENT)
+                )
+            )
         }
 
         calendar.setOnClickListenerDebounce {
@@ -122,7 +138,7 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         val size = Point()
         val display = window?.windowManager?.defaultDisplay
         display?.getSize(size)
-        window?.setLayout((size.x * 0.90).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
+        window?.setLayout((size.x * 0.95).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
         window?.setGravity(Gravity.CENTER)
         super.onResume()
     }

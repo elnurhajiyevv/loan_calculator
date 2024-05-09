@@ -68,5 +68,6 @@ dependencies {
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.itextpdf:itextg:5.5.10") // iText PDF
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
-    implementation("com.github.abdymm:androidcsv:0.1.5")
+
+    implementation(project(ApplicationModules.showCase))
 }

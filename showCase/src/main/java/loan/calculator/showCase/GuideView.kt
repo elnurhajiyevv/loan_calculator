@@ -29,6 +29,7 @@ import android.widget.FrameLayout
 import loan.calculator.showCase.config.DismissType
 import loan.calculator.showCase.config.Gravity
 import loan.calculator.showCase.config.PointerType
+import loan.calculator.uikit.util.getThemeColor
 
 
 /**
@@ -80,7 +81,7 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
             messageViewPadding,
             messageViewPadding
         )
-        mMessageView.setColor(Color.RED)
+        mMessageView.setColor(getThemeColor(context))
         addView(
             mMessageView,
             LayoutParams(
@@ -106,8 +107,7 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
                         (
                                 locationTarget[0] + target.width).toFloat(),
                         (
-                                locationTarget[1] + target.height
-                                ).toFloat()
+                                locationTarget[1] + target.height).toFloat()
                     )
                     if (isLandscape()) {
                         targetRect.offset(-getStatusBarHeight().toFloat(), 0f)
@@ -349,12 +349,12 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
         }
 
         //set message view bottom
-        if (targetRect!!.top + indicatorHeight > height / 2f) {
+        if (targetRect.top + indicatorHeight > height / 2f) {
             isTop = false
-            yMessageView = (targetRect!!.top - mMessageView.height - indicatorHeight).toInt()
+            yMessageView = (targetRect.top - mMessageView.height - indicatorHeight).toInt()
         } else {
             isTop = true
-            yMessageView = (targetRect!!.top + target!!.height + indicatorHeight).toInt()
+            yMessageView = (targetRect.top + target!!.height + indicatorHeight).toInt()
         }
         if (yMessageView < 0) {
             yMessageView = 0
@@ -376,11 +376,11 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
         mIsShowing = true
     }
 
-    fun setTitle(str: String?) {
+    fun setTitle(str: String) {
         mMessageView.setTitle(str)
     }
 
-    fun setContentText(str: String?) {
+    fun setContentText(str: String) {
         mMessageView.setContentText(str)
     }
 
@@ -406,8 +406,8 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
 
     class Builder(context: Context) {
         lateinit var targetView: View
-        private var title: String? = null
-        private var contentText: String? = null
+        private var title: String = ""
+        private var contentText: String = ""
         private var gravity: Gravity? = null
         private var dismissType: DismissType? = null
         private var pointerType: PointerType? = null
@@ -448,7 +448,7 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
          *
          * @param title a title. for example: submit button.
          */
-        fun setTitle(title: String?): Builder {
+        fun setTitle(title: String): Builder {
             this.title = title
             return this
         }
@@ -458,7 +458,7 @@ class GuideView private constructor(context: Context, view: View) : FrameLayout(
          *
          * @param contentText a description. for example: this button can for submit your information..
          */
-        fun setContentText(contentText: String?): Builder {
+        fun setContentText(contentText: String): Builder {
             this.contentText = contentText
             return this
         }

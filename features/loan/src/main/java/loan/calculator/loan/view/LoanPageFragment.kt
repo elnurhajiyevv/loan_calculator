@@ -6,6 +6,7 @@
 
 package loan.calculator.loan.view
 
+import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -15,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.mikephil.charting.components.Description
@@ -35,11 +37,20 @@ import loan.calculator.common.extensions.dp
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.setOnClickListenerDebounce
 import loan.calculator.core.base.BaseFragment
+import loan.calculator.core.extension.toast
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.util.SELECT_PART
 import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
+import loan.calculator.loan.bottomsheet.DatePickerBottomSheet
+import loan.calculator.loan.bottomsheet.PopUpBottomSheet
+import loan.calculator.loan.bottomsheet.SaveBottomSheet
+import loan.calculator.loan.bottomsheet.datePickerBottomSheet
+import loan.calculator.loan.bottomsheet.popUpBottomSheet
+import loan.calculator.loan.bottomsheet.saveBottomSheet
 import loan.calculator.loan.databinding.FragmentLoanPageBinding
 import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.LoanPageState
@@ -61,6 +72,7 @@ import loan.calculator.uikit.util.setBackgroundColor
 import loan.calculator.uikit.util.setBackgroundResources
 import loan.calculator.uikit.util.setImageResources
 import java.util.Date
+import kotlin.random.Random
 
 
 @AndroidEntryPoint
@@ -94,7 +106,7 @@ class LoanPageFragment :
         }
 
         toolbar.setToolbarRightActionClick {
-            saveValues()
+            viewmodel.getIconModelList()
         }
 
         type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -334,7 +346,7 @@ class LoanPageFragment :
 
     }
 
-    private fun saveValues() {
+    private fun saveValues(list: List<IconModel>) {
         var termInMonth = viewmodel.getPeriodInMonth(
             returnValueIfNull(binding.loanYearEdittext).toInt(),
             returnValueIfNull(binding.loanMonthEdittext).toInt()
@@ -342,7 +354,35 @@ class LoanPageFragment :
 
         paymentFormat(viewmodel.totalInterest.toFloat(), viewmodel.totalPayment.toFloat())
 
-        val saveDialog = SaveDialog
+
+        saveBottomSheet {
+            itemList {
+                list
+            }
+            setAmount(returnValueIfNull(binding.loanAmountEdittext))
+            setPeriod(viewmodel.getPeriodInMonth(
+                returnValueIfNull(binding.loanYearEdittext).toInt(),
+                returnValueIfNull(binding.loanMonthEdittext).toInt()
+            ).toString())
+            setRate(returnValueIfNull(binding.loanRateEdittext))
+            setPayment(returnValueIfNull(binding.loanPaymentEdittext))
+            setFrequency(binding.type.selectedItem.toString())
+            setTermInMonth(termInMonth.toString())
+            setTotalInterest(binding.totalInterestValue.text.toString())
+            setTotalPayment(binding.totalRepaymentValue.text.toString())
+            setIconModel(viewmodel.getIconModel())
+            onSaveButtonClicked {
+                viewmodel.insertSavedLoan(
+                    model = it
+                )
+            }
+            onIconSelection {
+                viewmodel.setIconModel(it)
+            }
+        }.show(childFragmentManager, SaveBottomSheet::class.java.canonicalName)
+
+
+        /*val saveDialog = SaveDialog
         saveDialog.build(
             amount = returnValueIfNull(binding.loanAmountEdittext),
             period = viewmodel.getPeriodInMonth(
@@ -355,7 +395,7 @@ class LoanPageFragment :
             termInMonth = termInMonth,
             totalInterest = binding.totalInterestValue.text.toString(),
             totalPayment = binding.totalRepaymentValue.text.toString()
-        ).show(parentFragmentManager, "saveDialog")
+        ).show(parentFragmentManager, "saveDialog")*/
     }
 
     fun paymentFormat(totalInterest: Float, totalPayment: Float) {
@@ -533,8 +573,8 @@ class LoanPageFragment :
 
         defaultSelection()
 
-        showShowcase()
-
+        if(viewmodel.getShowCase())
+            showPopUpDialog()
         //showPieChart()
         /*binding.filter.setOnClickListenerDebounce {
             filterLoanBottomSheet {
@@ -545,24 +585,37 @@ class LoanPageFragment :
 
     }
 
+    private fun showPopUpDialog() {
+        popUpBottomSheet {
+            onOkButtonClicked = {
+                showShowcase()
+            }
+        }?.show(childFragmentManager, PopUpBottomSheet::class.java.canonicalName)
+    }
+
     private fun showShowcase() {
         // sequence example
-
         builder = GuideView.Builder(requireActivity())
-            .setTitle("Guide Title Text")
-            .setContentText("Guide Description Text\n .....Guide Description Text\n .....Guide Description Text .....")
-            .setDismissType(DismissType.anywhere)
+            .setTitle("Save button")
+            .setContentText(resources.getString(R.string.toolbar_guide))
+            .setDismissType(DismissType.outside)
             .setPointerType(PointerType.circle)
             .setGravity(Gravity.center)
-            .setTargetView(binding.loanAmount)
+            .setTargetView(binding.toolbar.getSaveIcon())
             .setGuideListener(object : GuideListener {
                 override fun onDismiss(view: View) {
                     when (view.id) {
-                        binding.loanAmount.id -> builder.setTargetView(binding.loanRate).build()
-                        binding.loanRate.id -> builder.setTargetView(binding.loanPeriod).build()
+                        binding.toolbar.getSaveIcon().id -> builder.setTargetView(binding.loanAmount).setTitle("Loan amount button")
+                            .setContentText(resources.getString(R.string.loan_amount_guide)).build()
+                        binding.loanAmount.id -> builder.setTargetView(binding.loanRate).setTitle("Loan rate")
+                            .setContentText(resources.getString(R.string.loan_rate_guide)).build()
+                        binding.loanRate.id -> builder.setTargetView(binding.loanPeriod).setTitle("Loan period")
+                            .setContentText(resources.getString(R.string.loan_period_guide)).build()
                         binding.loanPeriod.id -> builder.setTargetView(binding.loanPayment).build()
-                        binding.loanPayment.id -> builder.setTargetView(binding.applyButton).build()
-                        binding.applyButton.id-> return
+                        binding.loanPayment.id-> {
+                            viewmodel.setShowCase(false)
+                            return
+                        }
                     }
                     mGuideView = builder.build()
                     mGuideView.show()
@@ -571,7 +624,6 @@ class LoanPageFragment :
         mGuideView = builder.build()
         mGuideView.show()
         updatingForDynamicLocationViews()
-        //viewmodel.setShowCase(false)
     }
 
     private fun updatingForDynamicLocationViews() {
@@ -603,6 +655,18 @@ class LoanPageFragment :
         when (state) {
 
             else -> {}
+        }
+    }
+
+    override fun observeEffect(effect: LoanPageEffect) {
+        when(effect){
+            is LoanPageEffect.InsertSavedLoan -> {
+                // insert into db
+                toast("Your loan added to favorite.")
+            }
+            is LoanPageEffect.ListOfIconModel ->{
+                saveValues(effect.list)
+            }
         }
     }
 

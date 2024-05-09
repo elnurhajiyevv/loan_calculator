@@ -14,5 +14,5 @@ class LoanInfo (
     var frequency:String,
     var totalRepayment:String,
     var termInMonth: Int? = 0,
-    var type: String = SELECT_TYPE_LOAN.HOME.type
+    var type: String = SELECT_TYPE_LOAN.BLOCK.type
 ): java.io.Serializable

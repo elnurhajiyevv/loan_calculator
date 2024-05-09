@@ -35,20 +35,20 @@ class SettingRepositoryImpl @Inject constructor(
         settingPreferences.isScreenShot = isOn
     }
 
-    override fun getShowCase(): Int {
+    override fun getShowCase(): Boolean {
         return settingPreferences.isShowCase
     }
 
-    override fun setShowCase(id: Int) {
-        settingPreferences.isShowCase = id
+    override fun setShowCase(value: Boolean) {
+        settingPreferences.isShowCase = value
     }
 
-    override fun getShowCase2(): Int {
+    override fun getShowCase2(): Boolean {
         return settingPreferences.isShowCase2
     }
 
-    override fun setShowCase2(id: Int) {
-        settingPreferences.isShowCase2 = id
+    override fun setShowCase2(value: Boolean) {
+        settingPreferences.isShowCase2 = value
     }
 
 }

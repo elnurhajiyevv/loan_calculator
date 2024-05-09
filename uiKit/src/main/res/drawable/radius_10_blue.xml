@@ -73,7 +73,7 @@
         <shape>
             <stroke android:color="@color/light_blue_100"
                 android:width="@dimen/_1sdp"/>
-            <solid android:color="@color/color_pure_white" />
+            <solid android:color="@color/light_blue_100" />
             <corners android:radius="@dimen/_5sdp" />
         </shape>
     </item>

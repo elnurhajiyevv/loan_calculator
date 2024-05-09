@@ -1,10 +1,6 @@
 package loan.calculator.save.view
 
-import android.Manifest
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -15,24 +11,22 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
-import com.abdymalikmulky.androidcsv.CSVGenerator
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.core.base.BaseFragment
-import loan.calculator.core.extension.toast
 import loan.calculator.domain.entity.saved.ToDo
 import loan.calculator.save.R
+import loan.calculator.save.csvreader.CSVGenerator
 import loan.calculator.save.databinding.FragmentSaveCsvPageBinding
 import loan.calculator.save.effect.SaveCsvEffect
 import loan.calculator.save.state.SaveCsvState
 import loan.calculator.save.viewmodel.SaveCsvViewModel
 
 
-/*
+/**
  * Created by Elnur on on 28.04.24, 18.
  * Copyright (c) 2024 . All rights reserved to Elnur.
  * This code is copyrighted and using this code without agreement from authors is forbidden
- */
+ **/
 @AndroidEntryPoint
 class SaveCsvFragment :
     BaseFragment<SaveCsvState, SaveCsvEffect, SaveCsvViewModel, FragmentSaveCsvPageBinding>() {
@@ -84,8 +78,8 @@ class SaveCsvFragment :
 
     fun generateCsv() {
         toDos = generateDummUser()
-        csvGenerator = CSVGenerator("dirName", "SomeFile")
-        csvGenerator.title = "Title"
+        csvGenerator = CSVGenerator(requireContext(),"dirName", "SomeFile")
+        csvGenerator.setTitleItem("Title")
         csvGenerator.setSubtitle("PROFILE")
         csvGenerator.addKeyValue("Name", "Abdy Malik Mulky")
         csvGenerator.addKeyValue("Email", "me@abdymalikmulky.com")
@@ -102,7 +96,7 @@ class SaveCsvFragment :
 
     private fun checkWriteExternalPermission() {
         val readImagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) WRITE_EXTERNAL_STORAGE else WRITE_EXTERNAL_STORAGE
-        if (ActivityCompat.checkSelfPermission(requireContext(),readImagePermission) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(requireContext(),readImagePermission) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             writeExternalPermission.launch(readImagePermission)
         } else {
             generateCsv()

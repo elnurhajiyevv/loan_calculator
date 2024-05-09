@@ -21,12 +21,12 @@ interface SettingRepository {
 
     fun setScreenShot(isOn: Boolean)
 
-    fun getShowCase(): Int
+    fun getShowCase(): Boolean
 
-    fun setShowCase(id: Int)
+    fun setShowCase(value: Boolean)
 
-    fun getShowCase2(): Int
+    fun getShowCase2(): Boolean
 
-    fun setShowCase2(id: Int)
+    fun setShowCase2(value: Boolean)
 
 }

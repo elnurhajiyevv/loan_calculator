@@ -13,9 +13,9 @@ class SetShowCase2UseCase @Inject constructor(
 ) : BaseSingleUseCase<SetShowCase2UseCase.Params, Unit>(context, converter) {
 
     override fun invoke(params: Params) {
-        return repository.setShowCase2(params.id)
+        return repository.setShowCase2(params.value)
     }
 
-    data class Params(val id: Int)
+    data class Params(val value: Boolean)
 
 }

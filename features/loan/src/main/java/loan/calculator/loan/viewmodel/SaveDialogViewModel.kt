@@ -4,18 +4,13 @@ import android.content.Context
 import loan.calculator.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
-import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.usecase.savepage.GetIconModelUseCase
 import loan.calculator.domain.usecase.savepage.InsertSaveLoanUseCase
 import loan.calculator.domain.usecase.savepage.SetIconModelUseCase
-import loan.calculator.domain.usecase.settingpage.GetLanguageUseCase
-import loan.calculator.domain.usecase.settingpage.SetLanguageUseCase
 import loan.calculator.loan.effect.SaveDialogEffect
-import loan.calculator.loan.state.LoanPageState
 import loan.calculator.loan.state.SaveDialogState
-import loan.calculator.loan.view.SaveDialog
 import loan.calculator.uikit.extension.getImageBackgroundColor
 
 import java.util.Date
@@ -30,7 +25,7 @@ class SaveDialogViewModel @Inject constructor(
 
     var selectedStartDate = Date()
 
-    var selectedType = SELECT_TYPE_LOAN.HOME.type
+    var selectedType = SELECT_TYPE_LOAN.BLOCK.type
 
     fun insertSavedLoan(model: GetSavedLoanModel) {
         insertSaveLoanUseCase.launch(InsertSaveLoanUseCase.Params(model = model)) {
@@ -46,64 +41,71 @@ class SaveDialogViewModel @Inject constructor(
         launchAll {
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.HOME,
-                    backgroundColor = SELECT_TYPE_LOAN.HOME.type.getImageBackgroundColor(context),
+                    iconResource = SELECT_TYPE_LOAN.BLOCK,
+                    backgroundColor = SELECT_TYPE_LOAN.BLOCK.type.getImageBackgroundColor(),
                     isSelected = true),
             )
 
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.CAR,
-                    backgroundColor = SELECT_TYPE_LOAN.CAR.type.getImageBackgroundColor(context),
-                    )
-            )
-
-            list.add(
-                IconModel(
-                    iconResource = SELECT_TYPE_LOAN.LAPTOP,
-                    backgroundColor = SELECT_TYPE_LOAN.LAPTOP.type.getImageBackgroundColor(context),
-                    )
-            )
-
-            list.add(
-                IconModel(
                     iconResource = SELECT_TYPE_LOAN.PHONE,
-                    backgroundColor = SELECT_TYPE_LOAN.PHONE.type.getImageBackgroundColor(context),
+                    backgroundColor = SELECT_TYPE_LOAN.PHONE.type.getImageBackgroundColor(),
+                    )
+            )
+
+            list.add(
+                IconModel(
+                    iconResource = SELECT_TYPE_LOAN.CAMERA,
+                    backgroundColor = SELECT_TYPE_LOAN.CAMERA.type.getImageBackgroundColor(),
+                    )
+            )
+
+            list.add(
+                IconModel(
+                    iconResource = SELECT_TYPE_LOAN.COMPUTER,
+                    backgroundColor = SELECT_TYPE_LOAN.COMPUTER.type.getImageBackgroundColor(),
                     ))
 
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.CARD,
-                    backgroundColor = SELECT_TYPE_LOAN.CARD.type.getImageBackgroundColor(context),
+                    iconResource = SELECT_TYPE_LOAN.HOME,
+                    backgroundColor = SELECT_TYPE_LOAN.HOME.type.getImageBackgroundColor(),
                     )
             )
 
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.BUILDING,
-                    backgroundColor = SELECT_TYPE_LOAN.BUILDING.type.getImageBackgroundColor(context),
+                    iconResource = SELECT_TYPE_LOAN.GAMING,
+                    backgroundColor = SELECT_TYPE_LOAN.GAMING.type.getImageBackgroundColor(),
                     )
             )
 
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.STUDY,
-                    backgroundColor = SELECT_TYPE_LOAN.STUDY.type.getImageBackgroundColor(context),
+                    iconResource = SELECT_TYPE_LOAN.HEADSET,
+                    backgroundColor = SELECT_TYPE_LOAN.HEADSET.type.getImageBackgroundColor(),
                     )
             )
 
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.SPORT,
-                    backgroundColor = SELECT_TYPE_LOAN.SPORT.type.getImageBackgroundColor(context),
+                    iconResource = SELECT_TYPE_LOAN.MODEM,
+                    backgroundColor = SELECT_TYPE_LOAN.MODEM.type.getImageBackgroundColor(),
                     )
             )
 
             list.add(
                 IconModel(
-                    iconResource = SELECT_TYPE_LOAN.HEALTY,
-                    backgroundColor = SELECT_TYPE_LOAN.HEALTY.type.getImageBackgroundColor(context),
+                    iconResource = SELECT_TYPE_LOAN.PRINTER,
+                    backgroundColor = SELECT_TYPE_LOAN.PRINTER.type.getImageBackgroundColor(),
                     )
+            )
+
+            list.add(
+                IconModel(
+                    iconResource = SELECT_TYPE_LOAN.WATCH,
+                    backgroundColor = SELECT_TYPE_LOAN.WATCH.type.getImageBackgroundColor(),
+                )
             )
         }
         list.forEach {

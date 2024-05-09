@@ -6,7 +6,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import loan.calculator.common.extensions.isNull
 import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
 import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.domain.entity.unit.IconModel
@@ -22,6 +21,7 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
         const val COLOR = "COLOR"
         const val IS_SCREENSHOT = "IS_SCREEN_SHOT"
         const val SHOWCASE = "SHOWCASE"
+        const val SHOWCASE2 = "SHOWCASE2"
     }
     var isLightTheme
         get() = get(LIGHT_THEME, true)
@@ -32,12 +32,12 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
         set(value) = set(IS_SCREENSHOT, value)
 
     var isShowCase
-        get() = get(SHOWCASE, 92)
+        get() = get(SHOWCASE, true)
         set(value) = set(SHOWCASE, value)
 
     var isShowCase2
-        get() = get(SHOWCASE, 94)
-        set(value) = set(SHOWCASE, value)
+        get() = get(SHOWCASE2, true)
+        set(value) = set(SHOWCASE2, value)
 
     var colorValue
         get() = get(COLOR, -1)
@@ -64,7 +64,7 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
         val format = Json { isLenient = true }
         val defaultValue =
             IconModel(
-                iconResource = SELECT_TYPE_LOAN.HOME,
+                iconResource = SELECT_TYPE_LOAN.BLOCK,
                 backgroundColor = 0x33000000,
                 isSelected = false)
         return if(get(ICON_MODEL,"").isNullOrEmpty())

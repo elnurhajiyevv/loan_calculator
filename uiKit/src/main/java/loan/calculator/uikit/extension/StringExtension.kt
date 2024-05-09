@@ -1,6 +1,5 @@
 package loan.calculator.uikit.extension
 
-import android.content.Context
 import loan.calculator.uikit.R
 
 
@@ -16,33 +15,36 @@ fun String.getImageResource(): Int{
         "GE" -> R.drawable.ic_georgia
 
         //icon
-        "laptop" -> R.drawable.ic_laptop
+        "block" -> R.drawable.ic_block
         "phone" -> R.drawable.ic_phone
-        "card" -> R.drawable.ic_card
-        "car" -> R.drawable.ic_car
+        "camera" -> R.drawable.ic_camera
+        "computer" -> R.drawable.ic_computer
         "home" -> R.drawable.ic_home
-        "building" -> R.drawable.ic_building
-        "study" -> R.drawable.ic_study
-        "sport" -> R.drawable.ic_sport
-        "health" -> R.drawable.ic_healty
+        "gaming" -> R.drawable.ic_game_console
+        "headset" -> R.drawable.ic_headset
+        "modem" -> R.drawable.ic_modem
+        "printer" -> R.drawable.ic_printer
+        "watch" -> R.drawable.ic_watch
         else -> R.drawable.bg_balance
     }
     return returnResource
 }
 
-fun String.getImageBackgroundColor(context:Context): Int{
+fun String.getImageBackgroundColor(): Int{
     var returnColor: Int = when(this){
         //icon
-        "laptop" -> context.resources.getColor(R.color.color_gray_one)
-        "phone" -> context.resources.getColor(R.color.type_blue)
-        "card" -> context.resources.getColor(R.color.type_pink)
-        "car" -> context.resources.getColor(R.color.type_red)
-        "home" -> context.resources.getColor(R.color.type_yellow)
-        "building" -> context.resources.getColor(R.color.type_yellow)
-        "study" -> context.resources.getColor(R.color.color_gray_two)
-        "sport" -> context.resources.getColor(R.color.type_red)
-        "health" -> context.resources.getColor(R.color.type_red)
-        else -> context.resources.getColor(R.color.color_gray_two)
+        //icon
+        "block" -> R.drawable.ic_block
+        "phone" -> R.drawable.ic_phone
+        "camera" -> R.drawable.ic_camera
+        "computer" -> R.drawable.ic_computer
+        "home" -> R.drawable.ic_home
+        "gaming" -> R.drawable.ic_game_console
+        "headset" -> R.drawable.ic_headset
+        "modem" -> R.drawable.ic_modem
+        "printer" -> R.drawable.ic_printer
+        "watch" -> R.drawable.ic_watch
+        else -> R.drawable.bg_balance
     }
     return returnColor
 }

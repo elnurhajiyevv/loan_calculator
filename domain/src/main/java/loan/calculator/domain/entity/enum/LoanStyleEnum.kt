@@ -1,13 +1,14 @@
 package loan.calculator.domain.entity.enum
 
 enum class SELECT_TYPE_LOAN(var type: String){
-    HOME("home"),
-    CAR("car"),
-    LAPTOP("laptop"),
+    BLOCK("block"),
     PHONE("phone"),
-    CARD("card"),
-    BUILDING("building"),
-    STUDY("study"),
-    SPORT("sport"),
-    HEALTY("health"),
+    CAMERA("camera"),
+    COMPUTER("computer"),
+    HOME("home"),
+    GAMING("gaming"),
+    HEADSET("headset"),
+    MODEM("modem"),
+    PRINTER("printer"),
+    WATCH("watch"),
 }

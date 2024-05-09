@@ -24,6 +24,7 @@ abstract class BaseBottomSheetDialog() : BottomSheetDialogFragment() {
     open var showFullscreen: Boolean = true
     open var isDraggable: Boolean = true
     open var notFullscreen: () -> Unit = {}
+    open var cancelClick: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +52,8 @@ abstract class BaseBottomSheetDialog() : BottomSheetDialogFragment() {
 
             }
         }
+        dialog.setCancelable(cancelClick)
+        dialog.setCanceledOnTouchOutside(cancelClick)
         return dialog
     }
 

@@ -67,5 +67,14 @@
     <string name="setting_permission">Open Setting to Allow Location Permission</string>
     <string name="choose_your_color">Desactivar captura de pantalla</string>
     <string name="disable_screenshot">Desactivar captura de pantalla</string>
+    <string name="commint_soon">Muy pronto...</string>
+    <string name="guide">Por favor revisa cómo usar...</string>
+
+    <string name="toolbar_guide">Te permite guardar \n la solicitud de préstamo como plantilla.</string>
+    <string name="loan_amount_guide">Por favor, introduce la cantidad que deseas pedir prestada.</string>
+    <string name="loan_rate_guide">Por favor, introduce una tasa del 1 al 999.</string>
+    <string name="loan_period_guide">Por favor, introduce un año de 1 a 99\nMes de 1 a 11.</string>
+    <string name="save_guide">Mantén presionado el elemento para compartir</string>
+
 
 </resources>

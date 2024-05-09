@@ -10,9 +10,9 @@ class GetShowCaseUseCase @Inject constructor(
     private val repository: SettingRepository,
     context: CoroutineContext,
     converter: ErrorConverter,
-) : BaseSingleUseCase<Unit, Int>(context, converter) {
+) : BaseSingleUseCase<Unit, Boolean>(context, converter) {
 
-    override fun invoke(params: Unit): Int {
+    override fun invoke(params: Unit): Boolean {
         return repository.getShowCase()
     }
 }

@@ -10,11 +10,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import loan.calculator.core.base.BaseFragment
-import loan.calculator.save.effect.SavePageEffect
-import loan.calculator.save.state.SavePageState
-import loan.calculator.save.viewmodel.SavePageViewModel
+import androidx.core.view.get
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.extension.DeeplinkNavigationTypes
 import loan.calculator.core.extension.NavigationArgs
 import loan.calculator.core.extension.toast
@@ -27,7 +26,15 @@ import loan.calculator.save.bottomsheet.ExportTypeBottomSheet
 import loan.calculator.save.bottomsheet.dialogBottomSheet
 import loan.calculator.save.bottomsheet.exportTypeBottomSheet
 import loan.calculator.save.databinding.FragmentSavePageBinding
+import loan.calculator.save.effect.SavePageEffect
+import loan.calculator.save.state.SavePageState
+import loan.calculator.save.viewmodel.SavePageViewModel
+import loan.calculator.showCase.GuideListener
+import loan.calculator.showCase.GuideView
+import loan.calculator.showCase.config.DismissType
+import loan.calculator.showCase.config.Gravity
 import loan.calculator.uikit.toolbar.LoanToolbar
+
 
 @AndroidEntryPoint
 class SavePageFragment :
@@ -42,6 +49,8 @@ class SavePageFragment :
     lateinit var savedAdapter: SavedAdapter
 
     var typeList = arrayListOf<ExportTypeModel>()
+
+    var selectedView: View? = null
 
     override val bindViews: FragmentSavePageBinding.() -> Unit = {
         toolbar.setBackButtonVisibility(show = false)
@@ -76,8 +85,9 @@ class SavePageFragment :
     fun getListOfExport() {
         typeList.clear()
         typeList.add(ExportTypeModel(getString(R.string.export_pdf), R.drawable.ic_pdf, 0))
-        typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 1))
-        typeList.add(ExportTypeModel(getString(R.string.export_csv), R.drawable.ic_csv, 2))
+        typeList.add(ExportTypeModel(getString(R.string.export_csv), R.drawable.ic_csv, 1))
+        typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 2))
+
     }
 
     private fun openExportTypeBottomModule(list: List<ExportTypeModel>) {
@@ -91,12 +101,13 @@ class SavePageFragment :
                     }
 
                     1 -> {
-                        //update xls
+                        //update csv
+                        saveAsCsv()
                     }
 
                     2 -> {
-                        //update csv
-                        saveAsCsv()
+                        //update xls
+
                     }
                 }
             }
@@ -170,6 +181,7 @@ class SavePageFragment :
                 }
                 binding.recyclerViewSaved.apply {
                     visibility = View.VISIBLE
+                    selectedView = layoutManager?.findViewByPosition(0)
                 }
                 binding.noData.apply {
                     visibility = if (state.savedList.isNullOrEmpty()) View.VISIBLE else View.GONE
@@ -177,7 +189,8 @@ class SavePageFragment :
                 viewmodel.list = state.savedList
                 savedAdapter.submitList(viewmodel.list)
                 if(state.savedList.isNotEmpty())
-                    showCase()
+                    if(viewmodel.getShowCase())
+                        showCase()
             }
 
             is SavePageState.DeleteSaveLoan -> deletedLoan()
@@ -185,8 +198,15 @@ class SavePageFragment :
     }
 
     private fun showCase() {
-
-
+        GuideView.Builder(requireActivity())
+            .setTitle("List Item")
+            .setContentText(resources.getString(R.string.save_guide))
+            .setGravity(Gravity.auto)
+            .setTargetView(binding.recyclerViewSaved)
+            .setDismissType(DismissType.outside) //optional - default dismissible by TargetView
+            .build()
+            .show()
+        viewmodel.setShowCase(false)
     }
 
     private fun deletedLoan() {

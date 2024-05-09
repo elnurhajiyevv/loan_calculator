@@ -46,6 +46,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logo"
-        android:text="Pro" />
+        android:text="@string/commint_soon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

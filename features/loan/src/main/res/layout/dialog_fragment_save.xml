@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_layout"
+            android:paddingBottom="@dimen/_20sdp"
+            android:paddingHorizontal="@dimen/_16sdp">
+
+            <View
+                android:id="@+id/indicator"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="4dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/bottom_rectangle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/header"
+                style="@style/bold_caption2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/save_loan_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/indicator" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/body_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:background="@color/white_gray"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header">
+
+                <TextView
+                    android:id="@+id/icon_text"
+                    style="@style/bold_caption1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:textColor="?mainCustomColor"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/recyclerView_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_4sdp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/icon_text"
+                    app:spanCount="3"
+                    tools:itemCount="11"
+                    tools:listitem="@layout/item_icon" />
+
+                <TextView
+                    android:id="@+id/name_text"
+                    style="@style/bold_caption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_icon" />
+
+                <EditText
+                    android:id="@+id/name_edittext"
+                    style="@style/regular_caption3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/bg_etittext"
+                    android:hint="Value"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingVertical="@dimen/_9sdp"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:textColor="@color/gray_text"
+                    android:textColorHint="@color/gray_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_text" />
+
+                <TextView
+                    android:id="@+id/error_text"
+                    style="@style/light_caption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/required"
+                    android:textColor="@color/red"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
+
+
+                <TextView
+                    android:id="@+id/start_text"
+                    style="@style/bold_caption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/start_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
+
+                <TextView
+                    android:id="@+id/data_text"
+                    style="@style/regular_caption3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/bg_etittext"
+                    android:hint="ex: 31/12/2023"
+                    android:paddingVertical="@dimen/_9sdp"
+                    android:paddingLeft="@dimen/_4sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/start_text" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/calendar"
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="0dp"
+                    android:padding="@dimen/_4sdp"
+                    android:src="@drawable/ic_calendar"
+                    app:layout_constraintBottom_toBottomOf="@+id/data_text"
+                    app:layout_constraintEnd_toEndOf="@+id/data_text"
+                    app:layout_constraintTop_toTopOf="@+id/data_text" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <loan.calculator.uikit.button.LoanButton
+                android:id="@+id/save_button"
+                style="@style/Loan_Button_Medium_Primary_Filled"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="@string/save"
+                android:textColor="@color/gray_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cancel_button"
+                app:layout_constraintTop_toBottomOf="@+id/body_container" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancel_button"
+                style="@style/Loan_Button_Medium_Delete_Filled"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/save_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/save_button" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

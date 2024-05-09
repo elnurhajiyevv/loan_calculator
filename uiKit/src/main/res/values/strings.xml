@@ -66,6 +66,14 @@
     <string name="setting_permission">Open Setting to Allow Location Permission</string>
     <string name="choose_your_color">Choose your color</string>
     <string name="disable_screenshot">Disable screenshot</string>
+    <string name="commint_soon">Coming soon...</string>
+    <string name="guide">Please check how to use...</string>
+    
+    <string name="toolbar_guide">It enables you to save \n loan request as template.</string>
+    <string name="loan_amount_guide">Please enter amount that you want to loan.</string>
+    <string name="loan_rate_guide">Please enter rate from 1 to 999</string>
+    <string name="loan_period_guide">Please enter year from 1 to 99\nMonth from 1 to 11</string>
+    <string name="save_guide">Long press on item for sharing</string>
 
 
 </resources>

@@ -6,5 +6,11 @@
 
 package loan.calculator.loan.effect
 
+import loan.calculator.domain.entity.saved.GetSavedLoanModel
+import loan.calculator.domain.entity.unit.IconModel
+
 open class LoanPageEffect {
+    class InsertSavedLoan(var model: GetSavedLoanModel): LoanPageEffect()
+
+    class ListOfIconModel(val list: List<IconModel>): LoanPageEffect()
 }

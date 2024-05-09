@@ -27,8 +27,8 @@ class SavePageViewModel @Inject constructor(
 
     fun getShowCase() = getShowCase2UseCase.invoke(Unit)
 
-    fun setShowCase(id:Int){
-        setShowCase2UseCase.invoke(SetShowCase2UseCase.Params(id = id))
+    fun setShowCase(value:Boolean){
+        setShowCase2UseCase.invoke(SetShowCase2UseCase.Params(value = value))
     }
 
     lateinit var selectedItem: GetSavedLoanModel
