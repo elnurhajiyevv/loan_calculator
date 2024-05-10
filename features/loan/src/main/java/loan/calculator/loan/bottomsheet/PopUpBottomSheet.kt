@@ -21,7 +21,7 @@ class PopUpBottomSheet : BaseNotSerializableBottomSheet() {
     private var onDismiss: (() -> Unit)? = null
 
     override var showFullscreen: Boolean
-        get() = false
+        get() = true
         set(value) {}
 
 

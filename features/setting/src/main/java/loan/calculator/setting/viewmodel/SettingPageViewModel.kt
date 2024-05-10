@@ -77,7 +77,7 @@ class SettingPageViewModel @Inject constructor(
             list.add(LanguageModel("en","USA",LANGUAGENAME.ENGLISH.type))
             list.add(LanguageModel("ru","RU",LANGUAGENAME.RUSSIAN.type))
             list.add(LanguageModel("tr","TR",LANGUAGENAME.TURKISH.type))
-            list.add(LanguageModel("ge","GE",LANGUAGENAME.GEORGIAN.type))
+            list.add(LanguageModel("es","ES",LANGUAGENAME.SPANISH.type))
             list.forEach {
                 if(it.code == getLanguage().code)
                     it.isSelected = true
@@ -87,6 +87,6 @@ class SettingPageViewModel @Inject constructor(
     }
 
     enum class LANGUAGENAME(var type: String) {
-        ENGLISH("English"), RUSSIAN("Russian"), TURKISH("Turkish"), GEORGIAN("Georgian")
+        ENGLISH("English"), RUSSIAN("Russian"), TURKISH("Turkish"), SPANISH("Spanish")
     }
 }

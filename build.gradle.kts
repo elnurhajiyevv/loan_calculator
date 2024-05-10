@@ -28,7 +28,6 @@ buildscript {
         classpath("com.google.dagger:hilt-android-gradle-plugin:${ApplicationVersions.hiltVersion}")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${ApplicationVersions.detektVersion}")
         classpath("com.google.gms:google-services:${ApplicationVersions.gmsVersion}")
-        classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1")
         classpath("com.google.firebase:firebase-crashlytics-gradle:${ApplicationVersions.crashLyticsVersion}")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${ApplicationVersions.safeArgsVersion}")
         classpath("com.github.ivancarras:graphfity-plugin:${ApplicationVersions.graphfityVersin}")

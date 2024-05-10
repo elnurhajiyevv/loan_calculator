@@ -4,7 +4,6 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     kotlin("kapt")
 }
 
@@ -32,7 +31,7 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             lintOptions {
                 isCheckReleaseBuilds = false
                 isAbortOnError = false
@@ -107,7 +106,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-base:18.1.0")
     implementation("com.google.firebase:firebase-bom:31.1.1")
     implementation("com.google.firebase:firebase-auth")
-    implementation("com.startapp:inapp-sdk:4.11.+")
 
 
     api(ApplicationDependencies.googlePlayAds)

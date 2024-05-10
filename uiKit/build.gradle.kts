@@ -60,9 +60,8 @@ dependencies {
     implementation(ApplicationDependencies.hiltAndroid)
     implementation("com.google.android.gms:play-services-ads-lite:22.1.0")
     kapt(ApplicationDependencies.hiltCompiler)
-    implementation("com.startapp:inapp-sdk:4.11.+")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.libraries.places:places:3.2.0")
     implementation("com.google.errorprone:error_prone_annotations:2.16")
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
+
 }

@@ -1,10 +1,13 @@
 package loan.calculator.save.view
 
+import android.Manifest
 import android.R.attr
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -12,6 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -108,6 +113,10 @@ class SavePdfFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        checkWriteExternalPermission()
+    }
+
+    private fun generatePDF(){
         colorPrimary = BaseColor(getThemeColor(requireContext()))
         appFontRegular.color = BaseColor.WHITE
         val doc = Document(A4, 0f, 0f, 0f, 0f)
@@ -175,6 +184,28 @@ class SavePdfFragment :
             }
         }
     }
+    private fun checkWriteExternalPermission() {
+        val readImagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) Manifest.permission.WRITE_EXTERNAL_STORAGE else Manifest.permission.WRITE_EXTERNAL_STORAGE
+        if (ActivityCompat.checkSelfPermission(requireContext(),readImagePermission) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED) {
+            writeExternalPermission.launch(readImagePermission)
+        } else {
+            generatePDF()
+        }
+    }
+
+    private val writeExternalPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            // Handle Permission granted/rejected
+            if (isGranted) {
+                // Permission is granted
+                generatePDF()
+            } else {
+                // Permission is denied
+                findNavController().popBackStack()
+            }
+        }
 
     private fun isExternalStorageReadOnly(): Boolean {
         val extStorageState = Environment.getExternalStorageState()

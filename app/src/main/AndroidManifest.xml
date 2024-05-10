@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="loan.calculator"
+    package="loan.calculator.app"
     tools:ignore="LockedOrientationActivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="loan.calculator.CalculatorApplication"
+        android:name="loan.calculator.app.CalculatorApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,16 +20,14 @@
         android:theme="@style/Theme.AppSplash"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
-        <meta-data android:name="com.startapp.sdk.APPLICATION_ID" android:value="211278478" />
-        <meta-data android:name="com.startapp.sdk.RETURN_ADS_ENABLED" android:value="false" />
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-5232085807124057~6063880628"/>
 
         <!-- Sample AdMob app ID:ca-app-pub-5232085807124057~3030044902 -->
         <activity
-            android:name="loan.calculator.MainActivity"
+            android:name="loan.calculator.app.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
@@ -46,7 +44,7 @@
             </intent-filter>-->
         </activity>
         <service
-            android:name="loan.calculator.FirebaseMessageService"
+            android:name="loan.calculator.app.FirebaseMessageService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

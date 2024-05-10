@@ -33,6 +33,7 @@ import loan.calculator.showCase.GuideListener
 import loan.calculator.showCase.GuideView
 import loan.calculator.showCase.config.DismissType
 import loan.calculator.showCase.config.Gravity
+import loan.calculator.showCase.config.PointerType
 import loan.calculator.uikit.toolbar.LoanToolbar
 
 
@@ -188,8 +189,8 @@ class SavePageFragment :
                 }
                 viewmodel.list = state.savedList
                 savedAdapter.submitList(viewmodel.list)
-                if(state.savedList.isNotEmpty())
-                    if(viewmodel.getShowCase())
+                if (state.savedList.isNotEmpty())
+                    if (viewmodel.getShowCase())
                         showCase()
             }
 
@@ -203,10 +204,15 @@ class SavePageFragment :
             .setContentText(resources.getString(R.string.save_guide))
             .setGravity(Gravity.auto)
             .setTargetView(binding.recyclerViewSaved)
+            .setPointerType(PointerType.circle)
+            .setGuideListener(object : GuideListener {
+                override fun onDismiss(view: View) {
+                    viewmodel.setShowCase(false)
+                }
+            })
             .setDismissType(DismissType.outside) //optional - default dismissible by TargetView
             .build()
             .show()
-        viewmodel.setShowCase(false)
     }
 
     private fun deletedLoan() {

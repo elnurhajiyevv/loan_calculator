@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/_20sdp"
     android:paddingHorizontal="@dimen/_16sdp">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_250sdp"
+        android:layout_height="0dp"
         android:src="@drawable/ic_popup"
+        app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,12 +22,13 @@
         android:id="@+id/title"
         style="@style/regular_caption4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_32sdp"
         android:text="@string/guide"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintBottom_toTopOf="@+id/ok_button"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <loan.calculator.uikit.button.LoanButton
@@ -35,12 +37,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="ok"
+        android:text="Okay"
         android:layout_marginTop="@dimen/_32sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        />
 
 
 

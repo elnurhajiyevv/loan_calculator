@@ -15,7 +15,6 @@ import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
-import androidx.palette.graphics.Palette
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.asFormattedDateWithDot
 import loan.calculator.common.extensions.gone
@@ -161,15 +160,6 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         }
     }
 
-    // Generate palette synchronously and return it.
-    fun createPaletteSync(bitmap: Bitmap): Palette = Palette.from(bitmap).generate()
-
-    // Generate palette asynchronously and use it on a different thread using onGenerated().
-    fun createPaletteAsync(bitmap: Bitmap) {
-        Palette.from(bitmap).generate { palette ->
-            // Use generated instance.
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -178,11 +168,6 @@ class SaveDialog: BaseDialogFragment<SaveDialogState,SaveDialogEffect,SaveDialog
         }
         isCancelable = false
         updateSelectedDate(Date())
-    }
-
-    private fun getBackgroundColorPallet(@ColorInt color: Int): Int{
-        val vibrantSwatch = createPaletteSync(BitmapFactory.decodeResource(resources, color)).vibrantSwatch
-        return vibrantSwatch?.rgb?: ContextCompat.getColor(requireContext(),R.color.color_gray_two)
     }
 
     companion object {

@@ -134,7 +134,7 @@ class SettingPageFragment :
         super.onViewCreated(view, savedInstanceState)
 
         MobileAds.initialize(requireContext())
-        val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
+        val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-5232085807124057/9811553947")
             .forNativeAd { nativeAd ->
                 val styles: NativeTemplateStyle = NativeTemplateStyle.Builder().build()
 
