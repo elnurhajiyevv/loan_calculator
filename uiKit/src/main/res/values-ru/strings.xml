@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="admodIdTest">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="admodId">ca-app-pub-5232085807124057/4634571584</string>
-
     <string name="bottom_menu_save">Сохранено</string>
     <string name="bottom_menu_loan">Займ</string>
     <string name="summary">Сводка</string>
@@ -67,10 +64,13 @@
     <string name="choose_your_color">Выберите свой цвет</string>
     <string name="disable_screenshot">Отключить скриншот</string>
     <string name="commint_soon">Вскоре...</string>
-    <string name="guide">Пожалуйста, проверьте, как использовать...</string>
     <string name="toolbar_guide">Это позволяет вам сохранить \n запрос на кредит как шаблон.</string>
     <string name="loan_amount_guide">Пожалуйста, введите сумму, которую вы хотите взять в кредит.</string>
     <string name="loan_rate_guide">Пожалуйста, введите процентную ставку от 1 до 999.</string>
     <string name="loan_period_guide">Пожалуйста, введите год от 1 до 99\nМесяц от 1 до 11.</string>
+    <string name="loan_payment_guide">Этот платеж будет рассчитан автоматически.\n В дальнейшем пользователи смогут менять поля.</string>
     <string name="save_guide">Долгое нажатие на элемент для обмена</string>
+    <string name="guide_title">Не знаете, как пользоваться?</string>
+    <string name="guide_description">Нажмите кнопку \"Продолжить\" и ознакомьтесь с инструкциями, следуя за ними</string>
+
 </resources>

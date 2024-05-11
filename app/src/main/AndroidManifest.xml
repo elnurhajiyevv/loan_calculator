@@ -20,12 +20,9 @@
         android:theme="@style/Theme.AppSplash"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
-        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5232085807124057~6063880628"/>
-
-        <!-- Sample AdMob app ID:ca-app-pub-5232085807124057~3030044902 -->
+            android:value="@string/admob_developer"/>
         <activity
             android:name="loan.calculator.app.MainActivity"
             android:exported="true"
@@ -35,13 +32,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <!--<intent-filter android:label="View or edit your pdf files">
-                <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="content" />
-                <data android:mimeType="application/pdf" />
-            </intent-filter>-->
         </activity>
         <service
             android:name="loan.calculator.app.FirebaseMessageService"

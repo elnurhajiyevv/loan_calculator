@@ -4,31 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/_20sdp"
-    android:paddingHorizontal="@dimen/_16sdp">
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/_16sdp"
+    android:paddingBottom="@dimen/_20sdp">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/ic_popup"
-        app:layout_constraintBottom_toTopOf="@+id/title"
+    <View
+        android:id="@+id/indicator"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="4dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/bottom_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicator" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/logo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:src="@drawable/think"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
     <TextView
         android:id="@+id/title"
         style="@style/regular_caption4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:gravity="center"
         android:layout_marginBottom="@dimen/_32sdp"
-        android:text="@string/guide"
-        app:layout_constraintBottom_toTopOf="@+id/ok_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="@dimen/_32sdp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/black_white"
+        android:textStyle="bold"
+        android:letterSpacing="0.02"
+        android:text="@string/guide_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/regular_caption2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.02"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="@string/guide_description"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
 
     <loan.calculator.uikit.button.LoanButton
@@ -36,14 +71,12 @@
         style="@style/Loan_Button_Medium_Primary_Filled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Okay"
         android:layout_marginTop="@dimen/_32sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:text="Continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
-
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

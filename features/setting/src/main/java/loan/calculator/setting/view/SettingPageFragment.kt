@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.viewbinding.BuildConfig
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -105,9 +106,6 @@ class SettingPageFragment :
         colorPicker.setOnClickListener {
             openColorChoose()
         }
-
-        // get app language and update UI
-        getAndUpdateLanguage()
     }
 
 
@@ -126,15 +124,13 @@ class SettingPageFragment :
         })
     }
 
-    private fun getAndUpdateLanguage() {
-        setLanguage(viewmodel.getLanguage())
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        MobileAds.initialize(requireContext())
-        val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-5232085807124057/9811553947")
+        // get app language and update UI
+        setLanguage(viewmodel.getLanguage())
+
+        val adLoader = AdLoader.Builder(requireContext(),loan.calculator.setting.BuildConfig.admob_id)
             .forNativeAd { nativeAd ->
                 val styles: NativeTemplateStyle = NativeTemplateStyle.Builder().build()
 

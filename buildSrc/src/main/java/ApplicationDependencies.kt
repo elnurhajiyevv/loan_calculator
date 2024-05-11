@@ -87,7 +87,7 @@ object ApplicationDependencies {
     const val dynamicanimation = "androidx.dynamicanimation:dynamicanimation-ktx:1.0.0-alpha03"
 
     //lottie animation
-    const val lottie = "com.airbnb.android:lottie:5.0.3"
+    const val lottie = "com.airbnb.android:lottie:6.4.0"
 
     //SMS retriever
     private const val googlePlayAuth = "com.google.android.gms:play-services-auth:20.4.0"

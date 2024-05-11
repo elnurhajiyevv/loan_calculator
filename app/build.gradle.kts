@@ -36,13 +36,13 @@ android {
                 isCheckReleaseBuilds = false
                 isAbortOnError = false
             }
-            buildConfigField("String","APP_NAME","\"loan calculator\"")
+            resValue("string","admob_developer","ca-app-pub-5232085807124057~6063880628")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
         }
         getByName("debug") {
             isMinifyEnabled = false
-            buildConfigField("String","APP_NAME","\"loan calculator\"")
+            resValue("string","admob_developer","ca-app-pub-3940256099942544~3347511713")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }

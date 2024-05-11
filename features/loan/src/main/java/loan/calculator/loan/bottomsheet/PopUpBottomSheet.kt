@@ -18,10 +18,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class PopUpBottomSheet : BaseNotSerializableBottomSheet() {
 
     private var onOkButtonClicked: (() -> Unit)? = null
+    private var onCloseButtonClicked: (() -> Unit)? = null
     private var onDismiss: (() -> Unit)? = null
 
     override var showFullscreen: Boolean
-        get() = true
+        get() = false
         set(value) {}
 
 
@@ -42,8 +43,6 @@ class PopUpBottomSheet : BaseNotSerializableBottomSheet() {
         (dialog as? BottomSheetDialog)?.behavior?.apply {
             state = BottomSheetBehavior.STATE_EXPANDED
         }
-        dialog?.setCancelable(false)
-        dialog?.setCanceledOnTouchOutside(false)
         initView()
     }
 
@@ -67,6 +66,10 @@ class PopUpBottomSheet : BaseNotSerializableBottomSheet() {
                 onOkButtonClicked?.invoke()
                 this@PopUpBottomSheet.dismiss()
             }
+            binding.close.setOnClickListener {
+                onCloseButtonClicked?.invoke()
+                this@PopUpBottomSheet.dismiss()
+            }
         }
     }
 
@@ -82,10 +85,15 @@ class PopUpBottomSheet : BaseNotSerializableBottomSheet() {
      */
     class Builder {
         var onOkButtonClicked: (() -> Unit)? = null
+        var onCloseButtonClicked: (() -> Unit)? = null
         var onDismiss: (() -> Unit)? = null
 
         fun onOkButtonClicked(onOkButtonClicked: () -> Unit) {
             this.onOkButtonClicked = onOkButtonClicked
+        }
+
+        fun onCloseButtonClicked(onCloseButtonClicked: () -> Unit) {
+            this.onCloseButtonClicked = onCloseButtonClicked
         }
 
         fun onDismiss(onDismiss: () -> Unit) {
@@ -95,6 +103,7 @@ class PopUpBottomSheet : BaseNotSerializableBottomSheet() {
         fun build(): PopUpBottomSheet {
             val bottomSheet = PopUpBottomSheet()
             bottomSheet.onOkButtonClicked = onOkButtonClicked
+            bottomSheet.onCloseButtonClicked = onCloseButtonClicked
             bottomSheet.onDismiss = onDismiss
             return bottomSheet
         }

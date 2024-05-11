@@ -41,13 +41,6 @@ class LoanPageViewModel @Inject constructor(
     var totalInterest = 6618.55
     var totalPayment = 106618.55
 
-
-    var selectedLoanAmount = 100000.0F
-    var selectedLoanPeriodYear = 1
-    var selectedLoanPeriodMonth = 0
-    var selectedLoanRate = 12
-    var selectedLoanPayment = 8884.87
-
     fun getIconModelList(){
         var list = arrayListOf<IconModel>()
         list.clear()

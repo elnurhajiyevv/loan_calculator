@@ -6,7 +6,6 @@
 
 package loan.calculator.loan.view
 
-import android.app.Dialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -16,7 +15,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.mikephil.charting.components.Description
@@ -40,15 +38,12 @@ import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.extension.toast
 import loan.calculator.core.tools.NavigationCommand
 import loan.calculator.domain.entity.home.Loan
-import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.util.SELECT_PART
 import loan.calculator.domain.util.calculatePayment
 import loan.calculator.loan.R
-import loan.calculator.loan.bottomsheet.DatePickerBottomSheet
 import loan.calculator.loan.bottomsheet.PopUpBottomSheet
 import loan.calculator.loan.bottomsheet.SaveBottomSheet
-import loan.calculator.loan.bottomsheet.datePickerBottomSheet
 import loan.calculator.loan.bottomsheet.popUpBottomSheet
 import loan.calculator.loan.bottomsheet.saveBottomSheet
 import loan.calculator.loan.databinding.FragmentLoanPageBinding
@@ -72,8 +67,6 @@ import loan.calculator.uikit.util.setBackgroundColor
 import loan.calculator.uikit.util.setBackgroundResources
 import loan.calculator.uikit.util.setImageResources
 import java.util.Date
-import kotlin.random.Random
-
 
 @AndroidEntryPoint
 class LoanPageFragment :
@@ -568,6 +561,7 @@ class LoanPageFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Create a new ad view.
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
 
@@ -590,6 +584,9 @@ class LoanPageFragment :
             onOkButtonClicked = {
                 showShowcase()
             }
+            onCloseButtonClicked {
+                viewmodel.setShowCase(false)
+            }
         }?.show(childFragmentManager, PopUpBottomSheet::class.java.canonicalName)
     }
 
@@ -605,13 +602,14 @@ class LoanPageFragment :
             .setGuideListener(object : GuideListener {
                 override fun onDismiss(view: View) {
                     when (view.id) {
-                        binding.toolbar.getSaveIcon().id -> builder.setTargetView(binding.loanAmount).setTitle("Loan amount button")
+                        binding.toolbar.getSaveIcon().id -> builder.setTargetView(binding.loanAmount).setTitle(resources.getString(R.string.loan_amount))
                             .setContentText(resources.getString(R.string.loan_amount_guide)).build()
-                        binding.loanAmount.id -> builder.setTargetView(binding.loanRate).setTitle("Loan rate")
+                        binding.loanAmount.id -> builder.setTargetView(binding.loanRate).setTitle(resources.getString(R.string.interest_rate))
                             .setContentText(resources.getString(R.string.loan_rate_guide)).build()
-                        binding.loanRate.id -> builder.setTargetView(binding.loanPeriod).setTitle("Loan period")
+                        binding.loanRate.id -> builder.setTargetView(binding.loanPeriod).setTitle(resources.getString(R.string.loan_term))
                             .setContentText(resources.getString(R.string.loan_period_guide)).build()
-                        binding.loanPeriod.id -> builder.setTargetView(binding.loanPayment).build()
+                        binding.loanPeriod.id -> builder.setTargetView(binding.loanPayment).setTitle(resources.getString(R.string.payment))
+                            .setContentText(resources.getString(R.string.loan_payment_guide)).build()
                         binding.loanPayment.id-> {
                             viewmodel.setShowCase(false)
                             return

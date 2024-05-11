@@ -220,18 +220,4 @@ class SavePageFragment :
         binding.toolbar.setToolbarActionIcon(LoanToolbar.LoanToolbarOption.WITHOUT_LEFT_AND_RIGHT.value)
     }
 
-
-    private fun openCurrencyModule() {
-        /*currencyMenuBottomSheet {
-            itemList = viewmodel.availableCurrency
-            onItemsSelected = {
-                updateSelectedAmount(type,it)
-            }
-            onDismiss = {
-                binding.convertedAmountContainer.isEnabled = true
-                binding.amountContainer.isEnabled = true
-            }
-        }?.show(childFragmentManager, CurrencyMenuBottomSheet::class.java.canonicalName)*/
-    }
-
 }

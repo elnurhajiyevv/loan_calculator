@@ -26,9 +26,11 @@ android {
 
     buildTypes {
         getByName("release") {
+            buildConfigField("String","admob_id","\"ca-app-pub-5232085807124057/9811553947\"")
             isMinifyEnabled = true
         }
         getByName("debug") {
+            buildConfigField("String","admob_id","\"ca-app-pub-3940256099942544/9214589741\"")
             isMinifyEnabled = false
         }
     }

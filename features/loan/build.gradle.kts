@@ -26,9 +26,11 @@ android {
 
     buildTypes {
         getByName("release") {
+            resValue("string","admob_id","ca-app-pub-5232085807124057/4750798955")
             isMinifyEnabled = true
         }
         getByName("debug") {
+            resValue("string","admob_id","ca-app-pub-3940256099942544/9214589741")
             isMinifyEnabled = false
         }
     }
@@ -65,5 +67,6 @@ dependencies {
     implementation("com.google.android.libraries.places:places:3.2.0")
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
 
 }

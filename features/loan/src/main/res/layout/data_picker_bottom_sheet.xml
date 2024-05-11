@@ -21,33 +21,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/select_button"
-        style="@style/light_caption1"
-        android:layout_width="0dp"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:background="@drawable/radius_button"
-        android:gravity="center"
-        android:text="@string/select"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back_button"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <loan.calculator.uikit.button.LoanButton
         android:id="@+id/back_button"
-        style="@style/light_caption1"
+        style="@style/Loan_Button_Medium_Delete_Filled"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginRight="@dimen/_5sdp"
-        android:background="@drawable/radius_button_white"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/back"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/select_button"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginRight="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/select_button"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <loan.calculator.uikit.button.LoanButton
+        android:id="@+id/select_button"
+        style="@style/Loan_Button_Medium_Primary_Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:gravity="center"
+        android:text="@string/select"
+        app:layout_constraintStart_toEndOf="@+id/back_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

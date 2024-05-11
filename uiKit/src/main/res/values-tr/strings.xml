@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="admodIdTest">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="admodId">ca-app-pub-5232085807124057/4634571584</string>
-
     <string name="bottom_menu_save">Kaydedildi</string>
     <string name="bottom_menu_loan">Kredi</string>
     <string name="summary">Özet</string>
@@ -68,11 +65,13 @@
     <string name="choose_your_color">Rengini seç</string>
     <string name="disable_screenshot">Ekran görüntüsünü kapat</string>
     <string name="commint_soon">Yakında gelecek...</string>
-    <string name="guide">Lütfen nasıl kullanılacağını kontrol edin...</string>
-
     <string name="toolbar_guide">Şablon olarak kaydetmek için kredi başvurusunu etkinleştirir.</string>
     <string name="loan_amount_guide">Kredi almak istediğiniz tutarı giriniz.</string>
     <string name="loan_rate_guide">Lütfen 1 ile 999 arasında bir oran giriniz.</string>
     <string name="loan_period_guide">Lütfen 1 ile 99 arasında bir yıl giriniz\n1 ile 11 arasında bir ay giriniz.</string>
+    <string name="loan_payment_guide">Bu ödeme otomatik olarak hesaplanacak\n Daha sonraki kullanıcılar alanları değiştirebilecek</string>
     <string name="save_guide">Paylaşım için öğeye uzun basın</string>
+    <string name="guide_title">Nasıl kullanılacağını bilmiyor musunuz?</string>
+    <string name="guide_description">Lütfen \"Devam\" düğmesine tıklayın ve yönergeleri izleyerek kontrol edin</string>
+
 </resources>

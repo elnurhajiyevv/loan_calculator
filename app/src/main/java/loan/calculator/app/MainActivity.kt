@@ -14,6 +14,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.app.BuildConfig
 import loan.calculator.app.R
@@ -77,7 +78,7 @@ class MainActivity : BaseActivity() {
         //window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
         // NOTE always use test ads during development and testing
 
-        //MobileAds.initialize(this) {}
+        MobileAds.initialize(this) {}
 
         /*StartAppAd.disableSplash()
         // NOTE always use test ads during development and testing

@@ -16,7 +16,7 @@ class SavedAdapter(
     private val clickListener: SavedItemClick,
     private val onLongClickListener: SavedItemOnLongClick
 ) : BaseAdapter<GetSavedLoanModel, SavedAdapter.SavedViewHolder>(areItemsTheSame = {
-        oldItem, newItem -> oldItem.name == newItem.name }) {
+        oldItem, newItem -> oldItem == newItem}) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedViewHolder {
         return SavedViewHolder(

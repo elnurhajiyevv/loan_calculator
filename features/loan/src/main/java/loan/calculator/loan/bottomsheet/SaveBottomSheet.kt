@@ -2,7 +2,6 @@ package loan.calculator.loan.bottomsheet
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,7 +20,6 @@ import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.adapter.IconAdapter
 import loan.calculator.loan.databinding.DialogFragmentSaveBinding
-import loan.calculator.loan.view.SaveDialog
 import loan.calculator.uikit.util.calculatePaidOff
 import java.util.Date
 import kotlin.random.Random
@@ -92,9 +90,9 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
                 )
             )
 
-            iconText.text = iconModel?.iconResource?.type
-            iconAdapter = IconAdapter(IconAdapter.IconItemClick{
-                iconText.text = it.iconResource.type
+            binding.nameEdittext.setText(iconModel?.iconResource?.type)
+            iconAdapter = IconAdapter(IconAdapter.IconItemClick {
+                binding.nameEdittext.setText(it.iconResource.type)
                 onIconSelection?.invoke(it)
                 selectedType = it.iconResource.type
             })

@@ -82,7 +82,7 @@ class LoanToolbar @JvmOverloads constructor(
             }
             with(binding) {
                 root.navigationIcon =
-                    ContextCompat.getDrawable(context, R.drawable.ic_arrow_left)
+                    ContextCompat.getDrawable(context, R.drawable.ic_back_arrow)
                 setTitle(title)
                 setTitleStyle(titleStyle)
                 setToolbarActionIcon(toolbarOption)
@@ -184,7 +184,7 @@ class LoanToolbar @JvmOverloads constructor(
     fun setBackButtonVisibility(show: Boolean){
         with(binding.root){
             navigationIcon = if(show){
-                ContextCompat.getDrawable(context, R.drawable.ic_arrow_left)
+                ContextCompat.getDrawable(context, R.drawable.ic_back_arrow)
             }else{
                 null
             }

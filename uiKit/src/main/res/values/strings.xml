@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="admodIdTest">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="admodId">ca-app-pub-5232085807124057/4634571584</string>
-
     <string name="bottom_menu_save">Saved</string>
     <string name="bottom_menu_loan">Loan</string>
     <string name="summary">Summary</string>
@@ -67,13 +64,14 @@
     <string name="choose_your_color">Choose your color</string>
     <string name="disable_screenshot">Disable screenshot</string>
     <string name="commint_soon">Coming soon...</string>
-    <string name="guide">Please check how to use...</string>
+    <string name="guide_title">Do not know how to use?</string>
+    <string name="guide_description">Please click \"Continue\" button and check guidance by following</string>
     
     <string name="toolbar_guide">It enables you to save \n loan request as template.</string>
     <string name="loan_amount_guide">Please enter amount that you want to loan.</string>
     <string name="loan_rate_guide">Please enter rate from 1 to 999</string>
     <string name="loan_period_guide">Please enter year from 1 to 99\nMonth from 1 to 11</string>
+    <string name="loan_payment_guide">This payment will be automatically calculated\n In further users will be able to change fields</string>
     <string name="save_guide">Long press on item for sharing</string>
-
 
 </resources>
