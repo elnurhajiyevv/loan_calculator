@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import loan.calculator.common.extensions.addCorners
 import loan.calculator.common.extensions.dp
 import loan.calculator.core.base.BaseNotSerializableBottomSheet
-import loan.calculator.loan.R
+import loan.calculator.uikit.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import loan.calculator.common.extensions.asFormattedDateWithDot

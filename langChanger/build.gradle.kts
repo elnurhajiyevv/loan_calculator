@@ -19,7 +19,6 @@ android {
 
     defaultConfig {
         minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
         multiDexEnabled = true
         testInstrumentationRunner = ApplicationConfig.androidTestInstrumentation
         consumerProguardFiles( "consumer-rules.pro")

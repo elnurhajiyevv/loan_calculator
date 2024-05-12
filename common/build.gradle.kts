@@ -3,15 +3,16 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
 }
-apply(from = "$rootDir/jacoco.gradle")
+//apply(from = "$rootDir/jacoco.gradle")
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
+    compileSdk = ApplicationConfig.compileSdk
+    buildToolsVersion = ApplicationConfig.buildToolsVersion
+    namespace = "loan.calculator.common"
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        minSdk = ApplicationConfig.minSdk
+        targetSdk = ApplicationConfig.targetSdk
         multiDexEnabled = true
     }
     compileOptions {
@@ -31,7 +32,7 @@ android {
 dependencies {
     // Coroutines
     implementation(ApplicationDependencies.kotlinCoroutinesCore)
-    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(ApplicationModules.domainModule))
 
     // Test
     testImplementation(ApplicationDependencies.testLibraries)

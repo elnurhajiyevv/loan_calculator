@@ -5,5 +5,4 @@
   ~ This code is copyrighted and using this code without agreement from authors is forbidden
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="loan.calculator.core"/>
+<manifest />

@@ -5,7 +5,7 @@
  */
 plugins {
     id("io.gitlab.arturbosch.detekt").version(ApplicationVersions.detektVersion)
-    id("org.jetbrains.kotlin.android") version "1.7.10" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
     id ("com.github.ivancarras.graphfity") version "1.0.0"
 }
 apply(from = "$rootDir/dynatrace.gradle")

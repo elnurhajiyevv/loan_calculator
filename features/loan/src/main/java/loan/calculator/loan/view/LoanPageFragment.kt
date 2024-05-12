@@ -41,7 +41,7 @@ import loan.calculator.domain.entity.home.Loan
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.util.SELECT_PART
 import loan.calculator.domain.util.calculatePayment
-import loan.calculator.loan.R
+import loan.calculator.uikit.R
 import loan.calculator.loan.bottomsheet.PopUpBottomSheet
 import loan.calculator.loan.bottomsheet.SaveBottomSheet
 import loan.calculator.loan.bottomsheet.popUpBottomSheet
@@ -136,7 +136,7 @@ class LoanPageFragment :
             viewmodel.navigate(
                 NavigationCommand.To(
                     LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
-                        name = "Loan Calculator",
+                        name = "Loanify",
                         startDate = Date().asFormattedDateWithDot(),
                         paidOff = calculatePaidOff(
                             termInMonth, Date()

@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.home.LanguageModel
-import loan.calculator.setting.R
+import loan.calculator.uikit.R
 import loan.calculator.setting.databinding.ItemLanguageBinding
 import loan.calculator.uikit.extension.getImageResource
 

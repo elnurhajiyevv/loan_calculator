@@ -14,12 +14,13 @@ plugins {
 
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
+    compileSdk = ApplicationConfig.compileSdk
+    buildToolsVersion = ApplicationConfig.buildToolsVersion
+    namespace = "loan.calculator.showCase"
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        minSdk = ApplicationConfig.minSdk
+        targetSdk = ApplicationConfig.targetSdk
         multiDexEnabled = true
         testInstrumentationRunner = ApplicationConfig.androidTestInstrumentation
         consumerProguardFiles( "consumer-rules.pro")

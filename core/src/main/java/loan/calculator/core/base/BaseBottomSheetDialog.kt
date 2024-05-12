@@ -12,12 +12,12 @@ import androidx.fragment.app.DialogFragment
 import loan.calculator.common.library.analytics.bindAnalytics
 import loan.calculator.common.extensions.addCorners
 import loan.calculator.common.extensions.dp
-import loan.calculator.core.R
 import loan.calculator.core.extension.hideKeyboard
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.imageview.ShapeableImageView
+import loan.calculator.uikit.R
 
 abstract class BaseBottomSheetDialog() : BottomSheetDialogFragment() {
 

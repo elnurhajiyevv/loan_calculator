@@ -17,11 +17,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.viewbinding.ViewBinding
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.material.appbar.MaterialToolbar
-import loan.calculator.core.R
+import loan.calculator.uikit.R
 import loan.calculator.core.dialog.CustomProgressDialog
 import loan.calculator.core.extension.deeplinkNavigate
 import loan.calculator.core.tools.NavigationCommand
@@ -138,8 +136,8 @@ abstract class BaseFragment<State, Effect, ViewModel : BaseViewModel<State, Effe
                 is NavigationCommand.BackTo -> findNavController().getBackStackEntry(command.destinationId)
                 is NavigationCommand.Back -> findNavController().popBackStack()
                 is NavigationCommand.ToRoot -> findNavController().popBackStack(
-                    findNavController().backQueue.first().destination.id,
-                    false
+                    /*findNavController().backQueue.first().destination.id,
+                    false*/
                 )
                 is NavigationCommand.Deeplink -> findNavController().deeplinkNavigate(
                     direction = command.deeplink,

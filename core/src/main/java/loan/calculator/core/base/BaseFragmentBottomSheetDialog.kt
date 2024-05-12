@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import loan.calculator.common.library.analytics.bindAnalytics
-import loan.calculator.core.R
+import loan.calculator.uikit.R
 import loan.calculator.core.databinding.FragmentBottomSheetDialogBaseBinding
 import loan.calculator.core.delegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -33,7 +33,7 @@ open class BaseFragmentBottomSheetDialog : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_bottom_sheet_dialog_base, container, false)
+    ): View = inflater.inflate(loan.calculator.core.R.layout.fragment_bottom_sheet_dialog_base, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

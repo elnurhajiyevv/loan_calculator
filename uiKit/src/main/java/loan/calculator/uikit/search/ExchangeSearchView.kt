@@ -99,7 +99,7 @@ class ExchangeSearchView @JvmOverloads constructor(
     }
 
     fun unselect(){
-        binding.mainLayout.addBorder(strokeColor = R.color.cardview_shadow_end_color, solidColor = R.color.cardview_shadow_end_color, radius = 2.dp.toFloat(), strokeWidth = 1.dp)
+        binding.mainLayout.addBorder(strokeColor = R.color.search_background, solidColor = R.color.search_background, radius = 2.dp.toFloat(), strokeWidth = 1.dp)
     }
 
     private fun setHintText(text: String?){

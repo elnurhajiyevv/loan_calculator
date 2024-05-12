@@ -6,8 +6,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_19
+    targetCompatibility = JavaVersion.VERSION_19
 }
 
 dependencies {
@@ -23,6 +23,6 @@ dependencies {
 
     implementation(ApplicationDependencies.kotlinxSerialization)
 
-    implementation("com.google.code.gson:gson:2.8.5")
+    implementation(ApplicationDependencies.gsonLib)
 
 }

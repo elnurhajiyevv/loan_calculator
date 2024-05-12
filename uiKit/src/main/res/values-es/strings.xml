@@ -7,7 +7,7 @@
     <string name="select">Seleccionar</string>
     <string name="search">Buscar un idioma</string>
     <string name="bottom_menu_setting">Configuración</string>
-    <string name="app_name">Calculadora de Préstamos</string>
+    <string name="app_name">Loanify</string>
     <string name="close">Cerrar</string>
     <string name="no_internet_title">Sin conexión a internet</string>
     <string name="no_internet_error_text">No hay o hay una conexión a internet deficiente en su dispositivo</string>
@@ -72,7 +72,5 @@
     <string name="save_guide">Mantén presionado el elemento para compartir</string>
     <string name="guide_title">¿No sabes cómo usarlo?</string>
     <string name="guide_description">Por favor, haz clic en el botón de \"Continuar\" y revisa la guía siguiendo las instrucciones</string>
-
-
 
 </resources>

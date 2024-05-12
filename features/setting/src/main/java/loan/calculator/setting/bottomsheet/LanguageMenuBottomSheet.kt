@@ -13,7 +13,7 @@ import loan.calculator.core.base.BaseNotSerializableBottomSheet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import loan.calculator.domain.entity.home.LanguageModel
-import loan.calculator.setting.R
+import loan.calculator.uikit.R
 import loan.calculator.setting.adapter.LanguageAdapter
 import loan.calculator.setting.databinding.DialogLanguageBinding
 

@@ -13,12 +13,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
+    compileSdk = ApplicationConfig.compileSdk
+    buildToolsVersion = ApplicationConfig.buildToolsVersion
+    namespace = "loan.calculator.save"
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        minSdk = ApplicationConfig.minSdk
+        targetSdk = ApplicationConfig.targetSdk
         multiDexEnabled = true
         testInstrumentationRunner = ApplicationConfig.androidTestInstrumentation
         consumerProguardFiles( "consumer-rules.pro")
@@ -58,11 +59,11 @@ dependencies {
     implementation(ApplicationDependencies.navigationLibraries)
 
     implementation(ApplicationDependencies.hiltAndroid)
-    implementation("com.google.android.gms:play-services-ads-lite:22.1.0")
+    implementation(ApplicationDependencies.playServiceAdsLite)
     kapt(ApplicationDependencies.hiltCompiler)
     implementation(ApplicationDependencies.shimmer)
-    implementation("com.google.android.gms:play-services-location:21.0.1")
-    implementation("com.google.android.libraries.places:places:3.2.0")
+    implementation(ApplicationDependencies.playServiceLocation)
+    implementation("com.google.android.libraries.places:places:3.4.0")
 
 
     implementation("com.itextpdf:itextg:5.5.10") // iText PDF

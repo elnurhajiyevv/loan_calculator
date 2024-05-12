@@ -4,7 +4,7 @@
  * This code is copyrighted and using this code without agreement from authors is forbidden
  */
 
-rootProject.name = "loan calculator"
+rootProject.name = "Loanify"
 include(":app")
 include(":core")
 include(":domain")

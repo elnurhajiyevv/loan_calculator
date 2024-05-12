@@ -6,12 +6,11 @@
 
 //app level config constants
 object ApplicationConfig {
-    const val appName = "Loan Calculator"
-    const val compileSdk = 33
-    const val buildToolsVersion = "33.0.1"
+    const val compileSdk = 34
+    const val buildToolsVersion = "34.0.0"
     const val minSdk = 24
-    const val targetSdk = 33
-    const val versionCode = 2
+    const val targetSdk = 34
+    const val versionCode = 7
     const val applicationId = "loan.calculator.app"
     const val frameworkVersion = "1.0.0"
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"

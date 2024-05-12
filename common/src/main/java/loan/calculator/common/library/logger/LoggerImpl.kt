@@ -6,7 +6,6 @@
 
 package loan.calculator.common.library.logger
 
-import androidx.viewbinding.BuildConfig
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -17,9 +16,7 @@ import javax.inject.Inject
 class LoggerImpl @Inject constructor(): Logger {
 
     init {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
+        Timber.plant(Timber.DebugTree())
     }
 
     /**

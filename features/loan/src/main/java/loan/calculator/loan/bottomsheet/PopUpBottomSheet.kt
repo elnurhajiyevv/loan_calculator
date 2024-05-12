@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import loan.calculator.common.extensions.addCorners
 import loan.calculator.common.extensions.dp
 import loan.calculator.core.base.BaseNotSerializableBottomSheet
-import loan.calculator.loan.R
+import loan.calculator.uikit.R
 import loan.calculator.loan.databinding.DialogFragmentPopupBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog

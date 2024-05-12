@@ -2,16 +2,16 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
 }
-apply(from = "$rootDir/jacoco.gradle")
+//apply(from = "$rootDir/jacoco.gradle")
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
-
+    compileSdk = ApplicationConfig.compileSdk
+    buildToolsVersion = ApplicationConfig.buildToolsVersion
+    namespace = "loan.calculator.core"
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        minSdk = ApplicationConfig.minSdk
+        targetSdk = ApplicationConfig.targetSdk
         multiDexEnabled = true
     }
 
@@ -42,6 +42,7 @@ dependencies {
 
     implementation(project(ApplicationModules.domainModule))
     implementation(project(ApplicationModules.commonModule))
+    implementation(project(ApplicationModules.uiKit))
 
     //Results Api
     implementation(ApplicationDependencies.resultsLibraries)

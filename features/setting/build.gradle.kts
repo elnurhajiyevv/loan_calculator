@@ -13,15 +13,20 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
+    compileSdk = ApplicationConfig.compileSdk
+    buildToolsVersion = ApplicationConfig.buildToolsVersion
+    namespace = "loan.calculator.setting"
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        minSdk = ApplicationConfig.minSdk
+        targetSdk = ApplicationConfig.targetSdk
         multiDexEnabled = true
         testInstrumentationRunner = ApplicationConfig.androidTestInstrumentation
         consumerProguardFiles( "consumer-rules.pro")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -34,6 +39,8 @@ android {
             isMinifyEnabled = false
         }
     }
+
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -59,7 +66,7 @@ dependencies {
 
 
     implementation(ApplicationDependencies.hiltAndroid)
-    implementation("com.google.android.gms:play-services-ads-lite:22.1.0")
+    implementation(ApplicationDependencies.playServiceAdsLite)
     kapt(ApplicationDependencies.hiltCompiler)
 
     implementation("petrov.kristiyan:colorpicker-library:1.1.10")

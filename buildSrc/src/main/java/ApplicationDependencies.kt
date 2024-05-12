@@ -23,22 +23,26 @@ object ApplicationDependencies {
 
 
     //Net client
-    const val okhttp3 = "com.squareup.okhttp3:okhttp:4.9.1"
-    const val retrofit2 = "com.squareup.retrofit2:retrofit:2.9.0"
-    const val retrofit2SerializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
-    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.9.1"
+    const val okhttp3 = "com.squareup.okhttp3:okhttp:4.12.0"
+    const val retrofit2 = "com.squareup.retrofit2:retrofit:2.11.0"
+    const val retrofit2SerializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0"
+    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.12.0"
 
     //Moshi
-    const val moshi = "com.squareup.moshi:moshi:1.10.0"
-    const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:1.10.0"
-    const val retrofit2ConverterMoshi = "com.squareup.retrofit2:converter-moshi:2.9.0"
+    const val moshi = "com.squareup.moshi:moshi:1.15.1"
+    const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:1.15.1"
+    const val retrofit2ConverterMoshi = "com.squareup.retrofit2:converter-moshi:2.11.0"
 
-    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0"
+    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"
 
 
-    const val securityCrypto = "androidx.security:security-crypto:1.1.0-alpha03"
+    const val securityCrypto = "androidx.security:security-crypto:1.1.0-alpha06"
 
     const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+
+    const val gsonLib = "com.google.code.gson:gson:2.10"
+
+    const val playServiceLocation = "com.google.android.gms:play-services-location"
 
     //Core components
     const val appcompat = "androidx.appcompat:appcompat:${ApplicationVersions.appcompat}"
@@ -54,15 +58,14 @@ object ApplicationDependencies {
     private const val espressoCore = "androidx.test.espresso:espresso-core:${ApplicationVersions.espresso}"
     private const val mockito = "org.mockito:mockito-core:${ApplicationVersions.mockitoCore}"
     private const val mockk = "io.mockk:mockk:1.12.0"
-    private const val robolectric =    "org.robolectric:robolectric:4.6.1"
     //Dagger Hilt
     const val hiltAndroid = "com.google.dagger:hilt-android:${ApplicationVersions.hiltVersion}"
     const val hiltCore = "com.google.dagger:hilt-core:${ApplicationVersions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${ApplicationVersions.hiltVersion}"
 
     //Results API
-    private const val activityResult = "androidx.activity:activity-ktx:1.2.0"
-    private const val fragmentResult = "androidx.fragment:fragment-ktx:1.3.0"
+    private const val activityResult = "androidx.activity:activity-ktx:1.9.0"
+    private const val fragmentResult = "androidx.fragment:fragment-ktx:1.7.0"
 
     //Navigation Lib
     private const val uiNavigation = "androidx.navigation:navigation-ui-ktx:${ApplicationVersions.safeArgsVersion}"
@@ -74,10 +77,11 @@ object ApplicationDependencies {
 
     const val splashScreen = "androidx.core:core-splashscreen:${ApplicationVersions.splahScreenVersion}"
 
-    const val firebaseBom = "com.google.firebase:firebase-bom:31.1.0"
-    const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
-    private const val analytics = "com.google.firebase:firebase-analytics-ktx"
+    const val firebaseBom = "com.google.firebase:firebase-bom:33.0.0"
+    const val crashlytics = "com.google.firebase:firebase-crashlytics:19.0.0"
+    private const val analytics = "com.google.firebase:firebase-analytics:22.0.0"
     private const val cloudMessaging = "com.google.firebase:firebase-messaging"
+    const val playServiceAdsLite = "com.google.android.gms:play-services-ads-lite:23.1.0"
 
 
     // biometric auth
@@ -90,10 +94,10 @@ object ApplicationDependencies {
     const val lottie = "com.airbnb.android:lottie:6.4.0"
 
     //SMS retriever
-    private const val googlePlayAuth = "com.google.android.gms:play-services-auth:20.4.0"
+    private const val googlePlayAuth = "com.google.android.gms:play-services-auth:21.1.0"
     private const val googlePlayAuthPhone = "com.google.android.gms:play-services-auth-api-phone:17.5.1"
-    private const val googlePlayAuthBase = "com.google.android.gms:play-services-base:18.1.0"
-    const val googlePlayAds = "com.google.android.gms:play-services-ads:22.1.0"
+    private const val googlePlayAuthBase = "com.google.android.gms:play-services-base:18.4.0"
+    const val googlePlayAds = "com.google.android.gms:play-services-ads:23.1.0"
 
 
     const val pinOtpView = "io.github.chaosleung:pinview:1.4.4"
@@ -125,7 +129,6 @@ object ApplicationDependencies {
         add(junit)
         add(mockito)
         add(mockk)
-        add(robolectric)
     }
 
     val resultsLibraries = arrayListOf<String>().apply {

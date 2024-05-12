@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import loan.calculator.common.extensions.getMonthAndYear
 import loan.calculator.core.base.BaseAdapter
 import loan.calculator.domain.entity.home.AmortizationModel
-import loan.calculator.loan.R
+import loan.calculator.uikit.R
 
 import loan.calculator.uikit.textview.AutofitTextView
 import java.text.NumberFormat

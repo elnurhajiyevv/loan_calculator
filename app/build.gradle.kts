@@ -8,14 +8,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
+    namespace = ApplicationConfig.applicationId
+    compileSdk = ApplicationConfig.compileSdk
 
     defaultConfig {
-        applicationId = ApplicationConfig.applicationId
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        resValue("string","admob_developer","")
+        minSdk = ApplicationConfig.minSdk
         versionCode = ApplicationConfig.versionCode
+        targetSdk = ApplicationConfig.targetSdk
         versionName = ApplicationConfig.frameworkVersion
         testInstrumentationRunner = ApplicationConfig.androidTestInstrumentation
     }
@@ -102,9 +102,9 @@ dependencies {
     // splash
     implementation(ApplicationDependencies.splashScreen)
 
-    implementation("com.google.android.gms:play-services-auth:20.4.0")
-    implementation("com.google.android.gms:play-services-base:18.1.0")
-    implementation("com.google.firebase:firebase-bom:31.1.1")
+    implementation("com.google.android.gms:play-services-auth:21.1.1")
+    implementation("com.google.android.gms:play-services-base:18.4.0")
+    implementation("com.google.firebase:firebase-bom:33.0.0")
     implementation("com.google.firebase:firebase-auth")
 
 

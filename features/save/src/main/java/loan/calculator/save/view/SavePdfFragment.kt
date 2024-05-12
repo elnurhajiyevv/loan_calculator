@@ -1,8 +1,6 @@
 package loan.calculator.save.view
 
 import android.Manifest
-import android.R.attr
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -14,7 +12,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -37,10 +34,9 @@ import com.itextpdf.text.pdf.PdfWriter
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.getMonthAndYear
-import loan.calculator.common.extensions.isNotNull
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.extension.toast
-import loan.calculator.save.R
+import loan.calculator.uikit.R
 import loan.calculator.save.databinding.FragmentSavePdfPageBinding
 import loan.calculator.save.effect.SavePdfEffect
 import loan.calculator.save.state.SavePdfState
@@ -52,7 +48,6 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
-import java.io.FileWriter
 import java.io.IOException
 import java.text.NumberFormat
 import java.util.Locale

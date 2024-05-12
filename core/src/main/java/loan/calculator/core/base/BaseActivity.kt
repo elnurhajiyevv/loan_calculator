@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
         supportFragmentManager.fragments.forEach { fragment ->

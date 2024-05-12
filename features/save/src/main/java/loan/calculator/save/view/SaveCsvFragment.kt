@@ -14,7 +14,7 @@ import androidx.core.app.ActivityCompat
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.domain.entity.saved.ToDo
-import loan.calculator.save.R
+import loan.calculator.uikit.R
 import loan.calculator.save.csvreader.CSVGenerator
 import loan.calculator.save.databinding.FragmentSaveCsvPageBinding
 import loan.calculator.save.effect.SaveCsvEffect

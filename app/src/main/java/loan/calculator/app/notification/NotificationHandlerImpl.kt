@@ -16,7 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import loan.calculator.app.MainActivity
-import loan.calculator.app.R
+import loan.calculator.uikit.R
 import loan.calculator.app.notification.entity.DeepLinkTypes
 import loan.calculator.app.notification.entity.NotificationModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -66,7 +66,7 @@ class NotificationHandlerImpl @Inject constructor(@ApplicationContext val contex
     private fun pendingIntent(notificationModel: NotificationModel) =
         NavDeepLinkBuilder(context)
             .setComponentName(MainActivity::class.java)
-            .setGraph(R.navigation.main_graph)
+            .setGraph(loan.calculator.app.R.navigation.main_graph)
             .setDestination(getGraphDestination(notificationModel.deepLink))
             .setArguments(notificationModel.extras)
             .createPendingIntent()
@@ -74,8 +74,8 @@ class NotificationHandlerImpl @Inject constructor(@ApplicationContext val contex
 
     private fun getGraphDestination(@DeepLinkTypes.DeepLinkTypesDef deepLink: String?): Int {
         return when (deepLink) {
-            DeepLinkTypes.HOME -> R.id.loanPageFragment
-            else -> R.id.loanPageFragment
+            DeepLinkTypes.HOME -> loan.calculator.loan.R.id.loanPageFragment
+            else -> loan.calculator.loan.R.id.loanPageFragment
         }
     }
 

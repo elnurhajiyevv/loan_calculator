@@ -15,16 +15,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.viewbinding.BuildConfig
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import loan.calculator.common.library.util.marketLink
 import loan.calculator.common.library.util.webLink
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.domain.entity.home.LanguageModel
-import loan.calculator.setting.R
+import loan.calculator.uikit.R
 import loan.calculator.setting.bottomsheet.BugReportBottomSheet
 import loan.calculator.setting.bottomsheet.LanguageMenuBottomSheet
 import loan.calculator.setting.bottomsheet.bugReportBottomSheetBottomSheet

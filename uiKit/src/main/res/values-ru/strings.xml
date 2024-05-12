@@ -8,7 +8,7 @@
     <string name="select">Выбрать</string>
     <string name="search">Поиск языка</string>
     <string name="bottom_menu_setting">Настройки</string>
-    <string name="app_name">Калькулятор Займов</string>
+    <string name="app_name">Loanify</string>
     <string name="close">Закрыть</string>
     <string name="no_internet_title">Нет подключения к интернету</string>
     <string name="no_internet_error_text">Нет подключения к интернету или его качество низкое на вашем устройстве</string>
@@ -72,5 +72,4 @@
     <string name="save_guide">Долгое нажатие на элемент для обмена</string>
     <string name="guide_title">Не знаете, как пользоваться?</string>
     <string name="guide_description">Нажмите кнопку \"Продолжить\" и ознакомьтесь с инструкциями, следуя за ними</string>
-
 </resources>

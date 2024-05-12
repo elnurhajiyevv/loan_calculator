@@ -16,8 +16,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
-import loan.calculator.app.BuildConfig
-import loan.calculator.app.R
 import loan.calculator.common.extensions.gone
 import loan.calculator.common.extensions.show
 import loan.calculator.core.base.BaseActivity
@@ -26,6 +24,7 @@ import loan.calculator.data.repository.SettingPreferences
 import loan.calculator.data.util.RuntimeLocaleChanger
 import loan.calculator.app.databinding.ActivityMainBinding
 import javax.inject.Inject
+import loan.calculator.uikit.R
 
 
 @AndroidEntryPoint
@@ -40,8 +39,8 @@ class MainActivity : BaseActivity() {
 
     private val hiddenBottomNavigationViews by lazy {
         setOf(
-            R.id.amortizationFragment,
-            R.id.savePdfFragment
+            loan.calculator.loan.R.id.amortizationFragment,
+            loan.calculator.save.R.id.savePdfFragment
         )
     }
 
@@ -138,10 +137,10 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setStartGraph(savedInstanceState: Bundle?) {
-        navHost = supportFragmentManager.findFragmentById(R.id.main_nav_fragment) as NavHostFragment? ?: return
+        navHost = supportFragmentManager.findFragmentById(loan.calculator.app.R.id.main_nav_fragment) as NavHostFragment? ?: return
         navController = navHost.navController
         if (savedInstanceState == null) { //save the state after activity recreates
-            val graph = navHost.navController.navInflater.inflate(R.navigation.main_graph)
+            val graph = navHost.navController.navInflater.inflate(loan.calculator.app.R.navigation.main_graph)
             val (startGraphId, startGraphArgs) = findStartGraph()
             graph.setStartDestination(startGraphId)
             navController.setGraph(
@@ -165,7 +164,7 @@ class MainActivity : BaseActivity() {
 
     private fun findStartGraph(): FindStartGraphResult {
         return FindStartGraphResult(
-                graphId = R.id.loan_page_nav_graph,
+                graphId = loan.calculator.app.R.id.loan_page_nav_graph,
                 args = null,
             )
     }

@@ -5,25 +5,23 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("kotlinx-serialization")
 }
-apply(from = "$rootDir/jacoco.gradle")
+//apply(from = "$rootDir/jacoco.gradle")
 
 android {
-    compileSdkVersion(ApplicationConfig.compileSdk)
-    buildToolsVersion(ApplicationConfig.buildToolsVersion)
+    compileSdk = ApplicationConfig.compileSdk
+    buildToolsVersion = ApplicationConfig.buildToolsVersion
+    namespace = "loan.calculator.data"
 
     defaultConfig {
-        minSdkVersion(ApplicationConfig.minSdk)
-        targetSdkVersion(ApplicationConfig.targetSdk)
+        minSdk = ApplicationConfig.minSdk
         multiDexEnabled = true
     }
 
     buildTypes {
         getByName("release") {
-            buildConfigField("String","APP_KEY","\"a4532da10d1c4ab49e371129231808\"")
             isMinifyEnabled = true
         }
         getByName("debug") {
-            buildConfigField("String","APP_KEY","\"a4532da10d1c4ab49e371129231808\"")
             isMinifyEnabled = false
         }
     }
@@ -55,7 +53,7 @@ dependencies {
     api(ApplicationDependencies.retrofit2SerializationConverter)
     api(ApplicationDependencies.loggingInterceptor)
     api(ApplicationDependencies.kotlinxSerialization)
-    implementation(project(mapOf("path" to ":common")))
+    implementation(project(ApplicationModules.commonModule))
 
     // Unit Test
     testImplementation(ApplicationDependencies.testLibraries)
@@ -70,7 +68,7 @@ dependencies {
     kapt(ApplicationDependencies.roomCompiler)
     implementation(ApplicationDependencies.roomKtx)
 
-    implementation("com.google.code.gson:gson:2.8.5")
+    implementation("com.google.code.gson:gson:2.10")
 
     // Dagger Hilt
     implementation(ApplicationDependencies.hiltAndroid)
