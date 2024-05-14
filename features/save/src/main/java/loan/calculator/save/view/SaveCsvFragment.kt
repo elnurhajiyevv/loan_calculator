@@ -64,7 +64,6 @@ class SaveCsvFragment :
         requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
         checkWriteExternalPermission()
         // Check if the Android version is TIRAMISU or newer
-        //requestPermessionLauncher.launch(WRITE_EXTERNAL_STORAGE)
     }
 
 

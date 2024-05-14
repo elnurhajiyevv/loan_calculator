@@ -10,7 +10,7 @@ object ApplicationConfig {
     const val buildToolsVersion = "34.0.0"
     const val minSdk = 24
     const val targetSdk = 34
-    const val versionCode = 7
+    const val versionCode = 8
     const val applicationId = "loan.calculator.app"
     const val frameworkVersion = "1.0.0"
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"

@@ -108,7 +108,8 @@ class SavePdfFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        checkWriteExternalPermission()
+        generatePDF()
+        //checkWriteExternalPermission()
     }
 
     private fun generatePDF(){
@@ -159,7 +160,7 @@ class SavePdfFragment :
                         e.printStackTrace()
                     }
                     var filePath = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + File.separator + "loanCalculator")
+                        Environment.DIRECTORY_DOWNLOADS + resources.getString(R.string.app_name) + File.separator + "loanCalculator")
                     if(!filePath.exists())
                         filePath.mkdirs()
 
