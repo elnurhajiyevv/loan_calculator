@@ -36,13 +36,13 @@ android {
                 isCheckReleaseBuilds = false
                 isAbortOnError = false
             }
-            resValue("string","admob_developer","ca-app-pub-5232085807124057~6063880628")
+            resValue("string","admob_developer","admob-string")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
         }
         getByName("debug") {
             isMinifyEnabled = false
-            resValue("string","admob_developer","ca-app-pub-3940256099942544~3347511713")
+            resValue("string","admob_developer","admob-string")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }

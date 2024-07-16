@@ -1,6 +1,6 @@
 /*
  * Created by Elnur Hajiyev on 11/02/22, 11:19 AM
- * Copyright (c) 2021 . All rights reserved to GuavpnvaPay
+ * Copyright (c) 2021 . All rights reserved to Elnur
  * This code is copyrighted and using this code without agreement from authors is forbidden
  */
 

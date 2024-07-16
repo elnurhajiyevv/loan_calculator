@@ -27,11 +27,11 @@ android {
 
     buildTypes {
         getByName("release") {
-            resValue("string","admob_id","ca-app-pub-5232085807124057/4750798955")
+            resValue("string","admob_id","sometest")
             isMinifyEnabled = true
         }
         getByName("debug") {
-            resValue("string","admob_id","ca-app-pub-3940256099942544/9214589741")
+            resValue("string","admob_id","sometest")
             isMinifyEnabled = false
         }
     }
