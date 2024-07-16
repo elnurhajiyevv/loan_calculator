@@ -32,10 +32,6 @@ import loan.calculator.showCase.config.PointerType
 import loan.calculator.uikit.util.getThemeColor
 
 
-/**
- * Created by elnurh on 5/8/2024 for GoldenPay.
- */
-
 class GuideView private constructor(context: Context, view: View) : FrameLayout(context) {
     private val selfPaint = Paint()
     private val paintLine = Paint()

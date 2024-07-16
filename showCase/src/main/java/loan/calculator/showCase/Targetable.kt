@@ -4,10 +4,6 @@ import android.graphics.Path
 import android.graphics.RectF
 
 
-/**
- * Created by elnurh on 5/8/2024 for GoldenPay.
- */
-
 interface Targetable {
     /**
      * This path will be used when drawing the guide.

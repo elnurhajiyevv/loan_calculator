@@ -14,10 +14,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 
-/**
- * Created by elnurh on 5/8/2024 for GoldenPay.
- */
-
 internal class GuideMessageView(context: Context) : LinearLayout(context) {
     private val mPaint: Paint
     private val mRect: RectF

@@ -77,7 +77,7 @@ class SaveCsvFragment :
 
     fun generateCsv() {
         toDos = generateDummUser()
-        csvGenerator = CSVGenerator(requireContext(),"dirName", "SomeFile")
+        csvGenerator = CSVGenerator(requireActivity(),"dirName", "SomeFile")
         csvGenerator.setTitleItem("Title")
         csvGenerator.setSubtitle("PROFILE")
         csvGenerator.addKeyValue("Name", "Abdy Malik Mulky")

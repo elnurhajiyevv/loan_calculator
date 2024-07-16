@@ -115,7 +115,7 @@ class SavePdfFragment :
     private fun generatePDF(){
         colorPrimary = BaseColor(getThemeColor(requireContext()))
         appFontRegular.color = BaseColor.WHITE
-        val doc = Document(A4, 0f, 0f, 0f, 0f)
+        val doc = Document(A4, 0f, 0f, 0f, 20f)
         val outPath = requireActivity().getExternalFilesDir(null)
             .toString() + "/${args.getSavedLoanModel.name}.pdf" //location where the pdf will store
         Log.d("loc", outPath)
@@ -180,28 +180,6 @@ class SavePdfFragment :
             }
         }
     }
-    private fun checkWriteExternalPermission() {
-        val readImagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) Manifest.permission.WRITE_EXTERNAL_STORAGE else Manifest.permission.WRITE_EXTERNAL_STORAGE
-        if (ActivityCompat.checkSelfPermission(requireContext(),readImagePermission) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED) {
-            writeExternalPermission.launch(readImagePermission)
-        } else {
-            generatePDF()
-        }
-    }
-
-    private val writeExternalPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            // Handle Permission granted/rejected
-            if (isGranted) {
-                // Permission is granted
-                generatePDF()
-            } else {
-                // Permission is denied
-                findNavController().popBackStack()
-            }
-        }
 
     private fun isExternalStorageReadOnly(): Boolean {
         val extStorageState = Environment.getExternalStorageState()
