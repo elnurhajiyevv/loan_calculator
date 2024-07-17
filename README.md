@@ -1,6 +1,20 @@
 # About
 This project developed with a help of multimodule structure and android properties.
 
+<p float="left">
+     <img src="Screenshot_20240717-125524.png" width="300" />
+    <img src="Screenshot_20240717-125534.png" width="300" />
+    <img src="Screenshot_20240717-125552.png" width="300" />
+    <img src="Screenshot_20240717-125601.png" width="300" />
+     <img src="Screenshot_20240717-125612.png" width="300" />
+     <img src="Screenshot_20240717-125629.png" width="300" />
+    <img src="Screenshot_20240717-125639.png" width="300" />
+    <img src="Screenshot_20240717-125647.png" width="300" />
+    <img src="Screenshot_20240717-125729.png" width="300" />
+    <img src="Screenshot_20240717-1255739.png" width="300" />
+</p>
+
+
 ## Supported with ❤️ by [Elnur]([https://instabug.com/android/sdk?utm_source=toolsofthetrade&utm_medium=spon&utm_content=header](https://www.linkedin.com/in/hajiyevelnur/))
 
 # How to Use Demo
