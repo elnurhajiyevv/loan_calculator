@@ -24,3 +24,4 @@ Clone or download whole package then check each part of module.
 
 - ## Architecture
 MVI Architecture applied in this project with a help of STATE (state of views) AND EFFECT(side effects that shown only once).
+[img src ="https://i.ibb.co/VxjQST4/Hesab-az-multimodule-approach-page-0001.jpg">](MVI)
