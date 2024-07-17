@@ -11,7 +11,7 @@ This project developed with a help of multimodule structure and android properti
     <img src="Screenshot_20240717-125639.png" width="300" />
     <img src="Screenshot_20240717-125647.png" width="300" />
     <img src="Screenshot_20240717-125729.png" width="300" />
-    <img src="Screenshot_20240717-1255739.png" width="300" />
+    <img src="Screenshot_20240717-125739.png" width="300" />
 </p>
 
 
