@@ -13,6 +13,30 @@
       <module name="exchange.features.save" target="19" />
       <module name="exchange.features.setting" target="19" />
       <module name="exchange.uiKit" target="19" />
+      <module name="Goldenpay.app" target="19" />
+      <module name="Goldenpay.buildSrc" target="19" />
+      <module name="Goldenpay.buildSrc.main" target="19" />
+      <module name="Goldenpay.buildSrc.test" target="19" />
+      <module name="Goldenpay.common" target="19" />
+      <module name="Goldenpay.core" target="19" />
+      <module name="Goldenpay.data" target="19" />
+      <module name="Goldenpay.enqualify" target="19" />
+      <module name="Goldenpay.features.intro" target="19" />
+      <module name="Goldenpay.features.onboarding" target="19" />
+      <module name="Goldenpay.features.register" target="19" />
+      <module name="Goldenpay.features.setting" target="19" />
+      <module name="Goldenpay.uiKit" target="19" />
+      <module name="hesab_az.app" target="19" />
+      <module name="hesab_az.buildSrc" target="19" />
+      <module name="hesab_az.buildSrc.main" target="19" />
+      <module name="hesab_az.buildSrc.test" target="19" />
+      <module name="hesab_az.common" target="19" />
+      <module name="hesab_az.core" target="19" />
+      <module name="hesab_az.data" target="19" />
+      <module name="hesab_az.features.intro" target="19" />
+      <module name="hesab_az.features.register" target="19" />
+      <module name="hesab_az.features.setting" target="19" />
+      <module name="hesab_az.uiKit" target="19" />
       <module name="loan_calculator.langChanger" target="19" />
     </bytecodeTargetLevel>
   </component>

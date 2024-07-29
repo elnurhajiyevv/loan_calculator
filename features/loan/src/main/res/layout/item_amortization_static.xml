@@ -10,13 +10,15 @@
     <TextView
         android:id="@+id/number"
         style="@style/light_caption1"
-        android:layout_width="@dimen/_20sdp"
-        android:gravity="center"
+        android:layout_width="@dimen/_25sdp"
         android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:text="#"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="#" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/period"

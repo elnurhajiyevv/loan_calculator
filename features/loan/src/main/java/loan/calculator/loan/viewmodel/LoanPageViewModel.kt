@@ -11,14 +11,6 @@ import javax.inject.Inject
 class LoanPageViewModel @Inject constructor(
 ) : BaseViewModel<LoanPageState, LoanPageEffect>() {
 
-    var setSelection = SELECT_PART.PAYMENT
-
-    var selectedLoanAmount = 100000.0F
-    var selectedLoanPeriodYear = 1
-    var selectedLoanPeriodMonth = 0
-    var selectedLoanRate = 12
-    var selectedLoanPayment = 8884.87
-
     /*fun getCurrency(){
         observeCurrencyUseCase.execute(ObserveSavedLoanUseCase.Param())
             .filterNotNull()
