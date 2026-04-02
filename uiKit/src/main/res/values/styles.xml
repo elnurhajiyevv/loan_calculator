@@ -67,7 +67,7 @@
         <item name="colorSecondary">@color/color_secondary</item>
         <item name="colorSecondaryVariant">@color/color_secondary</item>
         <item name="colorOnSecondary">@color/color_pure_black</item>
-        <item name="mainCustomColor">@color/light_blue_100</item>
+        <item name="mainCustomColor">@color/gnt_ad_green</item>
         <item name="selectedColor">@color/gnt_green</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>

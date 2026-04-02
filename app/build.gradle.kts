@@ -36,13 +36,17 @@ android {
                 isCheckReleaseBuilds = false
                 isAbortOnError = false
             }
-            resValue("string","admob_developer","admob-string")
+            // Use AdMob test app id to avoid runtime crash during development.
+            // Replace with your real id before publishing.
+            resValue("string","admob_developer","ca-app-pub-3940256099942544~3347511713")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
         }
         getByName("debug") {
             isMinifyEnabled = false
-            resValue("string","admob_developer","admob-string")
+            // Use AdMob test app id to avoid runtime crash during development.
+            // Replace with your real id before publishing.
+            resValue("string","admob_developer","ca-app-pub-3940256099942544~3347511713")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -51,12 +55,15 @@ android {
     flavorDimensions("default")
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        jvmToolchain(21)
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+        }
     }
     buildFeatures {
         viewBinding = true
@@ -79,6 +86,7 @@ dependencies {
     // Dagger Hilt
     implementation(ApplicationDependencies.hiltAndroid)
     kapt(ApplicationDependencies.hiltCompiler)
+    kapt(ApplicationDependencies.kotlinMetadataJvm)
 
     //Results Api
     implementation(ApplicationDependencies.resultsLibraries)

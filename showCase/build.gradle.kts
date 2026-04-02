@@ -36,11 +36,15 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    kotlin {
+        jvmToolchain(21)
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+        }
     }
     buildFeatures {
         viewBinding = true
@@ -59,5 +63,6 @@ dependencies {
 
     implementation(ApplicationDependencies.hiltAndroid)
     kapt(ApplicationDependencies.hiltCompiler)
+    kapt(ApplicationDependencies.kotlinMetadataJvm)
 
 }

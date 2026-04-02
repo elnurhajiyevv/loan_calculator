@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setting_bug_report_title">Zəhmət olmasa rəyinizi və ya təklifinizi əlavə edin</string>
+    <string name="setting_bug_report_hint">Yazın…</string>
+    <string name="setting_theme_dark">Tünd</string>
+    <string name="setting_theme_light">Açıq</string>
+    <string name="setting_toggle_on">Açıq</string>
+    <string name="setting_toggle_off">Sönülü</string>
+    <string name="setting_color_picker_title">Rənginizi seçin</string>
+    <string name="common_yes">Bəli</string>
+    <string name="common_no">Xeyr</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="common_continue">Continuar</string>
+    <string name="common_currency_symbol">$</string>
+    <string name="common_percent_symbol">%</string>
+    <string name="loan_hint_amount_example">100 000.00</string>
+    <string name="loan_hint_rate_example">12</string>
+    <string name="loan_hint_year_example">1</string>
+    <string name="loan_hint_month_example">0</string>
+    <string name="loan_hint_payment_example">8 884.88</string>
+    <string name="loan_hint_value">Valor</string>
+    <string name="loan_hint_date_example">p. ej.: 31/12/2023</string>
+    <string name="end_year">End of Year</string>
+</resources>

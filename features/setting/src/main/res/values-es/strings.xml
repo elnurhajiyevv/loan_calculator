@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setting_bug_report_title">Por favor, añade tu comentario o sugerencia</string>
+    <string name="setting_bug_report_hint">Escribe…</string>
+    <string name="setting_theme_dark">Oscuro</string>
+    <string name="setting_theme_light">Claro</string>
+    <string name="setting_toggle_on">Activado</string>
+    <string name="setting_toggle_off">Desactivado</string>
+    <string name="setting_color_picker_title">Elige tu color</string>
+    <string name="common_yes">Sí</string>
+    <string name="common_no">No</string>
+</resources>

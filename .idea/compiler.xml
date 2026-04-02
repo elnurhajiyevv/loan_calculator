@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="19">
+    <bytecodeTargetLevel target="21">
       <module name="exchange.app" target="19" />
       <module name="exchange.buildSrc" target="19" />
       <module name="exchange.buildSrc.main" target="19" />
@@ -27,5 +27,12 @@
       <module name="loan_calculator.showCase" target="19" />
       <module name="loan_calculator.uiKit" target="19" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Loanify.domain" options="-proc:none" />
+      <module name="Loanify.domain.main" options="-proc:none" />
+      <module name="Loanify.domain.test" options="-proc:none" />
+    </option>
   </component>
 </project>

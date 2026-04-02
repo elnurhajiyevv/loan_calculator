@@ -31,7 +31,7 @@ class ExchangeSearchView @JvmOverloads constructor(
             recycle()
         }
 
-        binding.mainLayout.addBorder(strokeColor = R.color.search_background, solidColor = R.color.search_background, radius = 2.dp.toFloat(), strokeWidth = 1.dp)
+        binding.mainLayout.addBorder(strokeColor = R.color.search_background, solidColor = R.color.search_background, radius = 8.dp.toFloat(), strokeWidth = 1.dp)
 
         binding.searchMessage.setOnEditorActionListener { _, _, _ ->
             false
@@ -87,7 +87,7 @@ class ExchangeSearchView @JvmOverloads constructor(
                 binding.searchAction.show()
             }
         }
-        binding.mainLayout.addBorder(strokeColor = if(hasFocus) R.color.search_background else R.color.search_background, radius = 2.dp.toFloat(), strokeWidth = if(hasFocus) 1.dp else 1.dp, solidColor = R.color.search_background)
+        binding.mainLayout.addBorder(strokeColor = if(hasFocus) R.color.search_background else R.color.search_background, radius = 8.dp.toFloat(), strokeWidth = if(hasFocus) 1.dp else 1.dp, solidColor = R.color.search_background)
         binding.searchIcon.setImageResource(if(hasFocus) R.drawable.ic_search_focus else R.drawable.ic_search)
     }
     enum class SearchIconStatus{
@@ -99,7 +99,7 @@ class ExchangeSearchView @JvmOverloads constructor(
     }
 
     fun unselect(){
-        binding.mainLayout.addBorder(strokeColor = R.color.search_background, solidColor = R.color.search_background, radius = 2.dp.toFloat(), strokeWidth = 1.dp)
+        binding.mainLayout.addBorder(strokeColor = R.color.search_background, solidColor = R.color.search_background, radius = 8.dp.toFloat(), strokeWidth = 1.dp)
     }
 
     private fun setHintText(text: String?){

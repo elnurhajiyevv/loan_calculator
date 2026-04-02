@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        android:text="1"
+        android:text="@string/seekbar_left_value"
         android:textColor="@color/text_secondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loan_rate" />
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
-        android:text="30"
+        android:text="@string/seekbar_right_value"
         android:textColor="@color/text_secondary"
         app:layout_constraintEnd_toEndOf="@+id/loan_rate"
         app:layout_constraintTop_toBottomOf="@+id/loan_rate" />

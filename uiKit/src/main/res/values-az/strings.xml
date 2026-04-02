@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="bottom_menu_save">Saxlanılanlar</string>
+    <string name="bottom_menu_loan">Kredit</string>
+    <string name="summary">Xülasə</string>
+    <string name="back">Geri</string>
+    <string name="select">Seç</string>
+    <string name="search">Dil axtarın</string>
+    <string name="bottom_menu_setting">Tənzimləmələr</string>
+    <string name="app_name">Loanify</string>
+    <string name="close">Bağla</string>
+    <string name="no_internet_title">İnternet bağlantısı yoxdur</string>
+    <string name="no_internet_error_text">Cihazınızda internet bağlantısı yoxdur və ya zəifdir</string>
+    <string name="loading_dialog_title">Zəhmət olmasa gözləyin</string>
+    <string name="loading_dialog_description">Detallar yüklənir…</string>
+    <string name="default_channel_name">Mesajlar</string>
+    <string name="loan_rate_header">Kredit faizi</string>
+    <string name="setting_header">Tənzimləmələr</string>
+    <string name="apply">Tətbiq et</string>
+    <string name="loan_result_header">Hər ay ödəniş</string>
+    <string name="loan_result_total_header">%1$s ödənişin cəmi</string>
+    <string name="loan_result_interest_header">Ümumi faiz</string>
+    <string name="loan_result_interest_graph">Nəticə</string>
+    <string name="from">Başlanğıc</string>
+    <string name="to">Son</string>
+    <string name="unknown_error_title">Nəsə xəta baş verdi</string>
+    <string name="unknown_error_text">Bağışlayın, gözlənilməz xəta baş verdi. Zəhmət olmasa sonra yenidən cəhd edin</string>
+    <string name="amortization_title">Amortizasiya cədvəli</string>
+    <string name="app_theme">Tətbiq mövzusu</string>
+    <string name="change_language">Azərbaycan dili</string>
+    <string name="change_language_description">Dili dəyişmək üçün toxunun</string>
+    <string name="rate_us">Play Store-da bizi qiymətləndirin</string>
+    <string name="bug_report">Xəta bildirişi və ya təkliflər</string>
+    <string name="app_version">Versiya: %1$s</string>
+    <string name="save_loan_data">Kredit məlumatlarını saxla</string>
+    <string name="save">Saxla</string>
+    <string name="cancel">Ləğv et</string>
+    <string name="icon">İkon</string>
+    <string name="name">Ad</string>
+    <string name="start_date">Başlanğıc tarixi:</string>
+    <string name="paid_off">Ödənilib:</string>
+    <string name="loan_amount">Kredit məbləği:</string>
+    <string name="interest_rate">Faiz dərəcəsi:</string>
+    <string name="compounding_frequency">Hesablama tezliyi:</string>
+    <string name="total_repayment">Ümumi geri ödəniş:</string>
+    <string name="required">Məcburidir</string>
+    <string name="ok">Təsdiqlə</string>
+    <string name="submit">Göndər</string>
+
+    <string name="loan_term">Kredit müddəti:</string>
+    <string name="year">il</string>
+    <string name="end_year">İlin sonu </string>
+    <string name="payment">Ödəniş:</string>
+    <string name="months">ay</string>
+
+    <string name="export_pdf">PDF kimi ixrac et</string>
+    <string name="export_xls">XLS kimi ixrac et</string>
+    <string name="export_csv">CSV kimi ixrac et</string>
+
+    <!--PERMISSION-->
+    <string name="allow_location_permission">Məkan icazəsini verin</string>
+    <string name="allow_storage_permission">Yaddaş icazəsini verin</string>
+    <string name="setting_permission">Məkan icazəsini vermək üçün Tənzimləmələri açın</string>
+    <string name="choose_your_color">Rənginizi seçin</string>
+    <string name="disable_screenshot">Ekran görüntüsünü söndür</string>
+    <string name="commint_soon">Tezliklə...</string>
+    <string name="guide_title">Necə istifadə ediləcəyini bilmirsiniz?</string>
+    <string name="guide_description">Zəhmət olmasa \"Davam et\" düyməsinə toxunun və təlimatı izləyin</string>
+
+    <string name="toolbar_guide">Kredit sorğusunu şablon kimi saxlamağa imkan verir.</string>
+    <string name="loan_amount_guide">Zəhmət olmasa kredit götürmək istədiyiniz məbləği daxil edin.</string>
+    <string name="loan_rate_guide">Zəhmət olmasa 1-dən 999-a qədər faiz daxil edin</string>
+    <string name="loan_period_guide">Zəhmət olmasa 1-dən 99-a qədər il daxil edin\nAy: 1-dən 11-ə qədər</string>
+    <string name="loan_payment_guide">Bu ödəniş avtomatik hesablanacaq\n Gələcəkdə istifadəçilər sahələri dəyişə biləcək</string>
+    <string name="save_guide">Paylaşmaq üçün elementə uzun basın</string>
+
+    <!-- Amortization columns -->
+    <string name="amortization_col_number">#</string>
+    <string name="amortization_col_period">Dövr</string>
+    <string name="amortization_col_interest">Faiz</string>
+    <string name="amortization_col_principal">Əsas borc</string>
+    <string name="amortization_col_balance">Qalıq</string>
+
+    <!-- Seekbar labels -->
+    <string name="seekbar_left_value">1</string>
+    <string name="seekbar_right_value">30</string>
+
+    <!-- Ads -->
+    <string name="ad_label">Reklam</string>
+
+</resources>

@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:loan_toolbar_option="with_right"
         app:loan_toolbar_right_action_icon="@drawable/ic_saved"
-        app:loan_toolbar_title="PDF"
+        app:loan_toolbar_title="@string/save_csv_title"
         app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

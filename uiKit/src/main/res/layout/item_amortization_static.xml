@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/_4sdp"
         android:gravity="center"
-        android:text="#"
+        android:text="@string/amortization_col_number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/number"
         app:layout_constraintStart_toEndOf="@+id/number"
         app:layout_constraintTop_toTopOf="@+id/number"
-        android:text="Period" />
+        android:text="@string/amortization_col_period" />
 
     <TextView
         android:id="@+id/interest"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/period"
         app:layout_constraintStart_toEndOf="@+id/period"
         app:layout_constraintTop_toTopOf="@+id/period"
-        android:text="Interest" />
+        android:text="@string/amortization_col_interest" />
 
     <TextView
         android:id="@+id/principal"
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toStartOf="@+id/balance"
         app:layout_constraintStart_toEndOf="@+id/interest"
         app:layout_constraintTop_toTopOf="@+id/interest"
-        android:text="Principal" />
+        android:text="@string/amortization_col_principal" />
 
     <TextView
         android:id="@+id/balance"
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/principal"
         app:layout_constraintTop_toTopOf="@+id/principal"
-        android:text="Balance" />
+        android:text="@string/amortization_col_balance" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

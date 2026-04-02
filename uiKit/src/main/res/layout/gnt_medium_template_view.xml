@@ -128,7 +128,7 @@
                             android:layout_marginEnd="@dimen/gnt_default_margin"
                             android:background="@drawable/gnt_rounded_corners_shape"
                             android:gravity="center"
-                            android:text="Ad"
+                            android:text="@string/ad_label"
                             android:textColor="@color/gnt_ad_green"
                             android:textSize="@dimen/gnt_ad_indicator_text_size"
                             android:textStyle="bold"

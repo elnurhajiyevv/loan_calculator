@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setting_bug_report_title">Пожалуйста, добавьте ваш комментарий или отзыв</string>
+    <string name="setting_bug_report_hint">Введите…</string>
+    <string name="setting_theme_dark">Тёмная</string>
+    <string name="setting_theme_light">Светлая</string>
+    <string name="setting_toggle_on">Вкл</string>
+    <string name="setting_toggle_off">Выкл</string>
+    <string name="setting_color_picker_title">Выберите цвет</string>
+    <string name="common_yes">Да</string>
+    <string name="common_no">Нет</string>
+</resources>

@@ -5,20 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_3sdp"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:clickable="true"
     android:id="@+id/main_layout"
-    android:paddingHorizontal="@dimen/_10sdp"
-    android:paddingVertical="@dimen/_12sdp">
+    android:paddingTop="@dimen/_12sdp">
 
     <ImageView
         android:id="@+id/logo"
         style="@style/bold_caption1"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
         tools:background="@drawable/ic_russia"
         android:padding="@dimen/_1sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,11 +41,21 @@
 
     <ImageView
         android:id="@+id/imageViewDirection"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="0dp"
-        android:src="@drawable/ic_arrow_right"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        tools:src="@drawable/ic_checked"
+        android:layout_marginRight="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/color_gray_one"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

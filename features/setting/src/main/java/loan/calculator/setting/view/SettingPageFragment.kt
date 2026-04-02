@@ -24,8 +24,10 @@ import loan.calculator.core.base.BaseFragment
 import loan.calculator.domain.entity.home.LanguageModel
 import loan.calculator.uikit.R
 import loan.calculator.setting.bottomsheet.BugReportBottomSheet
+import loan.calculator.setting.bottomsheet.ColorPickerBottomSheet
 import loan.calculator.setting.bottomsheet.LanguageMenuBottomSheet
 import loan.calculator.setting.bottomsheet.bugReportBottomSheetBottomSheet
+import loan.calculator.setting.bottomsheet.colorPickerBottomSheet
 import loan.calculator.setting.bottomsheet.languageMenuBottomSheet
 import loan.calculator.setting.databinding.FragmentSettingPageBinding
 import loan.calculator.setting.effect.SettingPageEffect
@@ -33,8 +35,7 @@ import loan.calculator.setting.state.SettingPageState
 import loan.calculator.setting.viewmodel.SettingPageViewModel
 import loan.calculator.uikit.ads.NativeTemplateStyle
 import loan.calculator.uikit.extension.getImageResource
-import petrov.kristiyan.colorpicker.ColorPicker
-import petrov.kristiyan.colorpicker.ColorPicker.OnChooseColorListener
+
 
 
 @AndroidEntryPoint
@@ -108,18 +109,17 @@ class SettingPageFragment :
 
 
     private fun openColorChoose() {
-        val colorPicker = ColorPicker(requireActivity())
-        colorPicker.show()
-        colorPicker.setOnChooseColorListener(object : OnChooseColorListener {
-            override fun onChooseColor(position: Int, color: Int) {
-                viewmodel.setAppColor(position)
-                changeAppContext()
+        colorPickerBottomSheet {
+            onYes = { selectedIndex ->
+                if (selectedIndex != -1) {
+                    viewmodel.setAppColor(selectedIndex)
+                    changeAppContext()
+                }
             }
-
-            override fun onCancel() {
-                // put code
+            onNo = {
+                // no-op
             }
-        })
+        }.show(childFragmentManager, ColorPickerBottomSheet::class.java.canonicalName)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -128,7 +128,7 @@ class SettingPageFragment :
         // get app language and update UI
         setLanguage(viewmodel.getLanguage())
 
-        val adLoader = AdLoader.Builder(requireContext(),loan.calculator.setting.BuildConfig.admob_id)
+        val adLoader = AdLoader.Builder(requireContext(), getString(loan.calculator.setting.R.string.admob_id))
             .forNativeAd { nativeAd ->
                 val styles: NativeTemplateStyle = NativeTemplateStyle.Builder().build()
 

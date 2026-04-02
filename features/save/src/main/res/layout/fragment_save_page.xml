@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:loan_toolbar_option="without_left_and_right"
         app:loan_toolbar_right_action_icon="@drawable/ic_share"
-        app:loan_toolbar_title="@string/app_name"
+        app:loan_toolbar_title="@string/save"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -25,6 +25,7 @@
         android:layout_height="@dimen/_100sdp"
         android:src="@drawable/ic_no_data"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +70,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:visibility="visible"
+        tools:visibility="gone"
         android:layout_marginVertical="@dimen/_10sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

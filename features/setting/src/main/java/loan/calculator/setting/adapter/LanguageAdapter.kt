@@ -27,7 +27,7 @@ class LanguageAdapter(private val itemList: List<LanguageModel>, private val cli
         if (!query.isNullOrEmpty()) {
             list.addAll(
                 itemList.filter {
-                    it.name?.lowercase()?.contains(query.toString().lowercase()) == true
+                    it.name.lowercase().contains(query.toString().lowercase())
             })
         } else {
             list.addAll(itemList)
@@ -43,11 +43,12 @@ class LanguageAdapter(private val itemList: List<LanguageModel>, private val cli
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: LanguageModel) {
             binding.apply {
-                binding.logo.setImageResource(model.name.getImageResource())
-                binding.title.text = model.name
-                binding.description.text = model.nationalName
+                logo.setImageResource(model.name.getImageResource())
+                title.text = model.name
+                description.text = model.nationalName
                 if(model.isSelected){
-                    binding.mainLayout.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.lang_background))
+                    imageViewDirection.setImageResource(R.drawable.ic_checked)
+                    //mainLayout.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.lang_background))
                 }
             }
         }

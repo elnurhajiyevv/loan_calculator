@@ -27,21 +27,25 @@ android {
 
     buildTypes {
         getByName("release") {
-            resValue("string","admob_id","sometest")
+            resValue("string","admob_id","ca-app-pub-3940256099942544/9214589741")
             isMinifyEnabled = true
         }
         getByName("debug") {
-            resValue("string","admob_id","sometest")
+            resValue("string","admob_id","ca-app-pub-3940256099942544/9214589741")
             isMinifyEnabled = false
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    kotlin {
+        jvmToolchain(21)
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+        }
     }
     buildFeatures {
         viewBinding = true
@@ -64,6 +68,7 @@ dependencies {
     implementation(ApplicationDependencies.hiltAndroid)
     implementation(ApplicationDependencies.playServiceAdsLite)
     kapt(ApplicationDependencies.hiltCompiler)
+    kapt(ApplicationDependencies.kotlinMetadataJvm)
     implementation(ApplicationDependencies.playServiceLocation)
     implementation("com.google.android.libraries.places:places:3.4.0")
 

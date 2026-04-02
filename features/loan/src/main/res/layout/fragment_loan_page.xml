@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/background_color"
     android:layout_height="match_parent">
 
@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/_30sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:loan_toolbar_option="with_left_and_right"
+        app:loan_toolbar_option="without_left_and_right"
         app:loan_toolbar_title="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -22,23 +22,22 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:paddingBottom="@dimen/_10sdp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_10sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/loan_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/radius_10_white"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:background="@drawable/radius_8dp_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -46,10 +45,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/loan_amount_part"
                     android:layout_width="@dimen/_70sdp"
-                    android:padding="@dimen/_18sdp"
                     android:layout_height="0dp"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:background="@color/item_background"
+                    android:background="@drawable/item_background"
+                    android:padding="@dimen/_18sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -69,11 +67,11 @@
 
                 <TextView
                     android:id="@+id/loan_amount_textview"
-                    style="@style/regular_caption2"
+                    style="@style/regular_caption1"
                     android:layout_width="0dp"
-                    android:gravity="center_vertical"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
+                    android:gravity="center_vertical"
                     android:text="@string/loan_amount"
                     app:layout_constraintBottom_toBottomOf="@+id/loan_seperator"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -92,12 +90,12 @@
 
                 <TextView
                     android:id="@+id/loan_amount_currency"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:gravity="center_vertical"
                     android:background="@null"
-                    android:text="$"
+                    android:gravity="center_vertical"
+                    android:text="@string/common_currency_symbol"
                     android:textColor="@color/gray_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/loan_amount_textview"
@@ -106,25 +104,24 @@
 
                 <EditText
                     android:id="@+id/loan_amount_edittext"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/_1sdp"
                     android:background="@null"
-                    android:paddingVertical="@dimen/_9sdp"
-                    android:hint="100 000.00"
-                    android:textCursorDrawable="@drawable/input_text_cursor_color"
-                    android:textColorHint="@color/gray_text"
+                    android:hint="@string/loan_hint_amount_example"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:paddingVertical="@dimen/_6sdp"
                     android:paddingRight="@dimen/_10sdp"
                     android:textColor="@color/color_pure_black"
+                    android:textColorHint="@color/gray_text"
+                    android:textCursorDrawable="@drawable/input_text_cursor_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/loan_amount_currency"
                     app:layout_constraintTop_toBottomOf="@+id/loan_amount_textview" />
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -133,8 +130,9 @@
                 android:id="@+id/loan_rate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/radius_10_white"
+                android:background="@drawable/radius_8dp_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loan_amount">
@@ -143,9 +141,8 @@
                     android:id="@+id/loan_rate_part"
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="0dp"
-                    android:background="@color/item_background"
+                    android:background="@drawable/item_background"
                     android:padding="@dimen/_18sdp"
-                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -165,7 +162,7 @@
 
                 <TextView
                     android:id="@+id/loan_rate_textview"
-                    style="@style/regular_caption2"
+                    style="@style/regular_caption1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -188,19 +185,19 @@
 
                 <EditText
                     android:id="@+id/loan_rate_edittext"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="12"
-                    android:textCursorDrawable="@drawable/input_text_cursor_color"
-                    android:textColorHint="@color/gray_text"
-                    android:textColor="@color/color_pure_black"
+                    android:hint="@string/loan_hint_rate_example"
                     android:imeOptions="actionDone"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
-                    android:paddingVertical="@dimen/_9sdp"
+                    android:paddingVertical="@dimen/_6sdp"
                     android:paddingRight="@dimen/_10sdp"
+                    android:textColor="@color/color_pure_black"
+                    android:textColorHint="@color/gray_text"
+                    android:textCursorDrawable="@drawable/input_text_cursor_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/loan_rate_percentage"
                     app:layout_constraintStart_toStartOf="@+id/loan_rate_textview"
@@ -212,9 +209,9 @@
                     style="@style/regular_caption2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:gravity="center_vertical"
-                    android:text="%"
                     android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:text="@string/common_percent_symbol"
                     app:layout_constraintBottom_toBottomOf="@+id/loan_rate_edittext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/loan_rate_edittext" />
@@ -225,8 +222,9 @@
                 android:id="@+id/loan_period"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/radius_10_white"
+                android:background="@drawable/radius_8dp_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loan_rate">
@@ -235,9 +233,8 @@
                     android:id="@+id/loan_period_part"
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="0dp"
-                    android:background="@color/item_background"
+                    android:background="@drawable/item_background"
                     android:padding="@dimen/_18sdp"
-                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -257,7 +254,7 @@
 
                 <TextView
                     android:id="@+id/loan_period_textview"
-                    style="@style/regular_caption2"
+                    style="@style/regular_caption1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -290,19 +287,19 @@
 
                     <EditText
                         android:id="@+id/loan_year_edittext"
-                        style="@style/regular_caption3"
+                        style="@style/regular_caption2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="1"
-                        android:textCursorDrawable="@drawable/input_text_cursor_color"
-                        android:textColorHint="@color/gray_text"
-                        android:textColor="@color/color_pure_black"
+                        android:hint="@string/loan_hint_year_example"
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:paddingVertical="@dimen/_9sdp"
+                        android:paddingVertical="@dimen/_6sdp"
                         android:paddingRight="@dimen/_10sdp"
+                        android:textColor="@color/color_pure_black"
+                        android:textColorHint="@color/gray_text"
+                        android:textCursorDrawable="@drawable/input_text_cursor_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/loan_year_textview"
                         app:layout_constraintStart_toStartOf="parent"
@@ -310,7 +307,7 @@
 
                     <TextView
                         android:id="@+id/loan_year_textview"
-                        style="@style/regular_caption1"
+                        style="@style/regular_caption2"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:gravity="center_vertical"
@@ -334,8 +331,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/month_container"
                     android:layout_width="0dp"
-                    android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/year_month_view"
@@ -343,19 +340,19 @@
 
                     <EditText
                         android:id="@+id/loan_month_edittext"
-                        style="@style/regular_caption3"
+                        style="@style/regular_caption2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:hint="0"
-                        android:textCursorDrawable="@drawable/input_text_cursor_color"
-                        android:textColorHint="@color/gray_text"
+                        android:hint="@string/loan_hint_month_example"
                         android:imeOptions="actionDone"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:paddingVertical="@dimen/_9sdp"
+                        android:paddingVertical="@dimen/_6sdp"
                         android:paddingRight="@dimen/_10sdp"
                         android:textColor="@color/color_pure_black"
+                        android:textColorHint="@color/gray_text"
+                        android:textCursorDrawable="@drawable/input_text_cursor_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/loan_month_textview"
                         app:layout_constraintStart_toStartOf="parent"
@@ -363,12 +360,12 @@
 
                     <TextView
                         android:id="@+id/loan_month_textview"
-                        style="@style/regular_caption1"
+                        style="@style/regular_caption2"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
+                        android:layout_marginRight="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:text="@string/months"
-                        android:layout_marginRight="@dimen/_5sdp"
                         app:layout_constraintBottom_toBottomOf="@+id/loan_month_edittext"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/loan_month_edittext" />
@@ -381,7 +378,9 @@
                 android:id="@+id/loan_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/radius_10_white"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/radius_8dp_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loan_period">
@@ -390,9 +389,8 @@
                     android:id="@+id/loan_payment_part"
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="0dp"
-                    android:background="?attr/mainCustomColor"
+                    android:background="@drawable/item_background_color"
                     android:padding="@dimen/_18sdp"
-                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -412,7 +410,7 @@
 
                 <TextView
                     android:id="@+id/loan_payment_textview"
-                    style="@style/regular_caption2"
+                    style="@style/regular_caption1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -435,11 +433,11 @@
 
                 <TextView
                     android:id="@+id/loan_payment_currency"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:gravity="center_vertical"
-                    android:text="$"
+                    android:text="@string/common_currency_symbol"
                     android:textColor="@color/gray_text"
                     app:layout_constraintBottom_toBottomOf="@+id/loan_payment_part"
                     app:layout_constraintStart_toStartOf="@+id/loan_payment_textview"
@@ -448,20 +446,20 @@
 
                 <EditText
                     android:id="@+id/loan_payment_edittext"
-                    style="@style/regular_caption3"
+                    style="@style/regular_caption2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_1sdp"
                     android:background="@null"
-                    android:hint="8 884.88"
-                    android:textColorHint="@color/gray_text"
-                    android:textCursorDrawable="@drawable/input_text_cursor_color"
+                    android:hint="@string/loan_hint_payment_example"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:maxLines="1"
                     android:paddingVertical="@dimen/_6sdp"
                     android:paddingRight="@dimen/_10sdp"
                     android:textColor="@color/color_pure_black"
+                    android:textColorHint="@color/gray_text"
+                    android:textCursorDrawable="@drawable/input_text_cursor_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/loan_payment_seperator"
                     app:layout_constraintStart_toEndOf="@+id/loan_payment_currency"
@@ -470,157 +468,176 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/type"
+                    style="@style/spinnerItemStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:spinnerMode="dropdown"
-                    android:gravity="center"
-                    android:entries="@array/loanItems"
-                    android:drawSelectorOnTop="true"
-                    android:background="@drawable/bg_spinner"
-                    android:paddingRight="@dimen/_15sdp"
                     android:layout_margin="@dimen/_3sdp"
-                    style="@style/spinnerItemStyle"
+                    android:background="@drawable/bg_spinner"
+                    android:drawSelectorOnTop="true"
+                    android:entries="@array/loanItems"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <TextView
-                android:id="@+id/total_interest_textview"
-                style="@style/regular_caption1"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/_4sdp"
-                android:text="@string/loan_result_interest_header"
-                app:layout_constraintEnd_toStartOf="@+id/total_repayment_textview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
-
-            <LinearLayout
-                android:id="@+id/total_interest_container"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="@+id/total_interest_textview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/total_interest_textview">
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/radius_8dp_white"
+                android:padding="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loan_payment">
 
                 <TextView
-                    android:id="@+id/total_interest_currency"
-                    style="@style/bold_caption3"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/total_interest_textview"
+                    style="@style/regular_caption1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:gravity="center"
-                    android:text="$" />
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:text="@string/loan_result_interest_header"
+                    app:layout_constraintEnd_toStartOf="@+id/total_repayment_textview"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
+
+                <LinearLayout
+                    android:id="@+id/total_interest_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/total_interest_textview"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/total_interest_textview">
+
+                    <TextView
+                        android:id="@+id/total_interest_currency"
+                        style="@style/bold_caption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/common_currency_symbol" />
+
+
+                    <TextView
+                        android:id="@+id/total_interest_value"
+                        style="@style/bold_caption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/total_interest_currency"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="6 618.55" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/seperator_bottom"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray"
+                    app:layout_constraintBottom_toBottomOf="@+id/total_interest_container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
 
 
                 <TextView
-                    android:id="@+id/total_interest_value"
-                    style="@style/bold_caption3"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/total_repayment_textview"
+                    style="@style/regular_caption1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:gravity="center"
-                    android:text="6 618.55"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/total_interest_currency"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:text="@string/total_repayment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/seperator_bottom"
-                android:layout_width="@dimen/_1sdp"
-                android:layout_height="0dp"
-                android:background="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@+id/total_interest_container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/total_repayment_textview" />
-
-
-            <TextView
-                android:id="@+id/total_repayment_textview"
-                style="@style/regular_caption1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/_4sdp"
-                android:text="@string/total_repayment"
-                android:layout_marginTop="@dimen/_15sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
-                app:layout_constraintTop_toBottomOf="@+id/loan_payment" />
-
-            <LinearLayout
-                android:id="@+id/total_repayment_container"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
-                app:layout_constraintTop_toBottomOf="@+id/total_repayment_textview">
-                <TextView
-                    android:id="@+id/total_repayment_currency"
-                    style="@style/bold_caption3"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/total_repayment_container"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="$" />
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/total_interest_textview"
+                    app:layout_constraintTop_toBottomOf="@+id/total_repayment_textview">
+
+                    <TextView
+                        android:id="@+id/total_repayment_currency"
+                        style="@style/bold_caption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/common_currency_symbol" />
 
 
-                <TextView
-                    android:id="@+id/total_repayment_value"
-                    style="@style/bold_caption3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="106 618.55" />
+                    <TextView
+                        android:id="@+id/total_repayment_value"
+                        style="@style/bold_caption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        tools:text="106 618.55" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/chart"
-                android:layout_width="0dp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_height="@dimen/_200sdp"
-                app:layout_constraintEnd_toEndOf="@+id/apply_button"
-                app:layout_constraintStart_toStartOf="@+id/apply_button"
-                app:layout_constraintTop_toBottomOf="@+id/seperator_bottom" />
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:adSize="BANNER"
-                android:layout_marginTop="@dimen/_8sdp"
-                app:adUnitId="@string/admob_id"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chart" />
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_200sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/seperator_bottom" />
 
-            <loan.calculator.uikit.button.LoanButton
-                android:id="@+id/apply_button"
-                style="@style/Loan_Button_Medium_Primary_Filled"
-                android:layout_width="0dp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_height="wrap_content"
-                android:text="@string/amortization_title"
-                android:layout_marginTop="@dimen/_8sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/adView" />
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:adSize="BANNER"
+        app:adUnitId="@string/admob_id"
+        app:layout_constraintBottom_toTopOf="@+id/apply_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+    <loan.calculator.uikit.button.LoanButton
+        android:id="@+id/apply_button"
+        style="@style/Loan_Button_Medium_Primary_Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:text="@string/amortization_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

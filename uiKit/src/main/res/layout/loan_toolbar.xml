@@ -5,27 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:contentInsetLeft="0dp"
-    android:background="@color/white_gray"
     app:contentInsetStart="0dp"
     android:paddingHorizontal="@dimen/_12sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/loanToolbarLeft"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="0dp"
-            android:layout_gravity="center_vertical"
-            android:visibility="gone"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_remove"
-            tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/loanToolbarTitle"
@@ -34,12 +19,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
+            android:textColor="@color/color_pure_black"
             android:lineSpacingExtra="-3sp"
             android:maxLength="40"
             android:maxLines="1"
+            tools:text="Loanify"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/loanToolbarRight"
-            app:layout_constraintStart_toEndOf="@+id/loanToolbarLeft"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -55,7 +42,7 @@
             app:layout_constraintEnd_toStartOf="@+id/loanToolbarDelete"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/icon_save"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/loanToolbarDelete"
@@ -69,7 +56,7 @@
             tools:src="@drawable/ic_delete"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
 
 

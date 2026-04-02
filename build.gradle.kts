@@ -5,10 +5,9 @@
  */
 plugins {
     id("io.gitlab.arturbosch.detekt").version(ApplicationVersions.detektVersion)
-    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
-    id ("com.github.ivancarras.graphfity") version "1.0.0"
+    id("org.jetbrains.kotlin.android") version "2.3.20" apply false
+    id ("com.github.ivancarras.graphfity") version "1.2.0"
 }
-apply(from = "$rootDir/dynatrace.gradle")
 
 buildscript {
     repositories {
@@ -22,7 +21,6 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:${ApplicationVersions.gradleVersion}")
-        classpath("com.dynatrace.tools.android:gradle-plugin:8.+")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${ApplicationVersions.kotlinBuildVersion}")
         classpath("org.jetbrains.kotlin:kotlin-serialization:${ApplicationVersions.kotlinBuildVersion}")
         classpath("com.google.dagger:hilt-android-gradle-plugin:${ApplicationVersions.hiltVersion}")

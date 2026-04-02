@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="save_confirm_delete_template">Are you sure to delete selected template?</string>
+    <string name="save_pdf_title">PDF</string>
+    <string name="save_csv_title">CSV</string>
+</resources>

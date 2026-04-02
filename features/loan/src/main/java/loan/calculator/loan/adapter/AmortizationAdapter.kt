@@ -1,5 +1,6 @@
 package loan.calculator.loan.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import loan.calculator.uikit.textview.AutofitTextView
 import java.text.NumberFormat
 import java.util.Locale
 class AmortizationAdapter(
+    private val context: Context,
     private val listItems: ArrayList<AmortizationModel?>,
     private val onModelClick: AmortizationModelClick,
 ): BaseAdapter<AmortizationModel, RecyclerView.ViewHolder>(areContentsTheSame = {
@@ -26,30 +28,18 @@ class AmortizationAdapter(
     }
 
     inner class AmortizationTypeViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        var mainContainer: ConstraintLayout
-        var number: AutofitTextView
-        var period: AutofitTextView
-        var interest: AutofitTextView
-        var principal: AutofitTextView
-        var balance: AutofitTextView
-        init {
-            mainContainer = view.findViewById<View>(R.id.main_container) as ConstraintLayout
-            number = view.findViewById<View>(R.id.number) as AutofitTextView
-            period = view.findViewById<View>(R.id.period) as AutofitTextView
-            interest = view.findViewById<View>(R.id.interest) as AutofitTextView
-            principal = view.findViewById<View>(R.id.principal) as AutofitTextView
-            balance = view.findViewById<View>(R.id.balance) as AutofitTextView
-        }
+        var mainContainer: ConstraintLayout = view.findViewById<View>(R.id.main_container) as ConstraintLayout
+        var number: AutofitTextView = view.findViewById<View>(R.id.number) as AutofitTextView
+        var period: AutofitTextView = view.findViewById<View>(R.id.period) as AutofitTextView
+        var interest: AutofitTextView = view.findViewById<View>(R.id.interest) as AutofitTextView
+        var principal: AutofitTextView = view.findViewById<View>(R.id.principal) as AutofitTextView
+        var balance: AutofitTextView = view.findViewById<View>(R.id.balance) as AutofitTextView
 
     }
 
     inner class AmortizationEndOfYearTypeViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        var year: AutofitTextView
-        var mainContainer: ConstraintLayout
-        init {
-            mainContainer = view.findViewById<View>(R.id.main_container) as ConstraintLayout
-            year = view.findViewById<View>(R.id.year) as AutofitTextView
-        }
+        var year: AutofitTextView = view.findViewById<View>(R.id.year) as AutofitTextView
+        var mainContainer: ConstraintLayout = view.findViewById<View>(R.id.main_container) as ConstraintLayout
     }
 
     class AmortizationModelClick(val clickListener: (model: AmortizationModel) -> Unit){
@@ -98,7 +88,7 @@ class AmortizationAdapter(
             }
             1 ->{
                 (holder as AmortizationEndOfYearTypeViewHolder).mainContainer.setBackgroundColor(ContextCompat.getColor(holder.mainContainer.rootView.context, if(model.numberOfItems % 2 == 0) R.color.adapter_amortization else R.color.color_white_gray))
-                holder.year.text = "End of Year " + model.countOfYear
+                holder.year.text = ContextCompat.getString(context,R.string.end_year) + model.countOfYear
             }
         }
     }

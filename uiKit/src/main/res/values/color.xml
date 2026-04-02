@@ -8,7 +8,7 @@
     <color name="color_gray_five">#2A3038</color>
     <color name="color_gray_six">#F2F2F7</color>
     <color name="background_color">#EFF1F5</color>
-    <color name="adapter_background">#FFFFFF</color>
+    <color name="adapter_background">#EFF1F5</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="white_black">#ffffff</color>
@@ -120,7 +120,7 @@
     <color name="theme_four">#DD3E48</color>
     <color name="theme_five">#BF89AE</color>
     <color name="theme_six">#5C88BE</color>
-    <color name="theme_seven">#59BC10</color>
+    <color name="theme_seven">#3A6728</color>
     <color name="theme_eight">#E87034</color>
     <color name="theme_nine">#F84C44</color>
     <color name="theme_ten">#8C47FB</color>

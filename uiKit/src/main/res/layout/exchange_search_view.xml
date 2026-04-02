@@ -26,7 +26,7 @@
         android:hint="@string/search"
         android:imeOptions="actionSearch"
         android:inputType="text"
-        style="@style/light_caption5"
+        style="@style/light_caption1"
         android:maxLines="1"
         android:textCursorDrawable="@drawable/input_text_cursor_color"
         android:paddingRight="@dimen/_10sdp"

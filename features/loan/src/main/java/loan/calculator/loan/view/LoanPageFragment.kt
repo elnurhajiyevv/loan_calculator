@@ -17,6 +17,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.Entry
@@ -136,7 +140,7 @@ class LoanPageFragment :
             viewmodel.navigate(
                 NavigationCommand.To(
                     LoanPageFragmentDirections.actionLoanPageFragmentToAmortizationFragment(
-                        name = "Loanify",
+                        name = "Loainfy",
                         startDate = Date().asFormattedDateWithDot(),
                         paidOff = calculatePaidOff(
                             termInMonth, Date()
@@ -427,14 +431,15 @@ class LoanPageFragment :
         val data = PieData(dataSet)
 
         val l = binding.chart.legend
-        l.verticalAlignment = Legend.LegendVerticalAlignment.CENTER
+        l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
         l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-        l.orientation = Legend.LegendOrientation.VERTICAL
+        l.orientation = Legend.LegendOrientation.HORIZONTAL
         l.xEntrySpace = 7f
         l.yEntrySpace = 5f
         l.yOffset = 0f
         l.textColor = resources.getColor(R.color.black_white)
         binding.chart.setEntryLabelColor(resources.getColor(R.color.black_white))
+        l.textSize = 17f
 
         data.setValueFormatter(PercentFormatter())
         data.setValueTextColor(resources.getColor(R.color.black_white))
@@ -561,6 +566,7 @@ class LoanPageFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupApplyButtonAboveKeyboard()
         // Create a new ad view.
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
@@ -579,6 +585,22 @@ class LoanPageFragment :
 
     }
 
+    /** Lifts bottom content (apply button, ad, scroll area) above the soft keyboard when typing. */
+    private fun setupApplyButtonAboveKeyboard() {
+        val root = binding.root
+        ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val keyboardOpen =
+                insets.isVisible(WindowInsetsCompat.Type.ime()) || imeInsets.bottom > 0
+            val gapAboveKeyboard = 8.dp
+            v.updatePadding(
+                bottom = if (keyboardOpen) imeInsets.bottom + gapAboveKeyboard else 0,
+            )
+            insets
+        }
+        ViewCompat.requestApplyInsets(root)
+    }
+
     private fun showPopUpDialog() {
         popUpBottomSheet {
             onOkButtonClicked = {
@@ -587,7 +609,7 @@ class LoanPageFragment :
             onCloseButtonClicked {
                 viewmodel.setShowCase(false)
             }
-        }?.show(childFragmentManager, PopUpBottomSheet::class.java.canonicalName)
+        }.show(childFragmentManager, PopUpBottomSheet::class.java.canonicalName)
     }
 
     private fun showShowcase() {
@@ -667,6 +689,5 @@ class LoanPageFragment :
             }
         }
     }
-
 
 }

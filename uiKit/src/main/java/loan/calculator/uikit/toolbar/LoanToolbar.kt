@@ -38,7 +38,6 @@ class LoanToolbar @JvmOverloads constructor(
     private var toolbarOption: Int = LoanToolbarOption.WITH_LEFT_AND_RIGHT.value
     private var toolbarRightActionIcon: Int = R.drawable.icon_save
     private var toolbarRightActionDeleteIcon: Int = R.drawable.ic_delete
-    private var toolbarLeftActionIcon: Int = R.drawable.ic_remove
 
     var navigationIcon: Drawable?
         get() {
@@ -64,10 +63,6 @@ class LoanToolbar @JvmOverloads constructor(
                     )
                     title = getString(R.styleable.LoanToolbar_loan_toolbar_title).toString()
                     titleStyle = getInt(R.styleable.LoanToolbar_android_textStyle,0)
-                    toolbarLeftActionIcon = getResourceId(
-                        R.styleable.LoanToolbar_loan_toolbar_left_action_icon,
-                        R.drawable.ic_remove
-                    )
                     toolbarRightActionIcon = getResourceId(
                         R.styleable.LoanToolbar_loan_toolbar_right_action_icon,
                         R.drawable.icon_save
@@ -88,10 +83,6 @@ class LoanToolbar @JvmOverloads constructor(
                 setToolbarActionIcon(toolbarOption)
                 setToolbarRightActionButtonIcon(toolbarRightActionIcon)
                 setToolbarRightActionDeleteButtonIcon(toolbarRightActionDeleteIcon)
-                setToolbarLeftActionButtonIcon(toolbarLeftActionIcon)
-                loanToolbarLeft.setOnClickListener {
-                    mOnToolbarLeftActionClick?.invoke()
-                }
                 loanToolbarRight.setOnClickListener {
                     mOnToolbarRightActionClick?.invoke()
                 }
@@ -105,16 +96,6 @@ class LoanToolbar @JvmOverloads constructor(
     fun getSaveIcon() = binding.loanToolbarRight
 
     fun getDeleteIcon() = binding.loanToolbarDelete
-
-    private fun setToolbarLeftActionButtonIcon(@DrawableRes resId: Int) {
-        this.toolbarLeftActionIcon = resId
-        binding.loanToolbarLeft.setImageDrawable(
-            ContextCompat.getDrawable(
-                context,
-                toolbarLeftActionIcon
-            )
-        )
-    }
 
     private fun setToolbarRightActionButtonIcon(@DrawableRes resId: Int) {
         this.toolbarRightActionIcon = resId
@@ -185,7 +166,7 @@ class LoanToolbar @JvmOverloads constructor(
         with(binding.root){
             navigationIcon = if(show){
                 ContextCompat.getDrawable(context, R.drawable.ic_back_arrow)
-            }else{
+            } else {
                 null
             }
         }
@@ -195,32 +176,26 @@ class LoanToolbar @JvmOverloads constructor(
         this.toolbarOption = toolbarAction
         when (this.toolbarOption) {
             LoanToolbarOption.WITH_LEFT.value -> {
-                binding.loanToolbarLeft.show()
                 binding.loanToolbarRight.gone()
                 binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITH_RIGHT.value -> {
-                binding.loanToolbarLeft.gone()
                 binding.loanToolbarRight.show()
                 binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITHOUT_LEFT_AND_RIGHT.value -> {
-                binding.loanToolbarLeft.gone()
                 binding.loanToolbarRight.gone()
                 binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITH_LEFT_AND_RIGHT.value -> {
-                binding.loanToolbarLeft.show()
                 binding.loanToolbarRight.show()
                 binding.loanToolbarDelete.gone()
             }
             LoanToolbarOption.WITH_FULL.value -> {
-                binding.loanToolbarLeft.show()
                 binding.loanToolbarRight.show()
                 binding.loanToolbarDelete.show()
             }
             LoanToolbarOption.WITH_FULL_RIGHT.value -> {
-                binding.loanToolbarLeft.gone()
                 binding.loanToolbarRight.show()
                 binding.loanToolbarDelete.show()
             }
@@ -231,9 +206,6 @@ class LoanToolbar @JvmOverloads constructor(
         binding.loanToolbarRight.setImageResource(resId)
     }
 
-    fun setToolbarLeftIcon(resId: Int) {
-        binding.loanToolbarLeft.setImageResource(resId)
-    }
 
     fun setNavigationOnClickListener(listener: (() -> Unit)?) {
         binding.root.setNavigationOnClickListener {
@@ -247,15 +219,6 @@ class LoanToolbar @JvmOverloads constructor(
     fun setTintToAllElements(@ColorInt color: Int) {
         binding.apply {
             loanToolbarTitle.setTextColor(color)
-
-            loanToolbarLeft.apply {
-                drawable?.let {
-                    val newDrawable = it.mutate()
-                    newDrawable.setTint(color)
-                    setImageDrawable(newDrawable)
-                }
-            }
-
             loanToolbarRight.apply {
                 drawable?.let {
                     val newDrawable = it.mutate()

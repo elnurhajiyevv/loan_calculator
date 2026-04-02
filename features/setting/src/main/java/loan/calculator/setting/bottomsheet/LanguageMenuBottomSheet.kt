@@ -25,6 +25,9 @@ class LanguageMenuBottomSheet : BaseNotSerializableBottomSheet() {
     private var onDismiss: (() -> Unit)? = null
     private var onBack: (() -> Unit)? = null
 
+    override var showFullscreen: Boolean
+        get() = false
+        set(value) {}
     lateinit var binding: DialogLanguageBinding
     lateinit var languageAdapter: LanguageAdapter
 

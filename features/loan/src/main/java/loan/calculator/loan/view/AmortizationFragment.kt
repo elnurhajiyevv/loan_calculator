@@ -20,7 +20,8 @@ import loan.calculator.uikit.R
 import loan.calculator.uikit.extension.getImageResource
 
 @AndroidEntryPoint
-class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect, AmortizationPageViewModel, FragmentAmortizationBinding>() {
+class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect,
+        AmortizationPageViewModel, FragmentAmortizationBinding>() {
 
     private val args by navArgs<AmortizationFragmentArgs>()
     override val bindingCallback: (LayoutInflater, ViewGroup?, Boolean) -> FragmentAmortizationBinding
@@ -35,14 +36,14 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         toolbar.setBackButtonVisibility(show = true)
 
         toolbar.setGravityLeft()
-        include.logo.setImageResource(args?.type?.getImageResource() ?: R.drawable.bg_balance)
-        include.titleText.text = args?.name
-        include.startDate.text = args?.startDate
-        include.paidOff.text = args?.paidOff
-        include.loan.text = "$ ${args?.loanAmount}"
-        include.interestRate.text = "${args?.interestRate}%"
-        include.frequency.text = args?.frequency
-        include.totalRepayment.text = "$ ${args?.totalRepayment}"
+        /*include.logo.setImageResource(args.type.getImageResource())
+        include.titleText.text = args.name*/
+        include.startDate.text = args.startDate
+        include.paidOff.text = args.paidOff
+        include.loan.text = "$ ${args.loanAmount}"
+        include.interestRate.text = "${args.interestRate}%"
+        include.frequency.text = args.frequency
+        include.totalRepayment.text = "$ ${args.totalRepayment}"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,7 +78,7 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
             } else
                 arrayList.add(it)
         }*/
-        amortizationAdapter = AmortizationAdapter(arrayList,AmortizationAdapter.AmortizationModelClick{
+        amortizationAdapter = AmortizationAdapter(context = requireContext(),arrayList,AmortizationAdapter.AmortizationModelClick{
             // handle on click listener
         })
         binding.recyclerViewAmortization.adapter = amortizationAdapter

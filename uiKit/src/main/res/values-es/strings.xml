@@ -31,7 +31,7 @@
     <string name="change_language_description">Toque para cambiar el idioma</string>
     <string name="rate_us">Califícanos en la tienda de aplicaciones</string>
     <string name="bug_report">Reporte de errores o sugerencias</string>
-    <string name="app_version">Versión actual de la aplicación: %1$s</string>
+    <string name="app_version">Versión: %1$s</string>
     <string name="save_loan_data">Guardar datos del préstamo</string>
     <string name="save">Guardar</string>
     <string name="cancel">Cancelar</string>
@@ -50,6 +50,7 @@
 
     <string name="loan_term">Plazo del préstamo:</string>
     <string name="year">año</string>
+    <string name="end_year">Fin de año </string>
     <string name="payment">Pago:</string>
     <string name="months">meses</string>
 
@@ -72,5 +73,19 @@
     <string name="save_guide">Mantén presionado el elemento para compartir</string>
     <string name="guide_title">¿No sabes cómo usarlo?</string>
     <string name="guide_description">Por favor, haz clic en el botón de \"Continuar\" y revisa la guía siguiendo las instrucciones</string>
+
+    <!-- Amortization columns -->
+    <string name="amortization_col_number">#</string>
+    <string name="amortization_col_period">Período</string>
+    <string name="amortization_col_interest">Interés</string>
+    <string name="amortization_col_principal">Principal</string>
+    <string name="amortization_col_balance">Saldo</string>
+
+    <!-- Seekbar labels -->
+    <string name="seekbar_left_value">1</string>
+    <string name="seekbar_right_value">30</string>
+
+    <!-- Ads -->
+    <string name="ad_label">Anuncio</string>
 
 </resources>

@@ -7,6 +7,7 @@ fun String.getImageResource(): Int{
     var returnResource = 0
     returnResource = when(this){
         // language
+        "AZ" -> R.drawable.ic_azerbaijan
         "TR" -> R.drawable.ic_turkey
         "RU" -> R.drawable.ic_russia
         "USA" -> R.drawable.ic_united_states

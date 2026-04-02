@@ -30,7 +30,7 @@ class BugReportBottomSheet : BaseNotSerializableBottomSheet() {
     }
 
     override var showFullscreen: Boolean
-        get() = true
+        get() = false
         set(value) {}
 
 

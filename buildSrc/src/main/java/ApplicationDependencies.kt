@@ -63,6 +63,10 @@ object ApplicationDependencies {
     const val hiltCore = "com.google.dagger:hilt-core:${ApplicationVersions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${ApplicationVersions.hiltVersion}"
 
+    // Needed for Kotlin 2.3.x metadata compatibility with Hilt/kapt processors.
+    // Dagger/Hilt guidance: add kotlin-metadata-jvm as an explicit kapt (or ksp) dependency.
+    const val kotlinMetadataJvm = "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
+
     //Results API
     private const val activityResult = "androidx.activity:activity-ktx:1.9.0"
     private const val fragmentResult = "androidx.fragment:fragment-ktx:1.7.0"

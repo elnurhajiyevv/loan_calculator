@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
@@ -43,6 +45,11 @@ class MainActivity : BaseActivity() {
             loan.calculator.save.R.id.savePdfFragment
         )
     }
+
+    /** When false, bottom nav stays hidden regardless of keyboard (e.g. amortization, save PDF). */
+    private var bottomNavVisibleForDestination = true
+
+    private var keyboardVisible = false
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(RuntimeLocaleChanger.wrapContext(newBase))
@@ -148,13 +155,35 @@ class MainActivity : BaseActivity() {
                 startDestinationArgs = startGraphArgs,
             )
         }
-        navController.addOnDestinationChangedListener { _, destination, arguments ->
-            if (destination.id !in hiddenBottomNavigationViews)
-                mainActivityMainBinding.bottomNavigationMenu.show()
-            else
-                mainActivityMainBinding.bottomNavigationMenu.gone()
+        bottomNavVisibleForDestination =
+            navController.currentDestination?.id !in hiddenBottomNavigationViews
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNavVisibleForDestination = destination.id !in hiddenBottomNavigationViews
+            updateBottomNavVisibility()
         }
         setupWithNavController(mainActivityMainBinding.bottomNavigationMenu, navController)
+        setupHideBottomNavWhenKeyboardVisible()
+    }
+
+    private fun updateBottomNavVisibility() {
+        val show = bottomNavVisibleForDestination && !keyboardVisible
+        if (show) mainActivityMainBinding.bottomNavigationMenu.show()
+        else mainActivityMainBinding.bottomNavigationMenu.gone()
+    }
+
+    private fun setupHideBottomNavWhenKeyboardVisible() {
+        val root = mainActivityMainBinding.root
+        ViewCompat.setOnApplyWindowInsetsListener(root) { _, insets ->
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val visible =
+                insets.isVisible(WindowInsetsCompat.Type.ime()) || imeInsets.bottom > 0
+            if (keyboardVisible != visible) {
+                keyboardVisible = visible
+                updateBottomNavVisibility()
+            }
+            insets
+        }
+        ViewCompat.requestApplyInsets(root)
     }
 
     data class FindStartGraphResult(

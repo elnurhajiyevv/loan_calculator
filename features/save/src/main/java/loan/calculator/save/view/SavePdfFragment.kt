@@ -137,9 +137,8 @@ class SavePdfFragment :
             requireContext(), "loan.calculator" + ".provider", file
         )
         try {
-            binding.pdfView.fromUri(path)
-                .spacing(20)
-                .load()
+            // PdfRendererView API uses initWithUri(...) in this version of the library.
+            binding.pdfView.initWithUri(path)
         } catch (e: Exception) {
             toast("There is no PDF Viewer ")
         }

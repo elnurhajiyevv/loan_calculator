@@ -23,7 +23,7 @@
         android:layout_marginHorizontal="@dimen/_32sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Are you sure to delete selected template? " />
+        android:text="@string/save_confirm_delete_template" />
 
     <loan.calculator.uikit.button.LoanButton
         android:id="@+id/cancel_button"

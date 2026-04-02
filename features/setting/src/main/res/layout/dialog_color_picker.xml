@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:paddingTop="@dimen/_16sdp"
+    android:paddingHorizontal="@dimen/_16sdp"
+    android:paddingBottom="@dimen/_32sdp"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dialog_title"
+        style="@style/bold_caption1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/setting_color_picker_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/colors_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_8sdp"
+        android:background="@drawable/radius_8dp_white"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_color_choice" />
+
+
+    <loan.calculator.uikit.button.LoanButton
+        android:id="@+id/yes_button"
+        style="@style/Loan_Button_Medium_Primary_Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center"
+        android:text="@string/apply"
+        app:layout_constraintEnd_toStartOf="@+id/no_button"
+        app:layout_constraintStart_toStartOf="@+id/colors_recycler"
+        app:layout_constraintTop_toBottomOf="@+id/colors_recycler" />
+
+    <loan.calculator.uikit.button.LoanButton
+        android:id="@+id/no_button"
+        style="@style/Loan_Button_Medium_Delete_Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:gravity="center"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/yes_button"
+        app:layout_constraintEnd_toEndOf="@+id/colors_recycler"
+        app:layout_constraintStart_toEndOf="@+id/yes_button"
+        app:layout_constraintTop_toTopOf="@+id/yes_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,7 +32,7 @@
     <string name="change_language_description">Tap to change language</string>
     <string name="rate_us">Rate us on the play store</string>
     <string name="bug_report">Bug report or suggestions</string>
-    <string name="app_version">Current app version: %1$s</string>
+    <string name="app_version">Version: %1$s</string>
     <string name="save_loan_data">Save loan data</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
@@ -50,6 +50,7 @@
 
     <string name="loan_term">Loan term:</string>
     <string name="year">year</string>
+    <string name="end_year">End of Year </string>
     <string name="payment">Payment:</string>
     <string name="months">months</string>
 
@@ -73,5 +74,19 @@
     <string name="loan_period_guide">Please enter year from 1 to 99\nMonth from 1 to 11</string>
     <string name="loan_payment_guide">This payment will be automatically calculated\n In further users will be able to change fields</string>
     <string name="save_guide">Long press on item for sharing</string>
+
+    <!-- Amortization columns -->
+    <string name="amortization_col_number">#</string>
+    <string name="amortization_col_period">Period</string>
+    <string name="amortization_col_interest">Interest</string>
+    <string name="amortization_col_principal">Principal</string>
+    <string name="amortization_col_balance">Balance</string>
+
+    <!-- Seekbar labels -->
+    <string name="seekbar_left_value">1</string>
+    <string name="seekbar_right_value">30</string>
+
+    <!-- Ads -->
+    <string name="ad_label">Ad</string>
 
 </resources>
