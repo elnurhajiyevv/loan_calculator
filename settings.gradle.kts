@@ -1,3 +1,6 @@
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
+}
 /*
  * Created by Elnur Hajiyev on 11/02/22, 11:19 AM
  * Copyright (c) 2021 . All rights reserved to Elnur

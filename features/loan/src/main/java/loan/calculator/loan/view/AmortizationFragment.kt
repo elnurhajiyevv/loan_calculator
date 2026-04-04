@@ -12,6 +12,7 @@ import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.extension.toast
 import loan.calculator.domain.entity.home.AmortizationModel
+import loan.calculator.domain.entity.home.SaveLoanObject
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.adapter.AmortizationAdapter
 import loan.calculator.loan.bottomsheet.SaveBottomSheet
@@ -44,6 +45,17 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         toolbar.setGravityLeft()
         /*include.logo.setImageResource(args.type.getImageResource())
         include.titleText.text = args.name*/
+
+        viewmodel.saveLoanObject.apply {
+            amount = args.loanAmount.getDoubleValue()
+            period = args.termInMonth.toInt().toString()
+            rate = args.interestRate
+            paymentAmount = args.totalRepayment
+            frequencyRate = args.frequency
+            totalPayment = args.totalRepayment
+            termInMonth = args.termInMonth
+            totalInterest = args.totalInterest
+        }
         include.startDate.text = args.startDate
         include.paidOff.text = args.paidOff
         include.loan.text = "$ ${args.loanAmount}"
@@ -106,20 +118,18 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
     }
 
     private fun saveValues(list: List<IconModel>) {
-        val saveLoanObject = SaveLoanObject(10.0,"","","","","," +
-                "","","")
         saveBottomSheet {
             itemList {
                 list
             }
-            setAmount(returnValueIfNull(saveLoanObject.amount))
-            setPeriod(saveLoanObject.period)
-            setRate(saveLoanObject.rate)
-            setPayment(saveLoanObject.paymentAmount)
-            setFrequency(saveLoanObject.frequencyRate)
-            setTermInMonth(saveLoanObject.termInMonth)
-            setTotalInterest(saveLoanObject.totalInterest)
-            setTotalPayment(saveLoanObject.totalPayment)
+            setAmount(returnValueIfNull(viewmodel.saveLoanObject.amount))
+            setPeriod(viewmodel.saveLoanObject.period)
+            setRate(viewmodel.saveLoanObject.rate)
+            setPayment(viewmodel.saveLoanObject.paymentAmount)
+            setFrequency(viewmodel.saveLoanObject.frequencyRate)
+            setTermInMonth(viewmodel.saveLoanObject.termInMonth)
+            setTotalInterest(viewmodel.saveLoanObject.totalInterest)
+            setTotalPayment(viewmodel.saveLoanObject.totalPayment)
             setIconModel(viewmodel.getIconModel())
             onSaveButtonClicked {
                 viewmodel.insertSavedLoan(
@@ -132,14 +142,3 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         }.show(childFragmentManager, SaveBottomSheet::class.java.canonicalName)
     }
 }
-
-data class SaveLoanObject(
-    val amount: Double,
-    val period: String,
-    val rate: String,
-    val paymentAmount: String,
-    val frequencyRate: String,
-    val termInMonth: String,
-    val totalInterest: String,
-    val totalPayment: String
-)

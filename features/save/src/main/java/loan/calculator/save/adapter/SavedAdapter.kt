@@ -14,7 +14,7 @@ import loan.calculator.uikit.extension.getImageResource
 
 class SavedAdapter(
     private val clickListener: SavedItemClick,
-    private val onLongClickListener: SavedItemOnLongClick
+    private val onShareClickListener: SavedItemShare
 ) : BaseAdapter<GetSavedLoanModel, SavedAdapter.SavedViewHolder>(areItemsTheSame = {
         oldItem, newItem -> oldItem == newItem}) {
 
@@ -32,15 +32,22 @@ class SavedAdapter(
         fun onClick(model: GetSavedLoanModel) = clickListener(model)
     }
 
-    class SavedItemOnLongClick(val onLongClickListener: (model: GetSavedLoanModel) -> Unit) {
-        fun onLongClick(model: GetSavedLoanModel) = onLongClickListener(model)
+    class SavedItemShare(val onShareClickListener: (model: GetSavedLoanModel) -> Unit) {
+        fun onShareClick(model: GetSavedLoanModel) = onShareClickListener(model)
     }
 
 
     class SavedViewHolder(private val binding: ItemSavedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(model: GetSavedLoanModel) {
+        fun bind(
+            model: GetSavedLoanModel,
+            clickListener: SavedItemClick,
+            onShareClickListener: SavedItemShare
+        ) {
             binding.apply {
+                mainContainer.setOnClickListener {
+                    clickListener.clickListener(model)
+                }
                 titleText.text = model.name
                 startDate.text = model.startDate
                 paidOff.text = model.paidOff
@@ -51,18 +58,14 @@ class SavedAdapter(
                 if(model.selected) selectedBackground.show() else selectedBackground.gone()
                 logo.setImageResource(model.type?.getImageResource() ?: R.drawable.bg_balance)
                 //logo.background.setTint(model.type?.getImageBackgroundColor(binding.root.context)?:R.color.light_blue_100)
+                shareItem.setOnClickListener {
+                    onShareClickListener.onShareClickListener(model)
+                }
             }
         }
     }
 
     override fun onBindViewHolder(holder: SavedViewHolder, position: Int) {
-        holder.bind(getItem(position))
-        holder.itemView.setOnClickListener {
-            clickListener.onClick(getItem(position))
-        }
-        holder.itemView.setOnLongClickListener {
-            onLongClickListener.onLongClick(getItem(position))
-            false
-        }
+        holder.bind(getItem(position), clickListener, onShareClickListener)
     }
 }

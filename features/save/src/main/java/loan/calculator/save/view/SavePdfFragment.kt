@@ -414,25 +414,25 @@ class SavePdfFragment :
         titleTable.addCell(itemCell)
 
 
-        val quantityCell = PdfPCell(Phrase("Period", appFontBold))
+        val quantityCell = PdfPCell(Phrase(getString(R.string.amortization_col_period), appFontBold))
         quantityCell.border = Rectangle.NO_BORDER
         quantityCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         quantityCell.paddingBottom = TABLE_TOP_PADDING
         titleTable.addCell(quantityCell)
 
-        val disAmount = PdfPCell(Phrase("Interest", appFontBold))
+        val disAmount = PdfPCell(Phrase(getString(R.string.amortization_col_interest), appFontBold))
         disAmount.border = Rectangle.NO_BORDER
         disAmount.horizontalAlignment = Rectangle.ALIGN_RIGHT
         disAmount.paddingBottom = TABLE_TOP_PADDING
         titleTable.addCell(disAmount)
 
-        val vat = PdfPCell(Phrase("Principal", appFontBold))
+        val vat = PdfPCell(Phrase(getString(R.string.amortization_col_principal), appFontBold))
         vat.border = Rectangle.NO_BORDER
         vat.horizontalAlignment = Rectangle.ALIGN_RIGHT
         vat.paddingBottom = TABLE_TOP_PADDING
         titleTable.addCell(vat)
 
-        val netAmount = PdfPCell(Phrase("Balance", appFontBold))
+        val netAmount = PdfPCell(Phrase(getString(R.string.amortization_col_balance), appFontBold))
         netAmount.horizontalAlignment = Rectangle.ALIGN_RIGHT
         netAmount.border = Rectangle.NO_BORDER
         netAmount.paddingBottom = TABLE_TOP_PADDING
@@ -448,7 +448,7 @@ class SavePdfFragment :
         priceDetailsTable.isLockedWidth = true
 
         appFontRegular.color = colorPrimary
-        val txtSubTotalCell = PdfPCell(Phrase("Loan Amount : ", appFontRegular))
+        val txtSubTotalCell = PdfPCell(Phrase(getString(R.string.loan_amount), appFontRegular))
         txtSubTotalCell.border = Rectangle.NO_BORDER
         txtSubTotalCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         txtSubTotalCell.paddingTop = 60f
@@ -462,7 +462,7 @@ class SavePdfFragment :
         priceDetailsTable.addCell(totalPriceCell)
 
 
-        val txtTaxCell = PdfPCell(Phrase("Total Interest : ", appFontRegular))
+        val txtTaxCell = PdfPCell(Phrase(getString(R.string.loan_result_interest_header), appFontRegular))
         txtTaxCell.border = Rectangle.NO_BORDER
         txtTaxCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         txtTaxCell.paddingTop = TEXT_TOP_PADDING
@@ -475,7 +475,7 @@ class SavePdfFragment :
         totalTaxCell.paddingRight = PADDING_EDGE
         priceDetailsTable.addCell(totalTaxCell)
 
-        val txtTotalCell = PdfPCell(Phrase("Total Repayment : ", appFontRegular))
+        val txtTotalCell = PdfPCell(Phrase(getString(R.string.total_repayment), appFontRegular))
         txtTotalCell.border = Rectangle.NO_BORDER
         txtTotalCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         txtTotalCell.paddingTop = TEXT_TOP_PADDING

@@ -68,13 +68,23 @@
             android:defaultValue="0" />
 
         <argument
+            android:name="termInYear"
+            app:argType="string"
+            android:defaultValue="0" />
+
+        <argument
             android:name="type"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="totalInterest"
             app:argType="string"
             android:defaultValue="" />
 
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="loan://amortization/{name}/{startDate}/{paidOff}/{loanAmount}/{interestRate}/{frequency}/{totalRepayment}/{termInMonth}/{type}" />
+            app:uri="loan://amortization/{name}/{startDate}/{paidOff}/{loanAmount}/{interestRate}/{frequency}/{totalRepayment}/{termInMonth}/{termInYear}/{type}/{totalInterest}" />
 
     </fragment>
 

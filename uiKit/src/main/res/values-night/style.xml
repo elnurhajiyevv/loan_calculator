@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.AppSplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/color_pure_white</item>
+        <item name="windowSplashScreenBackground">?attr/mainCustomColor</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_calc</item>
         <item name="windowSplashScreenAnimationDuration">1000</item>
         <item name="postSplashScreenTheme">@style/Theme.LoanAndroid</item>

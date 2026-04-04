@@ -86,7 +86,6 @@ class SavePageFragment :
         typeList.add(ExportTypeModel(getString(R.string.export_pdf), R.drawable.ic_pdf, 0))
         typeList.add(ExportTypeModel(getString(R.string.export_csv), R.drawable.ic_csv, 1))
         typeList.add(ExportTypeModel(getString(R.string.export_xls), R.drawable.ic_xls, 2))
-
     }
 
     private fun openExportTypeBottomModule(list: List<ExportTypeModel>) {
@@ -148,11 +147,15 @@ class SavePageFragment :
                         NavigationArgs.FREQUENCY to (it.compoundingFrequency ?: ""),
                         NavigationArgs.TOTAL_REPAYMENT to (it.totalRePayment ?: ""),
                         NavigationArgs.TERM_IN_MONTH to (it.termInMonth.toString()),
-                        NavigationArgs.TYPE to (it.type?:"")
+                        NavigationArgs.TERM_IN_YEAR to (it.termInMonth.toString()),
+                        NavigationArgs.TYPE to (it.type?:""),
+                        NavigationArgs.TOTAL_INTEREST to (it.totalInterest.toString()),
                     ), false
                 )
             )
-        }, SavedAdapter.SavedItemOnLongClick { selected ->
+        }, SavedAdapter.SavedItemShare { selected ->
+
+
 
             // set selected item to shared
             viewmodel.selectedItem = selected
@@ -160,7 +163,9 @@ class SavePageFragment :
             viewmodel.list.forEach {
                 it.selected = selected.name == it.name
             }
-            updateListAdapter(true)
+            //updateListAdapter(true)
+            getListOfExport()
+            openExportTypeBottomModule(typeList)
         })
         binding.recyclerViewSaved.adapter = savedAdapter
     }

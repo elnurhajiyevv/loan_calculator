@@ -7,15 +7,14 @@
     android:layout_marginBottom="@dimen/_5sdp"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
-    android:id="@+id/main_layout"
-    android:paddingHorizontal="@dimen/_15sdp"
-    android:paddingVertical="@dimen/_10sdp">
+    android:id="@+id/main_layout">
 
     <ImageView
         android:id="@+id/logo"
         style="@style/bold_caption1"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_4sdp"
         tools:background="@drawable/ic_pdf"
         android:padding="@dimen/_1sdp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,16 +35,25 @@
 
     <TextView
         android:id="@+id/status"
-        style="@style/regular_caption1"
+        style="@style/light_caption1"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/_5sdp"
         android:gravity="center"
-        android:visibility="visible"
+        android:text="@string/commint_soon"
+        android:layout_marginRight="@dimen/_4sdp"
         android:textColor="@color/red"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logo"
-        android:text="@string/commint_soon" />
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/color_gray_one"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

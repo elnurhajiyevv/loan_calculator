@@ -3,11 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/radius_1_white"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:clickable="true">
+    android:layout_marginHorizontal="@dimen/_4sdp"
+    android:layout_marginBottom="@dimen/_4sdp"
+    android:paddingRight="@dimen/_4sdp"
+    android:background="@drawable/radius_8dp_white">
 
     <View
         android:id="@+id/selected_background"
@@ -25,7 +27,8 @@
         style="@style/bold_caption1"
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:background="@drawable/bg_item"
         android:padding="@dimen/_10sdp"
         android:src="@drawable/ic_home"
@@ -38,19 +41,31 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="@+id/logo"
         tools:text="Masin krediti" />
+
+    <ImageView
+        android:id="@+id/share_item"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="@drawable/ic_share_item"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
 
     <TextView
         android:id="@+id/start_date_text"
         style="@style/regular_caption1"
         android:layout_width="0dp"
-        android:layout_marginTop="@dimen/_4sdp"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="@+id/title_text"
-        app:layout_constraintTop_toBottomOf="@+id/title_text"
-        android:text="@string/start_date" />
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/start_date"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:textColor="@color/gray_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
         android:id="@+id/start_date"
@@ -71,9 +86,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
-        app:layout_constraintStart_toStartOf="@+id/title_text"
-        app:layout_constraintTop_toBottomOf="@+id/start_date_text"
-        android:text="@string/paid_off" />
+        android:text="@string/paid_off"
+        android:textColor="@color/gray_text"
+        app:layout_constraintStart_toStartOf="@+id/start_date_text"
+        app:layout_constraintTop_toBottomOf="@+id/start_date_text" />
 
     <TextView
         android:id="@+id/paid_off"
@@ -95,9 +111,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
-        app:layout_constraintStart_toStartOf="@+id/title_text"
-        app:layout_constraintTop_toBottomOf="@+id/paid_off_text"
-        android:text="@string/loan_amount" />
+        android:text="@string/loan_amount"
+        android:textColor="@color/gray_text"
+        app:layout_constraintStart_toStartOf="@+id/paid_off_text"
+        app:layout_constraintTop_toBottomOf="@+id/paid_off_text" />
 
     <TextView
         android:id="@+id/loan"
@@ -119,9 +136,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
-        app:layout_constraintStart_toStartOf="@+id/title_text"
-        app:layout_constraintTop_toBottomOf="@+id/loan_amount_text"
-        android:text="@string/interest_rate" />
+        android:text="@string/interest_rate"
+        android:textColor="@color/gray_text"
+        app:layout_constraintStart_toStartOf="@+id/loan_amount_text"
+        app:layout_constraintTop_toBottomOf="@+id/loan_amount_text" />
 
     <TextView
         android:id="@+id/interest_rate"
@@ -142,9 +160,10 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
-        app:layout_constraintStart_toStartOf="@+id/title_text"
-        app:layout_constraintTop_toBottomOf="@+id/interest_rate_text"
-        android:text="@string/compounding_frequency" />
+        android:text="@string/compounding_frequency"
+        android:textColor="@color/gray_text"
+        app:layout_constraintStart_toStartOf="@+id/interest_rate_text"
+        app:layout_constraintTop_toBottomOf="@+id/interest_rate_text" />
 
     <TextView
         android:id="@+id/frequency"
@@ -165,10 +184,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
-        android:text="@string/total_repayment"
         android:layout_marginBottom="@dimen/_20sdp"
+        android:text="@string/total_repayment"
+        android:textColor="@color/gray_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/title_text"
+        app:layout_constraintStart_toStartOf="@+id/frequency_text"
         app:layout_constraintTop_toBottomOf="@+id/frequency_text" />
 
     <TextView

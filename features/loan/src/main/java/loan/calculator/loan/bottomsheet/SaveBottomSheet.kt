@@ -1,6 +1,5 @@
 package loan.calculator.loan.bottomsheet
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
@@ -73,7 +72,6 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
         initView()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun initView() {
         with(binding) {
             mainLayout.addCorners(
@@ -91,13 +89,16 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
             )
 
             binding.nameEdittext.setText(iconModel?.iconResource?.type)
+            selectedType = iconModel?.iconResource?.type.orEmpty()
             iconAdapter = IconAdapter(IconAdapter.IconItemClick {
                 binding.nameEdittext.setText(it.iconResource.type)
                 onIconSelection?.invoke(it)
                 selectedType = it.iconResource.type
             })
             recyclerViewIcon.adapter = iconAdapter
-            iconAdapter.submitList(itemList)
+            iconAdapter.submitList(itemList.orEmpty()) {
+                iconAdapter.applyInitialSelection(iconModel?.iconResource)
+            }
 
             cancelButton.setOnClickListener {
                 this@SaveBottomSheet.dismiss()

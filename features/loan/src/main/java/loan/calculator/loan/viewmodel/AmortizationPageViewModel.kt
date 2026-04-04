@@ -3,6 +3,7 @@ package  loan.calculator.loan.viewmodel
 import loan.calculator.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import loan.calculator.domain.entity.enum.SELECT_TYPE_LOAN
+import loan.calculator.domain.entity.home.SaveLoanObject
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.usecase.savepage.GetIconModelUseCase
@@ -22,6 +23,11 @@ class AmortizationPageViewModel @Inject constructor(
 ) : BaseViewModel<AmortizationPageState, AmortizationPageEffect>() {
 
     var selectedType = SELECT_TYPE_LOAN.BLOCK.type
+
+    val saveLoanObject = SaveLoanObject(
+        0.0, "", "", "", "", "," +
+                "", "", ""
+    )
 
     fun calculateMonthly(total: Double, period: Double): Double {
         return total / period
@@ -131,5 +137,9 @@ class AmortizationPageViewModel @Inject constructor(
                 postEffect(AmortizationPageEffect.InsertSavedLoan(model))
             }
         }
+    }
+
+    fun getPeriodInMonth(year: Int, month: Int): Int{
+        return (year * 12) + month
     }
 }

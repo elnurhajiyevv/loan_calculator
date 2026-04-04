@@ -21,4 +21,19 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_home" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_selected_indicator"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:contentDescription="@null"
+        android:elevation="@dimen/_2sdp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_checked"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -150,7 +150,9 @@ class LoanPageFragment :
                         frequency = type.selectedItem.toString(),
                         totalRepayment = returnValueIfNull(binding.loanPaymentEdittext),
                         termInMonth = termInMonth.toString(),
-                        type = "home"
+                        termInYear = returnValueIfNull(binding.loanYearEdittext).toInt().toString(),
+                        type = "home",
+                        totalInterest = binding.totalInterestValue.text.toString()
                     )
                 )
             )
