@@ -57,6 +57,13 @@ fun returnValueIfNull(editText: EditText): String{
         editText.text.toString()
 }
 
+fun returnValueIfNull(amount: Double): String{
+    return if(amount.toString().trim().isEmpty())
+        amount.toString()
+    else
+        amount.toString()
+}
+
 fun getFloatValue(s: String): Float {
     return if (s.isNotEmpty()) s.replace(" ", "").replace("$", "")
         .toFloat() else 0.0F

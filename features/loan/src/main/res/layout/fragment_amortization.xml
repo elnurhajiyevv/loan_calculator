@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:loan_toolbar_option="without_left_and_right"
+        app:loan_toolbar_option="with_left_and_right"
+        app:loan_toolbar_right_action_icon="@drawable/icon_save"
         app:loan_toolbar_title="@string/amortization_title" />
 
     <include

@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/header"
-        style="@style/bold_caption2"
+        style="@style/bold_caption1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
@@ -31,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_16sdp"
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white_gray"
-            android:padding="@dimen/_10sdp"
+
             android:paddingBottom="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/_4sdp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,20 +68,24 @@
 
             <TextView
                 android:id="@+id/name_text"
-                style="@style/bold_caption1"
+                style="@style/regular_caption1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/name"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:textColor="@color/gray_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView_icon" />
 
             <EditText
                 android:id="@+id/name_edittext"
-                style="@style/regular_caption3"
+                style="@style/regular_caption2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_4sdp"
+                android:layout_marginLeft="@dimen/_4sdp"
                 android:background="@drawable/bg_etittext"
                 android:hint="@string/loan_hint_value"
                 android:imeOptions="actionDone"
@@ -89,7 +93,7 @@
                 android:maxLines="1"
                 android:paddingVertical="@dimen/_9sdp"
                 android:paddingLeft="@dimen/_4sdp"
-                android:textColor="@color/gray_text"
+                android:textColor="@color/color_pure_black"
                 android:textColorHint="@color/gray_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -109,24 +113,29 @@
 
             <TextView
                 android:id="@+id/start_text"
-                style="@style/bold_caption1"
+                style="@style/regular_caption1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/start_date"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:textColor="@color/gray_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
 
             <TextView
                 android:id="@+id/data_text"
-                style="@style/regular_caption3"
+                style="@style/regular_caption2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_4sdp"
                 android:background="@drawable/bg_etittext"
                 android:hint="@string/loan_hint_date_example"
+                android:layout_marginLeft="@dimen/_4sdp"
                 android:paddingVertical="@dimen/_9sdp"
                 android:paddingLeft="@dimen/_4sdp"
+                android:textColor="@color/color_pure_black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/start_text" />
@@ -151,26 +160,24 @@
         style="@style/Loan_Button_Medium_Delete_Filled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_4sdp"
         android:gravity="center"
         android:text="@string/cancel"
-        android:layout_marginTop="@dimen/_32sdp"
-        android:layout_marginRight="@dimen/_4sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/save_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/nestedScrollView2" />
 
     <loan.calculator.uikit.button.LoanButton
         android:id="@+id/save_button"
         style="@style/Loan_Button_Medium_Primary_Filled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_5sdp"
         android:layout_marginLeft="@dimen/_4sdp"
         android:gravity="center"
         android:text="@string/ok"
-        app:layout_constraintStart_toEndOf="@+id/cancel_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nestedScrollView2"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button"
         app:layout_constraintTop_toTopOf="@+id/cancel_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

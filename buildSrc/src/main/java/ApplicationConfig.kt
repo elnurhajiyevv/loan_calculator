@@ -7,7 +7,7 @@
 //app level config constants
 object ApplicationConfig {
     const val compileSdk = 34
-    const val buildToolsVersion = "34.0.0"
+    const val buildToolsVersion = "35.0.0"
     const val minSdk = 24
     const val targetSdk = 34
     const val versionCode = 8

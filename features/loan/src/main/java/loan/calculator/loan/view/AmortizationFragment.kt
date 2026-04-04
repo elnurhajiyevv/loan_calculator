@@ -10,14 +10,20 @@ import loan.calculator.common.extensions.getDoubleValue
 import loan.calculator.common.extensions.getIntValue
 import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.core.base.BaseFragment
+import loan.calculator.core.extension.toast
 import loan.calculator.domain.entity.home.AmortizationModel
+import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.adapter.AmortizationAdapter
+import loan.calculator.loan.bottomsheet.SaveBottomSheet
+import loan.calculator.loan.bottomsheet.saveBottomSheet
 import loan.calculator.loan.databinding.FragmentAmortizationBinding
 import loan.calculator.loan.effect.AmortizationPageEffect
+import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.AmortizationPageState
 import loan.calculator.loan.viewmodel.AmortizationPageViewModel
 import loan.calculator.uikit.R
 import loan.calculator.uikit.extension.getImageResource
+import loan.calculator.uikit.util.returnValueIfNull
 
 @AndroidEntryPoint
 class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect,
@@ -44,6 +50,10 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         include.interestRate.text = "${args.interestRate}%"
         include.frequency.text = args.frequency
         include.totalRepayment.text = "$ ${args.totalRepayment}"
+
+        toolbar.setToolbarRightActionClick {
+            viewmodel.getIconModelList()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,4 +93,53 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         })
         binding.recyclerViewAmortization.adapter = amortizationAdapter
     }
+
+    override fun observeEffect(effect: AmortizationPageEffect) {
+        when(effect){
+            is AmortizationPageEffect.ListOfIconModel ->{
+                saveValues(effect.list)
+            }
+            is AmortizationPageEffect.InsertSavedLoan -> {
+                toast("Your loan added to favorite.")
+            }
+        }
+    }
+
+    private fun saveValues(list: List<IconModel>) {
+        val saveLoanObject = SaveLoanObject(10.0,"","","","","," +
+                "","","")
+        saveBottomSheet {
+            itemList {
+                list
+            }
+            setAmount(returnValueIfNull(saveLoanObject.amount))
+            setPeriod(saveLoanObject.period)
+            setRate(saveLoanObject.rate)
+            setPayment(saveLoanObject.paymentAmount)
+            setFrequency(saveLoanObject.frequencyRate)
+            setTermInMonth(saveLoanObject.termInMonth)
+            setTotalInterest(saveLoanObject.totalInterest)
+            setTotalPayment(saveLoanObject.totalPayment)
+            setIconModel(viewmodel.getIconModel())
+            onSaveButtonClicked {
+                viewmodel.insertSavedLoan(
+                    model = it
+                )
+            }
+            onIconSelection {
+                viewmodel.setIconModel(it)
+            }
+        }.show(childFragmentManager, SaveBottomSheet::class.java.canonicalName)
+    }
 }
+
+data class SaveLoanObject(
+    val amount: Double,
+    val period: String,
+    val rate: String,
+    val paymentAmount: String,
+    val frequencyRate: String,
+    val termInMonth: String,
+    val totalInterest: String,
+    val totalPayment: String
+)
