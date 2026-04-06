@@ -18,7 +18,7 @@ import javax.inject.Inject
 class CalculatorApplication : Application() {
 
     @Inject lateinit var initializers: AppInitializers
-    private val ONESIGNAL_APP_ID = ""
+    private val ONESIGNAL_APP_ID = "123"
 
     override fun onCreate() {
         super.onCreate()
