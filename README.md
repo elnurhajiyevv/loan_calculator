@@ -57,39 +57,39 @@ The project is suitable as:
 ### Feature Set
 
 - **Loan calculation**
-  - Monthly payment and total payable amount.
-  - **Amortization schedule** with principal/interest split per period.
-  - Support for different term lengths and interest rates.
+    - Monthly payment and total payable amount.
+    - **Amortization schedule** with principal/interest split per period.
+    - Support for different term lengths and interest rates.
 
 - **Saving / investment planner**
-  - Plan savings over time with contributions and interest assumptions.
-  - Visual breakdown per period/year.
+    - Plan savings over time with contributions and interest assumptions.
+    - Visual breakdown per period/year.
 
 - **Settings**
-  - Change language (supports multiple locales, e.g., `en`, `tr`, `ru`, `es`).  
-  - Manage preferences related to notifications, currency formatting, etc.
+    - Change language (supports multiple locales, e.g., `en`, `tr`, `ru`, `es`).
+    - Manage preferences related to notifications, currency formatting, etc.
 
 - **Saved scenarios**
-  - Persisted loan/saving configurations using **Room** for quick comparison.
+    - Persisted loan/saving configurations using **Room** for quick comparison.
 
 - **Analytics & engagement**
-  - **Firebase Analytics** and **Crashlytics** integration.
-  - **OneSignal** & Play Services for push / engagement use‑cases.
+    - **Firebase Analytics** and **Crashlytics** integration.
+    - **OneSignal** & Play Services for push / engagement use‑cases.
 
 ---
 
 ### Architecture
 
 - **Pattern**: **MVI (Model–View–Intent)** with:
-  - **State**: Full UI state of the screen (rendered every time).
-  - **Effect**: One‑shot events (navigation, toasts, dialogs, etc.).
+    - **State**: Full UI state of the screen (rendered every time).
+    - **Effect**: One‑shot events (navigation, toasts, dialogs, etc.).
 
 - **Layering** (high‑level flow):
-  - UI (Activities/Fragments/ViewBinding)  
-    → **ViewModel (MVI)**  
-    → **Domain (UseCases)**  
-    → **Repositories (Data layer)**  
-    → **Local/Remote data sources (Room, network, etc.)**
+    - UI (Activities/Fragments/ViewBinding)  
+      → **ViewModel (MVI)**  
+      → **Domain (UseCases)**  
+      → **Repositories (Data layer)**  
+      → **Local/Remote data sources (Room, network, etc.)**
 
 - **Module dependencies diagram**
 
@@ -142,43 +142,43 @@ Root multi‑module definition (`settings.gradle.kts`):
 #### Core
 
 - **Responsibility**: Cross‑cutting infrastructure for the app:
-  - Base `ViewModel`s and MVI scaffolding.
-  - Navigation commands and helpers.
-  - Common loading / error handling abstractions.
-  - Delegates for repetitive behaviors.
+    - Base `ViewModel`s and MVI scaffolding.
+    - Navigation commands and helpers.
+    - Common loading / error handling abstractions.
+    - Delegates for repetitive behaviors.
 
 #### Common
 
 - **Responsibility**: Pure utilities & shared helpers:
-  - Extension functions.
-  - Common methods/constants.
-  - Small, framework‑independent utilities.
+    - Extension functions.
+    - Common methods/constants.
+    - Small, framework‑independent utilities.
 
 #### Features (`loan`, `save`, `setting`)
 
 - **Responsibility**: End‑user features with their own screens, states, and navigation.
 - Each feature uses:
-  - `domain` use‑cases.
-  - `data` repositories.
-  - `core` base abstractions.
-  - `common` utilities.
-  - `uiKit` components.
+    - `domain` use‑cases.
+    - `data` repositories.
+    - `core` base abstractions.
+    - `common` utilities.
+    - `uiKit` components.
 
 #### UiKit
 
 - **Responsibility**: Design system and reusable UI kit.
 - Contains:
-  - Buttons, toolbars, labels, custom views.
-  - Fonts, colors, themes, text styles.
-  - Layouts for lists, amortization tables, saved items, search, etc.
-  - Custom animations and motion scenes.
+    - Buttons, toolbars, labels, custom views.
+    - Fonts, colors, themes, text styles.
+    - Layouts for lists, amortization tables, saved items, search, etc.
+    - Custom animations and motion scenes.
 
 #### BuildSrc
 
 - **Responsibility**: Centralized Gradle configuration:
-  - Dependency versions (`ApplicationVersions`).
-  - Common plugin versions and module IDs.
-  - Application configuration (`ApplicationConfig`, `ApplicationModules`, `ApplicationDependencies`).
+    - Dependency versions (`ApplicationVersions`).
+    - Common plugin versions and module IDs.
+    - Application configuration (`ApplicationConfig`, `ApplicationModules`, `ApplicationDependencies`).
 
 #### ShowCase
 
@@ -235,8 +235,8 @@ cd loan_calculator
 
 - The `app` module has standard **`debug`** and **`release`** build types.
 - Release build comes with:
-  - ProGuard/R8 rules.
-  - Crashlytics and analytics configuration.
+    - ProGuard/R8 rules.
+    - Crashlytics and analytics configuration.
 - To build from the command line:
 
 ```bash
@@ -251,10 +251,10 @@ cd loan_calculator
 ### Code Style & Static Analysis
 
 - **Detekt** is applied to all modules (`allprojects` block in `build.gradle.kts`):
-  - Input: `src/main/java`, `src/main/kotlin`
-  - Parallel execution enabled.
-  - Custom configuration via `.detekt/detekt-config.yml`.
-  - HTML report generated at `build/reports/detekt.html` per module.
+    - Input: `src/main/java`, `src/main/kotlin`
+    - Parallel execution enabled.
+    - Custom configuration via `.detekt/detekt-config.yml`.
+    - HTML report generated at `build/reports/detekt.html` per module.
 
 - To run Detekt manually:
 
@@ -271,9 +271,9 @@ Following Detekt recommendations keeps code quality high and consistent across m
 - **Dagger Hilt** is used as the main DI framework.
 - The app module applies `dagger.hilt.android.plugin` and uses `kapt` for code‑gen.
 - Typical patterns:
-  - `@HiltAndroidApp` for the application class.
-  - `@AndroidEntryPoint` on Activities/Fragments.
-  - `@Module` + `@InstallIn` for providing repositories, DAOs, Retrofit APIs, etc.
+    - `@HiltAndroidApp` for the application class.
+    - `@AndroidEntryPoint` on Activities/Fragments.
+    - `@Module` + `@InstallIn` for providing repositories, DAOs, Retrofit APIs, etc.
 
 The goal is that **feature modules** and **domain layer** depend on abstractions and can be tested in isolation, while Hilt wires implementations in the app and data layers.
 
@@ -283,12 +283,12 @@ The goal is that **feature modules** and **domain layer** depend on abstractions
 
 - **Repositories** are the only entry point into the `data` layer.
 - Under the hood, a repository may talk to:
-  - **Room DAOs** for local persistence (e.g., saved loans, savings plans).
-  - Potential remote data sources (e.g., exchange rates or configuration).
+    - **Room DAOs** for local persistence (e.g., saved loans, savings plans).
+    - Potential remote data sources (e.g., exchange rates or configuration).
 
 - **Room** is used to:
-  - Store amortization entries, saved scenarios, user settings, etc.
-  - Provide offline‑first behavior where appropriate.
+    - Store amortization entries, saved scenarios, user settings, etc.
+    - Provide offline‑first behavior where appropriate.
 
 The domain layer does not know about Room or any specific persistence framework; it only uses repository interfaces.
 
@@ -297,14 +297,14 @@ The domain layer does not know about Room or any specific persistence framework;
 ### Coroutines & Concurrency
 
 - Kotlin Coroutines are used throughout for asynchronous work such as:
-  - Long‑running calculations (amortization).
-  - Database calls.
-  - Network / I/O (if present).
+    - Long‑running calculations (amortization).
+    - Database calls.
+    - Network / I/O (if present).
 
 - Key ideas applied:
-  - **Structured concurrency** via `viewModelScope` and feature‑specific scopes.
-  - `launch` for fire‑and‑forget UI operations, `async/await` for parallel work where needed.
-  - Proper dispatchers for I/O vs. Main operations.
+    - **Structured concurrency** via `viewModelScope` and feature‑specific scopes.
+    - `launch` for fire‑and‑forget UI operations, `async/await` for parallel work where needed.
+    - Proper dispatchers for I/O vs. Main operations.
 
 This keeps the UI responsive while computations and data operations happen off the main thread.
 
@@ -313,9 +313,9 @@ This keeps the UI responsive while computations and data operations happen off t
 ### Analytics, Crash Reporting & Notifications
 
 - **Firebase BOM** is configured in `app/build.gradle.kts`:
-  - Analytics.
-  - Crashlytics.
-  - Authentication support (if enabled).
+    - Analytics.
+    - Crashlytics.
+    - Authentication support (if enabled).
 
 - **OneSignal** is added to enable advanced push notifications and engagement features.
 
