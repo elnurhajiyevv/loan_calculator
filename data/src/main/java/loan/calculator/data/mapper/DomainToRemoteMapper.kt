@@ -19,5 +19,6 @@ fun GetSavedLoanLocalDto.toRemote(
     totalRePayment = totalRePayment,
     termInMonth = termInMonth,
     totalInterest = totalInterest,
-    totalPayment = totalPayment
+    totalPayment = totalPayment,
+    currency = currency
 )

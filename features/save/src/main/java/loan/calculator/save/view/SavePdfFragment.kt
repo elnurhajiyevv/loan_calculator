@@ -28,6 +28,8 @@ import com.itextpdf.text.Phrase
 import com.itextpdf.text.Rectangle
 import com.itextpdf.text.pdf.BaseFont
 import com.itextpdf.text.pdf.PdfContentByte
+import com.itextpdf.text.pdf.PdfGState
+import com.itextpdf.text.pdf.PdfPageEventHelper
 import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.PdfWriter
@@ -42,11 +44,8 @@ import loan.calculator.save.effect.SavePdfEffect
 import loan.calculator.save.state.SavePdfState
 import loan.calculator.save.viewmodel.SavePdfViewModel
 import loan.calculator.uikit.util.getThemeColor
-import java.io.BufferedInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 import java.text.NumberFormat
@@ -86,24 +85,74 @@ class SavePdfFragment :
     val FONT_SIZE_DEFAULT = 18f
     val FONT_SIZE_SMALL = 12f
     val FONT_SIZE_BIG = 24f
+    val FONT_SIZE_VERY_BIG = 48f
+    private val copyrightWatermarkText = "LOANIFY"
+    private val copyrightWatermarkFontSize = 72f
+    private val copyrightWatermarkRotationDeg = -38f
+    private val copyrightWatermarkOpacity = 0.22f
 
-    var basfontRegular: BaseFont = BaseFont.createFont()
-    var appFontRegular = Font(basfontRegular, FONT_SIZE_DEFAULT)
+    private fun loanPdfFileName(): String {
+        val raw = args.getSavedLoanModel.name?.trim().orEmpty().ifBlank { "loan" }
+        val safe = raw.replace(Regex("""[<>:"/\\|?*\u0000-\u001F]"""), "_").trim()
+        val base = if (safe.isEmpty()) "loan" else safe
+        return "$base.pdf"
+    }
 
-    var basfontBold: BaseFont = BaseFont.createFont()
+    private lateinit var basfontRegular: BaseFont
+    private lateinit var basfontBold: BaseFont
+    private lateinit var basfontLight: BaseFont
+    private lateinit var basfontSemiBold: BaseFont
 
-    //BaseFont.createFont("assets/fonts/app_font_bold.ttf", "UTF-8", BaseFont.EMBEDDED)
-    var appFontBold = Font(basfontBold, FONT_SIZE_DEFAULT)
+    private lateinit var appFontRegular: Font
+    private lateinit var appFontBold: Font
+    private lateinit var appFontLight: Font
+    private lateinit var appFontSemiBold: Font
 
-    var basfontLight: BaseFont = BaseFont.createFont()
+    /** Noto Sans from assets + IDENTITY_H so symbols like ₺, €, £ render in the PDF. */
+    private fun copyAssetFontToCache(assetPath: String): File {
+        val name = assetPath.substringAfterLast('/')
+        val out = File(requireContext().cacheDir, "pdf_embed_$name")
+        if (!out.exists()) {
+            requireContext().assets.open(assetPath).use { input ->
+                FileOutputStream(out).use { output -> input.copyTo(output) }
+            }
+        }
+        return out
+    }
 
-    //BaseFont.createFont("assets/fonts/app_font_light.ttf", "UTF-8", BaseFont.EMBEDDED)
-    var appFontLight = Font(basfontLight, FONT_SIZE_SMALL)
+    private fun rebuildAppFonts() {
+        appFontRegular = Font(basfontRegular, FONT_SIZE_DEFAULT)
+        appFontBold = Font(basfontBold, FONT_SIZE_DEFAULT)
+        appFontLight = Font(basfontLight, FONT_SIZE_SMALL)
+        appFontSemiBold = Font(basfontSemiBold, 30f)
+    }
 
-    var basfontSemiBold: BaseFont = BaseFont.createFont()
-
-    //BaseFont.createFont("assets/fonts/app_font_semi_bold.ttf", "UTF-8", BaseFont.EMBEDDED)
-    var appFontSemiBold = Font(basfontSemiBold, 30f)
+    private fun setupPdfFonts() {
+        try {
+            val regularFile = copyAssetFontToCache("fonts/NotoSans-Regular.ttf")
+            val boldFile = copyAssetFontToCache("fonts/NotoSans-Bold.ttf")
+            basfontRegular = BaseFont.createFont(
+                regularFile.absolutePath,
+                BaseFont.IDENTITY_H,
+                BaseFont.EMBEDDED
+            )
+            basfontBold = BaseFont.createFont(
+                boldFile.absolutePath,
+                BaseFont.IDENTITY_H,
+                BaseFont.EMBEDDED
+            )
+            basfontLight = basfontRegular
+            basfontSemiBold = basfontBold
+            rebuildAppFonts()
+        } catch (e: Exception) {
+            Log.e("SavePdfFragment", "Unicode font load failed, using default", e)
+            basfontRegular = BaseFont.createFont()
+            basfontBold = BaseFont.createFont()
+            basfontLight = basfontRegular
+            basfontSemiBold = basfontBold
+            rebuildAppFonts()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -112,14 +161,39 @@ class SavePdfFragment :
         //checkWriteExternalPermission()
     }
 
-    private fun generatePDF(){
+    private fun generatePDF() {
+        setupPdfFonts()
         colorPrimary = BaseColor(getThemeColor(requireContext()))
         appFontRegular.color = BaseColor.WHITE
         val doc = Document(A4, 0f, 0f, 0f, 20f)
         val outPath = requireActivity().getExternalFilesDir(null)
-            .toString() + "/${args.getSavedLoanModel.name}.pdf" //location where the pdf will store
+            .toString() + "/" + loanPdfFileName()
         Log.d("loc", outPath)
         val writer = PdfWriter.getInstance(doc, FileOutputStream(outPath))
+        writer.pageEvent = object : PdfPageEventHelper() {
+            override fun onEndPage(writer: PdfWriter, document: Document) {
+                val cb: PdfContentByte = writer.directContent
+                cb.saveState()
+                val gState = PdfGState()
+                gState.setFillOpacity(copyrightWatermarkOpacity)
+                cb.setGState(gState)
+                cb.setColorFill(BaseColor.LIGHT_GRAY)
+                cb.beginText()
+                cb.setFontAndSize(basfontRegular, copyrightWatermarkFontSize)
+                val page = document.pageSize
+                val cx = page.left + (page.right - page.left) / 2f
+                val cy = page.bottom + (page.top - page.bottom) / 2f
+                cb.showTextAligned(
+                    Element.ALIGN_CENTER,
+                    copyrightWatermarkText,
+                    cx,
+                    cy,
+                    copyrightWatermarkRotationDeg
+                )
+                cb.endText()
+                cb.restoreState()
+            }
+        }
         doc.open()
         //Header Column Init with width nad no. of columns
         initInvoiceHeader(doc)
@@ -143,39 +217,24 @@ class SavePdfFragment :
             toast("There is no PDF Viewer ")
         }
         binding.toolbar.setToolbarRightActionClick {
-            if(isExternalStorageAvailable() && !isExternalStorageReadOnly()){
-                try {
-                    val size = file.length().toInt()
-                    val bytes = ByteArray(size)
-                    try {
-                        val buf = BufferedInputStream(FileInputStream(file))
-                        buf.read(bytes, 0, bytes.size)
-                        buf.close()
-                    } catch (e: FileNotFoundException) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace()
-                    } catch (e: IOException) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace()
-                    }
-                    var filePath = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOWNLOADS + resources.getString(R.string.app_name) + File.separator + "loanCalculator")
-                    if(!filePath.exists())
-                        filePath.mkdirs()
-
-                    var test = File(filePath,file.name)
-                    if(!test.exists())
-                        test.createNewFile()
-
-                    val fos = FileOutputStream(test)
-                    fos.write(bytes)
-                    fos.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                } finally {
-                    toast(file.name + " is created!")
-                    findNavController().popBackStack()
+            if (!isExternalStorageAvailable() || isExternalStorageReadOnly()) {
+                toast("Storage is not available")
+                return@setToolbarRightActionClick
+            }
+            try {
+                val downloadsDir =
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                val loanifyDir = File(downloadsDir, "loanify")
+                if (!loanifyDir.exists()) {
+                    loanifyDir.mkdirs()
                 }
+                val destFile = File(loanifyDir, loanPdfFileName())
+                file.copyTo(destFile, overwrite = true)
+                toast("${destFile.name} saved to Download/loanify/")
+                findNavController().popBackStack()
+            } catch (e: IOException) {
+                e.printStackTrace()
+                toast("Could not save PDF")
             }
         }
     }
@@ -210,11 +269,20 @@ class SavePdfFragment :
         itemsTable.totalWidth = A4.width
         itemsTable.setWidths(floatArrayOf(.5f, 1.5f, 1.5f, 1.5f, 2.5f))
 
-        var nf: NumberFormat = NumberFormat.getCurrencyInstance(Locale.US)
+        val locale = when (args.getSavedLoanModel.currency) {
+            "₼" -> Locale("az", "AZ")
+            "₺" -> Locale("tr", "TR")
+            "$" -> Locale.US
+            "₽" -> Locale("ru", "RU")
+            "€" -> Locale("es", "ES")
+            else -> Locale.US
+        }
+
+        var nf: NumberFormat = NumberFormat.getCurrencyInstance(locale)
         for (item in viewmodel.formulaAmortization(
-            loanAmount = args.getSavedLoanModel.loanAmount?.getDoubleValue()?:0.0,
+            loanAmount = args.getSavedLoanModel.loanAmount?.getDoubleValue() ?: 0.0,
             termInMonths = args.getSavedLoanModel.termInMonth ?: 0,
-            annualInterestRate = args.getSavedLoanModel.interestRate?.getDoubleValue()?:0.0
+            annualInterestRate = args.getSavedLoanModel.interestRate?.getDoubleValue() ?: 0.0
         )) {
             itemsTable.deleteBodyRows()
 
@@ -225,7 +293,7 @@ class SavePdfFragment :
             itemName.horizontalAlignment = Rectangle.ALIGN_RIGHT
             itemName.paddingTop = TABLE_TOP_PADDING
             itemName.paddingBottom = TABLE_TOP_PADDING
-            if((item?.month?:0) %2 == 0)
+            if ((item?.month ?: 0) % 2 == 0)
                 itemName.backgroundColor = colorTable
             itemsTable.addCell(itemName)
 
@@ -235,7 +303,7 @@ class SavePdfFragment :
             quantityCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
             quantityCell.paddingTop = TABLE_TOP_PADDING
             quantityCell.paddingBottom = TABLE_TOP_PADDING
-            if((item?.month?:0) %2 == 0)
+            if ((item?.month ?: 0) % 2 == 0)
                 quantityCell.backgroundColor = colorTable
             itemsTable.addCell(quantityCell)
 
@@ -244,7 +312,7 @@ class SavePdfFragment :
             disAmount.horizontalAlignment = Rectangle.ALIGN_RIGHT
             disAmount.paddingTop = TABLE_TOP_PADDING
             disAmount.paddingBottom = TABLE_TOP_PADDING
-            if((item?.month?:0) %2 == 0)
+            if ((item?.month ?: 0) % 2 == 0)
                 disAmount.backgroundColor = colorTable
             itemsTable.addCell(disAmount)
 
@@ -253,7 +321,7 @@ class SavePdfFragment :
             vat.horizontalAlignment = Rectangle.ALIGN_RIGHT
             vat.paddingTop = TABLE_TOP_PADDING
             vat.paddingBottom = TABLE_TOP_PADDING
-            if((item?.month?:0) %2 == 0)
+            if ((item?.month ?: 0) % 2 == 0)
                 vat.backgroundColor = colorTable
             itemsTable.addCell(vat)
 
@@ -263,18 +331,18 @@ class SavePdfFragment :
             netAmount.paddingTop = TABLE_TOP_PADDING
             netAmount.paddingBottom = TABLE_TOP_PADDING
             netAmount.paddingRight = PADDING_EDGE
-            if((item?.month?:0) %2 == 0)
+            if ((item?.month ?: 0) % 2 == 0)
                 netAmount.backgroundColor = colorTable
             itemsTable.addCell(netAmount)
             doc.add(itemsTable)
 
-            if((item?.month)?.rem(12) ?: 0 == 0){
+            if ((item?.month)?.rem(12) ?: 0 == 0) {
                 initEndOfYear(doc, ((item?.month)?.div(12)).toString())
             }
         }
     }
 
-    private fun initEndOfYear(doc: Document,year: String) {
+    private fun initEndOfYear(doc: Document, year: String) {
         val footerTable = PdfPTable(1)
         footerTable.totalWidth = A4.width
         footerTable.isLockedWidth = true
@@ -338,7 +406,6 @@ class SavePdfFragment :
         customerAddressTable.addCell(paidCell)
 
 
-
         val billDetailsCell1 = PdfPCell(customerAddressTable)
         billDetailsCell1.border = Rectangle.NO_BORDER
 
@@ -356,13 +423,14 @@ class SavePdfFragment :
         txtInvoiceNumber.border = Rectangle.NO_BORDER
         invoiceNumAndData.addCell(txtInvoiceNumber)
 
-        val invoiceNumber = PdfPCell(Phrase("${args.getSavedLoanModel.interestRate}%", appFontRegular))
+        val invoiceNumber =
+            PdfPCell(Phrase("${args.getSavedLoanModel.interestRate}%", appFontRegular))
         invoiceNumber.border = Rectangle.NO_BORDER
         invoiceNumber.paddingTop = TEXT_TOP_PADDING
         invoiceNumAndData.addCell(invoiceNumber)
 
 
-        val txtDate = PdfPCell(Phrase("Compounding frequency", appFontLight))
+        val txtDate = PdfPCell(Phrase(getString(R.string.compounding_frequency), appFontLight))
         txtDate.paddingTop = TEXT_TOP_PADDING_EXTRA
         txtDate.border = Rectangle.NO_BORDER
         invoiceNumAndData.addCell(txtDate)
@@ -414,7 +482,8 @@ class SavePdfFragment :
         titleTable.addCell(itemCell)
 
 
-        val quantityCell = PdfPCell(Phrase(getString(R.string.amortization_col_period), appFontBold))
+        val quantityCell =
+            PdfPCell(Phrase(getString(R.string.amortization_col_period), appFontBold))
         quantityCell.border = Rectangle.NO_BORDER
         quantityCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         quantityCell.paddingBottom = TABLE_TOP_PADDING
@@ -447,14 +516,20 @@ class SavePdfFragment :
         priceDetailsTable.setWidths(floatArrayOf(5f, 2f))
         priceDetailsTable.isLockedWidth = true
 
-        appFontRegular.color = colorPrimary
+        appFontRegular.size = FONT_SIZE_BIG
+        appFontRegular.color = BaseColor.BLACK
         val txtSubTotalCell = PdfPCell(Phrase(getString(R.string.loan_amount), appFontRegular))
         txtSubTotalCell.border = Rectangle.NO_BORDER
         txtSubTotalCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         txtSubTotalCell.paddingTop = 60f
         priceDetailsTable.addCell(txtSubTotalCell)
         appFontBold.color = BaseColor.BLACK
-        val totalPriceCell = PdfPCell(Phrase("$" + args.getSavedLoanModel.loanAmount, appFontRegular))
+        val totalPriceCell = PdfPCell(
+            Phrase(
+                args.getSavedLoanModel.currency + args.getSavedLoanModel.loanAmount,
+                appFontRegular
+            )
+        )
         totalPriceCell.border = Rectangle.NO_BORDER
         totalPriceCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         totalPriceCell.paddingTop = 60f
@@ -462,13 +537,19 @@ class SavePdfFragment :
         priceDetailsTable.addCell(totalPriceCell)
 
 
-        val txtTaxCell = PdfPCell(Phrase(getString(R.string.loan_result_interest_header), appFontRegular))
+        val txtTaxCell =
+            PdfPCell(Phrase(getString(R.string.loan_result_interest_header), appFontRegular))
         txtTaxCell.border = Rectangle.NO_BORDER
         txtTaxCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         txtTaxCell.paddingTop = TEXT_TOP_PADDING
         priceDetailsTable.addCell(txtTaxCell)
 
-        val totalTaxCell = PdfPCell(Phrase("$" + args.getSavedLoanModel.totalInterest, appFontRegular))
+        val totalTaxCell = PdfPCell(
+            Phrase(
+                args.getSavedLoanModel.currency + args.getSavedLoanModel.totalInterest,
+                appFontRegular
+            )
+        )
         totalTaxCell.border = Rectangle.NO_BORDER
         totalTaxCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         totalTaxCell.paddingTop = TEXT_TOP_PADDING
@@ -483,7 +564,12 @@ class SavePdfFragment :
         txtTotalCell.paddingLeft = PADDING_EDGE
         priceDetailsTable.addCell(txtTotalCell)
         appFontBold.color = colorPrimary
-        val totalCell = PdfPCell(Phrase("$" + args.getSavedLoanModel.totalPayment, appFontRegular))
+        val totalCell = PdfPCell(
+            Phrase(
+                args.getSavedLoanModel.currency + args.getSavedLoanModel.totalPayment,
+                appFontRegular
+            )
+        )
         totalCell.border = Rectangle.NO_BORDER
         totalCell.horizontalAlignment = Rectangle.ALIGN_RIGHT
         totalCell.paddingTop = TEXT_TOP_PADDING
@@ -496,6 +582,7 @@ class SavePdfFragment :
 
 
     private fun initInvoiceHeader(doc: Document) {
+        appFontRegular.color = BaseColor.BLACK
         val d = resources.getDrawable(R.drawable.ic_pdf_header_logo)
         val bitDw = d as BitmapDrawable
         val bmp = bitDw.bitmap
@@ -518,7 +605,7 @@ class SavePdfFragment :
         cell.horizontalAlignment = Rectangle.ALIGN_LEFT
         cell.paddingBottom = TEXT_TOP_PADDING_EXTRA
 
-        cell.backgroundColor = colorPrimary // sets background color
+        cell.backgroundColor = BaseColor.WHITE // sets background color
         cell.horizontalAlignment = Element.ALIGN_CENTER
         headerTable.addCell(cell) // Adds first cell with logo
 
@@ -554,7 +641,7 @@ class SavePdfFragment :
         headCell.border = Rectangle.NO_BORDER
         headCell.horizontalAlignment = Element.ALIGN_RIGHT
         headCell.verticalAlignment = Element.ALIGN_MIDDLE
-        headCell.backgroundColor = colorPrimary
+        headCell.backgroundColor = BaseColor.WHITE
         headerTable.addCell(headCell)
 
 

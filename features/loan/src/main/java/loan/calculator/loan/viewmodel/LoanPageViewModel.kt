@@ -10,6 +10,7 @@ import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.usecase.savepage.GetIconModelUseCase
 import loan.calculator.domain.usecase.savepage.InsertSaveLoanUseCase
 import loan.calculator.domain.usecase.savepage.SetIconModelUseCase
+import loan.calculator.domain.usecase.settingpage.GetCurrencyUseCase
 import loan.calculator.domain.usecase.settingpage.GetShowCaseUseCase
 import loan.calculator.domain.usecase.settingpage.SetShowCaseUseCase
 import loan.calculator.domain.util.SELECT_PART
@@ -23,7 +24,8 @@ class LoanPageViewModel @Inject constructor(
     private val setShowCaseUseCase: SetShowCaseUseCase,
     private val insertSaveLoanUseCase: InsertSaveLoanUseCase,
     private val getIconModelUseCase: GetIconModelUseCase,
-    private val setIconModelUseCase: SetIconModelUseCase
+    private val setIconModelUseCase: SetIconModelUseCase,
+    private val getCurrencyUseCase: GetCurrencyUseCase
     ) : BaseViewModel<LoanPageState, LoanPageEffect>() {
 
     var selectedStartDate = Date()
@@ -31,6 +33,8 @@ class LoanPageViewModel @Inject constructor(
     var selectedType = SELECT_TYPE_LOAN.BLOCK.type
 
     fun getShowCase() = getShowCaseUseCase.invoke(Unit)
+
+    fun getCurrencySymbol() = getCurrencyUseCase.invoke(Unit)
 
     fun setShowCase(value:Boolean){
         setShowCaseUseCase.invoke(SetShowCaseUseCase.Params(value = value))

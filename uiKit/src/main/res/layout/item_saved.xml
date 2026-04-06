@@ -47,10 +47,12 @@
         tools:text="Masin krediti" />
 
     <ImageView
-        android:id="@+id/share_item"
+        android:id="@+id/delete_item"
         android:layout_width="@dimen/_32sdp"
         android:layout_height="@dimen/_32sdp"
-        android:src="@drawable/ic_share_item"
+        android:src="@drawable/ic_delete"
+        android:padding="@dimen/_4sdp"
+        android:background="@drawable/radius_8dp"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/logo" />
@@ -203,6 +205,18 @@
         app:layout_constraintStart_toEndOf="@+id/total_repayment_text"
         app:layout_constraintTop_toTopOf="@+id/total_repayment_text"
         tools:text="$105 567.60" />
+
+    <ImageView
+        android:id="@+id/share_item"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:background="@drawable/radius_8dp"
+        android:src="@drawable/ic_share_item"
+        android:padding="@dimen/_4sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/delete_item"
+        app:layout_constraintEnd_toStartOf="@+id/delete_item"
+        app:layout_constraintTop_toTopOf="@+id/delete_item" />
 
 
 

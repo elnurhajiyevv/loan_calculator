@@ -12,19 +12,16 @@ import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.core.base.BaseFragment
 import loan.calculator.core.extension.toast
 import loan.calculator.domain.entity.home.AmortizationModel
-import loan.calculator.domain.entity.home.SaveLoanObject
 import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.loan.adapter.AmortizationAdapter
 import loan.calculator.loan.bottomsheet.SaveBottomSheet
 import loan.calculator.loan.bottomsheet.saveBottomSheet
 import loan.calculator.loan.databinding.FragmentAmortizationBinding
 import loan.calculator.loan.effect.AmortizationPageEffect
-import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.AmortizationPageState
 import loan.calculator.loan.viewmodel.AmortizationPageViewModel
-import loan.calculator.uikit.R
-import loan.calculator.uikit.extension.getImageResource
 import loan.calculator.uikit.util.returnValueIfNull
+import java.util.Locale
 
 @AndroidEntryPoint
 class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPageEffect,
@@ -47,7 +44,7 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         include.titleText.text = args.name*/
 
         viewmodel.saveLoanObject.apply {
-            amount = args.loanAmount.getDoubleValue()
+            amount = args.loanAmount
             period = args.termInMonth.toInt().toString()
             rate = args.interestRate
             paymentAmount = args.totalRepayment
@@ -58,10 +55,10 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
         }
         include.startDate.text = args.startDate
         include.paidOff.text = args.paidOff
-        include.loan.text = "$ ${args.loanAmount}"
+        include.loan.text = "${args.currency} ${args.loanAmount}"
         include.interestRate.text = "${args.interestRate}%"
         include.frequency.text = args.frequency
-        include.totalRepayment.text = "$ ${args.totalRepayment}"
+        include.totalRepayment.text = "${args.currency} ${args.totalRepayment}"
 
         toolbar.setToolbarRightActionClick {
             viewmodel.getIconModelList()
@@ -100,7 +97,20 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
             } else
                 arrayList.add(it)
         }*/
-        amortizationAdapter = AmortizationAdapter(context = requireContext(),arrayList,AmortizationAdapter.AmortizationModelClick{
+
+        val locale = when(args.currency){
+            "₼" -> Locale("az", "AZ")
+            "₺" -> Locale("tr", "TR")
+            "$" -> Locale.US
+            "₽" -> Locale("ru", "RU")
+            "€" -> Locale("es", "ES")
+            else -> Locale.US
+        }
+        amortizationAdapter = AmortizationAdapter(
+            locale = locale,
+            context = requireContext(),
+            arrayList,
+            AmortizationAdapter.AmortizationModelClick{
             // handle on click listener
         })
         binding.recyclerViewAmortization.adapter = amortizationAdapter
@@ -122,7 +132,7 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
             itemList {
                 list
             }
-            setAmount(returnValueIfNull(viewmodel.saveLoanObject.amount))
+            setAmount(viewmodel.saveLoanObject.amount)
             setPeriod(viewmodel.saveLoanObject.period)
             setRate(viewmodel.saveLoanObject.rate)
             setPayment(viewmodel.saveLoanObject.paymentAmount)
@@ -131,6 +141,7 @@ class AmortizationFragment : BaseFragment<AmortizationPageState, AmortizationPag
             setTotalInterest(viewmodel.saveLoanObject.totalInterest)
             setTotalPayment(viewmodel.saveLoanObject.totalPayment)
             setIconModel(viewmodel.getIconModel())
+            setCurrency(currency = args.currency)
             onSaveButtonClicked {
                 viewmodel.insertSavedLoan(
                     model = it

@@ -1,7 +1,7 @@
 package loan.calculator.domain.entity.home
 
 data class SaveLoanObject(
-    var amount: Double,
+    var amount: String,
     var period: String,
     var rate: String,
     var paymentAmount: String,

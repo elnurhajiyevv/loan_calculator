@@ -26,6 +26,7 @@ import kotlin.random.Random
 
 class SaveBottomSheet : BaseNotSerializableBottomSheet() {
 
+    private var currency: String? = null
     private var onSaveButtonClicked: ((GetSavedLoanModel) -> Unit)? = null
     private var onDismiss: (() -> Unit)? = null
     private var onIconSelection: ((IconModel) -> Unit)? = null
@@ -120,7 +121,8 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
                     totalRePayment = payment,
                     termInMonth = termInMonth?.toInt(),
                     totalInterest = totalInterest,
-                    totalPayment = totalPayment
+                    totalPayment = totalPayment,
+                    currency = currency
                 ))
                 this@SaveBottomSheet.dismiss()
             }
@@ -180,6 +182,8 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
         private var termInMonth: String? = null
         private var totalInterest: String? = null
         private var totalPayment: String? = null
+
+        private var currency: String? = null
         private var iconModel: IconModel? = null
         private var onSaveButtonClicked: ((GetSavedLoanModel) -> Unit)? = null
         private var onIconSelection: ((IconModel) -> Unit)? = null
@@ -187,6 +191,10 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
 
         fun setIconModel(iconModel: IconModel){
             this.iconModel = iconModel
+        }
+
+        fun setCurrency(currency: String){
+            this.currency = currency
         }
 
         fun itemList(itemList: () -> List<IconModel>?) {
@@ -246,6 +254,7 @@ class SaveBottomSheet : BaseNotSerializableBottomSheet() {
             bottomSheet.rate = rate
             bottomSheet.payment = payment
             bottomSheet.frequency = frequency
+            bottomSheet.currency = currency
             bottomSheet.termInMonth = termInMonth
             bottomSheet.totalInterest = totalInterest
             bottomSheet.totalPayment = totalPayment

@@ -9,6 +9,7 @@ import loan.calculator.domain.entity.unit.IconModel
 import loan.calculator.domain.usecase.savepage.GetIconModelUseCase
 import loan.calculator.domain.usecase.savepage.InsertSaveLoanUseCase
 import loan.calculator.domain.usecase.savepage.SetIconModelUseCase
+import loan.calculator.domain.usecase.settingpage.GetCurrencyUseCase
 import loan.calculator.loan.effect.AmortizationPageEffect
 import loan.calculator.loan.effect.LoanPageEffect
 import loan.calculator.loan.state.AmortizationPageState
@@ -23,9 +24,8 @@ class AmortizationPageViewModel @Inject constructor(
 ) : BaseViewModel<AmortizationPageState, AmortizationPageEffect>() {
 
     var selectedType = SELECT_TYPE_LOAN.BLOCK.type
-
     val saveLoanObject = SaveLoanObject(
-        0.0, "", "", "", "", "," +
+        "0", "", "", "", "", "," +
                 "", "", ""
     )
 

@@ -82,9 +82,14 @@
             app:argType="string"
             android:defaultValue="" />
 
+        <argument
+            android:name="currency"
+            app:argType="string"
+            android:defaultValue="" />
+
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="loan://amortization/{name}/{startDate}/{paidOff}/{loanAmount}/{interestRate}/{frequency}/{totalRepayment}/{termInMonth}/{termInYear}/{type}/{totalInterest}" />
+            app:uri="loan://amortization/{name}/{startDate}/{paidOff}/{loanAmount}/{interestRate}/{frequency}/{totalRepayment}/{termInMonth}/{termInYear}/{type}/{totalInterest}/{currency}" />
 
     </fragment>
 

@@ -16,6 +16,7 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
 
     companion object {
         const val LIGHT_THEME = "LIGHT_THEME"
+        const val CURRENCY = "CURRENCY"
         const val LANGUAGE = "LANGUAGE"
         const val ICON_MODEL = "ICON_MODEL"
         const val COLOR = "COLOR"
@@ -26,6 +27,10 @@ class SettingPreferences @Inject constructor(@ApplicationContext context: Contex
     var isLightTheme
         get() = get(LIGHT_THEME, true)
         set(value) = set(LIGHT_THEME, value)
+
+    var currency
+        get() = get(CURRENCY, "$")
+        set(value) = set(CURRENCY, value)
 
     var isScreenShot
         get() = get(IS_SCREENSHOT, true)

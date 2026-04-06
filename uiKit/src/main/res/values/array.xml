@@ -2,8 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string-array name="loanItems">
         <item>Monthly</item>
-        <item>Weekly</item>
+        <!--<item>Weekly</item>
         <item>Daily</item>
-        <item>Yearly</item>
+        <item>Yearly</item>-->
     </string-array>
 </resources>

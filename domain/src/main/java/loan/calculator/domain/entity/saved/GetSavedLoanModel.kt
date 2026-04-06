@@ -20,5 +20,6 @@ class GetSavedLoanModel(
     var selected: Boolean = false,
     var termInMonth: Int?,
     var totalInterest: String? = "",
-    var totalPayment: String? = ""
+    var totalPayment: String? = "",
+    val currency: String?=""
 ): java.io.Serializable

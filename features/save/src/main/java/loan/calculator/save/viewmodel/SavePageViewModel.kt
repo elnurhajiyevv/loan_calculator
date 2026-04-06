@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import loan.calculator.domain.entity.saved.GetSavedLoanModel
 import loan.calculator.domain.usecase.savepage.DeleteSavedLoanUseCase
 import loan.calculator.domain.usecase.savepage.GetSavedLoansUseCase
+import loan.calculator.domain.usecase.settingpage.GetCurrencyUseCase
 import loan.calculator.domain.usecase.settingpage.GetShowCase2UseCase
 import loan.calculator.domain.usecase.settingpage.GetShowCaseUseCase
 import loan.calculator.domain.usecase.settingpage.SetShowCase2UseCase
@@ -21,8 +22,10 @@ class SavePageViewModel @Inject constructor(
     private val deleteSavedLoanUseCase: DeleteSavedLoanUseCase,
     private val getShowCase2UseCase: GetShowCase2UseCase,
     private val setShowCase2UseCase: SetShowCase2UseCase,
+    private val getCurrencyUseCase: GetCurrencyUseCase
 ) : BaseViewModel<SavePageState, SavePageEffect>() {
 
+    fun getCurrencySymbol() = getCurrencyUseCase.invoke(Unit)
     var list: List<GetSavedLoanModel> = arrayListOf()
 
     fun getShowCase() = getShowCase2UseCase.invoke(Unit)

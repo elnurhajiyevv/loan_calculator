@@ -115,7 +115,9 @@ class SavePageFragment :
     private fun saveAsCsv() {
         viewmodel.navigate(
             NavigationCommand.To(
-                SavePageFragmentDirections.actionSavePageFragmentToSaveCsvFragment()
+                SavePageFragmentDirections.actionSavePageFragmentToSaveCsvFragment(
+                    getSavedLoanModel = viewmodel.selectedItem
+                )
             )
         )
     }
@@ -150,13 +152,11 @@ class SavePageFragment :
                         NavigationArgs.TERM_IN_YEAR to (it.termInMonth.toString()),
                         NavigationArgs.TYPE to (it.type?:""),
                         NavigationArgs.TOTAL_INTEREST to (it.totalInterest.toString()),
+                        NavigationArgs.CURRENCY to (it.currency.toString()),
                     ), false
                 )
             )
         }, SavedAdapter.SavedItemShare { selected ->
-
-
-
             // set selected item to shared
             viewmodel.selectedItem = selected
 
@@ -166,6 +166,9 @@ class SavePageFragment :
             //updateListAdapter(true)
             getListOfExport()
             openExportTypeBottomModule(typeList)
+        }, onDeleteClickListener = SavedAdapter.SavedItemDelete { selected ->
+            viewmodel.selectedItem = selected
+            openDeleteDialogBottomModule()
         })
         binding.recyclerViewSaved.adapter = savedAdapter
     }

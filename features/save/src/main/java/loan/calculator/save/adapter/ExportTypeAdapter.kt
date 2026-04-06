@@ -36,7 +36,7 @@ class ExportTypeAdapter(itemList: List<ExportTypeModel>, private val clickListen
                 title.text = model.name
                 logo.setImageResource(model.icon)
 
-                if(model.type==0){
+                if(model.type==0 || model.type==1){
                     status.gone()
                 } else {
                     mainLayout.isFocusable = false

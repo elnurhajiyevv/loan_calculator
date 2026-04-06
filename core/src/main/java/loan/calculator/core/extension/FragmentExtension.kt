@@ -54,7 +54,8 @@ object DeeplinkNavigationTypes {
                 "{${NavigationArgs.TERM_IN_MONTH}}/" +
                 "{${NavigationArgs.TERM_IN_YEAR}}/" +
                 "{${NavigationArgs.TYPE}}/" +
-                "{${NavigationArgs.TOTAL_INTEREST}}"
+                "{${NavigationArgs.TOTAL_INTEREST}}/" +
+                "{${NavigationArgs.CURRENCY}}"
 
     const val SAVE_PDF = "${DOMAIN}savepdf"
 }
@@ -72,5 +73,6 @@ object NavigationArgs {
     const val TERM_IN_YEAR= "termInYear"
 
     const val TOTAL_INTEREST = "totalInterest"
+    const val CURRENCY = "currency"
     const val TYPE = "type"
 }

@@ -8,6 +8,7 @@ import loan.calculator.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import loan.calculator.common.library.util.calculateAmortization
 import loan.calculator.domain.entity.home.AmortizationModel
+import loan.calculator.domain.usecase.settingpage.GetCurrencyUseCase
 import loan.calculator.save.effect.SavePdfEffect
 import loan.calculator.save.state.SavePdfState
 import java.io.File
@@ -16,7 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SavePdfViewModel @Inject constructor(
 ) : BaseViewModel<SavePdfState, SavePdfEffect>() {
-
     fun formulaAmortization(
         loanAmount: Double,
         termInMonths: Int,

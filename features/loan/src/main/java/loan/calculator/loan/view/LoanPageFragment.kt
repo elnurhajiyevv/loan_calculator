@@ -152,7 +152,8 @@ class LoanPageFragment :
                         termInMonth = termInMonth.toString(),
                         termInYear = returnValueIfNull(binding.loanYearEdittext).toInt().toString(),
                         type = "home",
-                        totalInterest = binding.totalInterestValue.text.toString()
+                        totalInterest = binding.totalInterestValue.text.toString(),
+                        currency = viewmodel.getCurrencySymbol()
                     )
                 )
             )
@@ -370,6 +371,7 @@ class LoanPageFragment :
             setTotalInterest(binding.totalInterestValue.text.toString())
             setTotalPayment(binding.totalRepaymentValue.text.toString())
             setIconModel(viewmodel.getIconModel())
+            setCurrency(currency = viewmodel.getCurrencySymbol())
             onSaveButtonClicked {
                 viewmodel.insertSavedLoan(
                     model = it
@@ -567,6 +569,11 @@ class LoanPageFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.loanAmountCurrency.text = viewmodel.getCurrencySymbol()
+        binding.loanPaymentCurrency.text = viewmodel.getCurrencySymbol()
+        binding.totalInterestCurrency.text = viewmodel.getCurrencySymbol()
+        binding.totalRepaymentCurrency.text = viewmodel.getCurrencySymbol()
 
         setupApplyButtonAboveKeyboard()
         // Create a new ad view.

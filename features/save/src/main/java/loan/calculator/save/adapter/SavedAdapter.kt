@@ -14,7 +14,8 @@ import loan.calculator.uikit.extension.getImageResource
 
 class SavedAdapter(
     private val clickListener: SavedItemClick,
-    private val onShareClickListener: SavedItemShare
+    private val onShareClickListener: SavedItemShare,
+    private val onDeleteClickListener: SavedItemDelete
 ) : BaseAdapter<GetSavedLoanModel, SavedAdapter.SavedViewHolder>(areItemsTheSame = {
         oldItem, newItem -> oldItem == newItem}) {
 
@@ -36,13 +37,20 @@ class SavedAdapter(
         fun onShareClick(model: GetSavedLoanModel) = onShareClickListener(model)
     }
 
+    class SavedItemDelete(val onDeleteClickListener: (model: GetSavedLoanModel) -> Unit) {
+        fun onDeleteClick(model: GetSavedLoanModel) = onDeleteClickListener(model)
+    }
+
+
+
 
     class SavedViewHolder(private val binding: ItemSavedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             model: GetSavedLoanModel,
             clickListener: SavedItemClick,
-            onShareClickListener: SavedItemShare
+            onShareClickListener: SavedItemShare,
+            onDeleteClickListener: SavedItemDelete
         ) {
             binding.apply {
                 mainContainer.setOnClickListener {
@@ -51,21 +59,24 @@ class SavedAdapter(
                 titleText.text = model.name
                 startDate.text = model.startDate
                 paidOff.text = model.paidOff
-                totalRepayment.text = "$ ${model.totalRePayment}"
+                totalRepayment.text = "${model.currency} ${model.totalRePayment}"
                 interestRate.text = "${model.interestRate}%"
                 frequency.text = model.compoundingFrequency
-                loan.text = "$ ${model.loanAmount}"
+                loan.text = "${model.currency} ${model.loanAmount}"
                 if(model.selected) selectedBackground.show() else selectedBackground.gone()
                 logo.setImageResource(model.type?.getImageResource() ?: R.drawable.bg_balance)
                 //logo.background.setTint(model.type?.getImageBackgroundColor(binding.root.context)?:R.color.light_blue_100)
                 shareItem.setOnClickListener {
                     onShareClickListener.onShareClickListener(model)
                 }
+                deleteItem.setOnClickListener {
+                    onDeleteClickListener.onDeleteClickListener(model)
+                }
             }
         }
     }
 
     override fun onBindViewHolder(holder: SavedViewHolder, position: Int) {
-        holder.bind(getItem(position), clickListener, onShareClickListener)
+        holder.bind(getItem(position), clickListener, onShareClickListener, onDeleteClickListener)
     }
 }

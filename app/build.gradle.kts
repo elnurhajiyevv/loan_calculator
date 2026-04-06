@@ -12,6 +12,7 @@ android {
     compileSdk = ApplicationConfig.compileSdk
 
     defaultConfig {
+        applicationId = ApplicationConfig.applicationId
         resValue("string","admob_developer","")
         minSdk = ApplicationConfig.minSdk
         versionCode = ApplicationConfig.versionCode

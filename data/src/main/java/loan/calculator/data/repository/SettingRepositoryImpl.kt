@@ -13,6 +13,12 @@ class SettingRepositoryImpl @Inject constructor(
         settingPreferences.isLightTheme = isOn
     }
 
+    override fun getCurrency() = settingPreferences.currency
+
+    override fun setCurrency(value: String) {
+        settingPreferences.currency = value
+    }
+
     override fun getLanguage() = settingPreferences.getLanguage()
 
     override fun setLanguage(language: LanguageModel) {

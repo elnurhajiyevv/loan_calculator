@@ -40,6 +40,12 @@
     <fragment
         android:id="@+id/saveCsvFragment"
         android:name="loan.calculator.save.view.SaveCsvFragment"
-        tools:layout="@layout/fragment_save_csv_page" />
+        tools:layout="@layout/fragment_save_csv_page">
+
+        <argument
+            android:name="getSavedLoanModel"
+            app:argType="loan.calculator.domain.entity.saved.GetSavedLoanModel" />
+
+    </fragment>
 
 </navigation>

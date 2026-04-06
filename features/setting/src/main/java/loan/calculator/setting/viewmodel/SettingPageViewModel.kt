@@ -13,6 +13,7 @@ import loan.calculator.domain.usecase.settingpage.GetLightThemeUseCase
 import loan.calculator.domain.usecase.settingpage.GetPackageNameUseCase
 import loan.calculator.domain.usecase.settingpage.GetScreenShotUseCase
 import loan.calculator.domain.usecase.settingpage.SetAppColorUseCase
+import loan.calculator.domain.usecase.settingpage.SetCurrencyUseCase
 import loan.calculator.domain.usecase.settingpage.SetLanguageUseCase
 import loan.calculator.domain.usecase.settingpage.SetLightThemeUseCase
 import loan.calculator.domain.usecase.settingpage.SetScreenShotUseCase
@@ -29,6 +30,7 @@ class SettingPageViewModel @Inject constructor(
     private val setAppColorUseCase: SetAppColorUseCase,
     private val getScreenShotUseCase: GetScreenShotUseCase,
     private val setScreenShotUseCase: SetScreenShotUseCase,
+    private val setCurrencyUseCase: SetCurrencyUseCase
 ) : BaseViewModel<SettingPageState, SettingPageEffect>() {
 
 
@@ -61,6 +63,15 @@ class SettingPageViewModel @Inject constructor(
     fun getLanguage() = getLanguageUseCase.invoke(Unit)
 
     fun setLanguage(language:LanguageModel){
+        var currencyCode = ""
+        when(language.code){
+            "az" -> currencyCode = "₼"
+            "tr" -> currencyCode = "₺"
+            "en" -> currencyCode = "$"
+            "ru" -> currencyCode = "₽"
+            "es" -> currencyCode = "€"
+        }
+        setCurrencyUseCase.invoke(SetCurrencyUseCase.Params(value = currencyCode))
         setLanguageUseCase.invoke(SetLanguageUseCase.Params(language = language))
     }
 

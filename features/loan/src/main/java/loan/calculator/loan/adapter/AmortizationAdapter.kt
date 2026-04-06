@@ -16,13 +16,14 @@ import loan.calculator.uikit.textview.AutofitTextView
 import java.text.NumberFormat
 import java.util.Locale
 class AmortizationAdapter(
+    private val locale: Locale,
     private val context: Context,
     private val listItems: ArrayList<AmortizationModel?>,
     private val onModelClick: AmortizationModelClick,
 ): BaseAdapter<AmortizationModel, RecyclerView.ViewHolder>(areContentsTheSame = {
         oldItem, newItem -> oldItem.beginningBalance == newItem.beginningBalance }) {
 
-    var nf: NumberFormat = NumberFormat.getCurrencyInstance(Locale.US)
+    var nf: NumberFormat = NumberFormat.getCurrencyInstance(locale)
     init {
         submitList(listItems)
     }

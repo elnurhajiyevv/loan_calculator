@@ -9,6 +9,10 @@ interface SettingRepository {
 
     fun setLightTheme(isOn: Boolean)
 
+    fun getCurrency(): String
+
+    fun setCurrency(value: String)
+
     fun getLanguage(): LanguageModel
 
     fun setLanguage(language: LanguageModel)
